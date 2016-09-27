@@ -4,9 +4,9 @@ from django.views import generic
 
 
 def index(request):
-    return render(request, "utsida/index")
+    return render(request, "utsida/index.html")
 
 
 def process(request):
-    return render(request, "utside/process")
+    return render(request, "utsida/process.html")
 

@@ -1,0 +1,35 @@
+/***************************
+* = Table of contents =
+* 1.0 - General
+* 1.1 - Spacing
+* 2.0 - nav
+* 3.0 - Footer
+
+
+/* 1.0 - General */
+.main-btn {
+    width: 300px;
+    height: 60px;
+    line-height: 45px;
+    vertical-align: middle;
+}
+
+
+
+/* 1.1 - Spacing */
+.vertical-space-top {
+    margin-top: 20px;
+}
+.vertical-space-top-big {
+    margin-top: 50px;
+}
+.vertical-space-top-huge {
+    margin-top: 150px;
+}
+/* 3.0 Footer */
+.footer {
+    width: 50%;
+    opacity: 0.7;
+    text-align: center;
+    margin: 0 auto;
+}

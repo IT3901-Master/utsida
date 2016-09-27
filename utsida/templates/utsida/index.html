@@ -1,10 +1,18 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title></title>
-</head>
-<body>
+{% extends "utsida/layout.html" %}
 
-</body>
-</html>
+{% block content %}
+
+    <h2>Hva er Utsida?</h2>
+    <p>
+        Utsida er et verktøy som skal gjøre det enklere for utvekslingsstudenter å velge riktige fag og universiteter.
+    </p>
+
+    <h2 class="vertical-space-top-big">Hvordan virker det?</h2>
+    <p>
+        Utsida bruker data som er laget av tidligere utvekslingsstudenter sine valg og erfaringer.
+        Ved å matche dine forutsetninger med denne dataen vil systemet foreslå relevante alternativer.
+    </p>
+
+    <a class="btn btn-primary main-btn center-block vertical-space-top-big" href="/process">Finn fag</a>
+
+{% endblock %}
