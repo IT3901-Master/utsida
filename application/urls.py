@@ -3,5 +3,5 @@ from . import views
 from django.contrib import admin
 
 urlpatterns = [
-    url('^$', views.IndexView.as_view(), name="index"),
+    url('^$', include("utsida/urls"), name="index"),
 ]
