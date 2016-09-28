@@ -5,8 +5,12 @@
 
     <form>
         <div class="form-group">
-            <label for="instituteInput">Institutt</label>
-            
+            <select class="form-control">
+                {% for institute in institute_list %}
+                <option value="{{ institute.name }}">{{ institute.name }}</option>
+                {% endfor %}
+            </select>
+
         </div>
     </form>
 {% endblock %}

@@ -1,0 +1,55 @@
+[
+  {
+    "model": "utsida.faculty",
+    "pk": "IME",
+    "fields": {
+      "name": "Fakultet for informasjonsteknologi, matematikk og elektroteknikk"
+    }
+  },
+  {
+    "model": "utsida.institute",
+    "pk": "IDI",
+    "fields": {
+      "name": "Institutt for datateknikk og informasjonsvitenskap",
+      "faculty": "IME"
+    }
+  },
+  {
+    "model": "utsida.country",
+    "pk": "USA",
+    "fields": {}
+  },
+  {
+    "model": "utsida.university",
+    "pk": "UCSB",
+    "fields": {}
+  },
+  {
+    "model": "utsida.course",
+    "pk": "COSC3000",
+    "fields": {}
+  },
+  {
+    "model": "utsida.course",
+    "pk": "CSB285",
+    "fields": {}
+  },
+  {
+    "model": "utsida.case",
+    "pk": 1,
+    "fields": {
+      "homeInstitute": "IDI",
+      "country": "USA",
+      "university": "UCSB",
+      "studyPeriod": 2014,
+      "language": "English",
+      "academicQualityRating": 2,
+      "specialCompetencyRating": 2,
+      "socialQualityRating": 4,
+      "careerAdvantagesRating": 4,
+      "subjects": [
+        "CSB285"
+      ]
+    }
+  }
+]
