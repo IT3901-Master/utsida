@@ -1,6 +1,8 @@
 from django.http import HttpResponse
+from django.http import JsonResponse
 from django.shortcuts import render
-from django.views import generic
+from .models import Institute
+import json
 
 
 def index(request):
@@ -8,5 +10,7 @@ def index(request):
 
 
 def process(request):
-    return render(request, "utsida/process.html")
+    institute_list = Institute.objects.all()
+    context = {"institute_list" : institute_list}
+    return render(request, "utsida/process.html", context)
 
