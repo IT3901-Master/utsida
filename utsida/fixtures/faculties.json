@@ -1,0 +1,51 @@
+[
+  {
+    "fields": {
+      "name": "Det humanistiske fakultet"
+    },
+    "model": "utsida.faculty",
+    "pk": "HF"
+  },
+  {
+    "fields": {
+      "name": "Det medisinske fakultet"
+    },
+    "model": "utsida.faculty",
+    "pk": "DMF"
+  },
+  {
+    "fields": {
+      "name": "Fakultet for arkitektur og billedkunst"
+    },
+    "model": "utsida.faculty",
+    "pk": "AB"
+  },
+  {
+    "fields": {
+      "name": "Fakultet for informasjonsteknologi, matematikk og elektroteknikk"
+    },
+    "model": "utsida.faculty",
+    "pk": "IME"
+  },
+  {
+    "fields": {
+      "name": "Fakultet for ingeni\u00f8rvitenskap og teknologi"
+    },
+    "model": "utsida.faculty",
+    "pk": "IVT"
+  },
+  {
+    "fields": {
+      "name": "Fakultet for naturvitenskap og teknologi"
+    },
+    "model": "utsida.faculty",
+    "pk": "NT"
+  },
+  {
+    "fields": {
+      "name": "Fakultet for samfunnsvitenskap og teknologiledelse"
+    },
+    "model": "utsida.faculty",
+    "pk": "SVT"
+  }
+]
