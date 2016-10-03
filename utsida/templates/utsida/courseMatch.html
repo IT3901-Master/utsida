@@ -1,0 +1,16 @@
+{% extends "utsida/layout.html" %}
+
+{% block content %}
+    <h2 class="text-center">Her listes alle course matches</h2>
+
+    <form>
+        <div class="form-group">
+            <ul >
+                {% for course in course_match_list %}
+                <li>{{ course.homeCourse}} - {{ course.abroadCourse }}</li>
+                {% endfor %}
+            </ul>
+
+        </div>
+    </form>
+{% endblock %}
