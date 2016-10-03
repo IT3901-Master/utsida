@@ -1,8 +1,7 @@
 from django.http import HttpResponse
 from django.http import JsonResponse
 from django.shortcuts import render
-from .models import Institute
-from .models import CourseMatch
+from .models import *
 import json
 
 
@@ -12,7 +11,10 @@ def index(request):
 
 def process(request):
     institute_list = Institute.objects.all()
-    context = {"institute_list" : institute_list}
+    faculty_list = Faculty.objects.all()
+    university_list = University.objects.all()
+
+    context = {"institute_list" : institute_list, "faculty_list":faculty_list, "university_list" :university_list}
     return render(request, "utsida/process.html", context)
 
 
