@@ -31,12 +31,32 @@ class University(models.Model):
     def __str__(self):
         return self.name
 
-class Course(models.Model):
-    name = models.CharField(max_length=10, primary_key=True)
+class AbroadCourse(models.Model):
+    code = models.CharField(max_length=10,primary_key=True)
+    name = models.CharField(max_length=50)
+    university = models.ForeignKey(University)
+
+    def __str__(self):
+        return self.code + ' - ' + self.name
+
+class HomeCourse(models.Model):
+    code = models.CharField(max_length=10,primary_key=True)
+    name = models.CharField(max_length=50)
+    description_url = models.URLField(max_length=2000, blank=True)
 
     def __str__(self):
         return self.name
 
+    def __unicode__(self):
+        return self
+
+
+class CourseMatch(models.Model):
+    homeCourse = models.ForeignKey(HomeCourse)
+    abroadCourse = models.ForeignKey(AbroadCourse)
+
+    def __str__(self):
+        return self.homeCourse.code + " - " + self.abroadCourse.code
 
 
 class Case(models.Model):
@@ -49,7 +69,7 @@ class Case(models.Model):
     specialCompetencyRating = models.IntegerField(choices=CHOICES)
     socialQualityRating = models.IntegerField(choices=CHOICES)
     careerAdvantagesRating = models.IntegerField(choices=CHOICES)
-    subjects = models.ManyToManyField(Course)
+    subjects = models.ManyToManyField(AbroadCourse)
 
     def __str__(self):
         return self.university.name + ':' + str(self.pk)

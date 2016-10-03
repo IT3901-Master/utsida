@@ -1,4 +1,4 @@
-# template script file to use for future reference
+#template script file to use for future reference
 
 
 import os, sys
