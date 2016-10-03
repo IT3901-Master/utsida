@@ -1,0 +1,20 @@
+{% extends 'utsida/layout.html' %}
+
+{% block content %}
+
+    <h2 class="text-center">Søker etter matcher med følgende attributter</h2>
+    <div class="well">
+        <ul>
+            <li>{{ form.data.homeInstitute }}</li>
+            <li>{{ form.data.country }}</li>
+            <li>{{ form.data.university }}</li>
+            <li>{{ form.data.studyPeriod }}</li>
+            <li>{{ form.data.language }}</li>
+            <li>{{ form.data.academicQualityRating }}</li>
+            <li>{{ form.data.socialQualityRating }}</li>
+        </ul>
+    </div>
+
+    <img src="../../static/utsida/images/giphy.gif" style="width:100%">
+
+{% endblock %}

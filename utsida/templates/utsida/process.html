@@ -3,38 +3,11 @@
 {% block content %}
     <h2 class="text-center">Velg alternativene som stemmer for deg</h2>
 
-    <form method="post" action="/process/query/">
+    <form method="post" action="/process/result/">
     {% csrf_token %}
-
+        {{ form.as_p }}
         <div class="form-group vertical-space-top">
-            <label for="facultyInput">Ditt fakultet hjemme</label>
-            <select class="form-control" id="facultyInput">
-                {% for faculty in faculty_list %}
-                    <option value="{{ faculty }}">{{ faculty.name }}</option>
-                {% endfor %}
-            </select>
-        </div>
-
-        <div class="form-group vertical-space-top">
-        <label for="instituteInput">Ditt institutt hjemme</label>
-            <select class="form-control" id="instituteInput">
-                {% for institute in institute_list %}
-                <option value="{{ institute }}">{{ institute.name }}</option>
-                {% endfor %}
-            </select>
-        </div>
-
-        <div class="form-group vertical-space-top">
-            <label for="universityInput">Ønsket universitet i utlandet</label>
-            <select class="form-control" id="universityInput">
-                {% for university in university_list %}
-                <option value="{{ university }}">{{ university.name }}</option>
-                {% endfor %}
-            </select>
-        </div>
-
-        <div class="form-group vertical-space-top">
-            <input type="submit" value="Go">
+            <input type="submit" value="Go" class="btn btn-primary">
         </div>
     </form>
 {% endblock %}

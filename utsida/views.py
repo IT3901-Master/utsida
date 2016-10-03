@@ -1,8 +1,7 @@
-from django.http import HttpResponse
-from django.http import JsonResponse
+from django.http import HttpResponseRedirect
 from django.shortcuts import render
 from .models import *
-import json
+from .forms import *
 
 
 def index(request):
@@ -10,19 +9,24 @@ def index(request):
 
 
 def process(request):
-    institute_list = Institute.objects.all()
-    faculty_list = Faculty.objects.all()
-    university_list = University.objects.all()
-
-    context = {"institute_list": institute_list, "faculty_list": faculty_list, "university_list": university_list}
-    return render(request, "utsida/process.html", context)
+    form = QueryCaseBaseForm()
+    return render(request, "utsida/process.html", {"form": form})
 
 
-def courseMatch(request):
+def result(request):
+    if request.method == 'POST':
+        form = QueryCaseBaseForm(request.POST)
+        if form.is_valid():
+            return render(request, 'utsida/result.html', {'form': form})
+    else:
+        form = QueryCaseBaseForm()
+
+    return render(request, 'utsida/process.html', {'form': form})
+
+
+def course_match(request):
     course_matches = CourseMatch.objects.all()
     context = {"course_match_list" : course_matches}
     return render(request, "utsida/courseMatch.html", context)
 
 
-def query(request):
-    return render(request, "utsida/query.html")
