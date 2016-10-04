@@ -1,3 +1,4 @@
+from django.contrib.auth.models import User
 from django.http import HttpResponse
 from django.http import JsonResponse
 from django.shortcuts import render
@@ -20,6 +21,15 @@ def process(request):
 
 
 def courseMatch(request):
-    course_matches = CourseMatch.objects.all()
-    context = {"course_match_list" : course_matches}
+    if request.user.is_authenticated():
+        course_matches = CourseMatch.objects.all()
+        context = {"course_match_list": course_matches}
+    else:
+        context = {}
     return render(request,"utsida/courseMatch.html",context)
+
+
+def get_user_profile(request,username):
+    user = User.objects.get(username=username)
+    print(user.first_name)
+    return render(request, 'utsida/user_profile.html', {"user": user})

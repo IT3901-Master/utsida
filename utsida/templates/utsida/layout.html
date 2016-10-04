@@ -15,6 +15,12 @@
                 <li><a href="/">Utsida</a></li>
                 <li><a href="/process">Finn fag</a></li>
                 <li><a href="/courseMatch">Course Matches</a> </li>
+                {% if user.is_authenticated == False %}
+                <li><a href="/login">Login</a></li>
+                {%  endif %}
+            {% if user.is_authenticated %}
+                <li><a href="/logout">Logout</a></li>
+                {%  endif %}
             </ul>
         </div>
     </nav>
