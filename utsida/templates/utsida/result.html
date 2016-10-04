@@ -3,7 +3,7 @@
 {% block content %}
 
     <h2 class="text-center">Søker etter matcher med følgende attributter</h2>
-    <div class="well">
+    <div class="well vertical-space-top">
         <ul>
             <li>{{ form.data.homeInstitute }}</li>
             <li>{{ form.data.country }}</li>
@@ -15,6 +15,70 @@
         </ul>
     </div>
 
-    <img src="../../static/utsida/images/giphy.gif" style="width:100%">
+    <img id="loader" src="../../static/utsida/images/loading.gif" style="width:20%; display: block; margin: auto">
+
+    <div id="results" class="row vertical-space-top-big" style="display: none">
+
+        <h2 class="text-center vertical-space-top">Her er de tre beste matchene dine</h2>
+
+        <div class="col-md-4">
+            <div class="panel panel-primary">
+                <div class="panel-heading">
+                    UCSB <span class="pull-right" style="font-weight: bold">90%</span>
+                </div>
+                <div class="panel-body">
+                    <ul>
+                        <li>MECH7878</li>
+                        <li>CS9090</li>
+                        <li>INFO5678</li>
+                        <li>CS1010</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-md-4">
+            <div class="panel panel-primary">
+                <div class="panel-heading">
+                    Ausburg College <span class="pull-right" style="font-weight: bold">82%</span>
+                </div>
+                <div class="panel-body">
+                    <ul>
+                        <li>CS4220</li>
+                        <li>IT1882</li>
+                        <li>TEC9019</li>
+                        <li>ECO8787</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-md-4">
+            <div class="panel panel-primary">
+                <div class="panel-heading">
+                    Texas Tech University <span class="pull-right" style="font-weight: bold">75%</span>
+                </div>
+                <div class="panel-body">
+                    <ul>
+                        <li>CS7878</li>
+                        <li>IT0998</li>
+                        <li>TECH6767</li>
+                        <li>ECO6767</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+    <script>
+        var loader = document.getElementById("loader");
+        var result = document.getElementById("results");
+        setTimeout(function(){
+            loader.style.display = "none";
+            result.style.display = "block";
+        }, 3000);
+    </script>
 
 {% endblock %}
+

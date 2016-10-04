@@ -20,8 +20,16 @@ class Institute(models.Model):
         return self.acronym + ' - ' + self.name
 
 
+class Continent(models.Model):
+    name = models.CharField(max_length=100, primary_key=True)
+
+    def __str__(self):
+        return self.name
+
+
 class Country(models.Model):
     name = models.CharField(max_length=100, primary_key=True)
+    continent = models.ForeignKey(Continent)
 
     def __str__(self):
         return self.name
@@ -44,7 +52,7 @@ class AbroadCourse(models.Model):
 
 
 class HomeCourse(models.Model):
-    code = models.CharField(max_length=10,primary_key=True)
+    code = models.CharField(max_length=10, primary_key=True)
     name = models.CharField(max_length=50)
     description_url = models.URLField(max_length=2000, blank=True)
 

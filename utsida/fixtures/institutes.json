@@ -1,1 +1,402 @@
-[{"model": "utsida.institute", "fields": {"faculty": "HF", "name": "Institutt for filosofi og religionsvitenskap"}, "pk": "HF-IFR"}, {"model": "utsida.institute", "fields": {"faculty": "HF", "name": "Institutt for historiske studier"}, "pk": "HF-IHS"}, {"model": "utsida.institute", "fields": {"faculty": "HF", "name": "Institutt for kunst- og medievitenskap"}, "pk": "HF-IKM"}, {"model": "utsida.institute", "fields": {"faculty": "HF", "name": "Institutt for musikk"}, "pk": "HF-IM"}, {"model": "utsida.institute", "fields": {"faculty": "HF", "name": "Institutt for spr\u00e5k og litteratur"}, "pk": "HF-ISL"}, {"model": "utsida.institute", "fields": {"faculty": "HF", "name": "Institutt for tverrfaglige kulturstudier"}, "pk": "HF-KULT"}, {"model": "utsida.institute", "fields": {"faculty": "DMF", "name": "Institutt for kreftforskning og molekyl\u00e6r medisin"}, "pk": "DMF-IKMM"}, {"model": "utsida.institute", "fields": {"faculty": "DMF", "name": "Institutt for laboratoriemedisin, barne- og kvinnesykdommer"}, "pk": "DMF-LBK"}, {"model": "utsida.institute", "fields": {"faculty": "DMF", "name": "Institutt for nevromedisin"}, "pk": "DMF-INM"}, {"model": "utsida.institute", "fields": {"faculty": "DMF", "name": "Institutt for samfunnsmedisin"}, "pk": "DMF-ISM"}, {"model": "utsida.institute", "fields": {"faculty": "DMF", "name": "Institutt for sirkulasjon og bildediagnostikk"}, "pk": "DMF-ISB"}, {"model": "utsida.institute", "fields": {"faculty": "AB", "name": "Institutt for billedkunst - Kunstakademiet i Trondheim"}, "pk": "AB-KIT"}, {"model": "utsida.institute", "fields": {"faculty": "AB", "name": "Institutt for byforming og planlegging"}, "pk": "AB-BYPLAN"}, {"model": "utsida.institute", "fields": {"faculty": "AB", "name": "Institutt for byggekunst, form og farge"}, "pk": "AB-BKFF"}, {"model": "utsida.institute", "fields": {"faculty": "AB", "name": "Institutt for byggekunst, historie og teknologi"}, "pk": "AB-BKHT"}, {"model": "utsida.institute", "fields": {"faculty": "AB", "name": "Institutt for byggekunst, prosjektering og forvaltning"}, "pk": "AB-BKPF"}, {"model": "utsida.institute", "fields": {"faculty": "IME", "name": "Institutt for datateknikk og informasjonsvitenskap"}, "pk": "IME-IDI"}, {"model": "utsida.institute", "fields": {"faculty": "IME", "name": "Institutt for elektronikk og telekommunikasjon"}, "pk": "IME-IET"}, {"model": "utsida.institute", "fields": {"faculty": "IME", "name": "Institutt for elkraftteknikk"}, "pk": "IME-ELKRAFT"}, {"model": "utsida.institute", "fields": {"faculty": "IME", "name": "Institutt for matematiske fag"}, "pk": "IME-IMF"}, {"model": "utsida.institute", "fields": {"faculty": "IME", "name": "Institutt for teknisk kybernetikk"}, "pk": "IME-ITK"}, {"model": "utsida.institute", "fields": {"faculty": "IME", "name": "Institutt for telematikk"}, "pk": "IME-ITEM"}, {"model": "utsida.institute", "fields": {"faculty": "IVT", "name": "Institutt for bygg, anlegg og transport"}, "pk": "IVT-BAT"}, {"model": "utsida.institute", "fields": {"faculty": "IVT", "name": "Institutt for energi- og prosessteknikk"}, "pk": "IVT-EPT"}, {"model": "utsida.institute", "fields": {"faculty": "IVT", "name": "Institutt for geologi og bergteknikk"}, "pk": "IVT-IGB"}, {"model": "utsida.institute", "fields": {"faculty": "IVT", "name": "Institutt for konstruksjonsteknikk"}, "pk": "IVT-KT"}, {"model": "utsida.institute", "fields": {"faculty": "IVT", "name": "Institutt for marin teknikk"}, "pk": "IVT-IMT"}, {"model": "utsida.institute", "fields": {"faculty": "IVT", "name": "Institutt for petroleumsteknologi og anvendt geofysikk"}, "pk": "IVT-IPT"}, {"model": "utsida.institute", "fields": {"faculty": "IVT", "name": "Institutt for produksjons- og kvalitetsteknikk"}, "pk": "IVT-IPK"}, {"model": "utsida.institute", "fields": {"faculty": "IVT", "name": "Institutt for produktdesign"}, "pk": "IVT-IPD"}, {"model": "utsida.institute", "fields": {"faculty": "IVT", "name": "Institutt for produktutvikling og materialer"}, "pk": "IVT-IPM"}, {"model": "utsida.institute", "fields": {"faculty": "IVT", "name": "Institutt for vann- og milj\u00f8teknikk"}, "pk": "IVT-IVM"}, {"model": "utsida.institute", "fields": {"faculty": "NT", "name": "Institutt for biologi"}, "pk": "NT-IBI"}, {"model": "utsida.institute", "fields": {"faculty": "NT", "name": "Institutt for bioteknologi"}, "pk": "NT-IBT"}, {"model": "utsida.institute", "fields": {"faculty": "NT", "name": "Institutt for fysikk"}, "pk": "NT-IFY"}, {"model": "utsida.institute", "fields": {"faculty": "NT", "name": "Institutt for kjemi"}, "pk": "NT-IKJ"}, {"model": "utsida.institute", "fields": {"faculty": "NT", "name": "Institutt for kjemisk prosessteknologi"}, "pk": "NT-IKP"}, {"model": "utsida.institute", "fields": {"faculty": "NT", "name": "Institutt for materialteknologi"}, "pk": "NT-IMTE"}, {"model": "utsida.institute", "fields": {"faculty": "SVT", "name": "Geografisk institutt"}, "pk": "SVT-GEO"}, {"model": "utsida.institute", "fields": {"faculty": "SVT", "name": "Institutt for industriell \u00f8konomi og teknologiledelse"}, "pk": "SVT-IOT"}, {"model": "utsida.institute", "fields": {"faculty": "SVT", "name": "Institutt for pedagogikk og livslang l\u00e6ring"}, "pk": "SVT-IPL"}, {"model": "utsida.institute", "fields": {"faculty": "SVT", "name": "Institutt for samfunns\u00f8konomi"}, "pk": "SVT-ISO"}, {"model": "utsida.institute", "fields": {"faculty": "SVT", "name": "Institutt for sosialt arbeid og helsevitenskap"}, "pk": "SVT-ISH"}, {"model": "utsida.institute", "fields": {"faculty": "SVT", "name": "Institutt for sosiologi og statsvitenskap"}, "pk": "SVT-ISS"}, {"model": "utsida.institute", "fields": {"faculty": "SVT", "name": "Institutt for voksnes l\u00e6ring og r\u00e5dgivningsvitenskap"}, "pk": "SVT-IVR"}, {"model": "utsida.institute", "fields": {"faculty": "SVT", "name": "Norsk senter for barneforskning"}, "pk": "SVT-NOSEB"}, {"model": "utsida.institute", "fields": {"faculty": "SVT", "name": "Pedagogisk institutt"}, "pk": "SVT-PED"}, {"model": "utsida.institute", "fields": {"faculty": "SVT", "name": "Program for l\u00e6rerutdanning"}, "pk": "SVT-PLU"}, {"model": "utsida.institute", "fields": {"faculty": "SVT", "name": "Psykologisk institutt"}, "pk": "SVT-PSY"}, {"model": "utsida.institute", "fields": {"faculty": "SVT", "name": "Sosialantropologisk institutt"}, "pk": "SVT-SANT"}]
+[
+  {
+    "model": "utsida.institute",
+    "pk": "HF-IFR",
+    "fields": {
+      "faculty": "HF",
+      "name": "Institutt for filosofi og religionsvitenskap"
+    }
+  },
+  {
+    "model": "utsida.institute",
+    "pk": "HF-IHS",
+    "fields": {
+      "faculty": "HF",
+      "name": "Institutt for historiske studier"
+    }
+  },
+  {
+    "model": "utsida.institute",
+    "pk": "HF-IKM",
+    "fields": {
+      "faculty": "HF",
+      "name": "Institutt for kunst- og medievitenskap"
+    }
+  },
+  {
+    "model": "utsida.institute",
+    "pk": "HF-IM",
+    "fields": {
+      "faculty": "HF",
+      "name": "Institutt for musikk"
+    }
+  },
+  {
+    "model": "utsida.institute",
+    "pk": "HF-ISL",
+    "fields": {
+      "faculty": "HF",
+      "name": "Institutt for spr\u00e5k og litteratur"
+    }
+  },
+  {
+    "model": "utsida.institute",
+    "pk": "HF-KULT",
+    "fields": {
+      "faculty": "HF",
+      "name": "Institutt for tverrfaglige kulturstudier"
+    }
+  },
+  {
+    "model": "utsida.institute",
+    "pk": "DMF-IKMM",
+    "fields": {
+      "faculty": "DMF",
+      "name": "Institutt for kreftforskning og molekyl\u00e6r medisin"
+    }
+  },
+  {
+    "model": "utsida.institute",
+    "pk": "DMF-LBK",
+    "fields": {
+      "faculty": "DMF",
+      "name": "Institutt for laboratoriemedisin, barne- og kvinnesykdommer"
+    }
+  },
+  {
+    "model": "utsida.institute",
+    "pk": "DMF-INM",
+    "fields": {
+      "faculty": "DMF",
+      "name": "Institutt for nevromedisin"
+    }
+  },
+  {
+    "model": "utsida.institute",
+    "pk": "DMF-ISM",
+    "fields": {
+      "faculty": "DMF",
+      "name": "Institutt for samfunnsmedisin"
+    }
+  },
+  {
+    "model": "utsida.institute",
+    "pk": "DMF-ISB",
+    "fields": {
+      "faculty": "DMF",
+      "name": "Institutt for sirkulasjon og bildediagnostikk"
+    }
+  },
+  {
+    "model": "utsida.institute",
+    "pk": "AB-KIT",
+    "fields": {
+      "faculty": "AB",
+      "name": "Institutt for billedkunst - Kunstakademiet i Trondheim"
+    }
+  },
+  {
+    "model": "utsida.institute",
+    "pk": "AB-BYPLAN",
+    "fields": {
+      "faculty": "AB",
+      "name": "Institutt for byforming og planlegging"
+    }
+  },
+  {
+    "model": "utsida.institute",
+    "pk": "AB-BKFF",
+    "fields": {
+      "faculty": "AB",
+      "name": "Institutt for byggekunst, form og farge"
+    }
+  },
+  {
+    "model": "utsida.institute",
+    "pk": "AB-BKHT",
+    "fields": {
+      "faculty": "AB",
+      "name": "Institutt for byggekunst, historie og teknologi"
+    }
+  },
+  {
+    "model": "utsida.institute",
+    "pk": "AB-BKPF",
+    "fields": {
+      "faculty": "AB",
+      "name": "Institutt for byggekunst, prosjektering og forvaltning"
+    }
+  },
+  {
+    "model": "utsida.institute",
+    "pk": "IME-IDI",
+    "fields": {
+      "faculty": "IME",
+      "name": "Institutt for datateknikk og informasjonsvitenskap"
+    }
+  },
+  {
+    "model": "utsida.institute",
+    "pk": "IME-IET",
+    "fields": {
+      "faculty": "IME",
+      "name": "Institutt for elektronikk og telekommunikasjon"
+    }
+  },
+  {
+    "model": "utsida.institute",
+    "pk": "IME-ELKRAFT",
+    "fields": {
+      "faculty": "IME",
+      "name": "Institutt for elkraftteknikk"
+    }
+  },
+  {
+    "model": "utsida.institute",
+    "pk": "IME-IMF",
+    "fields": {
+      "faculty": "IME",
+      "name": "Institutt for matematiske fag"
+    }
+  },
+  {
+    "model": "utsida.institute",
+    "pk": "IME-ITK",
+    "fields": {
+      "faculty": "IME",
+      "name": "Institutt for teknisk kybernetikk"
+    }
+  },
+  {
+    "model": "utsida.institute",
+    "pk": "IME-ITEM",
+    "fields": {
+      "faculty": "IME",
+      "name": "Institutt for telematikk"
+    }
+  },
+  {
+    "model": "utsida.institute",
+    "pk": "IVT-BAT",
+    "fields": {
+      "faculty": "IVT",
+      "name": "Institutt for bygg, anlegg og transport"
+    }
+  },
+  {
+    "model": "utsida.institute",
+    "pk": "IVT-EPT",
+    "fields": {
+      "faculty": "IVT",
+      "name": "Institutt for energi- og prosessteknikk"
+    }
+  },
+  {
+    "model": "utsida.institute",
+    "pk": "IVT-IGB",
+    "fields": {
+      "faculty": "IVT",
+      "name": "Institutt for geologi og bergteknikk"
+    }
+  },
+  {
+    "model": "utsida.institute",
+    "pk": "IVT-KT",
+    "fields": {
+      "faculty": "IVT",
+      "name": "Institutt for konstruksjonsteknikk"
+    }
+  },
+  {
+    "model": "utsida.institute",
+    "pk": "IVT-IMT",
+    "fields": {
+      "faculty": "IVT",
+      "name": "Institutt for marin teknikk"
+    }
+  },
+  {
+    "model": "utsida.institute",
+    "pk": "IVT-IPT",
+    "fields": {
+      "faculty": "IVT",
+      "name": "Institutt for petroleumsteknologi og anvendt geofysikk"
+    }
+  },
+  {
+    "model": "utsida.institute",
+    "pk": "IVT-IPK",
+    "fields": {
+      "faculty": "IVT",
+      "name": "Institutt for produksjons- og kvalitetsteknikk"
+    }
+  },
+  {
+    "model": "utsida.institute",
+    "pk": "IVT-IPD",
+    "fields": {
+      "faculty": "IVT",
+      "name": "Institutt for produktdesign"
+    }
+  },
+  {
+    "model": "utsida.institute",
+    "pk": "IVT-IPM",
+    "fields": {
+      "faculty": "IVT",
+      "name": "Institutt for produktutvikling og materialer"
+    }
+  },
+  {
+    "model": "utsida.institute",
+    "pk": "IVT-IVM",
+    "fields": {
+      "faculty": "IVT",
+      "name": "Institutt for vann- og milj\u00f8teknikk"
+    }
+  },
+  {
+    "model": "utsida.institute",
+    "pk": "NT-IBI",
+    "fields": {
+      "faculty": "NT",
+      "name": "Institutt for biologi"
+    }
+  },
+  {
+    "model": "utsida.institute",
+    "pk": "NT-IBT",
+    "fields": {
+      "faculty": "NT",
+      "name": "Institutt for bioteknologi"
+    }
+  },
+  {
+    "model": "utsida.institute",
+    "pk": "NT-IFY",
+    "fields": {
+      "faculty": "NT",
+      "name": "Institutt for fysikk"
+    }
+  },
+  {
+    "model": "utsida.institute",
+    "pk": "NT-IKJ",
+    "fields": {
+      "faculty": "NT",
+      "name": "Institutt for kjemi"
+    }
+  },
+  {
+    "model": "utsida.institute",
+    "pk": "NT-IKP",
+    "fields": {
+      "faculty": "NT",
+      "name": "Institutt for kjemisk prosessteknologi"
+    }
+  },
+  {
+    "model": "utsida.institute",
+    "pk": "NT-IMTE",
+    "fields": {
+      "faculty": "NT",
+      "name": "Institutt for materialteknologi"
+    }
+  },
+  {
+    "model": "utsida.institute",
+    "pk": "SVT-GEO",
+    "fields": {
+      "faculty": "SVT",
+      "name": "Geografisk institutt"
+    }
+  },
+  {
+    "model": "utsida.institute",
+    "pk": "SVT-IOT",
+    "fields": {
+      "faculty": "SVT",
+      "name": "Institutt for industriell \u00f8konomi og teknologiledelse"
+    }
+  },
+  {
+    "model": "utsida.institute",
+    "pk": "SVT-IPL",
+    "fields": {
+      "faculty": "SVT",
+      "name": "Institutt for pedagogikk og livslang l\u00e6ring"
+    }
+  },
+  {
+    "model": "utsida.institute",
+    "pk": "SVT-ISO",
+    "fields": {
+      "faculty": "SVT",
+      "name": "Institutt for samfunns\u00f8konomi"
+    }
+  },
+  {
+    "model": "utsida.institute",
+    "pk": "SVT-ISH",
+    "fields": {
+      "faculty": "SVT",
+      "name": "Institutt for sosialt arbeid og helsevitenskap"
+    }
+  },
+  {
+    "model": "utsida.institute",
+    "pk": "SVT-ISS",
+    "fields": {
+      "faculty": "SVT",
+      "name": "Institutt for sosiologi og statsvitenskap"
+    }
+  },
+  {
+    "model": "utsida.institute",
+    "pk": "SVT-IVR",
+    "fields": {
+      "faculty": "SVT",
+      "name": "Institutt for voksnes l\u00e6ring og r\u00e5dgivningsvitenskap"
+    }
+  },
+  {
+    "model": "utsida.institute",
+    "pk": "SVT-NOSEB",
+    "fields": {
+      "faculty": "SVT",
+      "name": "Norsk senter for barneforskning"
+    }
+  },
+  {
+    "model": "utsida.institute",
+    "pk": "SVT-PED",
+    "fields": {
+      "faculty": "SVT",
+      "name": "Pedagogisk institutt"
+    }
+  },
+  {
+    "model": "utsida.institute",
+    "pk": "SVT-PLU",
+    "fields": {
+      "faculty": "SVT",
+      "name": "Program for l\u00e6rerutdanning"
+    }
+  },
+  {
+    "model": "utsida.institute",
+    "pk": "SVT-PSY",
+    "fields": {
+      "faculty": "SVT",
+      "name": "Psykologisk institutt"
+    }
+  },
+  {
+    "model": "utsida.institute",
+    "pk": "SVT-SANT",
+    "fields": {
+      "faculty": "SVT",
+      "name": "Sosialantropologisk institutt"
+    }
+  }
+]
