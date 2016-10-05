@@ -3,18 +3,83 @@
 {% block content %}
 
     <h2 class="text-center">Søker etter matcher med følgende attributter</h2>
-    <div class="well">
+    <div class="well vertical-space-top">
         <ul>
-            <li>{{ form.data.homeInstitute }}</li>
-            <li>{{ form.data.country }}</li>
-            <li>{{ form.data.university }}</li>
-            <li>{{ form.data.studyPeriod }}</li>
-            <li>{{ form.data.language }}</li>
-            <li>{{ form.data.academicQualityRating }}</li>
-            <li>{{ form.data.socialQualityRating }}</li>
+            <li>Institutt hjemme: <span style="font-weight: bold">{{ form.data.homeInstitute }}</span></li>
+            <li>Verdensdel: <span style="font-weight: bold">{{ form.data.continent }}</span></li>
+            <li>Land: <span style="font-weight: bold">{{ form.data.country }}</span></li>
+            <li>Universitet: <span style="font-weight: bold">{{ form.data.university }}</span></li>
+            <li>Studiespråk: <span style="font-weight: bold">{{ form.data.language }}</span></li>
+            <li>Studieår: <span style="font-weight: bold">{{ form.data.studyPeriod }}</span></li>
+            <li>Akademisk kvalitet: <span style="font-weight: bold">{{ form.data.academicQualityRating }}</span></li>
+            <li>Sosial kvalitet: <span style="font-weight: bold">{{ form.data.socialQualityRating }}</span></li>
         </ul>
     </div>
 
-    <img src="../../static/utsida/images/giphy.gif" style="width:100%">
+    <img id="loader" src="../../static/utsida/images/loading.gif" style="width:20%; display: block; margin: auto">
+
+    <div id="results" class="row vertical-space-top-big" style="display: none">
+
+        <h2 class="text-center vertical-space-bottom-big">Her er de tre beste matchene dine</h2>
+
+        <div class="col-md-4">
+            <div class="panel panel-primary">
+                <div class="panel-heading">
+                    UCSB <span class="pull-right" style="font-weight: bold">90%</span>
+                </div>
+                <div class="panel-body">
+                    <ul>
+                        <li>MECH7878</li>
+                        <li>CS9090</li>
+                        <li>INFO5678</li>
+                        <li>CS1010</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-md-4">
+            <div class="panel panel-primary">
+                <div class="panel-heading">
+                    Ausburg College <span class="pull-right" style="font-weight: bold">82%</span>
+                </div>
+                <div class="panel-body">
+                    <ul>
+                        <li>CS4220</li>
+                        <li>IT1882</li>
+                        <li>TEC9019</li>
+                        <li>ECO8787</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-md-4">
+            <div class="panel panel-primary">
+                <div class="panel-heading">
+                    Texas Tech University <span class="pull-right" style="font-weight: bold">75%</span>
+                </div>
+                <div class="panel-body">
+                    <ul>
+                        <li>CS7878</li>
+                        <li>IT0998</li>
+                        <li>TECH6767</li>
+                        <li>ECO6767</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+    <script>
+        var loader = document.getElementById("loader");
+        var result = document.getElementById("results");
+        setTimeout(function(){
+            loader.style.display = "none";
+            result.style.display = "block";
+        }, 3000);
+    </script>
 
 {% endblock %}
+

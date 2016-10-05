@@ -9,8 +9,8 @@ admin.site.register(AbroadCourse)
 admin.site.register(Case)
 admin.site.register(Faculty)
 admin.site.register(Institute)
+admin.site.register(Continent)
 admin.site.register(Country)
-admin.site.register(University)
 
 
 

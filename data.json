@@ -641,11 +641,6 @@
     }
   },
   {
-    "model": "utsida.country",
-    "pk": "USA",
-    "fields": {}
-  },
-  {
     "model": "utsida.university",
     "pk": "UCSB",
     "fields": {}
