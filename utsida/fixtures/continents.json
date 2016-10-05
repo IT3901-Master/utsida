@@ -1,1 +1,32 @@
-[{"pk": "sa", "fields": {}, "model": "utsida.continent"}, {"pk": "oceania", "fields": {}, "model": "utsida.continent"}, {"pk": "europe", "fields": {}, "model": "utsida.continent"}, {"pk": "africa", "fields": {}, "model": "utsida.continent"}, {"pk": "na", "fields": {}, "model": "utsida.continent"}, {"pk": "asia", "fields": {}, "model": "utsida.continent"}]
+[
+  {
+    "pk": "sa",
+    "fields": {},
+    "model": "utsida.continent"
+  },
+  {
+    "pk": "oceania",
+    "fields": {},
+    "model": "utsida.continent"
+  },
+  {
+    "pk": "europe",
+    "fields": {},
+    "model": "utsida.continent"
+  },
+  {
+    "pk": "africa",
+    "fields": {},
+    "model": "utsida.continent"
+  },
+  {
+    "pk": "na",
+    "fields": {},
+    "model": "utsida.continent"
+  },
+  {
+    "pk": "asia",
+    "fields": {},
+    "model": "utsida.continent"
+  }
+]

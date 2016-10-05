@@ -34,18 +34,19 @@ class Country(models.Model):
     def __str__(self):
         return self.name
 
-
+'''
 class University(models.Model):
     name = models.CharField(max_length=100, primary_key=True)
 
     def __str__(self):
         return self.name
+'''
 
 
 class AbroadCourse(models.Model):
-    code = models.CharField(max_length=10,primary_key=True)
+    code = models.CharField(max_length=10, primary_key=True)
     name = models.CharField(max_length=50)
-    university = models.ForeignKey(University)
+    university = models.CharField(max_length=30)
 
     def __str__(self):
         return self.code + ' - ' + self.name
@@ -71,28 +72,37 @@ class CourseMatch(models.Model):
         return self.homeCourse.code + " - " + self.abroadCourse.code
 
 
+class Language(models.Model):
+    name = models.CharField(max_length=30, primary_key=True)
+
+    def __str__(self):
+        return self.name
+
+
 class Case(models.Model):
     homeInstitute = models.ForeignKey(Institute)
+    continent = models.ForeignKey(Continent, default='')
     country = models.ForeignKey(Country)
-    university = models.ForeignKey(University)
+    university = models.CharField(max_length=30)
     studyPeriod = models.IntegerField()
-    language = models.CharField(max_length=30)
+    language = models.ForeignKey(Language)
     academicQualityRating = models.IntegerField(choices=CHOICES)
     socialQualityRating = models.IntegerField(choices=CHOICES)
     subjects = models.ManyToManyField(AbroadCourse)
 
     def __str__(self):
-        return self.university.name + ':' + str(self.pk)
+        return self.university + ':' + str(self.pk)
 
 
 class Query(models.Model):
     homeInstitute = models.ForeignKey(Institute)
+    continent = models.ForeignKey(Continent, default='')
     country = models.ForeignKey(Country)
-    university = models.ForeignKey(University)
+    university = models.CharField(max_length=30)
     studyPeriod = models.IntegerField()
-    language = models.CharField(max_length=30)
+    language = models.ForeignKey(Language)
     academicQualityRating = models.IntegerField(choices=CHOICES)
     socialQualityRating = models.IntegerField(choices=CHOICES)
 
     def __str__(self):
-        return self.university.name + ':' + str(self.pk)
+        return self.university + ':' + str(self.pk)

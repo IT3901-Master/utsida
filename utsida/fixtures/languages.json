@@ -1,0 +1,52 @@
+[
+  {
+    "model": "utsida.language",
+    "pk": "English",
+    "fields": {}
+  },
+  {
+    "model": "utsida.language",
+    "pk": "Spanish",
+    "fields": {}
+  },
+  {
+    "model": "utsida.language",
+    "pk": "French",
+    "fields": {}
+  },
+  {
+    "model": "utsida.language",
+    "pk": "Deutsch",
+    "fields": {}
+  },
+  {
+    "model": "utsida.language",
+    "pk": "Norweigan",
+    "fields": {}
+  },
+  {
+    "model": "utsida.language",
+    "pk": "Swedish",
+    "fields": {}
+  },
+  {
+    "model": "utsida.language",
+    "pk": "Danish",
+    "fields": {}
+  },
+  {
+    "model": "utsida.language",
+    "pk": "Chineese",
+    "fields": {}
+  },
+  {
+    "model": "utsida.language",
+    "pk": "Japaneese",
+    "fields": {}
+  },
+  {
+    "model": "utsida.language",
+    "pk": "Indian",
+    "fields": {}
+  }
+]

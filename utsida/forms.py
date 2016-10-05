@@ -7,12 +7,13 @@ class QueryCaseBaseForm(forms.ModelForm):
 
     class Meta:
         model = Query
-        fields = ("homeInstitute", "country", "university", "studyPeriod",
+        fields = ("homeInstitute", "continent", "country", "university", "studyPeriod",
                   "language", "academicQualityRating", "socialQualityRating")
 
     def __init__(self, *args, **kwargs):
         super(QueryCaseBaseForm, self).__init__(*args, **kwargs)
         self.fields["homeInstitute"].required = False
+        self.fields["continent"].required = False
         self.fields["country"].required = False
         self.fields["university"].required = False
         self.fields["studyPeriod"].required = False
