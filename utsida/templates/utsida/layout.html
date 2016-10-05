@@ -16,7 +16,7 @@
             <li><a href="/process">Finn fag</a></li>
             <li><a href="/courseMatch">Course Matches</a></li>
             {% if user.is_authenticated %}
-                <li navbar-right><a href=""></a></li>
+                <li navbar-right><a href="/update"> Update Profile</a></li>
                 <li navbar-right><a href="/logout">Logout</a></li>
             {% endif %}
             {% if user.is_authenticated == False %}
