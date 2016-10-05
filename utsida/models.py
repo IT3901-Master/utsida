@@ -54,13 +54,13 @@ class University(models.Model):
 
 
 class AbroadCourse(models.Model):
-    code = models.CharField(max_length=10, primary_key=True)
+    code = models.CharField(max_length=10, primary_key=True),
     name = models.CharField(max_length=50),
     pre_requisites = models.ManyToManyField('self'),
     university = models.CharField(max_length=30)
 
     def __str__(self):
-        return self.code + ' - ' + self.name
+        return self.code + " - " + self.name
 
 
 class HomeCourse(models.Model):
