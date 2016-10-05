@@ -1,4 +1,5 @@
 from django.db import models
+import datetime
 
 CHOICES = ((1, 1), (2, 2), (3, 3), (4, 4), (5, 5))
 
@@ -81,7 +82,7 @@ class Language(models.Model):
 
 class Case(models.Model):
     homeInstitute = models.ForeignKey(Institute)
-    continent = models.ForeignKey(Continent, default='')
+    continent = models.ForeignKey(Continent)
     country = models.ForeignKey(Country)
     university = models.CharField(max_length=30)
     studyPeriod = models.IntegerField()
@@ -96,7 +97,7 @@ class Case(models.Model):
 
 class Query(models.Model):
     homeInstitute = models.ForeignKey(Institute)
-    continent = models.ForeignKey(Continent, default='')
+    continent = models.ForeignKey(Continent)
     country = models.ForeignKey(Country)
     university = models.CharField(max_length=30)
     studyPeriod = models.IntegerField()

@@ -5,13 +5,14 @@
     <h2 class="text-center">Søker etter matcher med følgende attributter</h2>
     <div class="well vertical-space-top">
         <ul>
-            <li>{{ form.data.homeInstitute }}</li>
-            <li>{{ form.data.country }}</li>
-            <li>{{ form.data.university }}</li>
-            <li>{{ form.data.studyPeriod }}</li>
-            <li>{{ form.data.language }}</li>
-            <li>{{ form.data.academicQualityRating }}</li>
-            <li>{{ form.data.socialQualityRating }}</li>
+            <li>Institutt hjemme: <span style="font-weight: bold">{{ form.data.homeInstitute }}</span></li>
+            <li>Verdensdel: <span style="font-weight: bold">{{ form.data.continent }}</span></li>
+            <li>Land: <span style="font-weight: bold">{{ form.data.country }}</span></li>
+            <li>Universitet: <span style="font-weight: bold">{{ form.data.university }}</span></li>
+            <li>Studiespråk: <span style="font-weight: bold">{{ form.data.language }}</span></li>
+            <li>Studieår: <span style="font-weight: bold">{{ form.data.studyPeriod }}</span></li>
+            <li>Akademisk kvalitet: <span style="font-weight: bold">{{ form.data.academicQualityRating }}</span></li>
+            <li>Sosial kvalitet: <span style="font-weight: bold">{{ form.data.socialQualityRating }}</span></li>
         </ul>
     </div>
 
@@ -19,7 +20,7 @@
 
     <div id="results" class="row vertical-space-top-big" style="display: none">
 
-        <h2 class="text-center vertical-space-top">Her er de tre beste matchene dine</h2>
+        <h2 class="text-center vertical-space-bottom-big">Her er de tre beste matchene dine</h2>
 
         <div class="col-md-4">
             <div class="panel panel-primary">

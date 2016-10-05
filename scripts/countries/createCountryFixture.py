@@ -16,37 +16,37 @@ def fill_country_lists():
     target_eu = open("data/europe.txt", "r")
     for line in target_eu:
         europe_countries.append(line.rstrip('\n'))
-        countries["europe"] = europe_countries
+        countries["Europe"] = europe_countries
     target_eu.close()
 
     target_na = open("data/na.txt", "r")
     for line in target_na:
         na_countries.append(line.rstrip('\n'))
-        countries["na"] = na_countries
+        countries["North America"] = na_countries
     target_eu.close()
 
     target_sa = open("data/sa.txt", "r")
     for line in target_sa:
         sa_countries.append(line.rstrip('\n'))
-        countries["sa"] = sa_countries
+        countries["South America"] = sa_countries
     target_sa.close()
 
     target_asia = open("data/asia.txt", "r")
     for line in target_asia:
         asia_countries.append(line.rstrip('\n'))
-        countries["asia"] = asia_countries
+        countries["Asia"] = asia_countries
     target_asia.close()
 
     target_africa = open("data/africa.txt", "r")
     for line in target_africa:
         africa_countries.append(line.rstrip('\n'))
-        countries["africa"] = africa_countries
+        countries["Africa"] = africa_countries
     target_africa.close()
 
     target_oceania = open("data/oceania.txt", "r")
     for line in target_oceania:
         oceania_countries.append(line.rstrip('\n'))
-        countries["oceania"] = oceania_countries
+        countries["Oceania"] = oceania_countries
     target_oceania.close()
 
 
