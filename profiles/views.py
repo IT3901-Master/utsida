@@ -30,7 +30,7 @@ def register_user(request):
             profile_form = ProfileForm(request.POST, instance=user.profile)  # Reload the profile form with the profile instance
             profile_form.full_clean()  # Manually clean the form this time. It is implicitly called by "is_valid()" method
             profile_form.save()  # Gracefully save the form
-            HttpResponseRedirect("/register_success")
+            HttpResponseRedirect("/profile/register_success")
     else:
         user_form = UserForm()
         profile_form = ProfileForm()
@@ -41,7 +41,7 @@ def register_user(request):
 
 
 def register_success(request):
-    return render(request,'profiles/register_success.html', {})
+    return render(request, 'profiles/register_success.html', {})
 
 
 @login_required
