@@ -34,6 +34,15 @@ html, body {
 .vertical-space-top-huge {
     margin-top: 150px;
 }
+.vertical-space-bottom {
+    margin-bottom: 20px;
+}
+.vertical-space-bottom-big {
+    margin-bottom: 50px;
+}
+.vertical-space-bottom-huge {
+    margin-bottom: 150px;
+}
 /* 3.0 Footer */
 .footer {
     position: absolute;
@@ -43,6 +52,9 @@ html, body {
     background-color: #333;
     color: white;
     text-align: center;
+}
+.footer-wrapper {
+    padding-top:120px;
 }
 .author-text {
     font-size: 16px;
