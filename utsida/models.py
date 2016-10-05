@@ -15,6 +15,7 @@ class Faculty(models.Model):
     class Meta:
         verbose_name_plural = 'faculties'
 
+
 class Institute(models.Model):
     acronym = models.CharField(max_length=10, primary_key=True)
     name = models.CharField(max_length=100)
@@ -41,16 +42,16 @@ class Country(models.Model):
     def __str__(self):
         return self.name
 
-'''
+
 class University(models.Model):
     name = models.CharField(max_length=100, primary_key=True)
 
     def __str__(self):
         return self.name
-'''
 
     class Meta:
         verbose_name_plural = 'universities'
+
 
 class AbroadCourse(models.Model):
     code = models.CharField(max_length=10, primary_key=True)

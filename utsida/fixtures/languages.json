@@ -21,7 +21,7 @@
   },
   {
     "model": "utsida.language",
-    "pk": "Norweigan",
+    "pk": "Norwegian",
     "fields": {}
   },
   {
@@ -36,12 +36,12 @@
   },
   {
     "model": "utsida.language",
-    "pk": "Chineese",
+    "pk": "Chinese",
     "fields": {}
   },
   {
     "model": "utsida.language",
-    "pk": "Japaneese",
+    "pk": "Japanese",
     "fields": {}
   },
   {
