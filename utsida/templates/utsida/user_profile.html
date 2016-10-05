@@ -1,7 +1,13 @@
 {% extends "utsida/layout.html" %}
 
 
-<p>{{ user.username }} </p>
-{{ user.email }}
-{{ user.first_name }}
-{{ user.last_name }}
+{% block content %}
+    User Information for: {{ user.username }}
+<ul>
+<li class="list-group-item"> Email: {{ user.email }}</li>
+<li class="list-group-item"> First name: {{ user.first_name }}</li>
+<li class="list-group-item"> Last name: {{ user.last_name }}</li>
+<li class="list-group-item"> institute: {{ user.profile.institute }}</li>
+</ul>
+
+{% endblock %}

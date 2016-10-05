@@ -5,7 +5,7 @@
     {% if user.is_authenticated %}
     <p>Welcome, {{ user.get_username }}. Thanks for logging in.</p>
 {% else %}
-    <p>Welcome, new user. Please log in.</p>
+    <p>Welcome, new user. Please <a href="/login">log in </a>.</p>
 {% endif %}
 
     <h2>Hva er Utsida?</h2>
