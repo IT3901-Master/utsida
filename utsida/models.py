@@ -46,6 +46,7 @@ class AbroadCourse(models.Model):
     code = models.CharField(max_length=10, primary_key=True)
     name = models.CharField(max_length=50)
     university = models.ForeignKey(University)
+    pre_requisites = models.ManyToManyField('self')
 
     def __str__(self):
         return self.code + ' - ' + self.name
@@ -57,7 +58,7 @@ class HomeCourse(models.Model):
     description_url = models.URLField(max_length=2000, blank=True)
 
     def __str__(self):
-        return self.name
+        return self.code + ' - ' + self.name
 
     def __unicode__(self):
         return self
@@ -70,6 +71,8 @@ class HomeCourse(models.Model):
 class CourseMatch(models.Model):
     homeCourse = models.ForeignKey(HomeCourse)
     abroadCourse = models.ForeignKey(AbroadCourse)
+    approved = models.BooleanField(default=False)
+    approval_date = models.DateField(blank=True,null=True)
 
     def __str__(self):
         return self.homeCourse.code + " - " + self.abroadCourse.code
