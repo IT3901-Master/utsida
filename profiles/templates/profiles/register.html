@@ -1,0 +1,10 @@
+{% extends "utsida/layout.html" %}
+
+{% block content %}
+    <form action="/register/" method="post">
+        {% csrf_token %}
+        {{ user_form.as_p }}
+        {{ profile_form.as_p }}
+        <input type="submit" value="Submit"/>
+    </form>
+{% endblock %}
