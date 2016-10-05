@@ -1,5 +1,7 @@
+
 from django.http import HttpResponseRedirect
 from django.shortcuts import render
+
 from .models import *
 from .forms import *
 
@@ -23,10 +25,10 @@ def result(request):
 
     return render(request, 'utsida/process.html', {'form': form})
 
-
-def course_match(request):
-    course_matches = CourseMatch.objects.all()
-    context = {"course_match_list" : course_matches}
-    return render(request, "utsida/courseMatch.html", context)
-
-
+def courseMatch(request):
+    if request.user.is_authenticated():
+        course_matches = CourseMatch.objects.all()
+        context = {"course_match_list": course_matches}
+    else:
+        context = {}
+    return render(request,"utsida/courseMatch.html",context)

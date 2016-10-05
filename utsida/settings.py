@@ -40,7 +40,7 @@ INSTALLED_APPS = [
     'application',
     'utsida',
     'widget_tweaks',
-
+    'profiles',
 ]
 
 MIDDLEWARE = [
@@ -53,7 +53,7 @@ MIDDLEWARE = [
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
 ]
 
-ROOT_URLCONF = 'utsida.urls'
+ROOT_URLCONF = 'application.urls'
 
 TEMPLATES = [
     {
@@ -116,6 +116,8 @@ USE_I18N = True
 USE_L10N = True
 
 USE_TZ = True
+
+LOGIN_REDIRECT_URL = 'index'
 
 
 # Static files (CSS, JavaScript, Images)

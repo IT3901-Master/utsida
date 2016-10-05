@@ -1,3 +1,4 @@
+from django.contrib.auth.models import User
 from django.db import models
 import datetime
 
@@ -11,6 +12,8 @@ class Faculty(models.Model):
     def __str__(self):
         return self.acronym + ' - ' + self.name
 
+    class Meta:
+        verbose_name_plural = 'faculties'
 
 class Institute(models.Model):
     acronym = models.CharField(max_length=10, primary_key=True)
@@ -26,6 +29,9 @@ class Continent(models.Model):
 
     def __str__(self):
         return self.name
+
+    class Meta:
+        verbose_name_plural = 'countries'
 
 
 class Country(models.Model):
@@ -43,6 +49,8 @@ class University(models.Model):
         return self.name
 '''
 
+    class Meta:
+        verbose_name_plural = 'universities'
 
 class AbroadCourse(models.Model):
     code = models.CharField(max_length=10, primary_key=True)
@@ -64,6 +72,10 @@ class HomeCourse(models.Model):
     def __unicode__(self):
         return self
 
+    class Meta:
+        verbose_name_plural = 'home courses'
+        verbose_name = 'home course'
+
 
 class CourseMatch(models.Model):
     homeCourse = models.ForeignKey(HomeCourse)
@@ -71,6 +83,10 @@ class CourseMatch(models.Model):
 
     def __str__(self):
         return self.homeCourse.code + " - " + self.abroadCourse.code
+
+    class Meta:
+        verbose_name_plural = 'course matches'
+        verbose_name = 'course match'
 
 
 class Language(models.Model):
