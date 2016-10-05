@@ -39,6 +39,7 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'application',
     'utsida',
+    'profiles',
 ]
 
 MIDDLEWARE = [
@@ -51,7 +52,7 @@ MIDDLEWARE = [
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
 ]
 
-ROOT_URLCONF = 'utsida.urls'
+ROOT_URLCONF = 'application.urls'
 
 TEMPLATES = [
     {
