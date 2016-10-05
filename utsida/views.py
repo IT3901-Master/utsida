@@ -1,17 +1,10 @@
-from django.contrib.auth.models import User
-from django.db import transaction
-from django.http import HttpResponse
-from django.http import HttpResponseRedirect
-from django.http import JsonResponse
-from django.shortcuts import render, redirect
-from django.template.context_processors import csrf
-from django.views.generic import UpdateView
-from django.contrib.auth.decorators import login_required
 from django.contrib import messages
-
+from django.contrib.auth.decorators import login_required
+from django.db import transaction
+from django.http import HttpResponseRedirect
+from django.shortcuts import render, redirect
 from utsida.forms import UserForm, ProfileForm
 from .models import *
-import json
 
 
 def index(request):

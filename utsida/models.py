@@ -3,7 +3,7 @@ from django.db import models
 from django.db.models.signals import post_save
 from django.dispatch import receiver
 
-CHOICES = ((1,1),(2,2),(3,3),(4,4),(5,5))
+CHOICES = ((1, 1), (2, 2), (3, 3), (4, 4), (5, 5))
 
 
 class Faculty(models.Model):
@@ -13,6 +13,10 @@ class Faculty(models.Model):
     def __str__(self):
         return self.acronym + ' - ' + self.name
 
+    class Meta:
+        verbose_name_plural = 'faculties'
+
+
 class Institute(models.Model):
     acronym = models.CharField(max_length=10, primary_key=True)
     name = models.CharField(max_length=100)
@@ -21,11 +25,15 @@ class Institute(models.Model):
     def __str__(self):
         return self.acronym + ' - ' + self.name
 
+
 class Country(models.Model):
     name = models.CharField(max_length=100, primary_key=True)
 
     def __str__(self):
         return self.name
+
+    class Meta:
+        verbose_name_plural = 'countries'
 
 
 class University(models.Model):
@@ -34,16 +42,21 @@ class University(models.Model):
     def __str__(self):
         return self.name
 
+    class Meta:
+        verbose_name_plural = 'universities'
+
+
 class AbroadCourse(models.Model):
-    code = models.CharField(max_length=10,primary_key=True)
+    code = models.CharField(max_length=10, primary_key=True)
     name = models.CharField(max_length=50)
     university = models.ForeignKey(University)
 
     def __str__(self):
         return self.code + ' - ' + self.name
 
+
 class HomeCourse(models.Model):
-    code = models.CharField(max_length=10,primary_key=True)
+    code = models.CharField(max_length=10, primary_key=True)
     name = models.CharField(max_length=50)
     description_url = models.URLField(max_length=2000, blank=True)
 
@@ -53,6 +66,10 @@ class HomeCourse(models.Model):
     def __unicode__(self):
         return self
 
+    class Meta:
+        verbose_name_plural = 'home courses'
+        verbose_name = 'home course'
+
 
 class CourseMatch(models.Model):
     homeCourse = models.ForeignKey(HomeCourse)
@@ -60,6 +77,10 @@ class CourseMatch(models.Model):
 
     def __str__(self):
         return self.homeCourse.code + " - " + self.abroadCourse.code
+
+    class Meta:
+        verbose_name_plural = 'course matches'
+        verbose_name = 'course match'
 
 
 class Case(models.Model):
@@ -80,8 +101,12 @@ class Case(models.Model):
 
 class Profile(models.Model):
     user = models.OneToOneField(User, on_delete=models.CASCADE)
-    institute = models.ForeignKey(Institute,null=True)
+    institute = models.ForeignKey(Institute, null=True)
     coursesTaken = models.ManyToManyField(HomeCourse)
+
+    class Meta:
+        verbose_name_plural = 'profiles'
+        verbose_name = 'profile'
 
 
 @receiver(post_save, sender=User)
@@ -89,9 +114,7 @@ def create_user_profile(sender, instance, created, **kwargs):
     if created:
         Profile.objects.create(user=instance)
 
+
 @receiver(post_save, sender=User)
 def save_user_profile(sender, instance, **kwargs):
     instance.profile.save()
-
-
-
