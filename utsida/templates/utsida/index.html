@@ -2,12 +2,6 @@
 
 {% block content %}
 
-    {% if user.is_authenticated %}
-    <p>Welcome, {{ user.get_username }}. Thanks for logging in.</p>
-{% else %}
-    <p>Welcome, new user. Please <a href="profile/login">log in </a>.</p>
-{% endif %}
-
     <h2>Hva er Utsida?</h2>
     <p>
         Utsida er et verktøy som skal gjøre det enklere for utvekslingsstudenter å velge riktige fag og universiteter.
