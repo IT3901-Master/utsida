@@ -1,10 +1,8 @@
 from django.contrib import messages
 from django.contrib.auth.decorators import login_required
 from django.db import transaction
-from django.http import HttpResponseRedirect
 from django.shortcuts import render, redirect
-from django.contrib.auth import views as auth_views
-
+from django.contrib.auth import authenticate, login
 
 from profiles.forms import UserForm, ProfileForm
 from .models import *
@@ -32,10 +30,13 @@ def register_user(request):
             profile_form = ProfileForm(request.POST, instance=user.profile)  # Reload the profile form with the profile instance
             profile_form.full_clean()  # Manually clean the form this time. It is implicitly called by "is_valid()" method
             profile_form.save()  # Gracefully save the form
+            new_user = authenticate(username=user_form.cleaned_data['username'],password=user_form.cleaned_data['password1'],)
+            login(request, new_user)
             messages.success(request, 'Your account was succesfully created')
-            return redirect('register_success')
-        else:
-            messages.error(request, 'Please correct the error below.')
+            return redirect('index')
+        #else:
+            #Could add a message error here if wanted
+            #messages.error(request, 'Please correct the error below.')
     else:
         user_form = UserForm()
         profile_form = ProfileForm()
