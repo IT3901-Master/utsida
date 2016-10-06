@@ -1,13 +1,11 @@
 {% extends "utsida/layout.html" %}
 
 {% block content %}
-    {% if messages %}
-        <ul class="messages">
-            {% for message in messages %}
-                <li{% if message.tags %} class="{{ message.tags }}"{% endif %}>{{ message }}</li>
-            {% endfor %}
-        </ul>
-    {% endif %}
+    {% for message in messages %}
+        {% if 'success' in message.tags %}
+            <div id="sucessAlert" class="alert alert-success">{{ message }}</div>
+        {% endif %}
+    {% endfor %}
     <h2>Hva er Utsida?</h2>
     <p>
         Utsida er et verktøy som skal gjøre det enklere for utvekslingsstudenter å velge riktige fag og universiteter.
@@ -22,5 +20,5 @@
     </p>
 
     <a class="btn btn-primary main-btn center-block vertical-space-top-big" href="/process">Finn fag</a>
-
+    <script> setTimeout(function() {$('#sucessAlert').fadeOut('slow');}, 5000);</script>
 {% endblock %}
