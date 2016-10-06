@@ -3,6 +3,8 @@ from django.contrib.auth.decorators import login_required
 from django.db import transaction
 from django.http import HttpResponseRedirect
 from django.shortcuts import render, redirect
+from django.contrib.auth import views as auth_views
+
 
 from profiles.forms import UserForm, ProfileForm
 from .models import *
