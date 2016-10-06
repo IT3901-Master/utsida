@@ -1,7 +1,13 @@
 {% extends "utsida/layout.html" %}
 
 {% block content %}
-
+    {% if messages %}
+        <ul class="messages">
+            {% for message in messages %}
+                <li{% if message.tags %} class="{{ message.tags }}"{% endif %}>{{ message }}</li>
+            {% endfor %}
+        </ul>
+    {% endif %}
     <h2>Hva er Utsida?</h2>
     <p>
         Utsida er et verktøy som skal gjøre det enklere for utvekslingsstudenter å velge riktige fag og universiteter.
@@ -11,7 +17,8 @@
     <p>
         Utsida bruker data som er laget av tidligere utvekslingsstudenter sine valg og erfaringer.
         Ved å matche dine forutsetninger med denne dataen vil systemet foreslå relevante alternativer.
-        Hver utveksling er unik, og hver nye utveksling som blir lagt til i systemet vil gjøre det mer treffsikkert til neste gang.
+        Hver utveksling er unik, og hver nye utveksling som blir lagt til i systemet vil gjøre det mer treffsikkert til
+        neste gang.
     </p>
 
     <a class="btn btn-primary main-btn center-block vertical-space-top-big" href="/process">Finn fag</a>
