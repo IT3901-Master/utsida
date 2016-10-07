@@ -5,14 +5,14 @@
     <h2 class="text-center">Søker etter matcher med følgende attributter</h2>
     <div class="well vertical-space-top">
         <ul>
-            <li>Institutt hjemme: <span style="font-weight: bold">{{ form.data.homeInstitute }}</span></li>
-            <li>Verdensdel: <span style="font-weight: bold">{{ form.data.continent }}</span></li>
-            <li>Land: <span style="font-weight: bold">{{ form.data.country }}</span></li>
-            <li>Universitet: <span style="font-weight: bold">{{ form.data.university }}</span></li>
-            <li>Studiespråk: <span style="font-weight: bold">{{ form.data.language }}</span></li>
-            <li>Studieår: <span style="font-weight: bold">{{ form.data.studyPeriod }}</span></li>
-            <li>Akademisk kvalitet: <span style="font-weight: bold">{{ form.data.academicQualityRating }}</span></li>
-            <li>Sosial kvalitet: <span style="font-weight: bold">{{ form.data.socialQualityRating }}</span></li>
+            <li>Institutt hjemme: <span id="institute" style="font-weight: bold">{{ form.data.homeInstitute }}</span></li>
+            <li>Verdensdel: <span id="continent" style="font-weight: bold">{{ form.data.continent }}</span></li>
+            <li>Land: <span id="country" style="font-weight: bold">{{ form.data.country }}</span></li>
+            <li>Universitet: <span id="university" style="font-weight: bold">{{ form.data.university }}</span></li>
+            <li>Studiespråk: <span id="language" style="font-weight: bold">{{ form.data.language }}</span></li>
+            <li>Studieår: <span id="studyPeriod" style="font-weight: bold">{{ form.data.studyPeriod }}</span></li>
+            <li>Akademisk kvalitet: <span id="academicQuality" style="font-weight: bold">{{ form.data.academicQualityRating }}</span></li>
+            <li>Sosial kvalitet: <span id="socialQuality" style="font-weight: bold">{{ form.data.socialQualityRating }}</span></li>
         </ul>
     </div>
 
@@ -79,6 +79,43 @@
             loader.style.display = "none";
             result.style.display = "block";
         }, 3000);
+
+        $(document).ready(function() {
+            var institute = $("#institute")[0].innerHTML;
+            var continent = $("#continent")[0].innerHTML;
+            var country = $("#country")[0].innerHTML;
+            var university = $("#university")[0].innerHTML;
+            var language = $("#language")[0].innerHTML;
+            var studyPeriod = $("#studyPeriod")[0].innerHTML;
+            var academicQuality = $("#academicQuality")[0].innerHTML;
+            var socialQuality = $("#socialQuality")[0].innerHTML;
+
+            /*
+            $.ajax("http://localhost:8080/retrieval?" +
+                    "casebase=main_case_base&" +
+                    "concept%20name=Trip&Symbol%20" +
+                    "attribute%20name=Language&value=" + language + "&String%20" +
+                    "attribute%20name=Country&value=" + country + "&Symbol%20" +
+                    "attribute%20name=Institute&value=" + institute + "&Symbol%20" +
+                    "attribute%20name=Continent&value=" + continent + "&Symbol%20" +
+                    "attribute%20name=University&value=" + university + "&Integer%20" +
+                    "attribute%20name=SocialQuality&value=" + socialQuality + "&Integer%20" +
+                    "attribute%20name=AcademicQuality&value=" + academicQuality + "&Integer%20" +
+                    "attribute%20name=StudyPeriod&value=" + studyPeriod)
+                    .done(function(result) {
+                       console.log(result.similarCases);
+                    });
+            */
+            $.ajax("http://localhost:8080/retrieval?" +
+                    "casebase=main_case_base&" +
+                    "concept%20name=Trip&Symbol%20" +
+                    "attribute%20name=Continent&value=" + continent)
+                    .done(function(res) {
+                        console.log(res.similarCases)
+                    });
+
+
+        });
     </script>
 
 {% endblock %}
