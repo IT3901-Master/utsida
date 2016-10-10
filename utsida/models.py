@@ -44,7 +44,7 @@ class Country(models.Model):
 
 
 class University(models.Model):
-    name = models.CharField(max_length=100, primary_key=True)
+    name = models.CharField(max_length=100)
 
     def __str__(self):
         return self.name
@@ -54,25 +54,24 @@ class University(models.Model):
 
 
 class AbroadCourse(models.Model):
-    code = models.CharField(max_length=10, primary_key=True),
-    name = models.CharField(max_length=50),
-    pre_requisites = models.ManyToManyField('self'),
-    university = models.CharField(max_length=30)
+    code = models.CharField(max_length=10, primary_key=True)
+    name = models.CharField(max_length=50)
+    pre_requisites = models.ManyToManyField('self', blank=True)
+    university = models.ForeignKey(University)
+    description_url = models.URLField(max_length=2000, blank=True,default="")
 
     def __str__(self):
-        return self.code + " - " + self.name
+        return self.pk + ' - ' + self.name
 
 
 class HomeCourse(models.Model):
     code = models.CharField(max_length=10, primary_key=True)
     name = models.CharField(max_length=50)
-    description_url = models.URLField(max_length=2000, blank=True)
+    description_url = models.URLField(max_length=2000, blank=True,default="")
 
     def __str__(self):
-        return self.code + ' - ' + self.name
+        return self.pk + ' - ' + self.name
 
-    def __unicode__(self):
-        return self
 
     class Meta:
         verbose_name_plural = 'home courses'
@@ -86,7 +85,7 @@ class CourseMatch(models.Model):
     approval_date = models.DateField(blank=True,null=True)
 
     def __str__(self):
-        return self.homeCourse.code + " - " + self.abroadCourse.code
+        return self.homeCourse.code + ' - ' + self.abroadCourse.pk
 
     class Meta:
         verbose_name_plural = 'course matches'

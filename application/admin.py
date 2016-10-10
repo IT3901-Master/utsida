@@ -11,7 +11,7 @@ admin.site.register(Faculty)
 admin.site.register(Institute)
 admin.site.register(Continent)
 admin.site.register(Country)
-
+admin.site.register(University)
 
 
 class HomeCourseAdmin(admin.ModelAdmin):
