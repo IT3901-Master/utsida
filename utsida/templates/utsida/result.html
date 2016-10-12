@@ -90,31 +90,13 @@
             var academicQuality = $("#academicQuality")[0].innerHTML;
             var socialQuality = $("#socialQuality")[0].innerHTML;
 
-            /*
             $.ajax("http://localhost:8080/retrieval?" +
                     "casebase=main_case_base&" +
-                    "concept%20name=Trip&Symbol%20" +
-                    "attribute%20name=Language&value=" + language + "&String%20" +
-                    "attribute%20name=Country&value=" + country + "&Symbol%20" +
-                    "attribute%20name=Institute&value=" + institute + "&Symbol%20" +
-                    "attribute%20name=Continent&value=" + continent + "&Symbol%20" +
-                    "attribute%20name=University&value=" + university + "&Integer%20" +
-                    "attribute%20name=SocialQuality&value=" + socialQuality + "&Integer%20" +
-                    "attribute%20name=AcademicQuality&value=" + academicQuality + "&Integer%20" +
-                    "attribute%20name=StudyPeriod&value=" + studyPeriod)
-                    .done(function(result) {
-                       console.log(result.similarCases);
-                    });
-            */
-            $.ajax("http://localhost:8080/retrieval?" +
-                    "casebase=main_case_base&" +
-                    "concept%20name=Trip&Symbol%20" +
-                    "attribute%20name=Continent&value=" + continent)
+                    "concept%20name=Trip&Integer%20" +
+                    "attribute%20name=Continent&value=" + studyPeriod)
                     .done(function(res) {
-                        console.log(res.similarCases)
+                        console.log(res)
                     });
-
-
         });
     </script>
 
