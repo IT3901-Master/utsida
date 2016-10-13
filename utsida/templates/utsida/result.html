@@ -79,26 +79,8 @@
             loader.style.display = "none";
             result.style.display = "block";
         }, 3000);
-
-        $(document).ready(function() {
-            var institute = $("#institute")[0].innerHTML;
-            var continent = $("#continent")[0].innerHTML;
-            var country = $("#country")[0].innerHTML;
-            var university = $("#university")[0].innerHTML;
-            var language = $("#language")[0].innerHTML;
-            var studyPeriod = $("#studyPeriod")[0].innerHTML;
-            var academicQuality = $("#academicQuality")[0].innerHTML;
-            var socialQuality = $("#socialQuality")[0].innerHTML;
-
-            $.ajax("http://localhost:8080/retrieval?" +
-                    "casebase=main_case_base&" +
-                    "concept%20name=Trip&Integer%20" +
-                    "attribute%20name=Continent&value=" + studyPeriod)
-                    .done(function(res) {
-                        console.log(res)
-                    });
-        });
     </script>
 
+    <script src="../../static/utsida/javascripts/myCbrQuery.js" type="text/javascript"></script>
 {% endblock %}
 
