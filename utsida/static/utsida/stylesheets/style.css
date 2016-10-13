@@ -22,6 +22,10 @@ html, body {
     position: relative;
 }
 
+.square-corners {
+    border-radius: 0;
+}
+
 /* 2.0 - nav */
 
 .navbar-custom {

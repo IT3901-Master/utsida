@@ -46,8 +46,8 @@ $(document).ready(function () {
                     var panelList = document.createElement("ul");
 
                     panelContainer.className = "col-md-4";
-                    panel.className = "panel panel-primary";
-                    panelHeading.className = "panel-heading";
+                    panel.className = "panel panel-primary square-corners";
+                    panelHeading.className = "panel-heading square-corners";
                     panelBody.className = "panel-body";
                     panelTitleSimilarity.className = "pull-right";
 
