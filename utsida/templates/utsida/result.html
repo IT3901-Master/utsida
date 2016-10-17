@@ -20,7 +20,8 @@
 
     <div id="results" class="row vertical-space-top-big" style="display: none">
 
-        <h2 class="text-center vertical-space-bottom-big">Her er de beste matchene dine</h2>
+        <h2 class="text-center vertical-space-bottom-big">Her er de beste matchene dine <span id="showHiddenContentBtn">(Vis all informasjon)</span></h2>
+
 
     </div>
 
@@ -30,9 +31,10 @@
         setTimeout(function(){
             loader.style.display = "none";
             result.style.display = "block";
-        }, 3000);
+        }, 1);
     </script>
 
     <script src="../../static/utsida/javascripts/myCbrQuery.js" type="text/javascript"></script>
+    <script src="../../static/utsida/javascripts/showHiddenContent.js" type="text/javascript"></script>
 {% endblock %}
 
