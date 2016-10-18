@@ -16,3 +16,5 @@ migrate:
 
 run: 
 	python3 manage.py runserver
+super:
+	python3 manage.py createsuperuser

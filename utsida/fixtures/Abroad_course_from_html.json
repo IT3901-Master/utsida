@@ -1,0 +1,698 @@
+[
+  {
+    "model": "utsida.abroadcourse",
+    "pk": null,
+    "fields": {
+      "code": "ATSI1012",
+      "name": "Aboriginal Sydney (History)",
+      "university": 3,
+      "description_url": "",
+      "study_points": "7.5",
+      "pre_requisites": []
+    }
+  },
+  {
+    "model": "utsida.abroadcourse",
+    "pk": null,
+    "fields": {
+      "code": "CODE1150",
+      "name": "Enabling Skills in Digital Fabrication",
+      "university": 3,
+      "description_url": "",
+      "study_points": "7.5",
+      "pre_requisites": []
+    }
+  },
+  {
+    "model": "utsida.abroadcourse",
+    "pk": null,
+    "fields": {
+      "code": "CODE2230",
+      "name": "Urban Interaction Design",
+      "university": 3,
+      "description_url": "",
+      "study_points": "7.5",
+      "pre_requisites": []
+    }
+  },
+  {
+    "model": "utsida.abroadcourse",
+    "pk": null,
+    "fields": {
+      "code": "COMP1400",
+      "name": "Programming for Designers",
+      "university": 3,
+      "description_url": "",
+      "study_points": "7.5",
+      "pre_requisites": []
+    }
+  },
+  {
+    "model": "utsida.abroadcourse",
+    "pk": null,
+    "fields": {
+      "code": "COMP1921",
+      "name": "Computing 1B (Syllabus)",
+      "university": 3,
+      "description_url": "",
+      "study_points": "7.5",
+      "pre_requisites": []
+    }
+  },
+  {
+    "model": "utsida.abroadcourse",
+    "pk": null,
+    "fields": {
+      "code": "COMP1927",
+      "name": "Computing 2 (Syllabus)",
+      "university": 3,
+      "description_url": "",
+      "study_points": "7.5",
+      "pre_requisites": []
+    }
+  },
+  {
+    "model": "utsida.abroadcourse",
+    "pk": null,
+    "fields": {
+      "code": "COMP2121",
+      "name": "Microprocessors and Interfacing",
+      "university": 3,
+      "description_url": "",
+      "study_points": "7.5",
+      "pre_requisites": []
+    }
+  },
+  {
+    "model": "utsida.abroadcourse",
+    "pk": null,
+    "fields": {
+      "code": "COMP2911",
+      "name": "Engineering Design in Computing (Details: )",
+      "university": 3,
+      "description_url": "",
+      "study_points": "7.5",
+      "pre_requisites": []
+    }
+  },
+  {
+    "model": "utsida.abroadcourse",
+    "pk": null,
+    "fields": {
+      "code": "COMP3121",
+      "name": "Algorithms and Programming Techniques",
+      "university": 3,
+      "description_url": "",
+      "study_points": "7.5",
+      "pre_requisites": []
+    }
+  },
+  {
+    "model": "utsida.abroadcourse",
+    "pk": null,
+    "fields": {
+      "code": "COMP3141",
+      "name": "Software System Design and Implementation",
+      "university": 3,
+      "description_url": "",
+      "study_points": "7.5",
+      "pre_requisites": []
+    }
+  },
+  {
+    "model": "utsida.abroadcourse",
+    "pk": null,
+    "fields": {
+      "code": "COMP3161",
+      "name": "Concepts of Programming Languages",
+      "university": 3,
+      "description_url": "",
+      "study_points": "7.5",
+      "pre_requisites": []
+    }
+  },
+  {
+    "model": "utsida.abroadcourse",
+    "pk": null,
+    "fields": {
+      "code": "COMP3222",
+      "name": "COMP9222  Digital Circuits and Systems",
+      "university": 3,
+      "description_url": "",
+      "study_points": "7.5",
+      "pre_requisites": []
+    }
+  },
+  {
+    "model": "utsida.abroadcourse",
+    "pk": null,
+    "fields": {
+      "code": "COMP3411",
+      "name": "Artificial Intelligence (6 ug)",
+      "university": 3,
+      "description_url": "",
+      "study_points": "7.5",
+      "pre_requisites": []
+    }
+  },
+  {
+    "model": "utsida.abroadcourse",
+    "pk": null,
+    "fields": {
+      "code": "COMP3421",
+      "name": "COMP9415 Computer Graphics",
+      "university": 3,
+      "description_url": "",
+      "study_points": "7.5",
+      "pre_requisites": []
+    }
+  },
+  {
+    "model": "utsida.abroadcourse",
+    "pk": null,
+    "fields": {
+      "code": "COMP3431",
+      "name": "COMP9431 Robotic SW Architecture",
+      "university": 3,
+      "description_url": "",
+      "study_points": "7.5",
+      "pre_requisites": []
+    }
+  },
+  {
+    "model": "utsida.abroadcourse",
+    "pk": null,
+    "fields": {
+      "code": "COMP3441",
+      "name": "COMP9441",
+      "university": 3,
+      "description_url": "",
+      "study_points": "7.5",
+      "pre_requisites": []
+    }
+  },
+  {
+    "model": "utsida.abroadcourse",
+    "pk": null,
+    "fields": {
+      "code": "COMP3511",
+      "name": "COMP9511 Human Computer Interaction",
+      "university": 3,
+      "description_url": "",
+      "study_points": "7.5",
+      "pre_requisites": []
+    }
+  },
+  {
+    "model": "utsida.abroadcourse",
+    "pk": null,
+    "fields": {
+      "code": "COMP4001",
+      "name": "ObjectOriented Software Development",
+      "university": 3,
+      "description_url": "",
+      "study_points": "7.5",
+      "pre_requisites": []
+    }
+  },
+  {
+    "model": "utsida.abroadcourse",
+    "pk": null,
+    "fields": {
+      "code": "COMP4121",
+      "name": "Advanced and Parallel Algorithms",
+      "university": 3,
+      "description_url": "",
+      "study_points": "7.5",
+      "pre_requisites": []
+    }
+  },
+  {
+    "model": "utsida.abroadcourse",
+    "pk": null,
+    "fields": {
+      "code": "COMP4336",
+      "name": "Mobile Data Networking",
+      "university": 3,
+      "description_url": "",
+      "study_points": "7.5",
+      "pre_requisites": []
+    }
+  },
+  {
+    "model": "utsida.abroadcourse",
+    "pk": null,
+    "fields": {
+      "code": "COMP4337",
+      "name": "COMP9337  Securing Wireless Networks (6)",
+      "university": 3,
+      "description_url": "",
+      "study_points": "7.5",
+      "pre_requisites": []
+    }
+  },
+  {
+    "model": "utsida.abroadcourse",
+    "pk": null,
+    "fields": {
+      "code": "COMP4418",
+      "name": "Knowledge Representation and Reasoning",
+      "university": 3,
+      "description_url": "",
+      "study_points": "7.5",
+      "pre_requisites": []
+    }
+  },
+  {
+    "model": "utsida.abroadcourse",
+    "pk": null,
+    "fields": {
+      "code": "COMP4431",
+      "name": "Game Design Workshop",
+      "university": 3,
+      "description_url": "",
+      "study_points": "7.5",
+      "pre_requisites": []
+    }
+  },
+  {
+    "model": "utsida.abroadcourse",
+    "pk": null,
+    "fields": {
+      "code": "COMP4920",
+      "name": "Management and Ethics",
+      "university": 3,
+      "description_url": "",
+      "study_points": "7.5",
+      "pre_requisites": []
+    }
+  },
+  {
+    "model": "utsida.abroadcourse",
+    "pk": null,
+    "fields": {
+      "code": "COMP6714",
+      "name": "Information Retrieval and Web Search",
+      "university": 3,
+      "description_url": "",
+      "study_points": "7.5",
+      "pre_requisites": []
+    }
+  },
+  {
+    "model": "utsida.abroadcourse",
+    "pk": null,
+    "fields": {
+      "code": "COMP6741",
+      "name": "Parameterized and Exact Computation",
+      "university": 3,
+      "description_url": "",
+      "study_points": "7.5",
+      "pre_requisites": []
+    }
+  },
+  {
+    "model": "utsida.abroadcourse",
+    "pk": null,
+    "fields": {
+      "code": "COMP9032",
+      "name": "Microprocessors and Interfacing",
+      "university": 3,
+      "description_url": "",
+      "study_points": "7.5",
+      "pre_requisites": []
+    }
+  },
+  {
+    "model": "utsida.abroadcourse",
+    "pk": null,
+    "fields": {
+      "code": "COMP9041",
+      "name": "Software Construction: Techniques and Tools",
+      "university": 3,
+      "description_url": "",
+      "study_points": "7.5",
+      "pre_requisites": []
+    }
+  },
+  {
+    "model": "utsida.abroadcourse",
+    "pk": null,
+    "fields": {
+      "code": "COMP9102",
+      "name": "Programming Languages and Compilers (6)",
+      "university": 3,
+      "description_url": "",
+      "study_points": "7.5",
+      "pre_requisites": []
+    }
+  },
+  {
+    "model": "utsida.abroadcourse",
+    "pk": null,
+    "fields": {
+      "code": "COMP9201",
+      "name": "Operating Systems",
+      "university": 3,
+      "description_url": "",
+      "study_points": "7.5",
+      "pre_requisites": []
+    }
+  },
+  {
+    "model": "utsida.abroadcourse",
+    "pk": null,
+    "fields": {
+      "code": "COMP9211",
+      "name": "Computer Architecture (6)",
+      "university": 3,
+      "description_url": "",
+      "study_points": "7.5",
+      "pre_requisites": []
+    }
+  },
+  {
+    "model": "utsida.abroadcourse",
+    "pk": null,
+    "fields": {
+      "code": "COMP9243",
+      "name": "Distributed Systems (6)",
+      "university": 3,
+      "description_url": "",
+      "study_points": "7.5",
+      "pre_requisites": []
+    }
+  },
+  {
+    "model": "utsida.abroadcourse",
+    "pk": null,
+    "fields": {
+      "code": "COMP9313",
+      "name": "Big Data Management",
+      "university": 3,
+      "description_url": "",
+      "study_points": "7.5",
+      "pre_requisites": []
+    }
+  },
+  {
+    "model": "utsida.abroadcourse",
+    "pk": null,
+    "fields": {
+      "code": "COMP9315",
+      "name": "Database Systems Implementation",
+      "university": 3,
+      "description_url": "",
+      "study_points": "7.5",
+      "pre_requisites": []
+    }
+  },
+  {
+    "model": "utsida.abroadcourse",
+    "pk": null,
+    "fields": {
+      "code": "COMP9318",
+      "name": "Data Warehousing and Data Mining",
+      "university": 3,
+      "description_url": "",
+      "study_points": "7.5",
+      "pre_requisites": []
+    }
+  },
+  {
+    "model": "utsida.abroadcourse",
+    "pk": null,
+    "fields": {
+      "code": "COMP9321",
+      "name": "Web Applications Engineering",
+      "university": 3,
+      "description_url": "",
+      "study_points": "7.5",
+      "pre_requisites": []
+    }
+  },
+  {
+    "model": "utsida.abroadcourse",
+    "pk": null,
+    "fields": {
+      "code": "COMP9323",
+      "name": "eEnterprise Project",
+      "university": 3,
+      "description_url": "",
+      "study_points": "7.5",
+      "pre_requisites": []
+    }
+  },
+  {
+    "model": "utsida.abroadcourse",
+    "pk": null,
+    "fields": {
+      "code": "COMP9334",
+      "name": "Capacity Planning of Computer Systems and Networks",
+      "university": 3,
+      "description_url": "",
+      "study_points": "7.5",
+      "pre_requisites": []
+    }
+  },
+  {
+    "model": "utsida.abroadcourse",
+    "pk": null,
+    "fields": {
+      "code": "COMP9414",
+      "name": "Artificial Intelligence",
+      "university": 3,
+      "description_url": "",
+      "study_points": "7.5",
+      "pre_requisites": []
+    }
+  },
+  {
+    "model": "utsida.abroadcourse",
+    "pk": null,
+    "fields": {
+      "code": "COMP9415",
+      "name": "Name?",
+      "university": 3,
+      "description_url": "",
+      "study_points": "7.5",
+      "pre_requisites": []
+    }
+  },
+  {
+    "model": "utsida.abroadcourse",
+    "pk": null,
+    "fields": {
+      "code": "COMP9417",
+      "name": "Machine Learning and Data Mining",
+      "university": 3,
+      "description_url": "",
+      "study_points": "7.5",
+      "pre_requisites": []
+    }
+  },
+  {
+    "model": "utsida.abroadcourse",
+    "pk": null,
+    "fields": {
+      "code": "COMP9441",
+      "name": "Security Engineering",
+      "university": 3,
+      "description_url": "",
+      "study_points": "7.5",
+      "pre_requisites": []
+    }
+  },
+  {
+    "model": "utsida.abroadcourse",
+    "pk": null,
+    "fields": {
+      "code": "COMP9444",
+      "name": "Neural Networks",
+      "university": 3,
+      "description_url": "",
+      "study_points": "7.5",
+      "pre_requisites": []
+    }
+  },
+  {
+    "model": "utsida.abroadcourse",
+    "pk": null,
+    "fields": {
+      "code": "COMP9447",
+      "name": "Security Engineering Workshop",
+      "university": 3,
+      "description_url": "",
+      "study_points": "7.5",
+      "pre_requisites": []
+    }
+  },
+  {
+    "model": "utsida.abroadcourse",
+    "pk": null,
+    "fields": {
+      "code": "COMP9814",
+      "name": "Extended Artificial Intelligence",
+      "university": 3,
+      "description_url": "",
+      "study_points": "7.5",
+      "pre_requisites": []
+    }
+  },
+  {
+    "model": "utsida.abroadcourse",
+    "pk": null,
+    "fields": {
+      "code": "ELEC3106",
+      "name": "Electronics",
+      "university": 3,
+      "description_url": "",
+      "study_points": "7.5",
+      "pre_requisites": []
+    }
+  },
+  {
+    "model": "utsida.abroadcourse",
+    "pk": null,
+    "fields": {
+      "code": "ELEC9704",
+      "name": "VLSI Technology",
+      "university": 3,
+      "description_url": "",
+      "study_points": "7.5",
+      "pre_requisites": []
+    }
+  },
+  {
+    "model": "utsida.abroadcourse",
+    "pk": null,
+    "fields": {
+      "code": "ENG1811",
+      "name": "CourseOutline14s1.pdf , se under Lecture Schedule",
+      "university": 3,
+      "description_url": "",
+      "study_points": "7.5",
+      "pre_requisites": []
+    }
+  },
+  {
+    "model": "utsida.abroadcourse",
+    "pk": null,
+    "fields": {
+      "code": "GENC2100",
+      "name": "_Global_Finance_S 2015",
+      "university": 3,
+      "description_url": "",
+      "study_points": "7.5",
+      "pre_requisites": []
+    }
+  },
+  {
+    "model": "utsida.abroadcourse",
+    "pk": null,
+    "fields": {
+      "code": "GENT0508",
+      "name": "",
+      "university": 3,
+      "description_url": "",
+      "study_points": "7.5",
+      "pre_requisites": []
+    }
+  },
+  {
+    "model": "utsida.abroadcourse",
+    "pk": null,
+    "fields": {
+      "code": "INFS1602",
+      "name": "Information Systems in Business",
+      "university": 3,
+      "description_url": "",
+      "study_points": "7.5",
+      "pre_requisites": []
+    }
+  },
+  {
+    "model": "utsida.abroadcourse",
+    "pk": null,
+    "fields": {
+      "code": "INFS2848",
+      "name": "Information Systems Project Management",
+      "university": 3,
+      "description_url": "",
+      "study_points": "7.5",
+      "pre_requisites": []
+    }
+  },
+  {
+    "model": "utsida.abroadcourse",
+    "pk": null,
+    "fields": {
+      "code": "INFS3631",
+      "name": "Innovation and Technology Management",
+      "university": 3,
+      "description_url": "",
+      "study_points": "7.5",
+      "pre_requisites": []
+    }
+  },
+  {
+    "model": "utsida.abroadcourse",
+    "pk": null,
+    "fields": {
+      "code": "INFS5930",
+      "name": "Social Media and Networking",
+      "university": 3,
+      "description_url": "",
+      "study_points": "7.5",
+      "pre_requisites": []
+    }
+  },
+  {
+    "model": "utsida.abroadcourse",
+    "pk": null,
+    "fields": {
+      "code": "MATH2011",
+      "name": "Several Variable Calculus",
+      "university": 3,
+      "description_url": "",
+      "study_points": "7.5",
+      "pre_requisites": []
+    }
+  },
+  {
+    "model": "utsida.abroadcourse",
+    "pk": null,
+    "fields": {
+      "code": "MATH2019",
+      "name": "",
+      "university": 3,
+      "description_url": "",
+      "study_points": "7.5",
+      "pre_requisites": []
+    }
+  },
+  {
+    "model": "utsida.abroadcourse",
+    "pk": null,
+    "fields": {
+      "code": "SDES6742",
+      "name": "Graphic design for the Web",
+      "university": 3,
+      "description_url": "",
+      "study_points": "7.5",
+      "pre_requisites": []
+    }
+  },
+  {
+    "model": "utsida.abroadcourse",
+    "pk": null,
+    "fields": {
+      "code": "PHYS1111",
+      "name": "",
+      "university": 3,
+      "description_url": "",
+      "study_points": "7.5",
+      "pre_requisites": []
+    }
+  }
+]
