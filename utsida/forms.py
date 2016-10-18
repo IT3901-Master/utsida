@@ -1,6 +1,6 @@
 from django import forms
 
-from .models import Query
+from .models import Query, University
 
 
 class QueryCaseBaseForm(forms.ModelForm):
@@ -23,4 +23,12 @@ class QueryCaseBaseForm(forms.ModelForm):
 
 
 
+class University_selection_form(forms.ModelForm):
 
+    class Meta:
+        model = University
+        fields = ('name',)
+
+    def __init__(self, *args, **kwargs):
+        super(University_selection_form,self).__init__(*args,**kwargs)
+        self.fields["name"].required = True

@@ -1,16 +1,77 @@
 {% extends "utsida/layout.html" %}
 
 {% block content %}
-    <h2 class="text-center">Her listes alle course matches</h2>
+    <h2>Universitet:</h2>
+    <div id="selection">
+    </div>
 
-    <form>
-        <div class="form-group">
-            <ul >
-                {% for course in course_match_list %}
-                <li>{{ course.homeCourse}} - {{ course.abroadCourse }}</li>
-                {% endfor %}
-            </ul>
+    <div class="container">
+        <h2 class="text-center">Her listes alle godkjente fag</h2>
+        <table id="example" class="table table-striped">
+            <thead>
+            <tr>
+                <th>Fag hjemme</th>
+                <th>Fag ute</th>
+                <th>Studiepoeng</th>
+                <th>Godkjent dato</th>
+                <th class="select-filter">Universitet</th>
+            </tr>
+            </thead>
+            <tbody>
 
-        </div>
-    </form>
+            {% for course_match in course_match_list %}
+                <tr>
+                    {% if course_match.homeCourse.description_url == "" %}
+                        <td>{{ course_match.homeCourse }} </td>
+                    {% else %}
+                        <td><a href={{ course_match.homeCourse.description_url }}>{{ course_match.homeCourse }}</a>
+                        </td>
+                    {% endif %}
+                    {% if course_match.abroadCourse.description_url == "" %}
+                        <td>{{ course_match.abroadCourse }} </td>
+                    {% else %}
+                        <td>
+                            <a href={{ course_match.abroadCourse.description_url }}>{{ course_match.abroadCourse }}</a>
+                        </td>
+                    {% endif %}
+                    <td> {{ course_match.abroadCourse.study_points }}</td>
+                    <td> {{ course_match.approval_date }}</td>
+                    <td> {{ course_match.abroadCourse.university }}</td>
+                </tr>
+            {% endfor %}
+            </tbody>
+        </table>
+    </div>
+    <script>
+        $(document).ready(function () {
+            $('#example').DataTable({
+                initComplete: function () {
+                    this.api().columns('.select-filter').every(function () {
+                        var column = this;
+                        var select = $('<select class="form-control"><option value="" disabled selected>Select your option</option><option value=""></option></select>')
+                                .appendTo($('#selection').empty())
+                                .on('change', function () {
+                                    var val = $.fn.dataTable.util.escapeRegex(
+                                            $(this).val()
+                                    );
+
+                                    column
+                                            .search(val ? '^' + val + '$' : '', true, false)
+                                            .draw();
+                                });
+
+                        column.data().unique().sort().each(function (d, j) {
+                            select.append('<option value="' + d + '">' + d + '</option>')
+                        });
+                    });
+                },
+                "columnDefs": [
+                    {
+                        "targets": [4],
+                        "visible": false
+                    }
+                ]
+            });
+        });
+    </script>
 {% endblock %}

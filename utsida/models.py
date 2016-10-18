@@ -44,7 +44,7 @@ class Country(models.Model):
 
 
 class University(models.Model):
-    name = models.CharField(max_length=100, primary_key=True)
+    name = models.CharField(max_length=100)
 
     def __str__(self):
         return self.name
@@ -54,25 +54,28 @@ class University(models.Model):
 
 
 class AbroadCourse(models.Model):
-    code = models.CharField(max_length=10, primary_key=True),
-    name = models.CharField(max_length=50),
-    pre_requisites = models.ManyToManyField('self'),
-    university = models.CharField(max_length=30)
+    code = models.CharField(max_length=10)
+    name = models.CharField(max_length=50)
+    pre_requisites = models.ManyToManyField('self', blank=True)
+    university = models.ForeignKey(University)
+    description_url = models.URLField(max_length=2000, blank=True,default="")
+    study_points = models.FloatField(blank=True, default=7.5)
+
+    class Meta:
+        unique_together = ["code","university"]
 
     def __str__(self):
-        return self.code + " - " + self.name
+        return self.code + ' - ' + self.name
 
 
 class HomeCourse(models.Model):
     code = models.CharField(max_length=10, primary_key=True)
     name = models.CharField(max_length=50)
-    description_url = models.URLField(max_length=2000, blank=True)
+    description_url = models.URLField(max_length=2000, blank=True,default="")
 
     def __str__(self):
         return self.code + ' - ' + self.name
 
-    def __unicode__(self):
-        return self
 
     class Meta:
         verbose_name_plural = 'home courses'
@@ -84,9 +87,10 @@ class CourseMatch(models.Model):
     abroadCourse = models.ForeignKey(AbroadCourse)
     approved = models.BooleanField(default=False)
     approval_date = models.DateField(blank=True,null=True)
+    comment = models.CharField(max_length=200,blank=True,default="")
 
     def __str__(self):
-        return self.homeCourse.code + " - " + self.abroadCourse.code
+        return self.homeCourse.code + ' - ' + self.abroadCourse.code
 
     class Meta:
         verbose_name_plural = 'course matches'
