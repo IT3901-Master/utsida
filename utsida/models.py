@@ -74,7 +74,7 @@ class HomeCourse(models.Model):
     description_url = models.URLField(max_length=2000, blank=True,default="")
 
     def __str__(self):
-        return self.pk + ' - ' + self.name
+        return self.code + ' - ' + self.name
 
 
     class Meta:
@@ -90,7 +90,7 @@ class CourseMatch(models.Model):
     comment = models.CharField(max_length=200,blank=True,default="")
 
     def __str__(self):
-        return self.homeCourse.code + ' - ' + self.abroadCourse.pk
+        return self.homeCourse.code + ' - ' + self.abroadCourse.code
 
     class Meta:
         verbose_name_plural = 'course matches'
