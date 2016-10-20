@@ -5,6 +5,9 @@ import json
 
 from .models import *
 from .forms import *
+from profiles.models import *
+
+
 
 
 def index(request):
@@ -19,10 +22,13 @@ def process(request):
 def result(request):
     if request.method == 'POST':
         form = QueryCaseBaseForm(request.POST)
+        user_profile = User.objects.get(username=request.user).profile
+        institute = user_profile.institute.__str__()
+
         if form.is_valid():
 
             payload = json.dumps({
-                "Institute": form.data["homeInstitute"],
+                "Institute": institute,
                 "Continent": form.data["continent"],
                 "Country": form.data["country"],
                 "University": form.data["university"],
@@ -48,7 +54,9 @@ def result(request):
                 full_case["Similarity"] = "%.3f" % value
                 full_similar_cases.append(full_case)
 
-            return render(request, 'utsida/result.html', {'form': form, 'similar_cases': full_similar_cases})
+            sorted_full_similar_cases = sorted(full_similar_cases, key=lambda k: k['Similarity'], reverse=True)
+
+            return render(request, 'utsida/result.html', {'form': form, 'similar_cases': sorted_full_similar_cases})
     else:
         form = QueryCaseBaseForm()
 
