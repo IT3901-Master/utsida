@@ -41074,5 +41074,15 @@
       "name": "Sports, Modernity and Modernisation",
       "code": "IDR3035"
     }
+  },
+  {
+    "model": "utsida.homecourse",
+    "pk": 4564,
+    "fields": {
+      "description_url": "",
+      "name": "Distributed Systems",
+      "code": "TDT4190"
+    }
   }
+
 ]

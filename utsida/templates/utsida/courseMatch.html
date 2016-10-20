@@ -1,26 +1,28 @@
 {% extends "utsida/layout.html" %}
 
 {% block content %}
-    <h2>Universitet:</h2>
     <div id="selection">
     </div>
 
     <div class="container">
-        <h2 class="text-center">Her listes alle godkjente fag</h2>
+        <h2 class="text-center">Godkjente fag</h2>
         <table id="example" class="table table-striped">
             <thead>
             <tr>
+                <th></th>
                 <th>Fag hjemme</th>
                 <th>Fag ute</th>
                 <th>Studiepoeng</th>
                 <th>Godkjent dato</th>
                 <th class="select-filter">Universitet</th>
+                <th>Comment</th>
             </tr>
             </thead>
             <tbody>
 
             {% for course_match in course_match_list %}
-                <tr>
+                <tr class="clickableTableRow noselect">
+                <td class="glyphicon glyphicon-chevron-down"></td>
                     {% if course_match.homeCourse.description_url == "" %}
                         <td>{{ course_match.homeCourse }} </td>
                     {% else %}
@@ -37,18 +39,39 @@
                     <td> {{ course_match.abroadCourse.study_points }}</td>
                     <td> {{ course_match.approval_date }}</td>
                     <td> {{ course_match.abroadCourse.university }}</td>
+                    <td>{{ course_match.comment }}</td>
                 </tr>
             {% endfor %}
             </tbody>
         </table>
     </div>
     <script>
+        /* Formatting function for row details - modify as you need */
+        function format(d) {
+            // `d` is the original data object for the row
+            return '<table cellpadding="5" cellspacing="0" border="0" style="padding-left:50px;">' +
+                    '<tr>' +
+                    '<td>Godkjent:  </td>' +
+                    '<td>' + d[4] + '</td>' +
+                    '</tr>' +
+                    '<tr>' +
+                    '<td>Universitet: </td>' +
+                    '<td>' + d[5] + '</td>' +
+                    '</tr>' +
+                    '<tr>' +
+                    '<td>Kommentar: </td>' +
+                    '<td>' + d[6] + '</td>' +
+                    '</tr>' +
+                    '</table>';
+        }
+
+
         $(document).ready(function () {
-            $('#example').DataTable({
+            var table = $('#example').DataTable({
                 initComplete: function () {
                     this.api().columns('.select-filter').every(function () {
                         var column = this;
-                        var select = $('<select class="form-control"><option value="" disabled selected>Select your option</option><option value=""></option></select>')
+                        var select = $('<select class="form-control"><option value="" disabled selected>Velg Universitet</option><option value=""></option></select>')
                                 .appendTo($('#selection').empty())
                                 .on('change', function () {
                                     var val = $.fn.dataTable.util.escapeRegex(
@@ -65,12 +88,44 @@
                         });
                     });
                 },
+                "order": [[1, 'asc']],
                 "columnDefs": [
+                    {
+                        "targets": [0],
+                       "orderable": false,
+                        "data":null,
+                        "defaultContent": ''
+                    },
+                    {
+                        "targets": [5],
+                        "visible": false
+                    },
                     {
                         "targets": [4],
                         "visible": false
+                    },
+                    {
+                        "targets": [6],
+                        "visible": false
                     }
                 ]
+            });
+
+            $('#example tbody').on('click', 'td', function () {
+                var tr = $(this).closest('tr');
+                var row = table.row(tr);
+                if (row.child.isShown()) {
+                    // This row is already open - close it
+                    row.child.hide();
+                    tr.removeClass('shown');
+                    tr.children()[0].className = "glyphicon glyphicon-chevron-down"
+                }
+                else {
+                    // Open this row
+                    row.child(format(row.data())).show();
+                    tr.addClass('shown');
+                    tr.children()[0].className = "glyphicon glyphicon-chevron-up"
+                }
             });
         });
     </script>
