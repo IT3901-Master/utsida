@@ -4,7 +4,8 @@
 * 1.1 - Spacing
 * 2.0 - nav
 * 3.0 - Footer
-
+* 4.0 - Process
+* 5.0 - Result
 
 /* 1.0 - General */
 html, body {
@@ -26,24 +27,6 @@ html, body {
     border-radius: 0;
 }
 
-.hiddenInformation {
-    height: 0;
-}
-.hiddenInformation div {
-    display: none;
-}
-
-.hiddenInformation.show {
-    height: 250px;
-    transition: height 0.3s;
-}
-.hiddenInformation.show div{
-    display: block;
-    transition: display 3s;
-}
-.subjectsContainer {
-    text-align: center;
-}
 .bold {
     font-weight: bold;
 }
@@ -77,6 +60,8 @@ html, body {
 .navbar-default .navbar-nav>.open>a, .navbar-default .navbar-nav>.open>a:focus, .navbar-default .navbar-nav>.open>a:hover {
     background-color: #333;
     color: #fff;
+}
+.panel-body {
 }
 /* END BOOTSTRAP OVERRIDES */
 
@@ -117,6 +102,30 @@ html, body {
     font-size: 16px;
     line-height: 100px;
     vertical-align: middle;
+}
+
+/* 4.0 Process */
+
+/* 5.0 Result */
+.hiddenInformation {
+    height: 0;
+}
+.hiddenInformation div {
+    display: none;
+}
+
+.hiddenInformation.show {
+    height: 250px;
+    transition: height 0.1s;
+}
+.hiddenInformation.show div{
+    display: block;
+}
+.subjectsContainer {
+    text-align: center;
+}
+#expandTripChevron {
+    font-size: 20px;
 }
 
 
