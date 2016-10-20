@@ -1,20 +1,14 @@
-var button = document.getElementById("showHiddenContentBtn");
-var allHiddenContent = document.getElementsByClassName("hidden");
+var acc = document.getElementsByClassName("accordion");
 
-var showHiddenContent = function() {
-
-    for (var i = 0; i <= allHiddenContent.length; i++) {
-        if (allHiddenContent[i].className == 'show') {
-            allHiddenContent[i].className = 'hidden';
+for (var i = 0; i < acc.length; i++) {
+    acc[i].onclick = function() {
+        this.classList.toggle("active");
+        this.previousElementSibling.classList.toggle("show");
+        if (this.firstChild.innerHTML === "Vis ekstra informasjon") {
+            this.firstChild.innerHTML = "Skjul ekstra informasjon";
         }
-        else if (allHiddenContent[i].className == 'hidden') {
-            allHiddenContent[i].className = 'show';
+        else if (this.firstChild.innerHTML === "Skjul ekstra informasjon"){
+            this.firstChild.innerHTML = "Vis ekstra informasjon";
         }
-
     }
-};
-
-button.addEventListener('click', function(e) {
-    e.preventDefault();
-    showHiddenContent();
-});
+}

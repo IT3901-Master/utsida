@@ -26,6 +26,28 @@ html, body {
     border-radius: 0;
 }
 
+.hiddenInformation {
+    height: 0;
+}
+.hiddenInformation div {
+    display: none;
+}
+
+.hiddenInformation.show {
+    height: 250px;
+    transition: height 0.3s;
+}
+.hiddenInformation.show div{
+    display: block;
+    transition: display 3s;
+}
+.subjectsContainer {
+    text-align: center;
+}
+.bold {
+    font-weight: bold;
+}
+
 /* 2.0 - nav */
 
 .navbar-custom {
