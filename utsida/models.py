@@ -53,6 +53,13 @@ class University(models.Model):
         verbose_name_plural = 'universities'
 
 
+
+
+class AbroadCourseManager(models.Manager):
+    def get_by_natural_key(self, code, university):
+        return self.get(code=code, university=university)
+
+
 class AbroadCourse(models.Model):
     code = models.CharField(max_length=10)
     name = models.CharField(max_length=50)
@@ -60,12 +67,16 @@ class AbroadCourse(models.Model):
     university = models.ForeignKey(University)
     description_url = models.URLField(max_length=2000, blank=True,default="")
     study_points = models.FloatField(blank=True, default=7.5)
+    objects = AbroadCourseManager()
 
     class Meta:
         unique_together = ["code","university"]
 
     def __str__(self):
         return self.code + ' - ' + self.name
+
+    def natural_key(self):
+        return self.code, self.university
 
 
 class HomeCourse(models.Model):

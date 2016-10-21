@@ -41,6 +41,7 @@ INSTALLED_APPS = [
     'utsida',
     'widget_tweaks',
     'profiles',
+    'ajax_select',
 ]
 
 MIDDLEWARE = [
