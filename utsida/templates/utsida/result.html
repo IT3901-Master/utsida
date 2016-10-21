@@ -23,8 +23,9 @@
         <h2 class="text-center vertical-space-bottom-big">Her er de beste matchene dine</h2>
 
         {% for case in similar_cases %}
+            {% if forloop.counter|divisibleby:3 %}<div class="row">{% endif %}
             <div class="col-md-4">
-                <div class="panel panel-primary square-corners">
+                <div class="panel panel-primary square-corners boxShadow">
                     <div class="panel-heading square-corners">
                         {{ case.University }} <span class="pull-right badge">{{ case.Similarity }}</span>
                     </div>
@@ -58,6 +59,7 @@
                     </div>
                 </div>
             </div>
+            {% if forloop.counter|divisibleby:3 %}</div>{% endif %}
         {% endfor %}
     </div>
 
