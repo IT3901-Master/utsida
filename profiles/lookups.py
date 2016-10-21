@@ -7,9 +7,10 @@ from django.utils.html import escape
 class CourseLookup(LookupChannel):
 
     model = Profile
+    min_length = 3
 
     def get_query(self, q, request):
-        return HomeCourse.objects.filter(code__icontains=q).order_by('code')
+        return HomeCourse.objects.filter(code__icontains=q).order_by('code')[:10]
 
     def get_result(self, obj):
         return text_type(obj.name)
