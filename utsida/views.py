@@ -1,13 +1,8 @@
-from django.http import HttpResponseRedirect
 from django.shortcuts import render
 import requests
 import json
-
-from .models import *
 from .forms import *
 from profiles.models import *
-
-
 
 
 def index(request):
@@ -24,9 +19,13 @@ def result(request):
         form = QueryCaseBaseForm(request.POST)
         user_profile = User.objects.get(username=request.user).profile
         institute = user_profile.institute.__str__()
+        courses_taken = []
+        courses_taken_object = request.user.profile.coursesTaken.all()
+
+        for course in courses_taken_object:
+            courses_taken.append(str(course))
 
         if form.is_valid():
-
             payload = json.dumps({
                 "Institute": institute,
                 "Continent": form.data["continent"],
@@ -42,9 +41,9 @@ def result(request):
             }
 
             r = requests.post("http://localhost:8080/retrieval?casebase=main_case_base&concept%20name=Trip",
-                                          data=payload,
-                                          headers=headers
-                                          ).json()["similarCases"]
+                              data=payload,
+                              headers=headers
+                              ).json()["similarCases"]
 
             full_similar_cases = []
 
@@ -56,7 +55,21 @@ def result(request):
 
             sorted_full_similar_cases = sorted(full_similar_cases, key=lambda k: k['Similarity'], reverse=True)
 
-            return render(request, 'utsida/result.html', {'form': form, 'similar_cases': sorted_full_similar_cases})
+            courses = request.user.profile.coursesTaken.all()
+
+            course_wanted_to_be_taken_matches = []
+
+            for course in courses:
+                results = CourseMatch.objects.filter(homeCourse=course)
+                if results:
+                    print(results)
+                    for result in results:
+                        course_wanted_to_be_taken_matches.append(str(result.abroadCourse))
+
+            print(course_wanted_to_be_taken_matches)
+
+            return render(request, 'utsida/result.html',
+                          {'form': form, 'similar_cases': sorted_full_similar_cases, 'courses_taken': courses_taken, 'matches': course_wanted_to_be_taken_matches})
     else:
         form = QueryCaseBaseForm()
 

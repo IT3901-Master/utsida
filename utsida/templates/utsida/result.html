@@ -31,7 +31,11 @@
                     <div class="panel-body">
                         <div class="subjectsContainer">
                             {% for subject in case.Subjects %}
-                                <div class="label label-warning">{{ subject }}</div>
+                                {% if subject in matches %}
+                                    <div class="label label-success">{{ subject }}</div>
+                                {% else %}
+                                    <div class="label label-warning">{{ subject }}</div>
+                                {% endif %}
                             {% endfor %}
                         </div>
 
