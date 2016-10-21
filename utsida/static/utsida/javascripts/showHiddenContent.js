@@ -1,20 +1,15 @@
-var button = document.getElementById("showHiddenContentBtn");
-var allHiddenContent = document.getElementsByClassName("hidden");
+var acc = document.getElementsByClassName("accordion");
 
-var showHiddenContent = function() {
-
-    for (var i = 0; i <= allHiddenContent.length; i++) {
-        if (allHiddenContent[i].className == 'show') {
-            allHiddenContent[i].className = 'hidden';
+for (var i = 0; i < acc.length; i++) {
+    acc[i].onclick = function() {
+        this.classList.toggle("active");
+        this.parentNode.previousElementSibling.classList.toggle("show");
+        if (this.classList.contains("glyphicon-chevron-down")) {
+            this.className = "accordion glyphicon glyphicon-chevron-up";
         }
-        else if (allHiddenContent[i].className == 'hidden') {
-            allHiddenContent[i].className = 'show';
+        else if (this.classList.contains("glyphicon-chevron-up")){
+            this.className = "accordion glyphicon glyphicon-chevron-down";
         }
-
     }
-};
+}
 
-button.addEventListener('click', function(e) {
-    e.preventDefault();
-    showHiddenContent();
-});

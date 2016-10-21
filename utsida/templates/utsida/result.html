@@ -5,7 +5,7 @@
     <h2 class="text-center">Søker etter matcher med følgende attributter</h2>
     <div class="well vertical-space-top">
         <ul>
-            <li>Institutt hjemme: <span id="institute" style="font-weight: bold">{{ form.data.homeInstitute }}</span></li>
+            <li>Institutt hjemme: <span id="institute" style="font-weight: bold">{{ user.profile.institute }}</span></li>
             <li>Verdensdel: <span id="continent" style="font-weight: bold">{{ form.data.continent }}</span></li>
             <li>Land: <span id="country" style="font-weight: bold">{{ form.data.country }}</span></li>
             <li>Universitet: <span id="university" style="font-weight: bold">{{ form.data.university }}</span></li>
@@ -20,9 +20,41 @@
 
     <div id="results" class="row vertical-space-top-big" style="display: none">
 
-        <h2 class="text-center vertical-space-bottom-big">Her er de beste matchene dine <span id="showHiddenContentBtn">(Vis all informasjon)</span></h2>
+        <h2 class="text-center vertical-space-bottom-big">Her er de beste matchene dine</h2>
 
+        {% for case in similar_cases %}
+            <div class="col-md-4">
+                <div class="panel panel-primary square-corners">
+                    <div class="panel-heading square-corners">
+                        {{ case.University }} <span class="pull-right badge">{{ case.Similarity }}</span>
+                    </div>
+                    <div class="panel-body">
+                        <div class="subjectsContainer">
+                            {% for subject in case.Subjects %}
+                                <div class="label label-warning">{{ subject }}</div>
+                            {% endfor %}
+                        </div>
 
+                        <hr>
+
+                        <div class="hiddenInformation">
+                            <div>
+                                <p><span class="bold">Institutt hjemme:</span> {{ case.Institute }}</p>
+                                <p><span class="bold">Verdensdel:</span> {{ case.Continent }}</p>
+                                <p><span class="bold">Land:</span> {{ case.Country }}</p>
+                                <p><span class="bold">Studiespråk:</span> {{ case.Language }}</p>
+                                <p><span class="bold">Studieperiode:</span> {{ case.StudyPeriod }}</p>
+                                <p><span class="bold">Vurdering av akademisk kvalitet:</span> {{ case.AcademicQuality }}</p>
+                                <p><span class="bold">Vurdering av sosial kvalitet:</span> {{ case.SocialQuality}}</p>
+                            </div>
+                        </div>
+                        <div class="text-center">
+                            <span id="expandTripChevron" style="color: #337ab7; cursor: pointer;" class="accordion glyphicon glyphicon-chevron-down"></span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        {% endfor %}
     </div>
 
     <script>
@@ -31,10 +63,9 @@
         setTimeout(function(){
             loader.style.display = "none";
             result.style.display = "block";
-        }, 1);
+        }, 2000);
     </script>
+    <script src="../../static/utsida/javascripts/showHiddenContent.js"></script>
 
-    <script src="../../static/utsida/javascripts/myCbrQuery.js" type="text/javascript"></script>
-    <script src="../../static/utsida/javascripts/showHiddenContent.js" type="text/javascript"></script>
 {% endblock %}
 

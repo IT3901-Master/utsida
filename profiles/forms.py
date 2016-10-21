@@ -11,10 +11,9 @@ class UserForm(UserCreationForm):
     first_name = forms.CharField(required=True)
     last_name = forms.CharField(required=True)
 
-
     class Meta:
         model = User
-        fields = ('username', 'email','password1','password2',)
+        fields = ('username', 'email', 'password1', 'password2', 'first_name', 'last_name')
 
     def save(self, commit=True):
         user = super(UserForm, self).save(commit=False)
@@ -30,6 +29,8 @@ class UserForm(UserCreationForm):
 class ProfileForm(forms.ModelForm):
     class Meta:
         model = Profile
+
         fields = ('institute','coursesTaken',)
 
     coursesTaken = make_ajax_field(Profile, 'coursesTaken', 'homeCourse', help_text="Please enter your course taken",required=False)
+

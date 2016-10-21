@@ -22,7 +22,6 @@ class QueryCaseBaseForm(forms.ModelForm):
         self.fields["socialQualityRating"].required = False
 
 
-
 class University_selection_form(forms.ModelForm):
 
     class Meta:
@@ -30,5 +29,5 @@ class University_selection_form(forms.ModelForm):
         fields = ('name',)
 
     def __init__(self, *args, **kwargs):
-        super(University_selection_form,self).__init__(*args,**kwargs)
+        super(University_selection_form, self).__init__(*args,**kwargs)
         self.fields["name"].required = True

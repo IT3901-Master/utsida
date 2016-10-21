@@ -4,26 +4,33 @@
 * 1.1 - Spacing
 * 2.0 - nav
 * 3.0 - Footer
-
+* 4.0 - Process
+* 5.0 - Result
 
 /* 1.0 - General */
 html, body {
     height: 100%;
 }
 .main-btn {
-    width: 300px;
-    height: 60px;
-    line-height: 45px;
+    width: 250px;
+    height: 70px;
+    line-height: 57px;
     vertical-align: middle;
+    font-weight: bold;
+    font-size: 18px;
 }
 
 .main-wrapper {
-    min-height: calc(100% - 72px);
+    min-height: calc(100% - 70px);
     position: relative;
 }
 
 .square-corners {
     border-radius: 0;
+}
+
+.bold {
+    font-weight: bold;
 }
 
 /* 2.0 - nav */
@@ -56,6 +63,13 @@ html, body {
     background-color: #333;
     color: #fff;
 }
+.form-control, .well, .btn {
+    -webkit-border-radius: 0;
+    -moz-border-radius: 0;
+    border-radius: 0;
+}
+
+
 /* END BOOTSTRAP OVERRIDES */
 
 
@@ -97,10 +111,37 @@ html, body {
     vertical-align: middle;
 }
 
+/* 4.0 Process */
+.searchBtn {
+    width: 100px;
+    height: 50px;
+    font-weight: bold;
+}
+
+/* 5.0 Result */
+.hiddenInformation {
+    height: 0;
+}
+.hiddenInformation div {
+    display: none;
+}
+
+.hiddenInformation.show {
+    height: 250px;
+    transition: height 0.1s;
+}
+.hiddenInformation.show div{
+    display: block;
+}
+.subjectsContainer {
+    text-align: center;
+}
+#expandTripChevron {
+    font-size: 20px;
+}
 .clickableTableRow {
     cursor: pointer !important;
 }
-
 .noselect {
   -webkit-touch-callout: none; /* iOS Safari */
   -webkit-user-select: none;   /* Chrome/Safari/Opera */
