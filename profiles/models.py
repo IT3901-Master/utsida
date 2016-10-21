@@ -37,3 +37,5 @@ def send_logout_message(sender, user, request, **kwargs):
 
 user_logged_out.connect(send_logout_message)
 user_logged_in.connect(send_login_message)
+
+
