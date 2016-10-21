@@ -26,6 +26,7 @@ def result(request):
 
 
 def courseMatch(request):
+    print(request.user.profile.coursesTaken.all())
     course_matches = CourseMatch.objects.all()
     university_list = University.objects.all()
     context = {"course_match_list": course_matches, "university_list": university_list}
