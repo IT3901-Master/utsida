@@ -5,7 +5,7 @@ from django.db import transaction
 from django.shortcuts import render, redirect
 from django.contrib.auth import authenticate, login
 
-from profiles.forms import UserForm, ProfileForm
+from profiles.forms import UserForm, ProfileForm, UpdateUserForm
 from .models import *
 
 
@@ -52,19 +52,19 @@ def register_user(request):
 @transaction.atomic
 def update_profile(request):
     if request.method == 'POST':
-        user_form = UserForm(request.POST, instance=request.user)
+        user_form = UpdateUserForm(request.POST, instance=request.user)
         profile_form = ProfileForm(request.POST, instance=request.user.profile)
         if user_form.is_valid() and profile_form.is_valid():
             user = user_form.save()
-            user.refresh_from_db()
+            #user.refresh_from_db()
             profile_form.save()
             messages.success(request, 'Your profile was successfully updated!')
-            login(request, user)
+            #login(request, user)
             return redirect('index')
         else:
             messages.error(request, 'Please correct the error below.')
     else:
-        user_form = UserForm(instance=request.user)
+        user_form = UpdateUserForm(instance=request.user)
         profile_form = ProfileForm(instance=request.user.profile)
     return render(request, 'profiles/update_profile.html', {
         'user_form': user_form,
