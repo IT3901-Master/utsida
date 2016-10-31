@@ -48,8 +48,8 @@ class UniversityManager(models.Manager):
 
 class University(models.Model):
     name = models.CharField(max_length=100, unique=True)
-    acronym = models.CharField(max_length=10)
-    country = models.ForeignKey(Country)
+    acronym = models.CharField(max_length=10, blank=True)
+    country = models.ForeignKey(Country, blank=True)
 
     def __str__(self):
         return self.name
