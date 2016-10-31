@@ -48,10 +48,6 @@ def register_user(request):
     })
 
 
-def register_success(request):
-    return render(request, 'profiles/register_success.html', {})
-
-
 @login_required
 @transaction.atomic
 def update_profile(request):
