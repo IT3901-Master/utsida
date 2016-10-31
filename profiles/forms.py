@@ -30,7 +30,7 @@ class ProfileForm(forms.ModelForm):
     class Meta:
         model = Profile
 
-        fields = ('institute','coursesTaken',)
+        fields = ('institute','coursesToTake',)
 
-    coursesTaken = make_ajax_field(Profile, 'coursesTaken', 'homeCourse', help_text="Please enter your course taken",required=False)
+    coursesToTake = make_ajax_field(Profile, 'coursesToTake', 'homeCourse', help_text="Please enter your course taken",required=False)
 

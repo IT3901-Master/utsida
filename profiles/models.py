@@ -10,7 +10,7 @@ from django.contrib.auth.signals import user_logged_in, user_logged_out
 class Profile(models.Model):
     user = models.OneToOneField(User, on_delete=models.CASCADE)
     institute = models.ForeignKey(Institute, null=True)
-    coursesTaken = models.ManyToManyField(HomeCourse)
+    coursesToTake = models.ManyToManyField(HomeCourse)
 
     class Meta:
         verbose_name_plural = 'profiles'
