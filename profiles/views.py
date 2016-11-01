@@ -59,11 +59,11 @@ def update_profile(request):
             user = user_form.save()
             #user.refresh_from_db()
             profile_form.save()
-            messages.success(request, 'Your profile was successfully updated!')
+            messages.success(request, 'Profilen din ble endret!')
             #login(request, user)
             return redirect('index')
         else:
-            messages.error(request, 'Please correct the error below.')
+            messages.error(request, 'Vennligst rett feilen under.')
     else:
         user_form = UpdateUserForm(instance=request.user)
         profile_form = ProfileForm(instance=request.user.profile)
@@ -83,7 +83,7 @@ def change_password(request):
             messages.success(request, 'Passordet ditt ble endret!')
             return redirect('index')
         else:
-            messages.error(request, 'Vennligst rett feilene under.')
+            messages.error(request, 'Vennligst rett feilen under.')
     else:
         form = PasswordChangeForm(request.user)
     return render(request, 'profiles/change_password.html', {
