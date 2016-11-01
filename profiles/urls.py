@@ -1,4 +1,5 @@
 from django.conf.urls import url, include
+
 from . import views
 from django.contrib.auth import views as auth_views
 from ajax_select import urls as ajax_select_urls
@@ -10,4 +11,5 @@ urlpatterns = [
     url(r'^login/$', auth_views.login, name='login'),
     url(r'^logout/$', auth_views.logout, {'next_page': '/'}, name='logout'),
     url(r'^ajax_select/', include(ajax_select_urls)),
+    url(r'^change_password/$', views.change_password, name='password_change'),
 ]
