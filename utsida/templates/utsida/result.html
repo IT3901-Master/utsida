@@ -1,6 +1,7 @@
 {% extends 'utsida/layout.html' %}
 
 {% block content %}
+    {% load result_extras %}
 
     <h2 class="text-center">Søker etter matcher med følgende attributter</h2>
     <div class="well vertical-space-top">
@@ -32,11 +33,12 @@
                     <div class="panel-body">
                         <div class="subjectsContainer">
                             {% for subject in case.Subjects %}
-                                {% if subject in matches %}
-                                    <div class="label label-success">{{ subject }}</div>
+                                {% if subject in matches.keys %}
+                                    <div class="label label-success">{{ subject }} - {{matches | get:subject}}</div>
                                 {% else %}
                                     <div class="label label-warning">{{ subject }}</div>
                                 {% endif %}
+                                <br>
                             {% endfor %}
                         </div>
 

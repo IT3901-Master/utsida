@@ -57,14 +57,14 @@ def result(request):
 
             courses = request.user.profile.coursesToTake.all()
 
-            course_wanted_to_be_taken_matches = []
+            course_wanted_to_be_taken_matches = {}
 
             for course in courses:
                 results = CourseMatch.objects.filter(homeCourse=course)
                 if results:
                     print(results)
                     for result in results:
-                        course_wanted_to_be_taken_matches.append(str(result.abroadCourse))
+                        course_wanted_to_be_taken_matches = {str(result.abroadCourse):course.code}
 
             print(course_wanted_to_be_taken_matches)
 
