@@ -64,7 +64,7 @@ def result(request):
                 if results:
                     print(results)
                     for result in results:
-                        course_wanted_to_be_taken_matches = {str(result.abroadCourse):course.code}
+                        course_wanted_to_be_taken_matches[str(result.abroadCourse)] = course.code
 
             print(course_wanted_to_be_taken_matches)
 
