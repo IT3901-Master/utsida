@@ -20,7 +20,7 @@ def result(request):
         user_profile = User.objects.get(username=request.user).profile
         institute = user_profile.institute.__str__()
         courses_taken = []
-        courses_taken_object = request.user.profile.coursesTaken.all()
+        courses_taken_object = request.user.profile.coursesToTake.all()
 
         for course in courses_taken_object:
             courses_taken.append(str(course))
@@ -55,16 +55,16 @@ def result(request):
 
             sorted_full_similar_cases = sorted(full_similar_cases, key=lambda k: k['Similarity'], reverse=True)
 
-            courses = request.user.profile.coursesTaken.all()
+            courses = request.user.profile.coursesToTake.all()
 
-            course_wanted_to_be_taken_matches = []
+            course_wanted_to_be_taken_matches = {}
 
             for course in courses:
                 results = CourseMatch.objects.filter(homeCourse=course)
                 if results:
                     print(results)
                     for result in results:
-                        course_wanted_to_be_taken_matches.append(str(result.abroadCourse))
+                        course_wanted_to_be_taken_matches[str(result.abroadCourse)] = course.code
 
             print(course_wanted_to_be_taken_matches)
 
@@ -77,7 +77,6 @@ def result(request):
 
 
 def courseMatch(request):
-    print(request.user.profile.coursesTaken.all())
     course_matches = CourseMatch.objects.all()
     university_list = University.objects.all()
     context = {"course_match_list": course_matches, "university_list": university_list}

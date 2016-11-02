@@ -9,6 +9,10 @@ class CourseLookup(LookupChannel):
     model = Profile
     min_length = 3
 
+    def check_auth(self, request):
+        if request.user.is_authenticated():
+            return True
+
     def get_query(self, q, request):
         return HomeCourse.objects.filter(code__icontains=q).order_by('code')[:10]
 

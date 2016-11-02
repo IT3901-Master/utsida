@@ -10,7 +10,7 @@ from django.contrib.auth.signals import user_logged_in, user_logged_out
 class Profile(models.Model):
     user = models.OneToOneField(User, on_delete=models.CASCADE)
     institute = models.ForeignKey(Institute, null=True)
-    coursesTaken = models.ManyToManyField(HomeCourse)
+    coursesToTake = models.ManyToManyField(HomeCourse)
 
     class Meta:
         verbose_name_plural = 'profiles'
@@ -29,11 +29,11 @@ def save_user_profile(sender, instance, **kwargs):
 
 
 def send_login_message(sender, user, request, **kwargs):
-    messages.success(request,'You were succesfully logged in')
+    messages.success(request,'Du ble logget inn uten problemer')
 
 
 def send_logout_message(sender, user, request, **kwargs):
-    messages.success(request,'You were succesfully logged out')
+    messages.success(request,'Du ble logget ut')
 
 user_logged_out.connect(send_logout_message)
 user_logged_in.connect(send_login_message)

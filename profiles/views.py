@@ -1,11 +1,12 @@
 from ajax_select.fields import AutoCompleteField, autoselect_fields_check_can_add
 from django.contrib import messages
 from django.contrib.auth.decorators import login_required
+from django.contrib.auth.forms import PasswordChangeForm
 from django.db import transaction
 from django.shortcuts import render, redirect
-from django.contrib.auth import authenticate, login
+from django.contrib.auth import authenticate, login, update_session_auth_hash
 
-from profiles.forms import UserForm, ProfileForm
+from profiles.forms import UserForm, ProfileForm, UpdateUserForm
 from .models import *
 
 
@@ -48,29 +49,43 @@ def register_user(request):
     })
 
 
-def register_success(request):
-    return render(request, 'profiles/register_success.html', {})
-
-
 @login_required
 @transaction.atomic
 def update_profile(request):
     if request.method == 'POST':
-        user_form = UserForm(request.POST, instance=request.user)
+        user_form = UpdateUserForm(request.POST, instance=request.user)
         profile_form = ProfileForm(request.POST, instance=request.user.profile)
         if user_form.is_valid() and profile_form.is_valid():
             user = user_form.save()
-            user.refresh_from_db()
+            #user.refresh_from_db()
             profile_form.save()
-            messages.success(request, 'Your profile was successfully updated!')
-            login(request, user)
+            messages.success(request, 'Profilen din ble endret!')
+            #login(request, user)
             return redirect('index')
         else:
-            messages.error(request, 'Please correct the error below.')
+            messages.error(request, 'Vennligst rett feilen under.')
     else:
-        user_form = UserForm(instance=request.user)
+        user_form = UpdateUserForm(instance=request.user)
         profile_form = ProfileForm(instance=request.user.profile)
     return render(request, 'profiles/update_profile.html', {
         'user_form': user_form,
         'profile_form': profile_form
+    })
+
+@login_required
+@transaction.atomic
+def change_password(request):
+    if request.method == 'POST':
+        form = PasswordChangeForm(request.user, request.POST)
+        if form.is_valid():
+            user = form.save()
+            update_session_auth_hash(request, user)  # Important!
+            messages.success(request, 'Passordet ditt ble endret!')
+            return redirect('index')
+        else:
+            messages.error(request, 'Vennligst rett feilen under.')
+    else:
+        form = PasswordChangeForm(request.user)
+    return render(request, 'profiles/change_password.html', {
+        'form': form
     })

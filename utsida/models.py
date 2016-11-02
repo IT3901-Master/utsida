@@ -2,8 +2,6 @@ from django.contrib.auth.models import User
 from django.db import models
 import datetime
 
-CHOICES = ((1, 1), (2, 2), (3, 3), (4, 4), (5, 5))
-
 
 class Faculty(models.Model):
     acronym = models.CharField(max_length=10, primary_key=True)
@@ -43,10 +41,20 @@ class Country(models.Model):
         return self.name
 
 
+class UniversityManager(models.Manager):
+    def get_by_natural_key(self, name):
+        return self.get(name=name)
+
+
 class University(models.Model):
-    name = models.CharField(max_length=100)
+    name = models.CharField(max_length=100, unique=True)
+    acronym = models.CharField(max_length=10, blank=True)
+    country = models.ForeignKey(Country, blank=True)
 
     def __str__(self):
+        return self.name
+
+    def natural_key(self):
         return self.name
 
     class Meta:
@@ -114,6 +122,9 @@ class Language(models.Model):
     def __str__(self):
         return self.name
 
+
+
+CHOICES = ((1, 1), (2, 2), (3, 3), (4, 4), (5, 5))
 
 class Case(models.Model):
     homeInstitute = models.ForeignKey(Institute)
