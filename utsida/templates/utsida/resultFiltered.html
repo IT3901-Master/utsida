@@ -4,11 +4,11 @@
     {% load result_extras %}
 
     <div class="row vertical-space-bottom-big">
-        <h2 class="text-center vertical-space-bottom-big">Viser alle matcher fra valgt universitet. Trykk på på et annet universitet for å vise andre matcher</h2>
+        <h2 class="text-center vertical-space-bottom-big">Her er turene som likner mest på din situasjon. Trykk på universitetene under for å vise alle turer til det universitetet.</h2>
         <div class="col-md-6 col-md-offset-3">
-            <a href="/process/result/all"><span class="label label-primary">Alle</span></a>
+            <a href="/process/result/all"><button class="btn btn-default vertical-space-bottom-small">Alle</button></a>
             {% for university in universities %}
-                <a href="/process/result/{{ university }}"><span class="label label-primary">{{ university }}</span></a>
+                <a href="/process/result/{{ university }}"><button class="btn btn-default vertical-space-bottom-small">{{ university }}</button></a>
             {% endfor %}
         </div>
     </div>
@@ -56,6 +56,7 @@
     </div>
 
     {% load staticfiles %}
-    <script src="{% static 'utsida/javascripts/showHiddenContent.js' %}"></script>
+    <script src="{% static 'utsida/javascripts/result/showHiddenContent.js' %}"></script>
+    <script src="{% static 'utsida/javascripts/result/highlightCurrentUniversity.js' %}"></script>
 
 {% endblock %}

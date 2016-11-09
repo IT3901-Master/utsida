@@ -46,7 +46,7 @@ def result(request, university=None):
                 "Country": form.data["country"],
                 "University": form.data["university"],
                 "Language": form.data["language"],
-                "StudyPeriod": form.data["studyPeriod"],
+                "StudyPeriod": datetime.date.today().year,
                 "AcademicQuality": form.data["academicQualityRating"],
                 "SocialQuality": form.data["socialQualityRating"],
             })

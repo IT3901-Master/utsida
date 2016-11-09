@@ -4,7 +4,7 @@
     {% load result_extras %}
 
     <div id="searchParameters">
-        <h2 class="text-center">Søker etter matcher med følgende attributter</h2>
+        <h2 class="text-center">Søker etter turer som likner på din</h2>
         <div class="well vertical-space-top">
             <ul>
                 <li>Institutt hjemme: <span id="institute" style="font-weight: bold">{{ user.profile.institute }}</span></li>
@@ -23,10 +23,11 @@
     <img id="loader" src="../../static/utsida/images/loading.gif" style="width:20%; display: block; margin: auto">
 
     <div id="filters" class="row vertical-space-bottom-big" style="display: none">
-        <h2 class="text-center vertical-space-bottom-big">Her er de beste matchene dine. Trykk på et universitet for å vise flere treff på det samme universitetet.</h2>
+        <h2 class="text-center vertical-space-bottom-big">Her er turene som likner mest på din situasjon. Trykk på universitetene under for å vise alle turer til det universitetet.</h2>
         <div class="col-md-6 col-md-offset-3">
+            <a href="/process/result/all"><button style="background-color: #5cb85c" class="btn btn-default vertical-space-bottom-small">Alle</button></a>
             {% for university in universities %}
-                <a href="/process/result/{{ university }}"><span class="label label-primary">{{ university }}</span></a>
+                <a href="/process/result/{{ university }}"><button class="btn btn-default vertical-space-bottom-small">{{ university }}</button></a>
             {% endfor %}
         </div>
     </div>
@@ -75,8 +76,9 @@
     </div>
 
     {% load staticfiles %}
-    <script src="{% static 'utsida/javascripts/showHiddenContent.js' %}"></script>
-    <script src="{% static 'utsida/javascripts/loadingScreen.js' %}"></script>
+    <script src="{% static 'utsida/javascripts/result/showHiddenContent.js' %}"></script>
+    <script src="{% static 'utsida/javascripts/result/loadingScreen.js' %}"></script>
+    <script src="{% static 'utsida/javascripts/result/highlightCurrentUniversity.js' %}"></script>
 
 
 {% endblock %}
