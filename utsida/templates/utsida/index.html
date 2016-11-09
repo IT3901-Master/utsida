@@ -6,19 +6,27 @@
             <div id="sucessAlert" class="alert alert-success">{{ message }}</div>
         {% endif %}
     {% endfor %}
-    <h2>Hva er Utsida?</h2>
-    <p>
-        Utsida er et verktøy som skal gjøre det enklere for utvekslingsstudenter å velge riktige fag og universiteter.
-    </p>
+    <div class="col-md-8 col-md-offset-2">
+    <h3>Hva er Utsida?</h3>
+        <p>
+            Utsida er et verktøy som skal gjøre det enklere for studenter som ønsker å dra på
+            utveksling, ved å gi intelligente anbefalinger på valg av både universitet og fag.
+        </p>
 
-    <h2 class="vertical-space-top-big">Hvordan virker det?</h2>
-    <p>
-        Utsida bruker data som er laget av tidligere utvekslingsstudenter sine valg og erfaringer.
-        Ved å matche dine forutsetninger med denne dataen vil systemet foreslå relevante alternativer.
-        Hver utveksling er unik, og hver nye utveksling som blir lagt til i systemet vil gjøre det mer treffsikkert til
-        neste gang.
-    </p>
+        <h3 class="vertical-space-top-big">Hvordan virker det?</h3>
+        <p>
+            Utsida bruker data som er laget av tidligere utvekslingsstudenter sine valg og erfaringer.
+            Ved å matche dine forutsetninger med denne dataen vil systemet foreslå relevante alternativer.
+        </p>
 
-    <a class="btn btn-primary main-btn center-block vertical-space-top-huge square-corners" href="/process">Finn fag</a>
+        <h3 class="vertical-space-top-big">Før du starter...</h3>
+        <p>
+            For å få fullt utbytte av systemet, anbefaler vi at du går inn på <a href="/profile/update">profilen</a> din og
+            legger til NTNU-fagene du ønsker å erstatte. Du vil da få en indikasjon på om de foreslåtte fagene matcher
+            med disse.
+        </p>
+        <a class="btn btn-primary main-btn center-block vertical-space-top-big vertical-space-bottom-big square-corners" href="/process">Finn fag</a>
+    </div>
+
     <script> setTimeout(function() {$('#sucessAlert').fadeOut('slow');}, 5000);</script>
 {% endblock %}

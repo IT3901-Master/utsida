@@ -1,20 +1,27 @@
-from django.shortcuts import render
+from django.shortcuts import render, redirect
 import requests
 import json
 from .forms import *
 from profiles.models import *
+from django.contrib.auth.decorators import login_required
 
 
 def index(request):
+    if not request.user.is_authenticated():
+        return redirect("login")
     return render(request, "utsida/index.html")
 
 
 def process(request):
+    if not request.user.is_authenticated():
+        return redirect("login")
     form = QueryCaseBaseForm()
     return render(request, "utsida/process.html", {"form": form})
 
 
 def result(request, university=None):
+    if not request.user.is_authenticated():
+        return redirect("login")
     if university:
         filtered_cases = []
 
@@ -101,6 +108,8 @@ def result(request, university=None):
 
 
 def courseMatch(request):
+    if not request.user.is_authenticated():
+        return redirect("login")
     course_matches = CourseMatch.objects.all()
     university_list = University.objects.all()
     context = {"course_match_list": course_matches, "university_list": university_list}
