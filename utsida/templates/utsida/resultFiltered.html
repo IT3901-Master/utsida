@@ -3,37 +3,17 @@
 {% block content %}
     {% load result_extras %}
 
-    <div id="searchParameters">
-        <h2 class="text-center">Søker etter turer som likner på din</h2>
-        <div class="well vertical-space-top">
-            <ul>
-                <li>Institutt hjemme: <span id="institute" style="font-weight: bold">{{ user.profile.institute }}</span></li>
-                <li>Verdensdel: <span id="continent" style="font-weight: bold">{{ form.data.continent }}</span></li>
-                <li>Land: <span id="country" style="font-weight: bold">{{ form.data.country }}</span></li>
-                <li>Universitet: <span id="university" style="font-weight: bold">{{ form.data.university }}</span></li>
-                <li>Studiespråk: <span id="language" style="font-weight: bold">{{ form.data.language }}</span></li>
-                <li>Studieår: <span id="studyPeriod" style="font-weight: bold">{{ form.data.studyPeriod }}</span></li>
-                <li>Akademisk kvalitet: <span id="academicQuality" style="font-weight: bold">{{ form.data.academicQualityRating }}</span></li>
-                <li>Sosial kvalitet: <span id="socialQuality" style="font-weight: bold">{{ form.data.socialQualityRating }}</span></li>
-            </ul>
-        </div>
-    </div>
-
-
-    <img id="loader" src="../../static/utsida/images/loading.gif" style="width:20%; display: block; margin: auto">
-
-    <div id="filters" class="row vertical-space-bottom-big" style="display: none">
+    <div class="row vertical-space-bottom-big">
         <h2 class="text-center vertical-space-bottom-big">Her er turene som likner mest på din situasjon. Trykk på universitetene under for å vise alle turer til det universitetet.</h2>
         <div class="col-md-6 col-md-offset-3">
-            <a href="/process/result/all"><button style="background-color: #5cb85c" class="btn btn-default vertical-space-bottom-small">Alle</button></a>
+            <a href="/process/result/all"><button class="btn btn-default vertical-space-bottom-small">Alle</button></a>
             {% for university in universities %}
                 <a href="/process/result/{{ university }}"><button class="btn btn-default vertical-space-bottom-small">{{ university }}</button></a>
             {% endfor %}
         </div>
     </div>
 
-    <div id="results" class="row vertical-space-top-big" style="display: none">
-
+    <div class="row">
         {% for case in similar_cases %}
             {% if forloop.counter|divisibleby:3 %}<div class="row">{% endif %}
             <div class="col-md-4">
@@ -77,9 +57,6 @@
 
     {% load staticfiles %}
     <script src="{% static 'utsida/javascripts/result/showHiddenContent.js' %}"></script>
-    <script src="{% static 'utsida/javascripts/result/loadingScreen.js' %}"></script>
     <script src="{% static 'utsida/javascripts/result/highlightCurrentUniversity.js' %}"></script>
 
-
 {% endblock %}
-

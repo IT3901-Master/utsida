@@ -1,20 +1,40 @@
-from django.shortcuts import render
+from django.shortcuts import render, redirect
 import requests
 import json
 from .forms import *
 from profiles.models import *
+from django.contrib.auth.decorators import login_required
 
 
 def index(request):
+    if not request.user.is_authenticated():
+        return redirect("login")
     return render(request, "utsida/index.html")
 
 
 def process(request):
+    if not request.user.is_authenticated():
+        return redirect("login")
     form = QueryCaseBaseForm()
     return render(request, "utsida/process.html", {"form": form})
 
 
-def result(request):
+def result(request, university=None):
+    if not request.user.is_authenticated():
+        return redirect("login")
+    if university:
+        filtered_cases = []
+
+        if university == "all":
+            filtered_cases = request.session['result']
+
+        else:
+            for case in request.session['result']:
+                if case['University'] == university:
+                    filtered_cases.append(case)
+
+        return render(request, 'utsida/resultFiltered.html', {'similar_cases': filtered_cases, 'universities': request.session['unique_universities'], 'matches': request.session['matches']})
+
     if request.method == 'POST':
         form = QueryCaseBaseForm(request.POST)
         user_profile = User.objects.get(username=request.user).profile
@@ -26,13 +46,14 @@ def result(request):
             courses_taken.append(str(course))
 
         if form.is_valid():
+
             payload = json.dumps({
                 "Institute": institute,
                 "Continent": form.data["continent"],
                 "Country": form.data["country"],
                 "University": form.data["university"],
                 "Language": form.data["language"],
-                "StudyPeriod": form.data["studyPeriod"],
+                "StudyPeriod": datetime.date.today().year,
                 "AcademicQuality": form.data["academicQualityRating"],
                 "SocialQuality": form.data["socialQualityRating"],
             })
@@ -55,6 +76,7 @@ def result(request):
 
             sorted_full_similar_cases = sorted(full_similar_cases, key=lambda k: k['Similarity'], reverse=True)
 
+
             courses = request.user.profile.coursesToTake.all()
 
             course_wanted_to_be_taken_matches = {}
@@ -62,14 +84,23 @@ def result(request):
             for course in courses:
                 results = CourseMatch.objects.filter(homeCourse=course)
                 if results:
-                    print(results)
                     for result in results:
                         course_wanted_to_be_taken_matches[str(result.abroadCourse)] = course.code
 
-            print(course_wanted_to_be_taken_matches)
+            unique_unis = []
+            for case in sorted_full_similar_cases:
+                if not case['University'] in unique_unis:
+                    unique_unis.append(case['University'])
+
+            request.session['unique_universities'] = unique_unis
+            request.session['result'] = sorted_full_similar_cases
+            request.session['matches'] = course_wanted_to_be_taken_matches
 
             return render(request, 'utsida/result.html',
-                          {'form': form, 'similar_cases': sorted_full_similar_cases, 'courses_taken': courses_taken, 'matches': course_wanted_to_be_taken_matches})
+                          {'form': form, 'similar_cases': sorted_full_similar_cases, 'courses_taken': courses_taken, 'matches': course_wanted_to_be_taken_matches, 'universities': unique_unis})
+
+
+
     else:
         form = QueryCaseBaseForm()
 
@@ -77,6 +108,8 @@ def result(request):
 
 
 def courseMatch(request):
+    if not request.user.is_authenticated():
+        return redirect("login")
     course_matches = CourseMatch.objects.all()
     university_list = University.objects.all()
     context = {"course_match_list": course_matches, "university_list": university_list}

@@ -37,6 +37,14 @@ html, body {
     box-shadow: 0 2px 2px 0 rgba(0,0,0,.14),0 3px 1px -2px rgba(0,0,0,.2),0 1px 5px 0 rgba(0,0,0,.12);
 }
 
+.hiddenDiv {
+    display: none;
+}
+
+.subTitle {
+    color: #444;
+    font-size: 18px;
+}
 /* 2.0 - nav */
 
 .navbar-custom {
@@ -89,6 +97,9 @@ html, body {
 }
 .vertical-space-top-huge {
     margin-top: 150px;
+}
+.vertical-space-bottom-small {
+    margin-bottom: 5px;
 }
 .vertical-space-bottom {
     margin-bottom: 20px;

@@ -4,33 +4,30 @@
     {% load widget_tweaks %}
 
     <h2 class="text-center">Velg alternativene som stemmer for deg</h2>
+    <h3 class="subTitle text-center">(Du trenger kun å fylle ut det du vet)</h3>
 
     <div class="row">
 
         <div class="col-md-6 col-md-offset-3">
 
-            <form method="post" action="/process/result/">
+            <form method="post" action="/process/result/" onchange="formStep()">
             {% csrf_token %}
                 <h3 class="vertical-space-bottom vertical-space-top-big">Om studiestedet</h3>
                 <div class="form-group">
                     <label>Verdensdel</label>
                     {{ form.continent|add_class:"form-control" }}
                 </div>
-                <div class="form-group">
+                <div style="display: none" class="form-group" id="countryRow">
                     <label>Land</label>
                     {{ form.country|add_class:"form-control" }}
                 </div>
-                <div class="form-group">
-                    <label>Universitet</label>
-                    {{ form.university|add_class:"form-control" }}
-                </div>
-                <div class="form-group">
+                <div style="display: none" class="form-group" id="languageRow">
                     <label>Undervisningsspråk</label>
                     {{ form.language|add_class:"form-control" }}
                 </div>
                 <div class="form-group">
-                    <label>Når drar du?</label>
-                    {{ form.studyPeriod|add_class:"form-control" }}
+                    <label>Universitet</label>
+                    {{ form.university|add_class:"form-control" }}
                 </div>
 
 
@@ -51,8 +48,12 @@
                 </div>
             </form>
 
+
         </div>
 
     </div>
+
+    {% load staticfiles %}
+    <script src="{% static 'utsida/javascripts/process/form.js' %}"></script>
     
 {% endblock %}
