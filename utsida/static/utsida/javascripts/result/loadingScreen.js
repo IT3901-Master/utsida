@@ -1,6 +1,5 @@
 setTimeout(function () {
-    $("#loader").css("display", "none");
-    $("#results").css("display", "block");
-    $("#filters").css("display", "block");
+    $("#loadingScreen").css("display", "none");
     $("#searchParameters").css("display", "none");
 }, 2000);
+

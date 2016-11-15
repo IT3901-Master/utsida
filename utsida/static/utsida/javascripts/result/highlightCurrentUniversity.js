@@ -5,9 +5,7 @@ var highlight = function() {
     for (var i = 0; i < buttons.length; i++) {
         if (buttons[i].innerHTML.toLowerCase() == url.toLowerCase()) {
             buttons[i].style.backgroundColor = "#5cb85c";
-        }
-        else if (buttons[i].innerHTML.toLowerCase() == url.toLowerCase() + 'e') {
-            buttons[i].style.backgroundColor = "#5cb85c";
+            buttons[i].style.color = "#FFF";
         }
     }
 };
