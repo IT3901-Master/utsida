@@ -29,8 +29,8 @@ function removeAllSelectedCourses() {
     selectedCourses = [];
     numSelectedCourses = 0;
     updateNumSelectedCourses();
-    while(selectedCourseBody.firstChild) {
-        selectedCourseBody.removeChild(selectedCourseBody.firstChild)
+    while(selectedCourseList.firstChild) {
+        selectedCourseList.removeChild(selectedCourseList.firstChild)
     }
     toggleSelectedCourses();
 
