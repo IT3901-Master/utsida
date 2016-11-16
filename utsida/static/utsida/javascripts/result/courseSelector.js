@@ -4,6 +4,7 @@ courseSelector = {
     settings: {
         selectedCourses: [],
         numSelectedCourses: 0,
+        university: null,
         selectedCourseBody: document.getElementById("selectedCourseBody"),
         selectedCourseToggleBtn: document.getElementById("selectedCourseToggleBtn"),
         numSelectedCoursesBadge: document.getElementById("numSelectedCoursesBadge"),
@@ -16,15 +17,19 @@ courseSelector = {
         s = this.settings;
     },
 
-    addCourse: function(course) {
-        this.showContainer();
-        if (!(s.selectedCourses.indexOf(course) > -1)) {
+    addCourse: function(c) {
+        var uni = c.parentNode.parentNode.previousSibling.previousSibling.innerText.split('(').slice()[0].slice(0, -1);
+        var course = c.innerHTML;
+
+        if ((uni == s.university || s.university == null) && !(s.selectedCourses.indexOf(course) > -1)) {
+            s.university = uni;
             s.selectedCourses.push(course);
             var label = document.createElement("li");
             label.innerHTML = course;
             s.selectedCourseList.appendChild(label);
             s.numSelectedCourses += 1;
             this.updateNumSelectedCourses();
+            this.showContainer();
         }
     },
 

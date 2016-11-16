@@ -72,11 +72,11 @@
                             {% for subject in case.Subjects %}
                                 {% if subject in matches.keys %}
                                     <!--<div onclick="addCourse(this.innerHTML)" class="label label-success pointer noSelect">{{ subject }} - {{matches | get:subject}}</div>-->
-                                    <div onclick="courseSelector.addCourse(this.innerHTML)" class="btn btn-success courseBtn">{{ subject }}</div>
+                                    <div onclick="courseSelector.addCourse(this)" class="btn btn-success courseBtn">{{ subject }}</div>
 
                                 {% else %}
                                     <!--<div onclick="addCourse(this.innerHTML)" style="margin-right: 5px" class="label label-warning pointer noSelect">{{ subject }}</div>-->
-                                    <div onclick="courseSelector.addCourse(this.innerHTML)" class="btn btn-warning courseBtn">{{ subject }}</div>
+                                    <div onclick="courseSelector.addCourse(this)" class="btn btn-warning courseBtn">{{ subject }}</div>
                                 {% endif %}
                             {% endfor %}
                         </div>
