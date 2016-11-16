@@ -190,6 +190,9 @@ html, body {
     width: 30%;
     z-index: 1000;
     display: none;
+}
+
+#handle {
     cursor: move;
 }
 

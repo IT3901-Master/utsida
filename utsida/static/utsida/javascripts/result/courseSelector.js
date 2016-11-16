@@ -1,4 +1,4 @@
-var s;
+var s, v;
 courseSelector = {
 
     settings: {
@@ -59,34 +59,46 @@ courseSelector = {
 
 };
 
-courseSelector.init();
 
-/* Drag and drop code */
-var selected = null;
-var xPos = 0;
-var yPos = 0;
-var xElem = 0;
-var yElem = 0;
+courseContainerDrag = {
+    settings: {
+        selected: null,
+        xPos: 0,
+        yPos: 0,
+        xElem: 0,
+        yElem: 0,
+        handle: document.getElementById("selectedCourseContainer")
+    },
 
-function init_drag(elem) {
-    selected = elem;
-    xElem = xPos - selected.offsetLeft;
-    yElem = yPos - selected.offsetTop;
-}
-function _destroy() {
-    selected = null;
-}
-function _move_elem(e) {
-    xPos = document.all ? window.event.clientX : e.pageX;
-    yPos = document.all ? window.event.clientY : e.pageY;
-    if (selected !== null) {
-        selected.style.left = (xPos - xElem) + 'px';
-        selected.style.top = (yPos - yElem) + 'px';
+    init: function() {
+        v = this.settings;
+        document.onmousemove = this.moveElement;
+        document.onmouseup = this.destroy;
+        v.handle.onmousedown = function() {
+            courseContainerDrag.initDrag(this);
+            return false;
+        }
+    },
+
+    initDrag: function(elem) {
+        v.selected = elem;
+        v.xElem = v.xPos - v.selected.offsetLeft;
+        v.yElem = v.yPos - v.selected.offsetTop;
+    },
+
+    destroy: function() {
+        v.selected = null;
+    },
+
+    moveElement: function(e) {
+        v.xPos = document.all ? window.event.clientX : e.pageX;
+        v.yPos = document.all ? window.event.clientY : e.pageY;
+        if (v.selected !== null) {
+            v.selected.style.left = (v.xPos - v.xElem) + 'px';
+            v.selected.style.top = (v.yPos - v.yElem) + 'px';
+        }
     }
-}
-courseSelector.settings.selectedCourseContainer.onmousedown = function() {
-    init_drag(this);
-    return false;
 };
-document.onmousemove = _move_elem;
-document.onmouseup = _destroy;
+
+courseSelector.init();
+courseContainerDrag.init();
