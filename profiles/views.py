@@ -89,3 +89,8 @@ def change_password(request):
     return render(request, 'profiles/change_password.html', {
         'form': form
     })
+
+@login_required
+def save_selected_courses(request):
+    if request.method == 'POST':
+        pass

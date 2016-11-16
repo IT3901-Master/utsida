@@ -185,12 +185,12 @@ html, body {
 
 .selectedCourseContainer {
     position: fixed;
-    right: 20px;
     top: 70px;
+    right: 20px;
     width: 30%;
-    margin: auto;
     z-index: 1000;
     display: none;
+    cursor: move;
 }
 
 .courseBtn {

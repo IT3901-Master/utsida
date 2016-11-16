@@ -56,6 +56,37 @@ courseSelector = {
     showContainer: function() {
         s.selectedCourseContainer.style.display = "block";
     }
+
 };
 
 courseSelector.init();
+
+/* Drag and drop code */
+var selected = null;
+var xPos = 0;
+var yPos = 0;
+var xElem = 0;
+var yElem = 0;
+
+function init_drag(elem) {
+    selected = elem;
+    xElem = xPos - selected.offsetLeft;
+    yElem = yPos - selected.offsetTop;
+}
+function _destroy() {
+    selected = null;
+}
+function _move_elem(e) {
+    xPos = document.all ? window.event.clientX : e.pageX;
+    yPos = document.all ? window.event.clientY : e.pageY;
+    if (selected !== null) {
+        selected.style.left = (xPos - xElem) + 'px';
+        selected.style.top = (yPos - yElem) + 'px';
+    }
+}
+courseSelector.settings.selectedCourseContainer.onmousedown = function() {
+    init_drag(this);
+    return false;
+};
+document.onmousemove = _move_elem;
+document.onmouseup = _destroy;
