@@ -186,11 +186,18 @@ html, body {
 .selectedCourseContainer {
     position: fixed;
     right: 20px;
-    bottom: 20px;
+    top: 70px;
     width: 30%;
     margin: auto;
     z-index: 1000;
     display: none;
+}
+
+.courseBtn {
+    font-size: 10px;
+    margin-bottom: 3px;
+    padding: 3px;
+    font-weight: bold;
 }
 
 

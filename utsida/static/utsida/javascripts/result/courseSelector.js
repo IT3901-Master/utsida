@@ -8,7 +8,7 @@ var selectedCourseList = document.getElementById("selectedCourseList");
 var selectedCourseContainer = document.getElementById("selectedCourseContainer");
 
 function addCourse(course) {
-    selectedCourseContainer.style.display = "block";
+    showContainer();
     if (!(selectedCourses.indexOf(course) > -1)) {
         selectedCourses.push(course);
         var label = document.createElement("li");
@@ -33,10 +33,16 @@ function removeAllSelectedCourses() {
         selectedCourseList.removeChild(selectedCourseList.firstChild)
     }
     toggleSelectedCourses();
-
+    hideContainer();
 }
 
 function updateNumSelectedCourses() {
     numSelectedCoursesBadge.innerHTML = numSelectedCourses.toString();
+}
 
+function hideContainer() {
+    selectedCourseContainer.style.display = "none";
+}
+function showContainer() {
+    selectedCourseContainer.style.display = "block";
 }

@@ -13,9 +13,9 @@
             <ul id="selectedCourseList"></ul>
         </div>
         <div id="selectedCourseFooter" class="panel-footer" style="display: none">
-            <button class="btn btn-success pull-right">Send til veileder</button>
-            <button onclick="removeAllSelectedCourses()" class="btn btn-danger">Tøm listen</button>
-            <button class="btn btn-primary">Lagre fag</button>
+            <button class="btn btn-success pull-right">Send til veileder <span class="glyphicon glyphicon-chevron-right"></span></button>
+            <button onclick="removeAllSelectedCourses()" class="btn btn-default"><span class="glyphicon glyphicon-trash"></span> Tøm listen</button>
+            <button class="btn btn-default"><span class="glyphicon glyphicon-ok"></span> Lagre fag</button>
         </div>
     </div>
 
@@ -71,10 +71,12 @@
                         <div class="subjectsContainer">
                             {% for subject in case.Subjects %}
                                 {% if subject in matches.keys %}
-                                    <div onclick="addCourse(this.innerHTML)" class="label label-success pointer noSelect">{{ subject }} - {{matches | get:subject}}</div>
+                                    <!--<div onclick="addCourse(this.innerHTML)" class="label label-success pointer noSelect">{{ subject }} - {{matches | get:subject}}</div>-->
+                                    <div onclick="courseSelector().addCourse(this.innerHTML)" class="btn btn-success courseBtn">{{ subject }}</div>
+
                                 {% else %}
-                                    <div onclick="addCourse(this.innerHTML)" style="margin-right: 5px" class="label label-warning pointer noSelect">{{ subject }}
-                                    </div>
+                                    <!--<div onclick="addCourse(this.innerHTML)" style="margin-right: 5px" class="label label-warning pointer noSelect">{{ subject }}</div>-->
+                                    <div onclick="addCourse(this.innerHTML)" class="btn btn-warning courseBtn">{{ subject }}</div>
                                 {% endif %}
                             {% endfor %}
                         </div>
