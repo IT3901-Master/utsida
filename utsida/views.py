@@ -108,9 +108,18 @@ def result(request, university=None):
 
 
 def courseMatch(request):
+    print(request.POST["university"])
     if not request.user.is_authenticated():
         return redirect("login")
-    course_matches = CourseMatch.objects.all()
-    university_list = University.objects.all()
-    context = {"course_match_list": course_matches, "university_list": university_list}
+    course_matches = CourseMatch.objects.all().filter(abroadCourse__university__name=request.POST["university"])
+    context = {"course_match_list": course_matches}
     return render(request, "utsida/courseMatch.html", context)
+
+
+def course_match_select_university(request):
+    if not request.user.is_authenticated():
+        return redirect("login")
+
+    university_list = University.objects.all()
+    context = {"university_list":university_list}
+    return render(request, "utsida/course_match_university_select.html",context)
