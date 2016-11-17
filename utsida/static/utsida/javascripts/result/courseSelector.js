@@ -62,6 +62,7 @@ courseSelector = {
         s.selectedCourseContainer.style.display = "block";
     }
 
+
 };
 
 

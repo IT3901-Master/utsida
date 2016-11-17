@@ -113,3 +113,8 @@ def courseMatch(request):
     university_list = University.objects.all()
     context = {"course_match_list": course_matches, "university_list": university_list}
     return render(request, "utsida/courseMatch.html", context)
+
+
+def send_courses(request):
+    print(request)
+

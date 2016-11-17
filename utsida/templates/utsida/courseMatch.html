@@ -21,7 +21,7 @@
             <tbody>
 
             {% for course_match in course_match_list %}
-                <tr class="clickableTableRow noselect">
+                <tr class="noSelect pointer">
                 <td class="glyphicon glyphicon-chevron-down"></td>
                     {% if course_match.homeCourse.description_url == "" %}
                         <td>{{ course_match.homeCourse }} </td>
