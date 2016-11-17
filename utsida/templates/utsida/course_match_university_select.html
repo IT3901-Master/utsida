@@ -14,7 +14,7 @@
                 <div class="form-group">
                     <select id="university" class="form-control" name="university">
                         {% for university in university_list %}
-                            <option>{{ university }}</option>
+                            <option>{{ university }} ({{ university.count }}) </option>
                         {% endfor %}
                     </select>
                 </div>

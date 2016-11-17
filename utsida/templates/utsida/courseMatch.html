@@ -3,7 +3,7 @@
 {% block content %}
 
     <div class="container">
-        <h2 class="text-center">Godkjente fag</h2>
+        <h2 class="text-center">Godkjente fag fra {{ university_name }}</h2>
         <table id="example" class="table table-striped">
             <thead>
             <tr>
@@ -43,6 +43,36 @@
             </tbody>
         </table>
     </div>
+
+    <button type="button" class="btn btn-primary btn-lg" data-toggle="modal" data-target="#myModal">
+  Legg til fagkobling
+</button>
+
+<!-- Modal -->
+<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+        <h4 class="modal-title" id="myModalLabel">Fag kobling</h4>
+      </div>
+      <div class="modal-body">
+        <form>
+    {{ add_form }}
+    <button>Legg til fagkobling</button>
+    </form>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Lukk</button>
+        <button type="button" class="btn btn-primary">Lagre</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+
 
     {% load staticfiles %}
     <script src="{% static 'utsida/javascripts/courseMatch/courseMatchTable.js' %}"></script>

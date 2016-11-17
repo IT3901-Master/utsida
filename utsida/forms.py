@@ -1,6 +1,6 @@
 from django import forms
 
-from .models import Query, University
+from .models import Query, University, CourseMatch
 
 
 class QueryCaseBaseForm(forms.ModelForm):
@@ -22,13 +22,10 @@ class QueryCaseBaseForm(forms.ModelForm):
         self.fields["academicQualityRating"].required = False
         self.fields["socialQualityRating"].required = False
 
+class CourseMatchForm(forms.ModelForm):
 
-class University_selection_form(forms.ModelForm):
 
     class Meta:
-        model = University
-        fields = ('name',)
+        model = CourseMatch
+        fields = ['abroadCourse','homeCourse','comment','approval_date','approved',]
 
-    def __init__(self, *args, **kwargs):
-        super(University_selection_form, self).__init__(*args,**kwargs)
-        self.fields["name"].required = True

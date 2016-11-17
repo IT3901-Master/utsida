@@ -108,11 +108,10 @@ def result(request, university=None):
 
 
 def courseMatch(request):
-    print(request.POST["university"])
     if not request.user.is_authenticated():
         return redirect("login")
     course_matches = CourseMatch.objects.all().filter(abroadCourse__university__name=request.POST["university"])
-    context = {"course_match_list": course_matches}
+    context = {"course_match_list": course_matches,"university_name":request.POST["university"], "add_form":CourseMatchForm}
     return render(request, "utsida/courseMatch.html", context)
 
 
@@ -121,5 +120,9 @@ def course_match_select_university(request):
         return redirect("login")
 
     university_list = University.objects.all()
+
+    for university in university_list:
+        university.count = len(CourseMatch.objects.all().filter(abroadCourse__university__name=university.name))
+
     context = {"university_list":university_list}
     return render(request, "utsida/course_match_university_select.html",context)
