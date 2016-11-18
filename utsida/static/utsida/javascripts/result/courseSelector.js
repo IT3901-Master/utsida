@@ -83,8 +83,15 @@ courseSelector = {
     },
 
     saveCourses: function() {
-        $.post("/profile/save_courses/", {'courses': JSON.stringify(s.selectedCourses)});
-    }
+        $.post("/profile/save_courses/", {'courses': JSON.stringify(s.selectedCourses)})
+            .success(function(res) {
+                res = JSON.parse(res);
+                if (res.code == 500)
+                    console.log(res.message)
+            });
+        this.hideContainer();
+    },
+
 };
 
 courseContainerDrag = {

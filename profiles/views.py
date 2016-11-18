@@ -100,7 +100,14 @@ def saved_courses(request):
 
     courses = profile.saved_courses.all()
 
-    return render(request, 'profiles/courses.html', {'courses': courses})
+    if not courses:
+        return render(request, 'profiles/courses.html')
+
+    university = courses[0].university
+
+    home_courses = profile.coursesToTake.all()
+
+    return render(request, 'profiles/courses.html', {'courses': courses, 'university': university, 'home_courses': home_courses})
 
 
 def save_courses(request):
@@ -113,6 +120,9 @@ def save_courses(request):
             course_name = course["name"]
             course_uni = course["university"]
             course_country = course["country"]
+
+            if profile.saved_courses.filter(code=course_code):
+                return HttpResponse(json.dumps({'code': 500, 'message': 'this course is already added'}))
 
             if AbroadCourse.objects.all().filter(code=course_code):
                 new_course = AbroadCourse.objects.get(code=course_code)
@@ -140,6 +150,30 @@ def save_courses(request):
                 new_abroad_course.save()
                 profile.saved_courses.add(new_abroad_course)
                 profile.save()
+
+        return HttpResponse(json.dumps({'code': 200, 'message': 'OK'}))
+    else:
+        return HttpResponse(json.dumps({'code': 500, 'message': 'request is not a post request'}))
+
+
+def remove_course(request):
+    if request.method == 'POST':
+        profile = Profile.objects.get(user=request.user)
+        course_code = request.POST['course']
+        course_uni = University.objects.all().filter(name=request.POST['university'])
+        profile.saved_courses.filter(code=course_code, university=course_uni).delete()
+        profile.save()
+
+        return HttpResponse({'code': 200, 'message': 'OK'})
+    else:
+        return HttpResponse({'code': 500, 'message': 'request is not a post request'})
+
+
+def remove_all_courses(request):
+    if request.method == 'POST':
+        profile = Profile.objects.get(user=request.user)
+        profile.saved_courses.all().delete()
+        profile.save()
 
         return HttpResponse({'code': 200, 'message': 'OK'})
     else:

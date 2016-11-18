@@ -46,6 +46,11 @@
   user-select: none;           /* Non-prefixed version, currently not supported by any browser */
 }
 
+.centerCol {
+    margin: auto;
+    float: none;
+}
+
 
 /* 1.1 - Spacing */
 
@@ -186,6 +191,13 @@ html, body {
     margin-bottom: 3px;
     padding: 3px;
     font-weight: bold;
+}
+
+/* 8 - Saved Courses */
+.courseBlock {
+    background-color: white;
+    padding: 20px;
+    margin-top: 10px;
 }
 
 
