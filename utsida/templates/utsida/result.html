@@ -12,17 +12,15 @@
             <span class="badge" id="numSelectedCoursesBadge"></span>
             <span id="selectedCourseToggleBtn" onclick="courseSelector.toggleSelectedCourses()" class="pull-right glyphicon glyphicon-chevron-up"></span>
         </div>
-        <div id="selectedCourseBody" class="panel-body" style="display: none">
+        <div id="selectedCourseBody" class="panel-body">
             <ul id="selectedCourseList"></ul>
         </div>
-        <div id="selectedCourseFooter" class="panel-footer" style="display: none">
+        <div id="selectedCourseFooter" class="panel-footer">
             <button onclick="courseSelector.sendCourses()" class="btn btn-success pull-right">Send til veileder <span class="glyphicon glyphicon-chevron-right"></span></button>
             <button onclick="courseSelector.removeAllSelectedCourses()" class="btn btn-default"><span class="glyphicon glyphicon-trash"></span> Tøm listen</button>
-            <button class="btn btn-default"
-                    data-toggle="popover"
-                    data-placement="top"
-                    data-content="Denne funksjonalitet er ikke implementert enda">
-                <span class="glyphicon glyphicon-ok"></span> Lagre fag
+            <button onclick="courseSelector.saveCourses()" class="btn btn-default">
+                <span class="glyphicon glyphicon-ok"></span>
+                Lagre fag
             </button>
         </div>
     </div>
@@ -112,9 +110,11 @@
 
     {% load staticfiles %}
     <script src="{% static 'utsida/javascripts/result/showHiddenContent.js' %}"></script>
-    <script src="{% static 'utsida/javascripts/result/loadingScreen.js' %}"></script>
     <script src="{% static 'utsida/javascripts/result/universityHighlighter.js' %}"></script>
     <script src="{% static 'utsida/javascripts/result/courseSelector.js' %}"></script>
+    {% if show_loader %}
+        <script src="{% static 'utsida/javascripts/result/loadingScreen.js' %}"></script>
+    {% endif %}
 
 
 

@@ -12,4 +12,6 @@ urlpatterns = [
     url(r'^logout/$', auth_views.logout, {'next_page': '/'}, name='logout'),
     url(r'^ajax_select/', include(ajax_select_urls)),
     url(r'^change_password/$', views.change_password, name='password_change'),
+    url(r'^courses/$', views.saved_courses, name='saved_courses'),
+    url(r'^save_courses/$', views.save_courses, name='save_courses'),
 ]

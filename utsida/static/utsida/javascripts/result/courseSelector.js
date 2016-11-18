@@ -19,11 +19,22 @@ courseSelector = {
 
     addCourse: function(c) {
         var uni = c.parentNode.parentNode.previousSibling.previousSibling.innerText.split('(').slice()[0].slice(0, -1);
+        var country = c.parentNode.parentNode.previousSibling.previousSibling.innerText.split('(').slice()[1].split(')')[0];
         var course = c.innerHTML;
+        var splitCourse = course.split(' ');
+        var code = splitCourse.shift();
+        var name = splitCourse.join(' ');
 
-        if ((uni == s.university || s.university == null) && !(s.selectedCourses.indexOf(course) > -1)) {
+        if ((uni == s.university || s.university == null) && !(this.isCourseAlreadyAdded(name))) {
             s.university = uni;
-            s.selectedCourses.push(course);
+
+            s.selectedCourses.push({
+                'code': code,
+                'name': name,
+                'university': uni,
+                'country': country
+            });
+
             var label = document.createElement("li");
             label.innerHTML = course;
             s.selectedCourseList.appendChild(label);
@@ -31,6 +42,15 @@ courseSelector = {
             this.updateNumSelectedCourses();
             this.showContainer();
         }
+    },
+
+    isCourseAlreadyAdded: function(newCourse) {
+        for (var i = 0; i < s.selectedCourses.length; i++) {
+            if (newCourse == s.selectedCourses[i].name) {
+                return true;
+            }
+        }
+        return false;
     },
 
     removeAllSelectedCourses: function() {
@@ -60,11 +80,12 @@ courseSelector = {
 
     showContainer: function() {
         s.selectedCourseContainer.style.display = "block";
+    },
+
+    saveCourses: function() {
+        $.post("/profile/save_courses/", {'courses': JSON.stringify(s.selectedCourses)});
     }
-
-
 };
-
 
 courseContainerDrag = {
     settings: {

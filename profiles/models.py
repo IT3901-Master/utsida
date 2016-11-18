@@ -11,6 +11,7 @@ class Profile(models.Model):
     user = models.OneToOneField(User, on_delete=models.CASCADE)
     institute = models.ForeignKey(Institute, null=True)
     coursesToTake = models.ManyToManyField(HomeCourse)
+    saved_courses = models.ManyToManyField(AbroadCourse)
 
     class Meta:
         verbose_name_plural = 'profiles'

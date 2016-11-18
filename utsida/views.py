@@ -75,7 +75,6 @@ def result(request, university=None):
 
             sorted_full_similar_cases = sorted(full_similar_cases, key=lambda k: k['Similarity'], reverse=True)
 
-
             courses = request.user.profile.coursesToTake.all()
 
             course_wanted_to_be_taken_matches = {}
@@ -114,7 +113,4 @@ def courseMatch(request):
     context = {"course_match_list": course_matches, "university_list": university_list}
     return render(request, "utsida/courseMatch.html", context)
 
-
-def send_courses(request):
-    print(request)
 

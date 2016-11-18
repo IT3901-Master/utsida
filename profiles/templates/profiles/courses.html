@@ -1,0 +1,20 @@
+{% extends "utsida/layout.html" %}
+
+{% block content %}
+
+    <h3 class="text-center">Du har lagret følgende fag</h3>
+
+    {% for course in courses %}
+        <div class="form-control">
+            {{ course }}
+        </div>
+    {% endfor %}
+
+    <a class="btn btn-success main-btn center-block vertical-space-top-big vertical-space-bottom-big square-corners" href="#">
+        Send til veileder
+        <span class="glyphicon glyphicon-chevron-right"></span>
+    </a>
+
+
+
+{% endblock %}

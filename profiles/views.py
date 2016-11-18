@@ -3,8 +3,11 @@ from django.contrib import messages
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth.forms import PasswordChangeForm
 from django.db import transaction
+from django.http import HttpResponse
+from django.http import HttpResponseRedirect
 from django.shortcuts import render, redirect
 from django.contrib.auth import authenticate, login, update_session_auth_hash
+import json
 
 from profiles.forms import UserForm, ProfileForm, UpdateUserForm
 from .models import *
@@ -90,7 +93,61 @@ def change_password(request):
         'form': form
     })
 
+
 @login_required
-def save_selected_courses(request):
+def saved_courses(request):
+    profile = Profile.objects.get(user=request.user)
+
+    courses = profile.saved_courses.all()
+
+    return render(request, 'profiles/courses.html', {'courses': courses})
+
+
+def save_courses(request):
     if request.method == 'POST':
-        pass
+        selected_courses = json.loads(request.POST.getlist('courses')[0])
+        profile = Profile.objects.get(user=request.user)
+
+        for course in selected_courses:
+            course_code = course["code"]
+            course_name = course["name"]
+            course_uni = course["university"]
+            course_country = course["country"]
+
+            if AbroadCourse.objects.all().filter(code=course_code):
+                new_course = AbroadCourse.objects.get(code=course_code)
+                profile.saved_courses.add(new_course)
+                profile.save()
+
+            else:
+                if not university_exists(course_uni):
+                    new_uni = University.objects.create(
+                        name=course_uni,
+                        country=Country.objects.get(name=course_country)
+                    )
+                    new_abroad_course = AbroadCourse(
+                        code=course_code,
+                        name=course_name,
+                        university=new_uni
+                    )
+                else:
+                    new_abroad_course = AbroadCourse(
+                        code=course_code,
+                        name=course_name,
+                        university=University.objects.get(name=course_uni)
+                    )
+
+                new_abroad_course.save()
+                profile.saved_courses.add(new_abroad_course)
+                profile.save()
+
+        return HttpResponse({'code': 200, 'message': 'OK'})
+    else:
+        return HttpResponse({'code': 500, 'message': 'request is not a post request'})
+
+
+def university_exists(u):
+    for uni in University.objects.all():
+        if uni.name == u:
+            return True
+    return False
