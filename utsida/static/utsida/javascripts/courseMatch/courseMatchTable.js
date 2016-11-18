@@ -1,3 +1,4 @@
+
 /* Formatting function for row details - modify as you need */
 function format(d) {
     // `d` is the original data object for the row
@@ -62,6 +63,9 @@ $(document).ready(function () {
             }
         ]
     });
+
+    //Shows the table after loading
+    $('#example').css('opacity',1);
 
     $('#example tbody').on('click', 'td', function () {
         var tr = $(this).closest('tr');

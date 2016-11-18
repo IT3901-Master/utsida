@@ -1,10 +1,11 @@
 {% extends "utsida/layout.html" %}
 
 {% block content %}
+    {% load widget_tweaks %}
 
     <div class="container">
         <h2 class="text-center">Godkjente fag fra {{ university_name }}</h2>
-        <table id="example" class="table table-striped">
+        <table id="example" class="table table-striped" style="opacity: 0">
             <thead>
             <tr>
                 <th></th>
@@ -20,7 +21,7 @@
 
             {% for course_match in course_match_list %}
                 <tr class="clickableTableRow noselect">
-                <td class="glyphicon glyphicon-chevron-down"></td>
+                    <td class="glyphicon glyphicon-chevron-down"></td>
                     {% if course_match.homeCourse.description_url == "" %}
                         <td>{{ course_match.homeCourse }} </td>
                     {% else %}
@@ -45,32 +46,39 @@
     </div>
 
     <button type="button" class="btn btn-primary btn-lg" data-toggle="modal" data-target="#myModal">
-  Legg til fagkobling
-</button>
+        Legg til fagkobling
+    </button>
 
-<!-- Modal -->
-<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
-  <div class="modal-dialog" role="document">
-    <div class="modal-content">
-      <div class="modal-header">
-        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-          <span aria-hidden="true">&times;</span>
-        </button>
-        <h4 class="modal-title" id="myModalLabel">Fag kobling</h4>
-      </div>
-      <div class="modal-body">
-        <form>
-    {{ add_form }}
-    <button>Legg til fagkobling</button>
-    </form>
-      </div>
-      <div class="modal-footer">
-        <button type="button" class="btn btn-secondary" data-dismiss="modal">Lukk</button>
-        <button type="button" class="btn btn-primary">Lagre</button>
-      </div>
+    <!-- Modal -->
+    <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                    <h4 class="modal-title" id="myModalLabel">Legg til ny fag kobling</h4>
+                </div>
+                <form action="" method="post">
+                    {% csrf_token %}
+                    <div class="modal-body">
+                        <div class="form-group">
+                            <label> Fag utenlands </label>
+                            {{ add_form.abroadCourse | add_class:"form-control" }}
+                        </div>
+                        <div class="form-group">
+                            <label> Fag hjemme </label>
+                            {{ add_form.homeCourse | add_class:"form-control" }}
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Lukk</button>
+                        <button type="submit" class="btn btn-primary">Lagre</button>
+                    </div>
+                </form>
+            </div>
+        </div>
     </div>
-  </div>
-</div>
 
 
 
