@@ -1,4 +1,4 @@
-from django.shortcuts import render, redirect
+from django.shortcuts import render, redirect, get_object_or_404
 import requests
 import json
 from .forms import *
@@ -106,17 +106,32 @@ def result(request, university=None):
 
     return render(request, 'utsida/process.html', {'form': form})
 
-
+@login_required
 def courseMatch(request):
-    if not request.user.is_authenticated():
-        return redirect("login")
-    university = request.POST["university"]
-    university = university[:-5]
+    university = request.POST["university"][:-5]
     add_form = CourseMatchForm()
     add_form.fields["abroadCourse"].queryset = AbroadCourse.objects.filter(university__name=university)
     course_matches = CourseMatch.objects.all().filter(abroadCourse__university__name=university)
-    context = {"course_match_list": course_matches,"university_name":request.POST["university"], "add_form":add_form}
+    context = {"course_match_list": course_matches,"university_name":university, "add_form":add_form}
     return render(request, "utsida/courseMatch.html", context)
+
+
+def add_update_course_match(request, pk=None):
+    if pk:
+        instance = CourseMatch.objects.get(pk=pk)
+    else:
+        instance = CourseMatch()
+    form = CourseMatchForm(request.POST or None, instance=instance)
+    if form.is_valid():
+        form.save()
+        university = form.cleaned_data["abroadCourse"].university
+        add_form = CourseMatchForm()
+        add_form.fields["abroadCourse"].queryset = AbroadCourse.objects.filter(university__name=university)
+        course_matches = CourseMatch.objects.all().filter(abroadCourse__university__name=university)
+        context = {"course_match_list": course_matches, "university_name": university, "add_form": add_form}
+        return render(request, "utsida/courseMatch.html", context)
+    else:
+        return render(request, 'utsida/update_course_match.html', {'form': form, 'pk':pk})
 
 
 def course_match_select_university(request):

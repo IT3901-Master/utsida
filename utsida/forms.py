@@ -1,3 +1,5 @@
+from datetime import date
+
 from django import forms
 
 from .models import Query, University, CourseMatch
@@ -22,11 +24,18 @@ class QueryCaseBaseForm(forms.ModelForm):
         self.fields["academicQualityRating"].required = False
         self.fields["socialQualityRating"].required = False
 
+
+class DateInput(forms.DateInput):
+    input_type = 'date'
+
 class CourseMatchForm(forms.ModelForm):
 
 
     class Meta:
         model = CourseMatch
         fields = ['abroadCourse','homeCourse','comment','approval_date','approved',]
+        widgets = {
+            'approval_date': DateInput()
+        }
 
 
