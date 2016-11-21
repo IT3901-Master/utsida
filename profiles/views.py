@@ -122,7 +122,16 @@ def save_courses(request):
             course_country = course["country"]
 
             if profile.saved_courses.filter(code=course_code):
-                return HttpResponse(json.dumps({'code': 500, 'message': 'this course is already added'}))
+                return HttpResponse(json.dumps({
+                    'error': 'illegal course',
+                    'message': 'Ett eller fler av fagene du prøvde å legge til er allerede lagret.'
+                }))
+
+            if not profile.saved_courses.all().filter(university=University.objects.all().filter(name=course_uni)) and profile.saved_courses.all():
+                return HttpResponse(json.dumps({
+                    'error': 'illegal university',
+                    'message': 'Nye valgte fag må være fra samme universitet som dine tidligere lagrede fag.'
+                }))
 
             if AbroadCourse.objects.all().filter(code=course_code):
                 new_course = AbroadCourse.objects.get(code=course_code)
@@ -151,9 +160,15 @@ def save_courses(request):
                 profile.saved_courses.add(new_abroad_course)
                 profile.save()
 
-        return HttpResponse(json.dumps({'code': 200, 'message': 'OK'}))
+        return HttpResponse(json.dumps({
+            'code': 200,
+            'message': "De valgte fagene er nå lagret i dine 'Lagrede fag', under profilen din. "
+        }))
     else:
-        return HttpResponse(json.dumps({'code': 500, 'message': 'request is not a post request'}))
+        return HttpResponse(json.dumps({
+            'code': 500,
+            'message': 'request is not a post request'
+        }))
 
 
 def remove_course(request):

@@ -60,7 +60,6 @@ courseSelector = {
         while(s.selectedCourseList.firstChild) {
             s.selectedCourseList.removeChild(s.selectedCourseList.firstChild)
         }
-        this.toggleSelectedCourses();
         this.hideContainer();
     },
 
@@ -86,14 +85,21 @@ courseSelector = {
         $.post("/profile/save_courses/", {'courses': JSON.stringify(s.selectedCourses)})
             .success(function(res) {
                 res = JSON.parse(res);
-                if (res.code == 500)
-                    console.log(res.message)
+                Messager.init();
+                if (res.error != undefined && res.error == "illegal course")
+                    Messager.sendMessage(res.message, "danger");
+                else if (res.error != undefined && res.error == "illegal university")
+                    Messager.sendMessage(res.message, "danger");
+                else if (res.code != undefined && res.code == 200)
+                    Messager.sendMessage(res.message, "success");
             });
+        this.removeAllSelectedCourses();
         this.hideContainer();
     },
 
 };
 
+/*
 courseContainerDrag = {
     settings: {
         selected: null,
@@ -133,6 +139,6 @@ courseContainerDrag = {
         }
     }
 };
-
+*/
 courseSelector.init();
-courseContainerDrag.init();
+//courseContainerDrag.init();

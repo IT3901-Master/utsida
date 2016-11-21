@@ -19,6 +19,7 @@
         <script type="text/javascript" src="https://cdn.datatables.net/1.10.12/js/dataTables.bootstrap.min.js"></script>
         <script type="text/javascript" src="{% static "utsida/ajax_select/js/bootstrap.js" %}"></script>
         <script type="text/javascript" src={% static "utsida/ajax_select/js/ajax_select.js" %}></script>
+        <script src="{% static 'utsida/javascripts/messageModule.js' %}"></script>
     </head>
     <body>
         <nav class="navbar navbar-default navbar-custom">
@@ -73,6 +74,7 @@
         </nav>
         <div class="main-wrapper">
             <div class="container">
+                <div id="messageContainer"></div>
                 {% block content %}
                 {% endblock %}
             </div>
@@ -85,40 +87,7 @@
         </div>
 
         <script src="{% static 'utsida/javascripts/popover.js' %}"></script>
-
-        <script>
-            // using jQuery
-            function getCookie(name) {
-                var cookieValue = null;
-                if (document.cookie && document.cookie !== '') {
-                    var cookies = document.cookie.split(';');
-                    for (var i = 0; i < cookies.length; i++) {
-                        var cookie = jQuery.trim(cookies[i]);
-                        // Does this cookie string begin with the name we want?
-                        if (cookie.substring(0, name.length + 1) === (name + '=')) {
-                            cookieValue = decodeURIComponent(cookie.substring(name.length + 1));
-                            break;
-                        }
-                    }
-                }
-                return cookieValue;
-            }
-
-            var csrftoken = getCookie('csrftoken');
-
-            function csrfSafeMethod(method) {
-                // these HTTP methods do not require CSRF protection
-                return (/^(GET|HEAD|OPTIONS|TRACE)$/.test(method));
-            }
-
-            $.ajaxSetup({
-                beforeSend: function(xhr, settings) {
-                    if (!csrfSafeMethod(settings.type) && !this.crossDomain) {
-                        xhr.setRequestHeader("X-CSRFToken", csrftoken);
-                    }
-                }
-            });
-        </script>
+        <script src="{% static 'utsida/javascripts/ajaxPostConfig.js' %}"></script>
 
     </body>
 </html>
