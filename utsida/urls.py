@@ -11,6 +11,6 @@ urlpatterns = [
     url(r'^process/result/(?P<university>[\w ]+)/$', views.result, name='filtered_result'),
     url(r'^courseMatch/(?P<university>\d+)/$', views.courseMatch, name='courseMatch'),
     url(r'^courseMatch/university/$', views.courseMatch, name='courseMatch'),
-    url(r'^courseMatch/add/$', views.add_update_course_match, name='add_course_match'),
-    url(r'^courseMatch/update/(?P<pk>\d+)/$', views.add_update_course_match, name="update_course_match")
+    url(r'^courseMatch/add/$', views.add_course_match, name='add_course_match'),
+    url(r'^courseMatch/update/(?P<pk>\d+)/$', views.update_course_match, name="update_course_match")
 ]

@@ -1,4 +1,3 @@
-
 /* Formatting function for row details - modify as you need */
 function format(d) {
     // `d` is the original data object for the row
@@ -15,11 +14,20 @@ function format(d) {
         '<td>Kommentar: </td>' +
         '<td>' + d[6] + '</td>' +
         '</tr>' +
+        '<tr>' +
+        '<td>Studiepoeng: </td>' +
+        '<td>' + d[3] + '</td>' +
+        '</tr>' +
         '</table>';
 }
 
+setTimeout(function () {
+    $('#sucessAlert').fadeOut('slow');
+}, 5000);
 
 $(document).ready(function () {
+
+
     var table = $('#example').DataTable({
         initComplete: function () {
             this.api().columns('.select-filter').every(function () {
@@ -46,8 +54,11 @@ $(document).ready(function () {
             {
                 "targets": [0],
                 "orderable": false,
-                "data": null,
                 "defaultContent": ''
+            },
+            {
+                "targets": [3],
+                "visible": false
             },
             {
                 "targets": [5],
@@ -60,12 +71,17 @@ $(document).ready(function () {
             {
                 "targets": [6],
                 "visible": false
+            },
+            {
+                "targets": [7],
+                "orderable": false,
+                "defaultContent": ''
             }
         ]
     });
 
     //Shows the table after loading
-    $('#example').css('opacity',1);
+    $('#example').css('opacity', 1);
 
     $('#example tbody').on('click', 'td', function () {
         var tr = $(this).closest('tr');
