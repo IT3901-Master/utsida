@@ -45,6 +45,11 @@ html, body {
     color: #444;
     font-size: 18px;
 }
+
+ul.ui-autocomplete {
+    z-index: 1100;
+}
+
 /* 2.0 - nav */
 
 .navbar-custom {

@@ -46,7 +46,7 @@
                         <td> {{ course_match.abroadCourse.university }}</td>
                         <td>{{ course_match.comment }}</td>
                         <td>
-                            <a class="glyphicon glyphicon-edit" href="{% url 'update_course_match' pk=course_match.pk %}"></a>
+                            <a class="glyphicon glyphicon-edit" href="{% url 'update_course_match' id=course_match.id %}"></a>
                         </td>
                     </tr>
                 {% endfor %}
@@ -70,7 +70,7 @@
                     </button>
                     <h4 class="modal-title" id="myModalLabel">Legg til ny fag kobling</h4>
                 </div>
-                <form action="/courseMatch/add/" method="post">
+                <form action="/courseMatch/add/" method="post" novalidate="novalidate">
                     {% csrf_token %}
                     <div class="modal-body">
                         <div class="form-group">

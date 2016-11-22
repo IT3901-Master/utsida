@@ -50,6 +50,7 @@ class University(models.Model):
     name = models.CharField(max_length=100, unique=True)
     acronym = models.CharField(max_length=10, blank=True)
     country = models.ForeignKey(Country, blank=True)
+    objects = UniversityManager()
 
     def __str__(self):
         return self.name
@@ -87,10 +88,15 @@ class AbroadCourse(models.Model):
         return self.code, self.university
 
 
+class HomeCourseManager(models.Manager):
+    def get_by_natural_key(self, code):
+        return self.get(code=code)
+
 class HomeCourse(models.Model):
-    code = models.CharField(max_length=10, primary_key=True)
+    code = models.CharField(max_length=10, unique=True)
     name = models.CharField(max_length=50)
     description_url = models.URLField(max_length=2000, blank=True,default="")
+    objects = HomeCourseManager()
 
     def __str__(self):
         return self.code + ' - ' + self.name
@@ -99,6 +105,9 @@ class HomeCourse(models.Model):
     class Meta:
         verbose_name_plural = 'home courses'
         verbose_name = 'home course'
+
+    def natural_key(self):
+        return self.code
 
 
 class CourseMatch(models.Model):

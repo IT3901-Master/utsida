@@ -16,13 +16,16 @@ class CourseFindChannel(LookupChannel):
             return True
 
     def get_query(self, q, request):
-        return HomeCourse.objects.filter(Q(name__icontains=q) | Q(code__istartswith=q)).order_by('name')
+        return HomeCourse.objects.filter(Q(name__icontains=q) | Q(code__istartswith=q) | Q(pk__istartswith=q)).order_by('name')
 
     def get_result(self, obj):
         return text_type(obj.name)
 
     def format_match(self, obj):
         return self.format_item_display(obj)
+
+    def get_objects(self, ids):
+        return [HomeCourse.objects.get(pk=ids[0])]
 
     def format_item_display(self, obj):
         return "<span class="">%s, %s </span>" % (escape(obj.code), escape(obj.name))

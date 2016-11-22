@@ -40,8 +40,7 @@ class CourseMatchForm(forms.ModelForm):
             'approval_date': DateInput()
         }
 
-
-    #homeCourse = make_ajax_field(CourseMatch, 'homeCourse', 'homeCourseFind', show_help_text=True, required=True)
+    homeCourse = make_ajax_field(CourseMatch, 'homeCourse', 'homeCourseFind', show_help_text=False, required=False)
 
     def save(self, commit=True):
         courseMatch = super(CourseMatchForm, self).save(commit=False)

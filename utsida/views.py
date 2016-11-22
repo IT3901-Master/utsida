@@ -1,3 +1,5 @@
+from django.db import transaction
+from django.http import HttpResponse
 from django.shortcuts import render, redirect, get_object_or_404
 import requests
 import json
@@ -123,8 +125,9 @@ def group_check(user):
 
 @login_required
 @user_passes_test(group_check)
-def update_course_match(request, pk):
-    instance = CourseMatch.objects.get(pk=pk)
+@transaction.atomic
+def update_course_match(request, id):
+    instance = get_object_or_404(CourseMatch, id=id)
     if request.method == "POST":
         form = CourseMatchForm(request.POST,instance=instance)
         if form.is_valid():
@@ -136,9 +139,12 @@ def update_course_match(request, pk):
             context = {"course_match_list": course_matches, "university_name": university, "add_form": add_form}
             messages.success(request, "Fag kobling ble endret")
             return render(request, "utsida/courseMatch.html", context)
+        else:
+            return HttpResponse("FUCK YOU!!!")
     else:
+        #form = CourseMatchForm(initial={"abroadCourse": instance.abroadCourse})
         form = CourseMatchForm(instance=instance)
-        return render(request,"utsida/update_course_match.html", {"form":form,"pk":pk})
+        return render(request,"utsida/update_course_match.html", {"form":form,"id":id})
 
 def add_course_match(request):
     if request.POST:
@@ -152,6 +158,8 @@ def add_course_match(request):
             context = {"course_match_list": course_matches, "university_name": university, "add_form": add_form}
             messages.success(request,"Ny fag-kobling ble lagt til")
             return render(request, "utsida/courseMatch.html", context)
+        else:
+            messages.error(request,"Endre feilene under")
 
 
 
