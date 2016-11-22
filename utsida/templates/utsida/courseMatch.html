@@ -46,7 +46,9 @@
                         <td> {{ course_match.abroadCourse.university }}</td>
                         <td>{{ course_match.comment }}</td>
                         <td>
+                            {% if perms.can_edit_course_match %}
                             <a class="glyphicon glyphicon-edit" href="{% url 'update_course_match' id=course_match.id %}"></a>
+                            {% endif %}
                         </td>
                     </tr>
                 {% endfor %}
