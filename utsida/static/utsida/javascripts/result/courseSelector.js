@@ -97,6 +97,11 @@ courseSelector = {
         this.hideContainer();
     },
 
+    saveAndNext: function() {
+        this.saveCourses();
+        window.location = "/profile/courses/";
+    }
+
 };
 
 /*
