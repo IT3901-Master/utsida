@@ -61,8 +61,6 @@ class University(models.Model):
         verbose_name_plural = 'universities'
 
 
-
-
 class AbroadCourseManager(models.Manager):
     def get_by_natural_key(self, code, university):
         return self.get(code=code, university=university)
@@ -78,10 +76,10 @@ class AbroadCourse(models.Model):
     objects = AbroadCourseManager()
 
     class Meta:
-        unique_together = ["code","university"]
+        unique_together = ["code", "university"]
 
     def __str__(self):
-        return self.code + ' - ' + self.name
+        return self.code + ' ' + self.name
 
     def natural_key(self):
         return self.code, self.university
@@ -94,7 +92,6 @@ class HomeCourse(models.Model):
 
     def __str__(self):
         return self.code + ' - ' + self.name
-
 
     class Meta:
         verbose_name_plural = 'home courses'

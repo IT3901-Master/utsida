@@ -1,6 +1,3 @@
 setTimeout(function () {
-    $("#loader").css("display", "none");
-    $("#results").css("display", "block");
-    $("#filters").css("display", "block");
-    $("#searchParameters").css("display", "none");
+    document.getElementById("loadingScreen").style.display = "none";
 }, 2000);
