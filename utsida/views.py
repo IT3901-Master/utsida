@@ -156,7 +156,8 @@ def add_course_match(request):
             messages.success(request,"Ny fag-kobling ble lagt til")
             return render(request, "utsida/courseMatch.html", context)
         else:
-            messages.error(request,"Endre feilene under")
+            messages.error(request, "Endre feilene under")
+            return HttpResponse("Du må fylle ut alle feltene i formen")
 
 
 
