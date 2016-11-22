@@ -43,6 +43,7 @@ class Country(models.Model):
 
 class UniversityManager(models.Manager):
     def get_by_natural_key(self, name):
+        print(name)
         return self.get(name=name)
 
 
@@ -64,7 +65,7 @@ class University(models.Model):
 
 class AbroadCourseManager(models.Manager):
     def get_by_natural_key(self, code, university):
-        return self.get(code=code, university=university)
+        return self.get(code=code, university__name=university)
 
 
 class AbroadCourse(models.Model):

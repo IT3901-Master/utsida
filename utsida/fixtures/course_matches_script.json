@@ -496,22 +496,6 @@
     }
   },
   {
-    "pk": 32,
-    "model": "utsida.coursematch",
-    "fields": {
-      "homeCourse": [
-        "TIØ4164"
-      ],
-      "abroadCourse": [
-        "COMP4920",
-        "University of New South Wales"
-      ],
-      "approved": true,
-      "approval_date": "2015-01-09",
-      "comment": ""
-    }
-  },
-  {
     "pk": 33,
     "model": "utsida.coursematch",
     "fields": {
@@ -608,22 +592,6 @@
     }
   },
   {
-    "pk": 39,
-    "model": "utsida.coursematch",
-    "fields": {
-      "homeCourse": [
-        "Program"
-      ],
-      "abroadCourse": [
-        "COMP9102",
-        "University of New South Wales"
-      ],
-      "approved": true,
-      "approval_date": "2016-01-12",
-      "comment": ""
-    }
-  },
-  {
     "pk": 40,
     "model": "utsida.coursematch",
     "fields": {
@@ -715,7 +683,7 @@
         "University of New South Wales"
       ],
       "approved": true,
-      "approval_date": "2015-010-0",
+      "approval_date": "2015-10-1",
       "comment": ""
     }
   },
