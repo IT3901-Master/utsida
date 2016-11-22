@@ -17,11 +17,10 @@
         </div>
         <div id="selectedCourseFooter" class="panel-footer">
             <button onclick="courseSelector.removeAllSelectedCourses()" class="btn btn-default"><span class="glyphicon glyphicon-trash"></span> Tøm listen</button>
-            <button onclick="courseSelector.saveCourses()" class="btn btn-default">
+            <button onclick="courseSelector.saveCourses()" class="btn btn-default pull-right">
                 <span class="glyphicon glyphicon-ok"></span>
                 Lagre fag
             </button>
-            <button onclick="courseSelector.saveAndNext()" style="margin-left: 20px" class="btn btn-success">Lagre og gå videre <span class="glyphicon glyphicon-chevron-right"></span></button>
         </div>
     </div>
 
@@ -109,6 +108,8 @@
             </div>
             {% if forloop.counter|divisibleby:3 %}</div>{% endif %}
         {% endfor %}
+
+        <button class="btn btn-success boxShadow square-corners checkoutBtn" onclick="courseSelector.checkout()">Gå til lagrede fag <span class="glyphicon glyphicon-chevron-right"></span></button>
     </div>
 
     {% load staticfiles %}

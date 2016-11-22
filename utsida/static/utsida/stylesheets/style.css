@@ -195,6 +195,12 @@ html, body {
     font-weight: bold;
 }
 
+.checkoutBtn {
+    position: fixed;
+    bottom: 150px;
+    right: 30px;
+}
+
 /* 8 - Saved Courses */
 .courseBlock {
     background-color: white;

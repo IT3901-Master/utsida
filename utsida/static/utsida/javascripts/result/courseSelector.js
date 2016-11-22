@@ -101,8 +101,7 @@ courseSelector = {
         this.hideContainer();
     },
 
-    saveAndNext: function() {
-        this.saveCourses();
+    checkout: function() {
         window.location = "/profile/courses/";
     }
 
