@@ -1,0 +1,71 @@
+{% extends "utsida/layout.html" %}
+
+{% block content %}
+
+    {% if university %}
+
+        <h3 class="text-center">
+            Her vises alle fagene du har lagret, og hvilke fag du har tenkt til å erstatte ved NTNU.
+        </h3>
+        <h3 class="subTitle text-center">
+            Trykk på et fag i hver colonne for å velge de, og dermed på <span class="italic">Match fag</span>
+            knappen for å lage en fagmatch
+        </h3>
+
+        <div class="row vertical-space-top-big">
+            <div class="col-md-6">
+                <h4>Lagrede fag ved {{ university }}, {{ university.country }}</h4>
+                <div id="courseList">
+                    {% for course in courses %}
+                        <div onclick="CourseMatcher.markAwayCourse(this)" class="centerCol courseBlock boxShadow pointer noSelect">
+                            {{ course }}
+                            <span onclick="removeCourse(this.parentNode, '{{ course.code }}', '{{ course.university }}')"
+                                  class="glyphicon glyphicon-remove pull-right pointer">
+                            </span>
+                        </div>
+                    {% endfor %}
+                </div>
+            </div>
+
+            <div class="col-md-6">
+                <h4>Fag du vil erstatte ved NTNU</h4>
+                <div id="homeCourseList">
+                    {% for course in home_courses %}
+                        <div onclick="CourseMatcher.markHomeCourse(this)" class="centerCol courseBlock boxShadow pointer noSelect">{{ course }}</div>
+                    {% endfor %}
+                </div>
+            </div>
+        </div>
+
+        <div class="row vertical-space-top-big vertical-space-bottom-big">
+            <div class="col-md-12">
+                <button onclick="CourseMatcher.matchSelectedCourses()" class="btn btn-primary center-block">Match fag</button>
+            </div>
+        </div>
+
+
+        <div id="courseMatchesWrapper" class="row vertical-space-top-big hiddenDiv">
+            <h3 class="text-center">Matcher</h3>
+            <div id="courseMatches" style="width:45%; margin: 0 auto"></div>
+            
+            <a class="btn btn-success main-btn center-block vertical-space-top-big vertical-space-bottom-big square-corners"
+               href="#"
+               data-container="body"
+               data-toggle="popover"
+               data-placement="top"
+               data-content="Denne funksjonaliteten er ikke implementert enda.">
+                Send til veileder
+                <span class="glyphicon glyphicon-chevron-right"></span>
+            </a>
+        </div>
+
+
+    {% else %}
+        <h3 class="text-center">Du har ikke lagret noen fag</h3>
+    {% endif %}
+    {% load staticfiles %}
+    <script src="{% static 'utsida/javascripts/profile/savedCourses.js' %}"></script>
+    <script src="{% static 'utsida/javascripts/profile/courseMatcher.js' %}"></script>
+
+
+{% endblock %}

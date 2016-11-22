@@ -3,8 +3,11 @@ from django.contrib import messages
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth.forms import PasswordChangeForm
 from django.db import transaction
+from django.http import HttpResponse
+from django.http import HttpResponseRedirect
 from django.shortcuts import render, redirect
 from django.contrib.auth import authenticate, login, update_session_auth_hash
+import json
 
 from profiles.forms import UserForm, ProfileForm, UpdateUserForm
 from .models import *
@@ -89,3 +92,111 @@ def change_password(request):
     return render(request, 'profiles/change_password.html', {
         'form': form
     })
+
+
+@login_required
+def saved_courses(request):
+    profile = Profile.objects.get(user=request.user)
+
+    courses = profile.saved_courses.all()
+
+    if not courses:
+        return render(request, 'profiles/courses.html')
+
+    university = courses[0].university
+
+    home_courses = profile.coursesToTake.all()
+
+    return render(request, 'profiles/courses.html', {'courses': courses, 'university': university, 'home_courses': home_courses})
+
+
+def save_courses(request):
+    if request.method == 'POST':
+        selected_courses = json.loads(request.POST.getlist('courses')[0])
+        profile = Profile.objects.get(user=request.user)
+
+        for course in selected_courses:
+            course_code = course["code"]
+            course_name = course["name"]
+            course_uni = course["university"]
+            course_country = course["country"]
+
+            if profile.saved_courses.filter(code=course_code):
+                return HttpResponse(json.dumps({
+                    'error': 'illegal course',
+                    'message': 'Ett eller fler av fagene du prøvde å legge til er allerede lagret.'
+                }))
+
+            if not profile.saved_courses.all().filter(university=University.objects.all().filter(name=course_uni)) and profile.saved_courses.all():
+                return HttpResponse(json.dumps({
+                    'error': 'illegal university',
+                    'message': 'Nye valgte fag må være fra samme universitet som dine tidligere lagrede fag.'
+                }))
+
+            if AbroadCourse.objects.all().filter(code=course_code):
+                new_course = AbroadCourse.objects.get(code=course_code)
+                profile.saved_courses.add(new_course)
+                profile.save()
+
+            else:
+                if not university_exists(course_uni):
+                    new_uni = University.objects.create(
+                        name=course_uni,
+                        country=Country.objects.get(name=course_country)
+                    )
+                    new_abroad_course = AbroadCourse(
+                        code=course_code,
+                        name=course_name,
+                        university=new_uni
+                    )
+                else:
+                    new_abroad_course = AbroadCourse(
+                        code=course_code,
+                        name=course_name,
+                        university=University.objects.get(name=course_uni)
+                    )
+
+                new_abroad_course.save()
+                profile.saved_courses.add(new_abroad_course)
+                profile.save()
+
+        return HttpResponse(json.dumps({
+            'code': 200,
+            'message': "De valgte fagene er nå lagret i dine 'Lagrede fag', under profilen din. "
+        }))
+    else:
+        return HttpResponse(json.dumps({
+            'code': 500,
+            'message': 'request is not a post request'
+        }))
+
+
+def remove_course(request):
+    if request.method == 'POST':
+        profile = Profile.objects.get(user=request.user)
+        course_code = request.POST['course']
+        course_uni = University.objects.all().filter(name=request.POST['university'])
+        profile.saved_courses.filter(code=course_code, university=course_uni).delete()
+        profile.save()
+
+        return HttpResponse({'code': 200, 'message': 'OK'})
+    else:
+        return HttpResponse({'code': 500, 'message': 'request is not a post request'})
+
+
+def remove_all_courses(request):
+    if request.method == 'POST':
+        profile = Profile.objects.get(user=request.user)
+        profile.saved_courses.all().delete()
+        profile.save()
+
+        return HttpResponse({'code': 200, 'message': 'OK'})
+    else:
+        return HttpResponse({'code': 500, 'message': 'request is not a post request'})
+
+
+def university_exists(u):
+    for uni in University.objects.all():
+        if uni.name == u:
+            return True
+    return False

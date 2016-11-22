@@ -35,7 +35,7 @@ def result(request, university=None):
                 if case['University'] == university:
                     filtered_cases.append(case)
 
-        return render(request, 'utsida/resultFiltered.html', {'similar_cases': filtered_cases, 'universities': request.session['unique_universities'], 'matches': request.session['matches']})
+        return render(request, 'utsida/result.html', {'similar_cases': filtered_cases, 'universities': request.session['unique_universities'], 'matches': request.session['matches'], 'show_loader': False})
 
     if request.method == 'POST':
         form = QueryCaseBaseForm(request.POST)
@@ -78,7 +78,6 @@ def result(request, university=None):
 
             sorted_full_similar_cases = sorted(full_similar_cases, key=lambda k: k['Similarity'], reverse=True)
 
-
             courses = request.user.profile.coursesToTake.all()
 
             course_wanted_to_be_taken_matches = {}
@@ -99,7 +98,7 @@ def result(request, university=None):
             request.session['matches'] = course_wanted_to_be_taken_matches
 
             return render(request, 'utsida/result.html',
-                          {'form': form, 'similar_cases': sorted_full_similar_cases, 'courses_taken': courses_taken, 'matches': course_wanted_to_be_taken_matches, 'universities': unique_unis})
+                          {'form': form, 'similar_cases': sorted_full_similar_cases, 'courses_taken': courses_taken, 'matches': course_wanted_to_be_taken_matches, 'universities': unique_unis, 'show_loader': True})
 
 
 
@@ -169,7 +168,6 @@ def course_match_select_university(request):
         return redirect("login")
 
     university_list = University.objects.all()
-
     for university in university_list:
         university.count = len(CourseMatch.objects.all().filter(abroadCourse__university__name=university.name))
 

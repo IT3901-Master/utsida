@@ -1,3 +1,7 @@
+/*
+Logic for adding new form fields when they are appropriate to appear in /process.
+ */
+
 var formStep = function() {
     var selectedContinent = $("#continentField :selected").text();
     var countryRow = document.getElementById("countryRow");

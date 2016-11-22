@@ -1,6 +1,5 @@
+// Hides the loading screen on the /results page after 2 seconds.
+
 setTimeout(function () {
-    $("#loader").css("display", "none");
-    $("#results").css("display", "block");
-    $("#filters").css("display", "block");
-    $("#searchParameters").css("display", "none");
+    document.getElementById("loadingScreen").style.display = "none";
 }, 2000);

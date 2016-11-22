@@ -1,0 +1,36 @@
+/*
+All cusotm overrides done to bootstrap.css
+*/
+
+.navbar-default .navbar-nav>li>a {
+    color: #fff;
+}
+.navbar-default .navbar-brand {
+    color: #fff;
+}
+.navbar-default .navbar-nav>li>a:hover {
+    color: #fff;
+    opacity: 0.7;
+}
+.navbar-default .navbar-nav>li>a:visited {
+    color: #fff;
+}
+.navbar-default .navbar-brand:hover {
+    color: #fff;
+    opacity: 0.7;
+}
+.navbar-default .navbar-nav>.open>a, .navbar-default .navbar-nav>.open>a:focus, .navbar-default .navbar-nav>.open>a:hover {
+    background-color: #333;
+    color: #fff;
+}
+.form-control, .well, .btn {
+    -webkit-border-radius: 0;
+    -moz-border-radius: 0;
+    border-radius: 0;
+}
+.panel, .panel-body {
+    border: 0;
+}
+.dropdown-menu {
+    z-index: 1100;
+}
