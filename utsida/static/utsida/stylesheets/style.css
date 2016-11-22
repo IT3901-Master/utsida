@@ -214,6 +214,20 @@ html, body {
     margin-top: 10px;
 }
 
+/* 9 - Course Match Table */
+#editCourseMatch {
+    text-decoration: none;
+    color: inherit;
+}
+#toggleFormRow {
+    top: auto;
+    left: auto;
+    right: auto;
+    margin-right: -1px;
+    margin-left: -1px;
+
+}
+
 
 
 

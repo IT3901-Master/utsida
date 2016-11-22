@@ -9,61 +9,59 @@
         {% endif %}
     {% endfor %}
 
-    <div class="container">
-        <h2 class="text-center">Godkjente fag fra {{ university_name }}</h2>
-        <table id="example" class="table table-striped" style="opacity: 0">
-            <thead>
-            <tr>
-                <th></th>
-                <th>Fag hjemme</th>
-                <th>Fag ute</th>
-                <th>Studiepoeng</th>
-                <th>Godkjent dato</th>
-                <th class="select-filter">Universitet</th>
-                <th>Comment</th>
-                <th></th>
-            </tr>
-            </thead>
-            <tbody>
-                {% for course_match in course_match_list %}
-                    <tr class="clickableTableRow noselect">
-                        <td class="glyphicon glyphicon-chevron-down"></td>
-                        {% if course_match.homeCourse.description_url == "" %}
-                            <td>{{ course_match.homeCourse }} </td>
-                        {% else %}
-                            <td><a href={{ course_match.homeCourse.description_url }}>{{ course_match.homeCourse }}</a>
-                            </td>
-                        {% endif %}
-                        {% if course_match.abroadCourse.description_url == "" %}
-                            <td>{{ course_match.abroadCourse }} </td>
-                        {% else %}
-                            <td>
-                                <a href={{ course_match.abroadCourse.description_url }}>{{ course_match.abroadCourse }}</a>
-                            </td>
-                        {% endif %}
-                        <td> {{ course_match.abroadCourse.study_points }}</td>
-                        <td> {{ course_match.approval_date }}</td>
-                        <td> {{ course_match.abroadCourse.university }}</td>
-                        <td>{{ course_match.comment }}</td>
-                        <td>
-                            {% if perms.can_edit_course_match %}
-                            <a class="glyphicon glyphicon-edit" href="{% url 'update_course_match' id=course_match.id %}"></a>
-                            {% endif %}
+    <h2 class="text-center vertical-space-bottom-big">Godkjente fag fra {{ university_name }}</h2>
+    <table id="example" class="table table-striped" style="opacity: 0">
+        <thead>
+        <tr>
+            <th></th>
+            <th>Fag hjemme</th>
+            <th>Fag ute</th>
+            <th>Studiepoeng</th>
+            <th>Godkjent dato</th>
+            <th class="select-filter">Universitet</th>
+            <th>Comment</th>
+            <th></th>
+        </tr>
+        </thead>
+        <tbody>
+            {% for course_match in course_match_list %}
+                <tr class="clickableTableRow noselect">
+                    <td id="toggleFormRow" class="glyphicon glyphicon-chevron-down"></td>
+                    {% if course_match.homeCourse.description_url == "" %}
+                        <td>{{ course_match.homeCourse }} </td>
+                    {% else %}
+                        <td><a href={{ course_match.homeCourse.description_url }}>{{ course_match.homeCourse }}</a>
                         </td>
-                    </tr>
-                {% endfor %}
-            </tbody>
-        </table>
-    </div>
+                    {% endif %}
+                    {% if course_match.abroadCourse.description_url == "" %}
+                        <td>{{ course_match.abroadCourse }} </td>
+                    {% else %}
+                        <td>
+                            <a href={{ course_match.abroadCourse.description_url }}>{{ course_match.abroadCourse }}</a>
+                        </td>
+                    {% endif %}
+                    <td> {{ course_match.abroadCourse.study_points }}</td>
+                    <td> {{ course_match.approval_date }}</td>
+                    <td> {{ course_match.abroadCourse.university }}</td>
+                    <td>{{ course_match.comment }}</td>
+                    <td>
+                        {% if perms.can_edit_course_match %}
+                        <a id="editCourseMatch" class="glyphicon glyphicon-edit" href="{% url 'update_course_match' id=course_match.id %}"></a>
+                        {% endif %}
+                    </td>
+                </tr>
+            {% endfor %}
+        </tbody>
+    </table>
 
     {% if perms.can_add_course_match %}
-    <button type="button" class="btn btn-primary btn-lg" data-toggle="modal" data-target="#myModal">
+    <button type="button" class="btn btn-primary btn-lg vertical-space-top-big" data-toggle="modal" data-target="#addMatchModal">
         Legg til fagkobling
     </button>
     {% endif %}
 
     <!-- Modal -->
-    <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+    <div class="modal fade" id="addMatchModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
         <div class="modal-dialog" role="document">
             <div class="modal-content">
                 <div class="modal-header">
@@ -105,7 +103,6 @@
             </div>
         </div>
     </div>
-
 
     {% load staticfiles %}
     <script src="{% static 'utsida/javascripts/courseMatch/courseMatchTable.js' %}"></script>
