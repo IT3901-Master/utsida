@@ -1,3 +1,7 @@
+/*
+Logic for handling the lists of saved courses in profile/courses.
+ */
+
 var removeCourse = function(block, code, university) {
     $.post("/profile/remove_course/", {'course': code, 'university': university});
     block.parentNode.removeChild(block);

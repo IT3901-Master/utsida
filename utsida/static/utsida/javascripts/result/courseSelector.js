@@ -1,3 +1,7 @@
+/*
+Module which handles the logic around adding and saving courses to the profile
+ */
+
 var s, v;
 courseSelector = {
 
@@ -103,6 +107,8 @@ courseSelector = {
     }
 
 };
+
+// Uncomment this to enable drag and drop functionality on the course selector
 
 /*
 courseContainerDrag = {

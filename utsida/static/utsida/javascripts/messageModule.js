@@ -1,3 +1,8 @@
+/*
+Module for sending frontend messages on the screen.
+Can be used anywhere by calling Messager.init() followed by Messager.sendMessage('message', 'color of alert')
+ */
+
 Messager = {
 
     s: {
@@ -17,14 +22,6 @@ Messager = {
             e.preventDefault();
             s.container.className = "hiddenDiv";
         });
-        //this.removeMessage();
-    },
-
-    removeMessage: function() {
-        setTimeout(function() {
-            s.container.removeChild(s.container.firstChild);
-            s.container.className = "hiddenDiv";
-        }, 5000)
     }
 };
 

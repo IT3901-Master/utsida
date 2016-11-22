@@ -1,3 +1,7 @@
+/*
+Module which ensures that a selected university is highlighted in /results.
+ */
+
 var s;
 universityHighlighter = {
 
