@@ -5,7 +5,7 @@ import requests
 import json
 from .forms import *
 from profiles.models import *
-from django.contrib.auth.decorators import login_required, user_passes_test
+from django.contrib.auth.decorators import login_required, user_passes_test, permission_required
 
 
 def index(request):
@@ -118,12 +118,9 @@ def courseMatch(request):
     return render(request, "utsida/courseMatch.html", context)
 
 
-def group_check(user):
-    return user.groups.filter(name__in=['Advisor'])
-
 
 @login_required
-@user_passes_test(group_check)
+@permission_required('utsida.can_update_course_match')
 @transaction.atomic
 def update_course_match(request, id):
     instance = get_object_or_404(CourseMatch, id=id)
@@ -145,6 +142,7 @@ def update_course_match(request, id):
         form = CourseMatchForm(instance=instance)
         return render(request,"utsida/update_course_match.html", {"form":form,"id":id})
 
+@permission_required('utsida.can_add_course_match')
 def add_course_match(request):
     if request.POST:
         form = CourseMatchForm(request.POST)
