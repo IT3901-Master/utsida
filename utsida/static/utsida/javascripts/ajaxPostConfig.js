@@ -1,4 +1,8 @@
-// using jQuery
+/*
+Configuration to Ajax post request, which adds the CSRF token to it, so
+the request is valid in the Django environment.
+ */
+
 function getCookie(name) {
     var cookieValue = null;
     if (document.cookie && document.cookie !== '') {
@@ -18,7 +22,6 @@ function getCookie(name) {
 var csrftoken = getCookie('csrftoken');
 
 function csrfSafeMethod(method) {
-    // these HTTP methods do not require CSRF protection
     return (/^(GET|HEAD|OPTIONS|TRACE)$/.test(method));
 }
 

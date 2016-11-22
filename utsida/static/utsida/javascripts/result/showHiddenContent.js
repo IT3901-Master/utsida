@@ -1,3 +1,5 @@
+// Logic for accordion functionality on the case results in /results.
+
 var acc = document.getElementsByClassName("accordion");
 
 for (var i = 0; i < acc.length; i++) {
