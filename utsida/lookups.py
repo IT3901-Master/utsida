@@ -5,10 +5,10 @@ from .models import *
 from django.utils.six import text_type
 from django.utils.html import escape
 
-@register('homeCourse')
-class CourseLookup(LookupChannel):
+@register('homeCourseFind')
+class CourseFindChannel(LookupChannel):
 
-    model = Profile
+    model = CourseMatch
     min_length = 3
 
     def check_auth(self, request):
@@ -16,13 +16,16 @@ class CourseLookup(LookupChannel):
             return True
 
     def get_query(self, q, request):
-        return HomeCourse.objects.filter(Q(name__icontains=q) | Q(code__istartswith=q)).order_by('name')[:10]
+        return HomeCourse.objects.filter(Q(name__icontains=q) | Q(code__istartswith=q) | Q(pk__istartswith=q)).order_by('name')
 
     def get_result(self, obj):
         return text_type(obj.name)
 
     def format_match(self, obj):
         return self.format_item_display(obj)
+
+    def get_objects(self, ids):
+        return [HomeCourse.objects.get(pk=ids[0])]
 
     def format_item_display(self, obj):
         return "<span class="">%s, %s </span>" % (escape(obj.code), escape(obj.name))

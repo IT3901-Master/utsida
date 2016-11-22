@@ -1,0 +1,26 @@
+[
+  {
+    "model": "utsida.university",
+    "fields": {
+      "name": "University of Queensland",
+      "acronym": "UQ",
+      "country": "Australia"
+    }
+  },
+  {
+    "model": "utsida.university",
+    "fields": {
+      "name": "University of California, San Diego",
+      "acronym": "UCSD",
+      "country": "USA"
+    }
+  },
+  {
+    "model": "utsida.university",
+    "fields": {
+      "name": "University of New South Wales",
+      "acronym": "UNSW",
+      "country": "Australia"
+    }
+  }
+]

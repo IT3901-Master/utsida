@@ -1,8 +1,11 @@
-from django.shortcuts import render, redirect
+from django.db import transaction
+from django.http import HttpResponse
+from django.shortcuts import render, redirect, get_object_or_404
 import requests
 import json
 from .forms import *
 from profiles.models import *
+from django.contrib.auth.decorators import login_required, user_passes_test
 
 
 def index(request):
@@ -105,12 +108,68 @@ def result(request, university=None):
     return render(request, 'utsida/process.html', {'form': form})
 
 
+@login_required
 def courseMatch(request):
-    if not request.user.is_authenticated():
-        return redirect("login")
-    course_matches = CourseMatch.objects.all()
-    university_list = University.objects.all()
-    context = {"course_match_list": course_matches, "university_list": university_list}
+    university = request.POST["university"][:-5]
+    add_form = CourseMatchForm()
+    add_form.fields["abroadCourse"].queryset = AbroadCourse.objects.filter(university__name=university)
+    course_matches = CourseMatch.objects.all().filter(abroadCourse__university__name=university)
+    context = {"course_match_list": course_matches,"university_name":university, "add_form":add_form}
     return render(request, "utsida/courseMatch.html", context)
 
 
+def group_check(user):
+    return user.groups.filter(name__in=['Advisor'])
+
+
+@login_required
+@user_passes_test(group_check)
+@transaction.atomic
+def update_course_match(request, id):
+    instance = get_object_or_404(CourseMatch, id=id)
+    if request.method == "POST":
+        form = CourseMatchForm(request.POST,instance=instance)
+        if form.is_valid():
+            form.save()
+            university = form.cleaned_data["abroadCourse"].university
+            add_form = CourseMatchForm()
+            add_form.fields["abroadCourse"].queryset = AbroadCourse.objects.filter(university__name=university)
+            course_matches = CourseMatch.objects.all().filter(abroadCourse__university__name=university)
+            context = {"course_match_list": course_matches, "university_name": university, "add_form": add_form}
+            messages.success(request, "Fag kobling ble endret")
+            return render(request, "utsida/courseMatch.html", context)
+        else:
+            return HttpResponse("FUCK YOU!!!")
+    else:
+        #form = CourseMatchForm(initial={"abroadCourse": instance.abroadCourse})
+        form = CourseMatchForm(instance=instance)
+        return render(request,"utsida/update_course_match.html", {"form":form,"id":id})
+
+def add_course_match(request):
+    if request.POST:
+        form = CourseMatchForm(request.POST)
+        if form.is_valid():
+            form.save()
+            university = form.cleaned_data["abroadCourse"].university
+            add_form = CourseMatchForm()
+            add_form.fields["abroadCourse"].queryset = AbroadCourse.objects.filter(university__name=university)
+            course_matches = CourseMatch.objects.all().filter(abroadCourse__university__name=university)
+            context = {"course_match_list": course_matches, "university_name": university, "add_form": add_form}
+            messages.success(request,"Ny fag-kobling ble lagt til")
+            return render(request, "utsida/courseMatch.html", context)
+        else:
+            messages.error(request,"Endre feilene under")
+
+
+
+@login_required
+def course_match_select_university(request):
+    if not request.user.is_authenticated():
+        return redirect("login")
+
+    university_list = University.objects.all()
+    for university in university_list:
+        university.count = len(CourseMatch.objects.all().filter(abroadCourse__university__name=university.name))
+
+    context = {"university_list":university_list}
+    return render(request, "utsida/course_match_university_select.html",context)

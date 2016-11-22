@@ -1,12 +1,14 @@
 [
   {
-    "pk": null,
+    "pk": 1,
     "model": "utsida.coursematch",
     "fields": {
-      "homeCourse": "TPD4105",
+      "homeCourse": [
+        "TPD4105"
+      ],
       "abroadCourse": [
         "CODE1150",
-        3
+        "University of New South Wales"
       ],
       "approved": true,
       "approval_date": "2015-07-29",
@@ -14,13 +16,15 @@
     }
   },
   {
-    "pk": null,
+    "pk": 2,
     "model": "utsida.coursematch",
     "fields": {
-      "homeCourse": "TPD4134",
+      "homeCourse": [
+        "TPD4134"
+      ],
       "abroadCourse": [
         "CODE2230",
-        3
+        "University of New South Wales"
       ],
       "approved": true,
       "approval_date": "2015-07-29",
@@ -28,13 +32,15 @@
     }
   },
   {
-    "pk": null,
+    "pk": 3,
     "model": "utsida.coursematch",
     "fields": {
-      "homeCourse": "TDT4262",
+      "homeCourse": [
+        "TDT4262"
+      ],
       "abroadCourse": [
         "CODE2230",
-        3
+        "University of New South Wales"
       ],
       "approved": true,
       "approval_date": "2015-07-29",
@@ -42,13 +48,15 @@
     }
   },
   {
-    "pk": null,
+    "pk": 4,
     "model": "utsida.coursematch",
     "fields": {
-      "homeCourse": "TDT4110",
+      "homeCourse": [
+        "TDT4110"
+      ],
       "abroadCourse": [
         "COMP1400",
-        3
+        "University of New South Wales"
       ],
       "approved": true,
       "approval_date": "2015-07-29",
@@ -56,13 +64,15 @@
     }
   },
   {
-    "pk": null,
+    "pk": 5,
     "model": "utsida.coursematch",
     "fields": {
-      "homeCourse": "TDT4100",
+      "homeCourse": [
+        "TDT4100"
+      ],
       "abroadCourse": [
         "COMP1400",
-        3
+        "University of New South Wales"
       ],
       "approved": true,
       "approval_date": "2015-07-29",
@@ -70,13 +80,15 @@
     }
   },
   {
-    "pk": null,
+    "pk": 6,
     "model": "utsida.coursematch",
     "fields": {
-      "homeCourse": "TDT4102",
+      "homeCourse": [
+        "TDT4102"
+      ],
       "abroadCourse": [
         "COMP1921",
-        3
+        "University of New South Wales"
       ],
       "approved": true,
       "approval_date": "2016-05-11",
@@ -84,13 +96,15 @@
     }
   },
   {
-    "pk": null,
+    "pk": 7,
     "model": "utsida.coursematch",
     "fields": {
-      "homeCourse": "TDT4102",
+      "homeCourse": [
+        "TDT4102"
+      ],
       "abroadCourse": [
         "COMP1927",
-        3
+        "University of New South Wales"
       ],
       "approved": true,
       "approval_date": "2015-04-14",
@@ -98,13 +112,15 @@
     }
   },
   {
-    "pk": null,
+    "pk": 8,
     "model": "utsida.coursematch",
     "fields": {
-      "homeCourse": "TDT4120",
+      "homeCourse": [
+        "TDT4120"
+      ],
       "abroadCourse": [
         "COMP1927",
-        3
+        "University of New South Wales"
       ],
       "approved": true,
       "approval_date": "2015-07-29",
@@ -112,13 +128,15 @@
     }
   },
   {
-    "pk": null,
+    "pk": 9,
     "model": "utsida.coursematch",
     "fields": {
-      "homeCourse": "IT1501",
+      "homeCourse": [
+        "IT1501"
+      ],
       "abroadCourse": [
         "COMP1927",
-        3
+        "University of New South Wales"
       ],
       "approved": true,
       "approval_date": "2015-07-29",
@@ -126,13 +144,15 @@
     }
   },
   {
-    "pk": null,
+    "pk": 10,
     "model": "utsida.coursematch",
     "fields": {
-      "homeCourse": "TDT4258",
+      "homeCourse": [
+        "TDT4258"
+      ],
       "abroadCourse": [
         "COMP2121",
-        3
+        "University of New South Wales"
       ],
       "approved": true,
       "approval_date": "2015-04-14",
@@ -140,13 +160,15 @@
     }
   },
   {
-    "pk": null,
+    "pk": 11,
     "model": "utsida.coursematch",
     "fields": {
-      "homeCourse": "TDT4100",
+      "homeCourse": [
+        "TDT4100"
+      ],
       "abroadCourse": [
         "COMP2911",
-        3
+        "University of New South Wales"
       ],
       "approved": true,
       "approval_date": "2015-05-12",
@@ -154,13 +176,15 @@
     }
   },
   {
-    "pk": null,
+    "pk": 12,
     "model": "utsida.coursematch",
     "fields": {
-      "homeCourse": "TDT4120",
+      "homeCourse": [
+        "TDT4120"
+      ],
       "abroadCourse": [
         "COMP3121",
-        3
+        "University of New South Wales"
       ],
       "approved": true,
       "approval_date": "2016-06-09",
@@ -168,13 +192,15 @@
     }
   },
   {
-    "pk": null,
+    "pk": 13,
     "model": "utsida.coursematch",
     "fields": {
-      "homeCourse": "TDT4290",
+      "homeCourse": [
+        "TDT4290"
+      ],
       "abroadCourse": [
         "COMP3141",
-        3
+        "University of New South Wales"
       ],
       "approved": true,
       "approval_date": "2016-01-12",
@@ -182,13 +208,15 @@
     }
   },
   {
-    "pk": null,
+    "pk": 14,
     "model": "utsida.coursematch",
     "fields": {
-      "homeCourse": "TDT4165",
+      "homeCourse": [
+        "TDT4165"
+      ],
       "abroadCourse": [
         "COMP3161",
-        3
+        "University of New South Wales"
       ],
       "approved": true,
       "approval_date": "2015-04-14",
@@ -196,13 +224,15 @@
     }
   },
   {
-    "pk": null,
+    "pk": 15,
     "model": "utsida.coursematch",
     "fields": {
-      "homeCourse": "TDT4255",
+      "homeCourse": [
+        "TDT4255"
+      ],
       "abroadCourse": [
         "COMP3222",
-        3
+        "University of New South Wales"
       ],
       "approved": true,
       "approval_date": "2016-08-01",
@@ -210,13 +240,15 @@
     }
   },
   {
-    "pk": null,
+    "pk": 16,
     "model": "utsida.coursematch",
     "fields": {
-      "homeCourse": "TDT4136",
+      "homeCourse": [
+        "TDT4136"
+      ],
       "abroadCourse": [
         "COMP3411",
-        3
+        "University of New South Wales"
       ],
       "approved": true,
       "approval_date": "2016-06-08",
@@ -224,13 +256,15 @@
     }
   },
   {
-    "pk": null,
+    "pk": 17,
     "model": "utsida.coursematch",
     "fields": {
-      "homeCourse": "TDT4195",
+      "homeCourse": [
+        "TDT4195"
+      ],
       "abroadCourse": [
         "COMP3421",
-        3
+        "University of New South Wales"
       ],
       "approved": true,
       "approval_date": "2015-07-29",
@@ -238,13 +272,15 @@
     }
   },
   {
-    "pk": null,
+    "pk": 18,
     "model": "utsida.coursematch",
     "fields": {
-      "homeCourse": "TDT4230",
+      "homeCourse": [
+        "TDT4230"
+      ],
       "abroadCourse": [
         "COMP3421",
-        3
+        "University of New South Wales"
       ],
       "approved": true,
       "approval_date": "2015-07-29",
@@ -252,13 +288,15 @@
     }
   },
   {
-    "pk": null,
+    "pk": 19,
     "model": "utsida.coursematch",
     "fields": {
-      "homeCourse": "TDT4136",
+      "homeCourse": [
+        "TDT4136"
+      ],
       "abroadCourse": [
         "COMP3431",
-        3
+        "University of New South Wales"
       ],
       "approved": true,
       "approval_date": "2015-07-29",
@@ -266,13 +304,15 @@
     }
   },
   {
-    "pk": null,
+    "pk": 20,
     "model": "utsida.coursematch",
     "fields": {
-      "homeCourse": "IT3105",
+      "homeCourse": [
+        "IT3105"
+      ],
       "abroadCourse": [
         "COMP3431",
-        3
+        "University of New South Wales"
       ],
       "approved": true,
       "approval_date": "2015-07-29",
@@ -280,13 +320,15 @@
     }
   },
   {
-    "pk": null,
+    "pk": 21,
     "model": "utsida.coursematch",
     "fields": {
-      "homeCourse": "TPK4170",
+      "homeCourse": [
+        "TPK4170"
+      ],
       "abroadCourse": [
         "COMP3431",
-        3
+        "University of New South Wales"
       ],
       "approved": true,
       "approval_date": "2015-08-25",
@@ -294,13 +336,15 @@
     }
   },
   {
-    "pk": null,
+    "pk": 22,
     "model": "utsida.coursematch",
     "fields": {
-      "homeCourse": "TDT4237",
+      "homeCourse": [
+        "TDT4237"
+      ],
       "abroadCourse": [
         "COMP3441",
-        3
+        "University of New South Wales"
       ],
       "approved": true,
       "approval_date": "2015-01-09",
@@ -308,13 +352,15 @@
     }
   },
   {
-    "pk": null,
+    "pk": 23,
     "model": "utsida.coursematch",
     "fields": {
-      "homeCourse": "TDT4180",
+      "homeCourse": [
+        "TDT4180"
+      ],
       "abroadCourse": [
         "COMP3511",
-        3
+        "University of New South Wales"
       ],
       "approved": true,
       "approval_date": "2016-06-08",
@@ -322,13 +368,15 @@
     }
   },
   {
-    "pk": null,
+    "pk": 24,
     "model": "utsida.coursematch",
     "fields": {
-      "homeCourse": "TDT4120",
+      "homeCourse": [
+        "TDT4120"
+      ],
       "abroadCourse": [
         "COMP4001",
-        3
+        "University of New South Wales"
       ],
       "approved": true,
       "approval_date": "2015-05-12",
@@ -336,13 +384,15 @@
     }
   },
   {
-    "pk": null,
+    "pk": 25,
     "model": "utsida.coursematch",
     "fields": {
-      "homeCourse": "TDT4200",
+      "homeCourse": [
+        "TDT4200"
+      ],
       "abroadCourse": [
         "COMP4121",
-        3
+        "University of New South Wales"
       ],
       "approved": true,
       "approval_date": "2015-08-25",
@@ -350,13 +400,15 @@
     }
   },
   {
-    "pk": null,
+    "pk": 26,
     "model": "utsida.coursematch",
     "fields": {
-      "homeCourse": "TTM4133",
+      "homeCourse": [
+        "TTM4133"
+      ],
       "abroadCourse": [
         "COMP4336",
-        3
+        "University of New South Wales"
       ],
       "approved": true,
       "approval_date": "2015-01-09",
@@ -364,13 +416,15 @@
     }
   },
   {
-    "pk": null,
+    "pk": 27,
     "model": "utsida.coursematch",
     "fields": {
-      "homeCourse": "TTM4135",
+      "homeCourse": [
+        "TTM4135"
+      ],
       "abroadCourse": [
         "COMP4337",
-        3
+        "University of New South Wales"
       ],
       "approved": true,
       "approval_date": "2015-09-24",
@@ -378,13 +432,15 @@
     }
   },
   {
-    "pk": null,
+    "pk": 28,
     "model": "utsida.coursematch",
     "fields": {
-      "homeCourse": "TTM4137",
+      "homeCourse": [
+        "TTM4137"
+      ],
       "abroadCourse": [
         "COMP4337",
-        3
+        "University of New South Wales"
       ],
       "approved": true,
       "approval_date": "2016-01-12",
@@ -392,13 +448,15 @@
     }
   },
   {
-    "pk": null,
+    "pk": 29,
     "model": "utsida.coursematch",
     "fields": {
-      "homeCourse": "TDT4136",
+      "homeCourse": [
+        "TDT4136"
+      ],
       "abroadCourse": [
         "COMP4418",
-        3
+        "University of New South Wales"
       ],
       "approved": true,
       "approval_date": "2016-01-12",
@@ -406,13 +464,15 @@
     }
   },
   {
-    "pk": null,
+    "pk": 30,
     "model": "utsida.coursematch",
     "fields": {
-      "homeCourse": "TDT4171",
+      "homeCourse": [
+        "TDT4171"
+      ],
       "abroadCourse": [
         "COMP4418",
-        3
+        "University of New South Wales"
       ],
       "approved": true,
       "approval_date": "2016-01-12",
@@ -420,13 +480,15 @@
     }
   },
   {
-    "pk": null,
+    "pk": 31,
     "model": "utsida.coursematch",
     "fields": {
-      "homeCourse": "IT3402",
+      "homeCourse": [
+        "IT3402"
+      ],
       "abroadCourse": [
         "COMP4431",
-        3
+        "University of New South Wales"
       ],
       "approved": true,
       "approval_date": "2016-09-02",
@@ -434,13 +496,15 @@
     }
   },
   {
-    "pk": null,
+    "pk": 33,
     "model": "utsida.coursematch",
     "fields": {
-      "homeCourse": "TDT4117",
+      "homeCourse": [
+        "TDT4117"
+      ],
       "abroadCourse": [
         "COMP6714",
-        3
+        "University of New South Wales"
       ],
       "approved": true,
       "approval_date": "2015-01-09",
@@ -448,13 +512,15 @@
     }
   },
   {
-    "pk": null,
+    "pk": 34,
     "model": "utsida.coursematch",
     "fields": {
-      "homeCourse": "TDT4125",
+      "homeCourse": [
+        "TDT4125"
+      ],
       "abroadCourse": [
         "COMP6741",
-        3
+        "University of New South Wales"
       ],
       "approved": true,
       "approval_date": "2015-07-29",
@@ -462,13 +528,15 @@
     }
   },
   {
-    "pk": null,
+    "pk": 35,
     "model": "utsida.coursematch",
     "fields": {
-      "homeCourse": "TDT4295",
+      "homeCourse": [
+        "TDT4295"
+      ],
       "abroadCourse": [
         "COMP9032",
-        3
+        "University of New South Wales"
       ],
       "approved": true,
       "approval_date": "2016-01-12",
@@ -476,13 +544,15 @@
     }
   },
   {
-    "pk": null,
+    "pk": 36,
     "model": "utsida.coursematch",
     "fields": {
-      "homeCourse": "IT3010",
+      "homeCourse": [
+        "IT3010"
+      ],
       "abroadCourse": [
         "COMP9041",
-        3
+        "University of New South Wales"
       ],
       "approved": true,
       "approval_date": "2016-09-13",
@@ -490,13 +560,15 @@
     }
   },
   {
-    "pk": null,
+    "pk": 37,
     "model": "utsida.coursematch",
     "fields": {
-      "homeCourse": "TDT4140",
+      "homeCourse": [
+        "TDT4140"
+      ],
       "abroadCourse": [
         "COMP9041",
-        3
+        "University of New South Wales"
       ],
       "approved": true,
       "approval_date": "2016-05-13",
@@ -504,13 +576,15 @@
     }
   },
   {
-    "pk": null,
+    "pk": 38,
     "model": "utsida.coursematch",
     "fields": {
-      "homeCourse": "TDT4205",
+      "homeCourse": [
+        "TDT4205"
+      ],
       "abroadCourse": [
         "COMP9102",
-        3
+        "University of New South Wales"
       ],
       "approved": true,
       "approval_date": "2015-09-29",
@@ -518,13 +592,15 @@
     }
   },
   {
-    "pk": null,
+    "pk": 40,
     "model": "utsida.coursematch",
     "fields": {
-      "homeCourse": "TDT4186",
+      "homeCourse": [
+        "TDT4186"
+      ],
       "abroadCourse": [
         "COMP9201",
-        3
+        "University of New South Wales"
       ],
       "approved": true,
       "approval_date": "2016-01-12",
@@ -532,13 +608,15 @@
     }
   },
   {
-    "pk": null,
+    "pk": 41,
     "model": "utsida.coursematch",
     "fields": {
-      "homeCourse": "TDT4260",
+      "homeCourse": [
+        "TDT4260"
+      ],
       "abroadCourse": [
         "COMP9211",
-        3
+        "University of New South Wales"
       ],
       "approved": true,
       "approval_date": "2015-09-29",
@@ -546,13 +624,15 @@
     }
   },
   {
-    "pk": null,
+    "pk": 42,
     "model": "utsida.coursematch",
     "fields": {
-      "homeCourse": "TDT4225",
+      "homeCourse": [
+        "TDT4225"
+      ],
       "abroadCourse": [
         "COMP9243",
-        3
+        "University of New South Wales"
       ],
       "approved": true,
       "approval_date": "2015-09-29",
@@ -560,13 +640,15 @@
     }
   },
   {
-    "pk": null,
+    "pk": 43,
     "model": "utsida.coursematch",
     "fields": {
-      "homeCourse": "TDT4225",
+      "homeCourse": [
+        "TDT4225"
+      ],
       "abroadCourse": [
         "COMP9243",
-        3
+        "University of New South Wales"
       ],
       "approved": true,
       "approval_date": "2016-01-12",
@@ -574,13 +656,15 @@
     }
   },
   {
-    "pk": null,
+    "pk": 44,
     "model": "utsida.coursematch",
     "fields": {
-      "homeCourse": "TDT4190",
+      "homeCourse": [
+        "TDT4190"
+      ],
       "abroadCourse": [
         "COMP9243",
-        3
+        "University of New South Wales"
       ],
       "approved": true,
       "approval_date": "2016-08-01",
@@ -588,27 +672,31 @@
     }
   },
   {
-    "pk": null,
+    "pk": 45,
     "model": "utsida.coursematch",
     "fields": {
-      "homeCourse": "TDT4225",
+      "homeCourse": [
+        "TDT4225"
+      ],
       "abroadCourse": [
         "COMP9313",
-        3
+        "University of New South Wales"
       ],
       "approved": true,
-      "approval_date": "2015-10-10",
+      "approval_date": "2015-10-1",
       "comment": ""
     }
   },
   {
-    "pk": null,
+    "pk": 46,
     "model": "utsida.coursematch",
     "fields": {
-      "homeCourse": "TDT4305",
+      "homeCourse": [
+        "TDT4305"
+      ],
       "abroadCourse": [
         "COMP9313",
-        3
+        "University of New South Wales"
       ],
       "approved": true,
       "approval_date": "2016-01-12",
@@ -616,13 +704,15 @@
     }
   },
   {
-    "pk": null,
+    "pk": 47,
     "model": "utsida.coursematch",
     "fields": {
-      "homeCourse": "TDT4150",
+      "homeCourse": [
+        "TDT4150"
+      ],
       "abroadCourse": [
         "COMP9315",
-        3
+        "University of New South Wales"
       ],
       "approved": true,
       "approval_date": "2016-01-12",
@@ -630,13 +720,15 @@
     }
   },
   {
-    "pk": null,
+    "pk": 48,
     "model": "utsida.coursematch",
     "fields": {
-      "homeCourse": "TDT4300",
+      "homeCourse": [
+        "TDT4300"
+      ],
       "abroadCourse": [
         "COMP9318",
-        3
+        "University of New South Wales"
       ],
       "approved": true,
       "approval_date": "2016-01-12",
@@ -644,13 +736,15 @@
     }
   },
   {
-    "pk": null,
+    "pk": 49,
     "model": "utsida.coursematch",
     "fields": {
-      "homeCourse": "IT2805",
+      "homeCourse": [
+        "IT2805"
+      ],
       "abroadCourse": [
         "COMP9321",
-        3
+        "University of New South Wales"
       ],
       "approved": true,
       "approval_date": "2016-08-08",
@@ -658,13 +752,15 @@
     }
   },
   {
-    "pk": null,
+    "pk": 50,
     "model": "utsida.coursematch",
     "fields": {
-      "homeCourse": "TDT4252",
+      "homeCourse": [
+        "TDT4252"
+      ],
       "abroadCourse": [
         "COMP9323",
-        3
+        "University of New South Wales"
       ],
       "approved": true,
       "approval_date": "2016-01-12",
@@ -672,13 +768,15 @@
     }
   },
   {
-    "pk": null,
+    "pk": 52,
     "model": "utsida.coursematch",
     "fields": {
-      "homeCourse": "TDT4136",
+      "homeCourse": [
+        "TDT4136"
+      ],
       "abroadCourse": [
         "COMP9414",
-        3
+        "University of New South Wales"
       ],
       "approved": true,
       "approval_date": "2016-01-12",
@@ -686,13 +784,15 @@
     }
   },
   {
-    "pk": null,
+    "pk": 53,
     "model": "utsida.coursematch",
     "fields": {
-      "homeCourse": "TDT4230",
+      "homeCourse": [
+        "TDT4230"
+      ],
       "abroadCourse": [
         "COMP9415",
-        3
+        "University of New South Wales"
       ],
       "approved": true,
       "approval_date": "2015-04-14",
@@ -700,13 +800,15 @@
     }
   },
   {
-    "pk": null,
+    "pk": 54,
     "model": "utsida.coursematch",
     "fields": {
-      "homeCourse": "TDT4137",
+      "homeCourse": [
+        "TDT4137"
+      ],
       "abroadCourse": [
         "COMP9417",
-        3
+        "University of New South Wales"
       ],
       "approved": true,
       "approval_date": "2016-01-12",
@@ -714,13 +816,15 @@
     }
   },
   {
-    "pk": null,
+    "pk": 55,
     "model": "utsida.coursematch",
     "fields": {
-      "homeCourse": "TDT4173",
+      "homeCourse": [
+        "TDT4173"
+      ],
       "abroadCourse": [
         "COMP9417",
-        3
+        "University of New South Wales"
       ],
       "approved": true,
       "approval_date": "2016-01-12",
@@ -728,13 +832,15 @@
     }
   },
   {
-    "pk": null,
+    "pk": 56,
     "model": "utsida.coursematch",
     "fields": {
-      "homeCourse": "TDT4300",
+      "homeCourse": [
+        "TDT4300"
+      ],
       "abroadCourse": [
         "COMP9417",
-        3
+        "University of New South Wales"
       ],
       "approved": true,
       "approval_date": "2016-01-12",
@@ -742,13 +848,15 @@
     }
   },
   {
-    "pk": null,
+    "pk": 57,
     "model": "utsida.coursematch",
     "fields": {
-      "homeCourse": "TTM4135",
+      "homeCourse": [
+        "TTM4135"
+      ],
       "abroadCourse": [
         "COMP9441",
-        3
+        "University of New South Wales"
       ],
       "approved": true,
       "approval_date": "2016-09-02",
@@ -756,13 +864,15 @@
     }
   },
   {
-    "pk": null,
+    "pk": 58,
     "model": "utsida.coursematch",
     "fields": {
-      "homeCourse": "IT3708",
+      "homeCourse": [
+        "IT3708"
+      ],
       "abroadCourse": [
         "COMP9444",
-        3
+        "University of New South Wales"
       ],
       "approved": true,
       "approval_date": "2016-01-12",
@@ -770,13 +880,15 @@
     }
   },
   {
-    "pk": null,
+    "pk": 59,
     "model": "utsida.coursematch",
     "fields": {
-      "homeCourse": "TTM4135",
+      "homeCourse": [
+        "TTM4135"
+      ],
       "abroadCourse": [
         "COMP9447",
-        3
+        "University of New South Wales"
       ],
       "approved": true,
       "approval_date": "2015-07-29",
@@ -784,13 +896,15 @@
     }
   },
   {
-    "pk": null,
+    "pk": 60,
     "model": "utsida.coursematch",
     "fields": {
-      "homeCourse": "TDT4237",
+      "homeCourse": [
+        "TDT4237"
+      ],
       "abroadCourse": [
         "COMP9447",
-        3
+        "University of New South Wales"
       ],
       "approved": true,
       "approval_date": "2015-07-29",
@@ -798,13 +912,15 @@
     }
   },
   {
-    "pk": null,
+    "pk": 61,
     "model": "utsida.coursematch",
     "fields": {
-      "homeCourse": "TDT4171",
+      "homeCourse": [
+        "TDT4171"
+      ],
       "abroadCourse": [
         "COMP9814",
-        3
+        "University of New South Wales"
       ],
       "approved": true,
       "approval_date": "2016-01-12",
@@ -812,13 +928,15 @@
     }
   },
   {
-    "pk": null,
+    "pk": 62,
     "model": "utsida.coursematch",
     "fields": {
-      "homeCourse": "TET4100",
+      "homeCourse": [
+        "TET4100"
+      ],
       "abroadCourse": [
         "ELEC3106",
-        3
+        "University of New South Wales"
       ],
       "approved": true,
       "approval_date": "2016-01-12",
@@ -826,13 +944,15 @@
     }
   },
   {
-    "pk": null,
+    "pk": 63,
     "model": "utsida.coursematch",
     "fields": {
-      "homeCourse": "TDT4295",
+      "homeCourse": [
+        "TDT4295"
+      ],
       "abroadCourse": [
         "ELEC9704",
-        3
+        "University of New South Wales"
       ],
       "approved": true,
       "approval_date": "2016-01-12",
@@ -840,13 +960,15 @@
     }
   },
   {
-    "pk": null,
+    "pk": 64,
     "model": "utsida.coursematch",
     "fields": {
-      "homeCourse": "TDT4102",
+      "homeCourse": [
+        "TDT4102"
+      ],
       "abroadCourse": [
         "ENG1811",
-        3
+        "University of New South Wales"
       ],
       "approved": true,
       "approval_date": "2016-06-30",
@@ -854,13 +976,15 @@
     }
   },
   {
-    "pk": null,
+    "pk": 65,
     "model": "utsida.coursematch",
     "fields": {
-      "homeCourse": "TIØ4146",
+      "homeCourse": [
+        "TIØ4146"
+      ],
       "abroadCourse": [
         "GENC2100",
-        3
+        "University of New South Wales"
       ],
       "approved": true,
       "approval_date": "2015-07-29",
@@ -868,13 +992,15 @@
     }
   },
   {
-    "pk": null,
+    "pk": 67,
     "model": "utsida.coursematch",
     "fields": {
-      "homeCourse": "TDT4175",
+      "homeCourse": [
+        "TDT4175"
+      ],
       "abroadCourse": [
         "INFS1602",
-        3
+        "University of New South Wales"
       ],
       "approved": true,
       "approval_date": "2016-07-28",
@@ -882,13 +1008,31 @@
     }
   },
   {
-    "pk": null,
+    "pk": 68,
     "model": "utsida.coursematch",
     "fields": {
-      "homeCourse": "TDT4252",
+      "homeCourse": [
+        "TTM4165"
+      ],
       "abroadCourse": [
         "INFS1602",
-        3
+        "University of New South Wales"
+      ],
+      "approved": true,
+      "approval_date": "2016-11-08",
+      "comment": ""
+    }
+  },
+  {
+    "pk": 69,
+    "model": "utsida.coursematch",
+    "fields": {
+      "homeCourse": [
+        "TDT4252"
+      ],
+      "abroadCourse": [
+        "INFS1602",
+        "University of New South Wales"
       ],
       "approved": true,
       "approval_date": "2016-05-13",
@@ -896,13 +1040,15 @@
     }
   },
   {
-    "pk": null,
+    "pk": 70,
     "model": "utsida.coursematch",
     "fields": {
-      "homeCourse": "TDT4252",
+      "homeCourse": [
+        "TDT4252"
+      ],
       "abroadCourse": [
         "INFS2848",
-        3
+        "University of New South Wales"
       ],
       "approved": true,
       "approval_date": "2016-05-24",
@@ -910,13 +1056,15 @@
     }
   },
   {
-    "pk": null,
+    "pk": 71,
     "model": "utsida.coursematch",
     "fields": {
-      "homeCourse": "TIØ4161",
+      "homeCourse": [
+        "TIØ4161"
+      ],
       "abroadCourse": [
         "INFS2848",
-        3
+        "University of New South Wales"
       ],
       "approved": true,
       "approval_date": "2015-01-09",
@@ -924,13 +1072,15 @@
     }
   },
   {
-    "pk": null,
+    "pk": 72,
     "model": "utsida.coursematch",
     "fields": {
-      "homeCourse": "TDT4175",
+      "homeCourse": [
+        "TDT4175"
+      ],
       "abroadCourse": [
         "INFS2848",
-        3
+        "University of New South Wales"
       ],
       "approved": true,
       "approval_date": "2016-07-28",
@@ -938,13 +1088,15 @@
     }
   },
   {
-    "pk": null,
+    "pk": 73,
     "model": "utsida.coursematch",
     "fields": {
-      "homeCourse": "TDT4257",
+      "homeCourse": [
+        "TDT4257"
+      ],
       "abroadCourse": [
         "INFS3631",
-        3
+        "University of New South Wales"
       ],
       "approved": true,
       "approval_date": "2016-05-24",
@@ -952,27 +1104,15 @@
     }
   },
   {
-    "pk": null,
+    "pk": 75,
     "model": "utsida.coursematch",
     "fields": {
-      "homeCourse": "TIØ4258",
-      "abroadCourse": [
-        "INFS3631",
-        3
+      "homeCourse": [
+        "TDT4245"
       ],
-      "approved": true,
-      "approval_date": "2015-01-09",
-      "comment": ""
-    }
-  },
-  {
-    "pk": null,
-    "model": "utsida.coursematch",
-    "fields": {
-      "homeCourse": "TDT4245",
       "abroadCourse": [
         "INFS5930",
-        3
+        "University of New South Wales"
       ],
       "approved": true,
       "approval_date": "2016-09-13",
@@ -980,13 +1120,15 @@
     }
   },
   {
-    "pk": null,
+    "pk": 76,
     "model": "utsida.coursematch",
     "fields": {
-      "homeCourse": "TMA4105",
+      "homeCourse": [
+        "TMA4105"
+      ],
       "abroadCourse": [
         "MATH2011",
-        3
+        "University of New South Wales"
       ],
       "approved": true,
       "approval_date": "2016-09-02",
@@ -994,13 +1136,15 @@
     }
   },
   {
-    "pk": null,
+    "pk": 77,
     "model": "utsida.coursematch",
     "fields": {
-      "homeCourse": "TMA4135",
+      "homeCourse": [
+        "TMA4135"
+      ],
       "abroadCourse": [
         "MATH2019",
-        3
+        "University of New South Wales"
       ],
       "approved": true,
       "approval_date": "2016-01-12",
@@ -1008,13 +1152,15 @@
     }
   },
   {
-    "pk": null,
+    "pk": 78,
     "model": "utsida.coursematch",
     "fields": {
-      "homeCourse": "IT2810",
+      "homeCourse": [
+        "IT2810"
+      ],
       "abroadCourse": [
         "SDES6742",
-        3
+        "University of New South Wales"
       ],
       "approved": true,
       "approval_date": "2016-09-13",
@@ -1022,17 +1168,19 @@
     }
   },
   {
-    "pk": null,
+    "pk": 79,
     "model": "utsida.coursematch",
     "fields": {
-      "homeCourse": "TFY4125",
+      "homeCourse": [
+        "TFY4125"
+      ],
       "abroadCourse": [
         "PHYS1111",
-        3
+        "University of New South Wales"
       ],
       "approved": true,
       "approval_date": "2016-01-12",
-      "comment": "Tror det er PHYS1111 som korrensponderer best."
+      "comment": "Tror det er PHYS1111 som korrensponderer best"
     }
   }
 ]

@@ -37,6 +37,12 @@
     font-size: 18px;
 }
 
+ul.ui-autocomplete {
+    z-index: 1100;
+}
+
+/* 2.0 - nav */
+
 .pointer {
     cursor: pointer !important;
 }

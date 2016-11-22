@@ -1,12 +1,17 @@
 {% extends "utsida/layout.html" %}
 
 {% block content %}
-    <div id="selection">
-    </div>
+    {% load widget_tweaks %}
+
+    {% for message in messages %}
+        {% if 'success' in message.tags %}
+            <div id="sucessAlert" class="alert alert-success">{{ message }}</div>
+        {% endif %}
+    {% endfor %}
 
     <div class="container">
-        <h2 class="text-center">Godkjente fag</h2>
-        <table id="example" class="table table-striped">
+        <h2 class="text-center">Godkjente fag fra {{ university_name }}</h2>
+        <table id="example" class="table table-striped" style="opacity: 0">
             <thead>
             <tr>
                 <th></th>
@@ -16,35 +21,91 @@
                 <th>Godkjent dato</th>
                 <th class="select-filter">Universitet</th>
                 <th>Comment</th>
+                <th></th>
             </tr>
             </thead>
             <tbody>
-
-            {% for course_match in course_match_list %}
-                <tr class="noSelect pointer">
-                <td class="glyphicon glyphicon-chevron-down"></td>
-                    {% if course_match.homeCourse.description_url == "" %}
-                        <td>{{ course_match.homeCourse }} </td>
-                    {% else %}
-                        <td><a href={{ course_match.homeCourse.description_url }}>{{ course_match.homeCourse }}</a>
-                        </td>
-                    {% endif %}
-                    {% if course_match.abroadCourse.description_url == "" %}
-                        <td>{{ course_match.abroadCourse }} </td>
-                    {% else %}
+                {% for course_match in course_match_list %}
+                    <tr class="clickableTableRow noselect">
+                        <td class="glyphicon glyphicon-chevron-down"></td>
+                        {% if course_match.homeCourse.description_url == "" %}
+                            <td>{{ course_match.homeCourse }} </td>
+                        {% else %}
+                            <td><a href={{ course_match.homeCourse.description_url }}>{{ course_match.homeCourse }}</a>
+                            </td>
+                        {% endif %}
+                        {% if course_match.abroadCourse.description_url == "" %}
+                            <td>{{ course_match.abroadCourse }} </td>
+                        {% else %}
+                            <td>
+                                <a href={{ course_match.abroadCourse.description_url }}>{{ course_match.abroadCourse }}</a>
+                            </td>
+                        {% endif %}
+                        <td> {{ course_match.abroadCourse.study_points }}</td>
+                        <td> {{ course_match.approval_date }}</td>
+                        <td> {{ course_match.abroadCourse.university }}</td>
+                        <td>{{ course_match.comment }}</td>
                         <td>
-                            <a href={{ course_match.abroadCourse.description_url }}>{{ course_match.abroadCourse }}</a>
+                            {% if perms.can_edit_course_match %}
+                            <a class="glyphicon glyphicon-edit" href="{% url 'update_course_match' id=course_match.id %}"></a>
+                            {% endif %}
                         </td>
-                    {% endif %}
-                    <td> {{ course_match.abroadCourse.study_points }}</td>
-                    <td> {{ course_match.approval_date }}</td>
-                    <td> {{ course_match.abroadCourse.university }}</td>
-                    <td>{{ course_match.comment }}</td>
-                </tr>
-            {% endfor %}
+                    </tr>
+                {% endfor %}
             </tbody>
         </table>
     </div>
+
+    {% if perms.can_add_course_match %}
+    <button type="button" class="btn btn-primary btn-lg" data-toggle="modal" data-target="#myModal">
+        Legg til fagkobling
+    </button>
+    {% endif %}
+
+    <!-- Modal -->
+    <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                    <h4 class="modal-title" id="myModalLabel">Legg til ny fag kobling</h4>
+                </div>
+                <form action="/courseMatch/add/" method="post" novalidate="novalidate">
+                    {% csrf_token %}
+                    <div class="modal-body">
+                        <div class="form-group">
+                            <label> Fag utenlands </label>
+                            {{ add_form.abroadCourse | add_class:"form-control" }}
+                        </div>
+                        <div class="homeCourse form-group">
+                            <label> Fag hjemme </label>
+                            {{ add_form.homeCourse | add_class:"form-control" }}
+                        </div>
+                        <div class="form-group">
+                            <label> Kommentar </label>
+                            {{ add_form.comment | add_class:"form-control" }}
+                        </div>
+                        <div class="form-group">
+                            {{ add_form.approved }}
+                            <label> Godkjent </label>
+                        </div>
+                        <div class="form-group">
+                            <label> Godkjent dato </label>
+                            {{ add_form.approval_date | add_class:"form-control" }}
+                        </div>
+                    </div>
+                    <input type="hidden" name="university" value="{{ university_name }}"/>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Lukk</button>
+                        <button type="submit" class="btn btn-primary">Lagre</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+
 
     {% load staticfiles %}
     <script src="{% static 'utsida/javascripts/courseMatch/courseMatchTable.js' %}"></script>

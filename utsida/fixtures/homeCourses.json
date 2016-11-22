@@ -16741,15 +16741,6 @@
   },
   {
     "model": "utsida.homecourse",
-    "pk": 1860,
-    "fields": {
-      "description_url": "",
-      "name": "Zoology",
-      "code": "MB102205"
-    }
-  },
-  {
-    "model": "utsida.homecourse",
     "pk": 1861,
     "fields": {
       "description_url": "",
@@ -17331,15 +17322,6 @@
       "description_url": "",
       "name": "Applied physics for Biomarine innovation",
       "code": "MF104314"
-    }
-  },
-  {
-    "model": "utsida.homecourse",
-    "pk": 1926,
-    "fields": {
-      "description_url": "",
-      "name": "Theory of Science, Research Methods and Research Ethics, part 1 ",
-      "code": "MKS4001"
     }
   },
   {

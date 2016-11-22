@@ -43,6 +43,7 @@ class Country(models.Model):
 
 class UniversityManager(models.Manager):
     def get_by_natural_key(self, name):
+        print(name)
         return self.get(name=name)
 
 
@@ -50,12 +51,13 @@ class University(models.Model):
     name = models.CharField(max_length=100, unique=True)
     acronym = models.CharField(max_length=10, blank=True)
     country = models.ForeignKey(Country, blank=True)
+    objects = UniversityManager()
 
     def __str__(self):
         return self.name
 
     def natural_key(self):
-        return self.name
+        return (self.name,)
 
     class Meta:
         verbose_name_plural = 'universities'
@@ -63,7 +65,7 @@ class University(models.Model):
 
 class AbroadCourseManager(models.Manager):
     def get_by_natural_key(self, code, university):
-        return self.get(code=code, university=university)
+        return self.get(code=code, university__name=university)
 
 
 class AbroadCourse(models.Model):
@@ -82,13 +84,18 @@ class AbroadCourse(models.Model):
         return self.code + ' ' + self.name
 
     def natural_key(self):
-        return self.code, self.university
+        return (self.code, self.university,)
 
+
+class HomeCourseManager(models.Manager):
+    def get_by_natural_key(self, code):
+        return self.get(code=code)
 
 class HomeCourse(models.Model):
-    code = models.CharField(max_length=10, primary_key=True)
+    code = models.CharField(max_length=10, unique=True)
     name = models.CharField(max_length=50)
     description_url = models.URLField(max_length=2000, blank=True,default="")
+    objects = HomeCourseManager()
 
     def __str__(self):
         return self.code + ' - ' + self.name
@@ -96,6 +103,9 @@ class HomeCourse(models.Model):
     class Meta:
         verbose_name_plural = 'home courses'
         verbose_name = 'home course'
+
+    def natural_key(self):
+        return (self.code,)
 
 
 class CourseMatch(models.Model):

@@ -1,6 +1,10 @@
+from datetime import date
+
+from ajax_select import make_ajax_field
+from ajax_select.fields import AutoCompleteSelectField
 from django import forms
 
-from .models import Query, University
+from .models import Query, University, CourseMatch, HomeCourse
 
 
 class QueryCaseBaseForm(forms.ModelForm):
@@ -23,12 +27,29 @@ class QueryCaseBaseForm(forms.ModelForm):
         self.fields["socialQualityRating"].required = False
 
 
-class University_selection_form(forms.ModelForm):
+class DateInput(forms.DateInput):
+    input_type = 'date'
+
+class CourseMatchForm(forms.ModelForm):
+
 
     class Meta:
-        model = University
-        fields = ('name',)
+        model = CourseMatch
+        fields = ['abroadCourse','homeCourse','comment','approval_date','approved',]
+        widgets = {
+            'approval_date': DateInput()
+        }
 
-    def __init__(self, *args, **kwargs):
-        super(University_selection_form, self).__init__(*args,**kwargs)
-        self.fields["name"].required = True
+    homeCourse = make_ajax_field(CourseMatch, 'homeCourse', 'homeCourseFind', show_help_text=False, required=False)
+
+    def save(self, commit=True):
+        courseMatch = super(CourseMatchForm, self).save(commit=False)
+        CourseMatch.approved = self.cleaned_data['approved']
+        CourseMatch.approval_date = self.cleaned_data['approval_date']
+        CourseMatch.comment = self.cleaned_data['comment']
+        if commit:
+            courseMatch.save()
+
+        return courseMatch
+
+
