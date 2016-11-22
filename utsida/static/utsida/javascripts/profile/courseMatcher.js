@@ -6,33 +6,36 @@ CourseMatcher = {
         homeCourses: null,
         awayCourseSelected: false,
         homeCourseSelected: false,
-        courseMatchesList: null,
-        superVisorEmail: null
+        courseMatchesContainer: null,
+        superVisorEmail: null,
+        wrapper: null
     },
 
     init: function() {
         s = this.s;
         s.awayCourses = document.getElementById("courseList").children;
         s.homeCourses = document.getElementById("homeCourseList").children;
-        s.courseMatchesList = document.getElementById("courseMatches");
+        s.courseMatchesContainer = document.getElementById("courseMatches");
+        s.wrapper = document.getElementById("courseMatchesWrapper");
     },
 
     matchSelectedCourses: function() {
+        s.wrapper.style.display = "block";
         var awayCourse = "";
         var homeCourse = "";
         for (var i = 0; i < s.awayCourses.length; i++) {
-            if (s.awayCourses[i].children[0].style.backgroundColor == "rgb(51, 122, 183)") {
-                awayCourse = s.awayCourses[i].children[0].innerText;
+            if (s.awayCourses[i].style.backgroundColor == "rgb(51, 122, 183)") {
+                awayCourse = s.awayCourses[i].innerText;
             }
         }
 
         for (var j = 0; j < s.homeCourses.length; j++) {
-            if (s.homeCourses[j].children[0].style.backgroundColor == "rgb(51, 122, 183)") {
-                homeCourse = s.homeCourses[j].children[0].innerText;
+            if (s.homeCourses[j].style.backgroundColor == "rgb(51, 122, 183)") {
+                homeCourse = s.homeCourses[j].innerText;
             }
         }
 
-        var match = document.createElement("li");
+        var match = document.createElement("div");
         var labelAway = document.createElement("div");
         var labelHome = document.createElement("div");
         var arrow = document.createElement("span");
@@ -46,7 +49,7 @@ CourseMatcher = {
         match.appendChild(labelAway);
         match.appendChild(arrow);
         match.appendChild(labelHome);
-        s.courseMatchesList.appendChild(match);
+        s.courseMatchesContainer.appendChild(match);
 
     },
 
@@ -66,18 +69,14 @@ CourseMatcher = {
 
     clearAwayCourseSelection: function() {
         for (var i = 0; i < s.awayCourses.length; i++) {
-            s.awayCourses[i].children[0].style.backgroundColor = "#FFF";
+            s.awayCourses[i].style.backgroundColor = "#FFF";
         }
     },
 
     clearHomeCourseSelection: function() {
         for (var i = 0; i < s.homeCourses.length; i++) {
-            s.homeCourses[i].children[0].style.backgroundColor = "#FFF";
+            s.homeCourses[i].style.backgroundColor = "#FFF";
         }
-    },
-
-    sendToSupervisor: function() {
-
     }
 };
 
