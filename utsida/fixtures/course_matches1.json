@@ -1,0 +1,578 @@
+[
+  {
+    "pk": 17,
+    "model": "utsida.coursematch",
+    "fields": {
+      "homeCourse": [
+        "TDT4205"
+      ],
+      "abroadCourse": [
+        "COMP4403",
+        "University of Queensland"
+      ],
+      "approved": true,
+      "approval_date": "2015-01-15",
+      "comment": "vår (Som Masterfag, post-grad) "
+    }
+  },
+  {
+    "pk": 18,
+    "model": "utsida.coursematch",
+    "fields": {
+      "homeCourse": [
+        "TDT4260"
+      ],
+      "abroadCourse": [
+        "COMP4403",
+        "University of Queensland"
+      ],
+      "approved": true,
+      "approval_date": "2016-03-11",
+      "comment": "vår (Som Masterfag, post-grad) "
+    }
+  },
+  {
+    "pk": 19,
+    "model": "utsida.coursematch",
+    "fields": {
+      "homeCourse": [
+        "TDT4125"
+      ],
+      "abroadCourse": [
+        "COMP4500",
+        "University of Queensland"
+      ],
+      "approved": true,
+      "approval_date": "2015-01-15",
+      "comment": "høst"
+    }
+  },
+  {
+    "pk": 20,
+    "model": "utsida.coursematch",
+    "fields": {
+      "homeCourse": [
+        "TDT4173"
+      ],
+      "abroadCourse": [
+        "COMP4702",
+        "University of Queensland"
+      ],
+      "approved": true,
+      "approval_date": "2016-01-11",
+      "comment": "COMP3700 is equal."
+    }
+  },
+  {
+    "pk": 21,
+    "model": "utsida.coursematch",
+    "fields": {
+      "homeCourse": [
+        "TTM4135"
+      ],
+      "abroadCourse": [
+        "COMS3000",
+        "University of Queensland"
+      ],
+      "approved": true,
+      "approval_date": "2015-12-15",
+      "comment": "høst"
+    }
+  },
+  {
+    "pk": 22,
+    "model": "utsida.coursematch",
+    "fields": {
+      "homeCourse": [
+        "TDT4195"
+      ],
+      "abroadCourse": [
+        "COSC3000",
+        "University of Queensland"
+      ],
+      "approved": true,
+      "approval_date": "2015-01-15",
+      "comment": "vår (grafikk 50% ok),image part not covered"
+    }
+  },
+  {
+    "pk": 23,
+    "model": "utsida.coursematch",
+    "fields": {
+      "homeCourse": [
+        "TDT4255"
+      ],
+      "abroadCourse": [
+        "COSC3500",
+        "University of Queensland"
+      ],
+      "approved": true,
+      "approval_date": "2015-12-15",
+      "comment": "Anbefalt med forkunnskaper i C"
+    }
+  },
+  {
+    "pk": 24,
+    "model": "utsida.coursematch",
+    "fields": {
+      "homeCourse": [
+        "TDT4200"
+      ],
+      "abroadCourse": [
+        "COSC3500",
+        "University of Queensland"
+      ],
+      "approved": true,
+      "approval_date": "2015-12-15",
+      "comment": "Anbefalt med forkunnskaper i C"
+    }
+  },
+  {
+    "pk": 25,
+    "model": "utsida.coursematch",
+    "fields": {
+      "homeCourse": [
+        "TDT4242"
+      ],
+      "abroadCourse": [
+        "CSSE2002",
+        "University of Queensland"
+      ],
+      "approved": true,
+      "approval_date": "2016-01-11",
+      "comment": "PostGrad, men for likt TDT4100/4102COMP2500 / COMP7908 / CSSE7023 same"
+    }
+  },
+  {
+    "pk": 26,
+    "model": "utsida.coursematch",
+    "fields": {
+      "homeCourse": [
+        "TDT4258"
+      ],
+      "abroadCourse": [
+        "CSSE3010",
+        "University of Queensland"
+      ],
+      "approved": true,
+      "approval_date": "2015-01-15",
+      "comment": "vår"
+    }
+  },
+  {
+    "pk": 27,
+    "model": "utsida.coursematch",
+    "fields": {
+      "homeCourse": [
+        "TDT4225"
+      ],
+      "abroadCourse": [
+        "CSSE4004",
+        "University of Queensland"
+      ],
+      "approved": true,
+      "approval_date": "2015-09-24",
+      "comment": "COMP4301 (COMP7301) is equal. vårvår"
+    }
+  },
+  {
+    "pk": 28,
+    "model": "utsida.coursematch",
+    "fields": {
+      "homeCourse": [
+        "TDT4295"
+      ],
+      "abroadCourse": [
+        "CSSE4004",
+        "University of Queensland"
+      ],
+      "approved": true,
+      "approval_date": "2016-07-20",
+      "comment": "COMP4301 (COMP7301) is equal. vårvår"
+    }
+  },
+  {
+    "pk": 29,
+    "model": "utsida.coursematch",
+    "fields": {
+      "homeCourse": [
+        "TTK4155"
+      ],
+      "abroadCourse": [
+        "CSSE4011",
+        "University of Queensland"
+      ],
+      "approved": true,
+      "approval_date": "2015-09-24",
+      "comment": "Vår (Ekstra-godkjent som IaS)"
+    }
+  },
+  {
+    "pk": 30,
+    "model": "utsida.coursematch",
+    "fields": {
+      "homeCourse": [
+        "TDT4240"
+      ],
+      "abroadCourse": [
+        "CSSE4603",
+        "University of Queensland"
+      ],
+      "approved": true,
+      "approval_date": "2016-01-11",
+      "comment": "vår"
+    }
+  },
+  {
+    "pk": 31,
+    "model": "utsida.coursematch",
+    "fields": {
+      "homeCourse": [
+        "TDT4242"
+      ],
+      "abroadCourse": [
+        "CSSE7001",
+        "University of Queensland"
+      ],
+      "approved": true,
+      "approval_date": "2016-03-11",
+      "comment": "PreReq er PU og OOP"
+    }
+  },
+  {
+    "pk": 32,
+    "model": "utsida.coursematch",
+    "fields": {
+      "homeCourse": [
+        "TDT4240"
+      ],
+      "abroadCourse": [
+        "CSSE7032",
+        "University of Queensland"
+      ],
+      "approved": true,
+      "approval_date": "2016-01-11",
+      "comment": " "
+    }
+  },
+  {
+    "pk": 33,
+    "model": "utsida.coursematch",
+    "fields": {
+      "homeCourse": [
+        "TDT4245"
+      ],
+      "abroadCourse": [
+        "DECO3500",
+        "University of Queensland"
+      ],
+      "approved": true,
+      "approval_date": "2015-01-15",
+      "comment": "høst, 70% prosjekt"
+    }
+  },
+  {
+    "pk": 34,
+    "model": "utsida.coursematch",
+    "fields": {
+      "homeCourse": [
+        "TET4100"
+      ],
+      "abroadCourse": [
+        "ELEC3400",
+        "University of Queensland"
+      ],
+      "approved": true,
+      "approval_date": "2015-09-24",
+      "comment": "Vår"
+    }
+  },
+  {
+    "pk": 35,
+    "model": "utsida.coursematch",
+    "fields": {
+      "homeCourse": [
+        "EiT"
+      ],
+      "abroadCourse": [
+        "ENGG4800",
+        "University of Queensland"
+      ],
+      "approved": true,
+      "approval_date": "2016-03-11",
+      "comment": "65% gruppearbeid"
+    }
+  },
+  {
+    "pk": 36,
+    "model": "utsida.coursematch",
+    "fields": {
+      "homeCourse": [
+        "TDT4237"
+      ],
+      "abroadCourse": [
+        "ENGG7020",
+        "University of Queensland"
+      ],
+      "approved": true,
+      "approval_date": "2016-01-11",
+      "comment": " "
+    }
+  },
+  {
+    "pk": 37,
+    "model": "utsida.coursematch",
+    "fields": {
+      "homeCourse": [
+        "IT3010"
+      ],
+      "abroadCourse": [
+        "ENGG7811",
+        "University of Queensland"
+      ],
+      "approved": true,
+      "approval_date": "2015-01-15",
+      "comment": "vår"
+    }
+  },
+  {
+    "pk": 38,
+    "model": "utsida.coursematch",
+    "fields": {
+      "homeCourse": [
+        "EiT"
+      ],
+      "abroadCourse": [
+        "ENVM7523",
+        "University of Queensland"
+      ],
+      "approved": true,
+      "approval_date": "2016-03-11",
+      "comment": " "
+    }
+  },
+  {
+    "pk": 39,
+    "model": "utsida.coursematch",
+    "fields": {
+      "homeCourse": [
+        "TDT4210"
+      ],
+      "abroadCourse": [
+        "HLTH7001",
+        "University of Queensland"
+      ],
+      "approved": true,
+      "approval_date": "2016-01-11",
+      "comment": "Ikke valgbart for utvekslingsstudenter 2016"
+    }
+  },
+  {
+    "pk": 40,
+    "model": "utsida.coursematch",
+    "fields": {
+      "homeCourse": [
+        "EiT"
+      ],
+      "abroadCourse": [
+        "INFS1300",
+        "University of Queensland"
+      ],
+      "approved": true,
+      "approval_date": "2016-07-20",
+      "comment": "COMP1900 is equal"
+    }
+  },
+  {
+    "pk": 41,
+    "model": "utsida.coursematch",
+    "fields": {
+      "homeCourse": [
+        "TMM4230"
+      ],
+      "abroadCourse": [
+        "INFS3204",
+        "University of Queensland"
+      ],
+      "approved": true,
+      "approval_date": "2016-03-11",
+      "comment": "Mer et dataemne enn et ingeniøremne"
+    }
+  },
+  {
+    "pk": 42,
+    "model": "utsida.coursematch",
+    "fields": {
+      "homeCourse": [
+        "TDT4300"
+      ],
+      "abroadCourse": [
+        "INFS4203",
+        "University of Queensland"
+      ],
+      "approved": true,
+      "approval_date": "2015-12-15",
+      "comment": "høst"
+    }
+  },
+  {
+    "pk": 43,
+    "model": "utsida.coursematch",
+    "fields": {
+      "homeCourse": [
+        "EiT"
+      ],
+      "abroadCourse": [
+        "INFS4205",
+        "University of Queensland"
+      ],
+      "approved": true,
+      "approval_date": "2016-03-11",
+      "comment": "vår"
+    }
+  },
+  {
+    "pk": 44,
+    "model": "utsida.coursematch",
+    "fields": {
+      "homeCourse": [
+        "TDT4300"
+      ],
+      "abroadCourse": [
+        "INFS7203",
+        "University of Queensland"
+      ],
+      "approved": true,
+      "approval_date": "2016-03-11",
+      "comment": " "
+    }
+  },
+  {
+    "pk": 45,
+    "model": "utsida.coursematch",
+    "fields": {
+      "homeCourse": [
+        "TDT4215"
+      ],
+      "abroadCourse": [
+        "INFS7204",
+        "University of Queensland"
+      ],
+      "approved": true,
+      "approval_date": "2016-09-06",
+      "comment": "InfosysHøst"
+    }
+  },
+  {
+    "pk": 46,
+    "model": "utsida.coursematch",
+    "fields": {
+      "homeCourse": [
+        "EiT"
+      ],
+      "abroadCourse": [
+        "INFS7205",
+        "University of Queensland"
+      ],
+      "approved": true,
+      "approval_date": "2016-09-13",
+      "comment": " "
+    }
+  },
+  {
+    "pk": 47,
+    "model": "utsida.coursematch",
+    "fields": {
+      "homeCourse": [
+        "TDT4252"
+      ],
+      "abroadCourse": [
+        "INFS7255",
+        "University of Queensland"
+      ],
+      "approved": true,
+      "approval_date": "2016-01-11",
+      "comment": " "
+    }
+  },
+  {
+    "pk": 48,
+    "model": "utsida.coursematch",
+    "fields": {
+      "homeCourse": [
+        "TDT4117"
+      ],
+      "abroadCourse": [
+        "INFS7410",
+        "University of Queensland"
+      ],
+      "approved": true,
+      "approval_date": "2015-12-15",
+      "comment": "høst"
+    }
+  },
+  {
+    "pk": 49,
+    "model": "utsida.coursematch",
+    "fields": {
+      "homeCourse": [
+        "TDT4150"
+      ],
+      "abroadCourse": [
+        "INFS7907",
+        "University of Queensland"
+      ],
+      "approved": true,
+      "approval_date": "2016-01-11",
+      "comment": " "
+    }
+  },
+  {
+    "pk": 50,
+    "model": "utsida.coursematch",
+    "fields": {
+      "homeCourse": [
+        "TTM4135"
+      ],
+      "abroadCourse": [
+        "MATH3302",
+        "University of Queensland"
+      ],
+      "approved": true,
+      "approval_date": "2016-09-13",
+      "comment": " "
+    }
+  },
+  {
+    "pk": 51,
+    "model": "utsida.coursematch",
+    "fields": {
+      "homeCourse": [
+        "TDT4305"
+      ],
+      "abroadCourse": [
+        "MGTS7217",
+        "University of Queensland"
+      ],
+      "approved": true,
+      "approval_date": "2016-01-11",
+      "comment": " "
+    }
+  },
+  {
+    "pk": 52,
+    "model": "utsida.coursematch",
+    "fields": {
+      "homeCourse": [
+        "TDT4300"
+      ],
+      "abroadCourse": [
+        "MGTS7217",
+        "University of Queensland"
+      ],
+      "approved": true,
+      "approval_date": "2016-01-11",
+      "comment": " "
+    }
+  }
+]

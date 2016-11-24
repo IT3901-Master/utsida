@@ -22,5 +22,14 @@
       "acronym": "UNSW",
       "country": "Australia"
     }
+  },
+
+  {
+    "model": "utsida.university",
+    "fields": {
+      "name": "Queensland University of Technology",
+      "acronym": "QUT",
+      "country": "Australia"
+    }
   }
 ]

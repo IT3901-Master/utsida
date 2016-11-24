@@ -41065,6 +41065,42 @@
       "name": "Distributed Systems",
       "code": "TDT4190"
     }
-  }
+  },
+  {
+    "model": "utsida.homecourse",
+    "pk": 4565,
+    "fields": {
+      "description_url": "",
+      "name": "Valgfag",
+      "code": "Valgfag"
+    }
+  },
+  {
+    "model": "utsida.homecourse",
+    "pk": 4566,
+    "fields": {
+      "description_url": "",
+      "name": "Eksperter i Team",
+      "code": "EiT"
+    }
+  },
+  {
+    "model": "utsida.homecourse",
+    "pk": 4567,
+    "fields": {
+      "description_url": "",
+      "name": "Kundestyrt prosjekt",
+      "code": "KPro"
+    }
+  },
 
+  {
+    "model": "utsida.homecourse",
+    "pk": 4568,
+    "fields": {
+      "description_url": "",
+      "name": "Komplementær emne",
+      "code": "K-emne"
+    }
+  }
 ]

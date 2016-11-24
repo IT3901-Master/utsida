@@ -7,8 +7,14 @@ load:
 	python3 manage.py loaddata homeCourses.json
 	python3 manage.py loaddata languages.json
 	python3 manage.py loaddata universities.json
-	python3 manage.py loaddata abroad_courses_script
-	python3 manage.py loaddata course_matches_script
+	python3 manage.py loaddata abroad_courses0
+	python3 manage.py loaddata abroad_courses1
+	python3 manage.py loaddata abroad_courses2
+	python3 manage.py loaddata course_matches0
+	python3 manage.py loaddata course_matches1
+	python3 manage.py loaddata course_matches2
+
+
 
 makemigrations:
 	python3 manage.py makemigrations utsida
