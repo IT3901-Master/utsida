@@ -41093,7 +41093,6 @@
       "code": "KPro"
     }
   },
-
   {
     "model": "utsida.homecourse",
     "pk": 4568,
@@ -41101,6 +41100,15 @@
       "description_url": "",
       "name": "Komplementær emne",
       "code": "K-emne"
+    }
+  },
+  {
+    "model": "utsida.homecourse",
+    "pk": 4569,
+    "fields": {
+      "description_url": "",
+      "name": "Cryptography, Introduction",
+      "code": "TMA4155"
     }
   }
 ]

@@ -107,6 +107,10 @@ class HomeCourse(models.Model):
     def natural_key(self):
         return (self.code,)
 
+class CourseMatchManager(models.Manager):
+    def get_by_natural_key(self,homeCourse,abroadCourse):
+        return self.get(homeCourse=homeCourse,abroadCourse=abroadCourse)
+
 
 class CourseMatch(models.Model):
     homeCourse = models.ForeignKey(HomeCourse)
@@ -114,6 +118,7 @@ class CourseMatch(models.Model):
     approved = models.BooleanField(default=False)
     approval_date = models.DateField(blank=True,null=True)
     comment = models.CharField(max_length=200,blank=True,default="")
+    objects = CourseMatchManager()
 
     def __str__(self):
         return self.homeCourse.code + ' - ' + self.abroadCourse.code
@@ -121,6 +126,10 @@ class CourseMatch(models.Model):
     class Meta:
         verbose_name_plural = 'course matches'
         verbose_name = 'course match'
+        unique_together = ["homeCourse","abroadCourse"]
+
+    def natural_key(self):
+        return (self.homeCourse,self.abroadCourse)
 
 
 class Language(models.Model):

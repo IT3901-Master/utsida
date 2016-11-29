@@ -9,8 +9,9 @@
 
             <form method="post" action="/courseMatch/university/" method="post">
                 {% csrf_token %}
-                <h3 class="vertical-space-bottom vertical-space-top-big">Velg universitetet du vil se godkjente fag
+                <h3 class="vertical-space-top-big">Velg universitetet du vil se godkjente fag
                     for</h3>
+                <p class=" vertical-space-bottom vertical-space-top"> Fag er foreløpig bare hentet fra WIKI sidene til IDI</p>
                 <div class="form-group">
                     <select id="university" class="form-control" name="university">
                         {% for university in university_list %}

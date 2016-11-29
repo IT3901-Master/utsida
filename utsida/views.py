@@ -1,3 +1,5 @@
+import re
+
 from django.db import transaction
 from django.http import HttpResponse
 from django.shortcuts import render, redirect, get_object_or_404
@@ -110,7 +112,9 @@ def result(request, university=None):
 
 @login_required
 def courseMatch(request):
-    university = request.POST["university"][:-5]
+    university = request.POST["university"]
+    #Remove the paranthesis, example: (103)
+    university = re.sub(r'\([^)]*\)', '', university)[:-1]
     add_form = CourseMatchForm()
     add_form.fields["abroadCourse"].queryset = AbroadCourse.objects.filter(university__name=university)
     course_matches = CourseMatch.objects.all().filter(abroadCourse__university__name=university)
@@ -172,3 +176,6 @@ def course_match_select_university(request):
 
     context = {"university_list":university_list}
     return render(request, "utsida/course_match_university_select.html",context)
+
+
+
