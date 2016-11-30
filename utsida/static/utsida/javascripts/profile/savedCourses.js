@@ -7,6 +7,7 @@ var removeCourse = function(block, code, university) {
     block.parentNode.removeChild(block);
 };
 
+
 var removeAllCourses = function() {
     $.post("/profile/remove_all_courses/");
     while (document.getElementById("courseList").firstChild)

@@ -2,6 +2,12 @@
 
 {% block content %}
 
+    {% for message in messages %}
+        {% if 'success' in message.tags %}
+            <div id="sucessAlert" class="alert alert-success">{{ message }}</div>
+        {% endif %}
+    {% endfor %}
+
     {% if university %}
 
         <h3 class="text-center">
@@ -17,7 +23,8 @@
                 <h4>Lagrede fag ved {{ university }}, {{ university.country }}</h4>
                 <div id="courseList">
                     {% for course in courses %}
-                        <div onclick="CourseMatcher.markAwayCourse(this)" class="centerCol courseBlock boxShadow pointer noSelect">
+                        <div onclick="CourseMatcher.markAwayCourse(this)"
+                             class="centerCol courseBlock boxShadow pointer noSelect">
                             {{ course }}
                             <span onclick="removeCourse(this.parentNode, '{{ course.code }}', '{{ course.university }}')"
                                   class="glyphicon glyphicon-remove pull-right pointer">
@@ -31,7 +38,8 @@
                 <h4>Fag du vil erstatte ved NTNU</h4>
                 <div id="homeCourseList">
                     {% for course in home_courses %}
-                        <div onclick="CourseMatcher.markHomeCourse(this)" class="centerCol courseBlock boxShadow pointer noSelect">{{ course }}</div>
+                        <div onclick="CourseMatcher.markHomeCourse(this)"
+                             class="centerCol courseBlock boxShadow pointer noSelect">{{ course }}</div>
                     {% endfor %}
                 </div>
             </div>
@@ -39,7 +47,8 @@
 
         <div class="row vertical-space-top-big vertical-space-bottom-big">
             <div class="col-md-12">
-                <button onclick="CourseMatcher.matchSelectedCourses()" class="btn btn-primary center-block">Match fag</button>
+                <button onclick="CourseMatcher.matchSelectedCourses()" class="btn btn-primary center-block">Match fag
+                </button>
             </div>
         </div>
 
@@ -47,17 +56,78 @@
         <div id="courseMatchesWrapper" class="row vertical-space-top-big hiddenDiv">
             <h3 class="text-center">Matcher</h3>
             <div id="courseMatches" style="width:45%; margin: 0 auto"></div>
-            
-            <a class="btn btn-success main-btn center-block vertical-space-top-big vertical-space-bottom-big square-corners"
+
+            <a class="btn btn-success main-btn center-block vertical-space-top-big vertical-space-bottom square-corners"
                href="#"
                data-container="body"
                data-toggle="popover"
                data-placement="top"
+               on-click=""
                data-content="Denne funksjonaliteten er ikke implementert enda.">
-                Send til veileder
+                Legg til
                 <span class="glyphicon glyphicon-chevron-right"></span>
             </a>
         </div>
+
+        <div class="row vertical-space-top-big vertical-space-bottom-big">
+            <div class="col-md-12">
+                <h3 class="text-center"> Her er dine lagrede fag-koblinger </h3>
+                {% for course in course_matches %}
+                    <div class="text-center">
+                        <span class="label label-default"> {{ course.abroadCourse.code }} {{ course.abroadCourse.name }}</span>
+                        <span class="glyphicon glyphicon-link"></span>
+                        <span class="label label-default"> {{ course.homeCourse.code }} {{ course.homeCourse.name }} </span>
+                    </div>
+                {% endfor %}
+
+                <button type="button" class="center-block btn btn-primary btn-lg vertical-space-top" data-toggle="modal"
+                        data-target="#myModal">
+                    Send fag til godkjenning
+                </button>
+            </div>
+        </div>
+
+
+        <!-- Modal -->
+        <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel"
+             aria-hidden="true">
+            <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                        <h4 class="modal-title" id="myModalLabel">Søknad</h4>
+                    </div>
+                    <div class="modal-body">
+                        <div class="form-group">
+                            <label for="user">Bruker:</label>
+                            <div id="user">{{ request.user.first_name }} {{ request.user.last_name }}</div>
+                            <label for="courseMatches"> Fag-koblinger</label>
+                            {% for course in course_matches %}
+                                <div><span
+                                        class="label label-default"> {{ course.abroadCourse.code }} {{ course.abroadCourse.name }}</span>
+                                    <span class="glyphicon glyphicon-link"></span>
+                                    <span class="label label-default"> {{ course.homeCourse.code }} {{ course.homeCourse.name }} </span>
+                                </div>
+                            {% endfor %}
+                        </div>
+
+                        <div class="form-group">
+                            <label for="comment">Kommentar</label>
+                            <textarea id="comment" class="form-control"> </textarea>
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Lukk</button>
+                        <button type="submit" onclick="sendApproval()" class="btn btn-primary">Send</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+
 
 
     {% else %}
@@ -66,6 +136,9 @@
     {% load staticfiles %}
     <script src="{% static 'utsida/javascripts/profile/savedCourses.js' %}"></script>
     <script src="{% static 'utsida/javascripts/profile/courseMatcher.js' %}"></script>
-
+    <script src="{% static 'utsida/javascripts/profile/course_approval_request.js' %}"></script>
+    <script> setTimeout(function () {
+        $('#sucessAlert').fadeOut('slow');
+    }, 5000);</script>
 
 {% endblock %}

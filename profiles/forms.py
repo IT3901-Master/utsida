@@ -57,3 +57,11 @@ class ProfileForm(forms.ModelForm):
 
     coursesToTake = make_ajax_field(Profile, 'coursesToTake', 'homeCourse', help_text="Please enter your course taken",required=False)
 
+class AdminProfileForm(forms.ModelForm):
+    class Meta:
+        model = Profile
+
+        fields = ('institute','coursesToTake','saved_course_matches','saved_courses',)
+
+    coursesToTake = make_ajax_field(Profile, 'coursesToTake', 'homeCourse', help_text="Please enter your course taken",required=False)
+

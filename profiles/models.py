@@ -12,6 +12,7 @@ class Profile(models.Model):
     institute = models.ForeignKey(Institute, null=True)
     coursesToTake = models.ManyToManyField(HomeCourse)
     saved_courses = models.ManyToManyField(AbroadCourse)
+    saved_course_matches = models.ManyToManyField(CourseMatch)
 
     class Meta:
         verbose_name_plural = 'profiles'

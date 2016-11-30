@@ -106,8 +106,9 @@ def saved_courses(request):
     university = courses[0].university
 
     home_courses = profile.coursesToTake.all()
+    course_matches = profile.saved_course_matches.all()
 
-    return render(request, 'profiles/courses.html', {'courses': courses, 'university': university, 'home_courses': home_courses})
+    return render(request, 'profiles/courses.html', {'courses': courses, 'university': university, 'home_courses': home_courses, 'course_matches': course_matches})
 
 
 def save_courses(request):
@@ -200,3 +201,13 @@ def university_exists(u):
         if uni.name == u:
             return True
     return False
+
+
+def send_applation(request):
+    if request.method == "POST":
+        user = User.objects.get(username=request.user)
+        comment = request.POST["comment"]
+        course_approval_request = Application(user=user,comment=comment)
+        course_approval_request.save()
+        course_approval_request.course_matches = user.profile.saved_course_matches.all()
+        return HttpResponse({'code': 200, 'message': 'OK'})

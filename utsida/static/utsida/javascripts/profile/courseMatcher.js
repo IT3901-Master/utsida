@@ -2,6 +2,9 @@
 Module which handles the logic for creating course matches in /profile/courses.
  */
 
+
+
+
 var s;
 CourseMatcher = {
 
