@@ -21,34 +21,11 @@ function format(d) {
         '</table>';
 }
 
-setTimeout(function () {
-    $('#sucessAlert').fadeOut('slow');
-}, 5000);
 
 $(document).ready(function () {
 
 
     var table = $('#example').DataTable({
-        initComplete: function () {
-            this.api().columns('.select-filter').every(function () {
-                var column = this;
-                var select = $('<select class="form-control"><option value="" disabled selected>Velg Universitet</option><option value=""></option></select>')
-                    .appendTo($('#selection').empty())
-                    .on('change', function () {
-                        var val = $.fn.dataTable.util.escapeRegex(
-                            $(this).val()
-                        );
-
-                        column
-                            .search(val ? '^' + val + '$' : '', true, false)
-                            .draw();
-                    });
-
-                column.data().unique().sort().each(function (d, j) {
-                    select.append('<option value="' + d + '">' + d + '</option>')
-                });
-            });
-        },
         "order": [[1, 'asc']],
         "columnDefs": [
             {
@@ -70,12 +47,13 @@ $(document).ready(function () {
             },
             {
                 "targets": [6],
-                "visible": false
+                "visible": false,
             },
             {
                 "targets": [7],
                 "orderable": false,
-                "defaultContent": ''
+                "defaultContent": '',
+                "width": "4.5%"
             }
         ]
     });
@@ -85,7 +63,11 @@ $(document).ready(function () {
 
     $('#example tbody').on('click', 'td', function () {
         var tr = $(this).closest('tr');
+        var td = $(this).closest('td')[0].className;
         var row = table.row(tr);
+        if (td == "editRow") {
+            return;
+        }
         if (row.child.isShown()) {
             // This row is already open - close it
             row.child.hide();

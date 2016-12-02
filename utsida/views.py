@@ -177,5 +177,12 @@ def course_match_select_university(request):
     context = {"university_list":university_list}
     return render(request, "utsida/course_match_university_select.html",context)
 
-
-
+@permission_required('utsida.can_delete_course_match')
+@login_required
+def delete_course_match(request):
+    if request.method == 'POST':
+        course_match_id = request.POST['id']
+        CourseMatch.objects.get(id=course_match_id).delete()
+        return HttpResponse({'code': 200, 'message': 'OK'})
+    else:
+        return HttpResponse({'code': 500, 'message': 'request is not a post request'})

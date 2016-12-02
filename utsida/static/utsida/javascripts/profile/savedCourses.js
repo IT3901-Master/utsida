@@ -25,7 +25,7 @@ $('[data-toggle=confirmation]').confirmation({
                 if (type == "abroad_course"){
                     $.post("/profile/remove_course/", {'id': id});
                 }
-                else if (type == "course_match") {
+                else if (type == "course_match.js") {
                     $.post("/profile/remove_course_match/", {'id': id});
                 }
 

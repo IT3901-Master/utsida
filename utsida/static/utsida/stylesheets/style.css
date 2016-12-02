@@ -40,9 +40,6 @@
 ul.ui-autocomplete {
     z-index: 1100;
 }
-.white {
-    color: white;
-}
 
 /* 2.0 - nav */
 
@@ -218,7 +215,7 @@ html, body {
 }
 
 /* 9 - Course Match Table */
-#editCourseMatch {
+#editCourseMatch, #deleteCourseMatch {
     text-decoration: none;
     color: inherit;
 }

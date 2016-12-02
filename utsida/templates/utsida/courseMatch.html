@@ -24,44 +24,49 @@
         </tr>
         </thead>
         <tbody>
-            {% for course_match in course_match_list %}
-                <tr class="clickableTableRow noselect">
-                    <td id="toggleFormRow" class="glyphicon glyphicon-chevron-down"></td>
-                    {% if course_match.homeCourse.description_url == "" %}
-                        <td>{{ course_match.homeCourse }} </td>
-                    {% else %}
-                        <td><a href={{ course_match.homeCourse.description_url }}>{{ course_match.homeCourse }}</a>
-                        </td>
-                    {% endif %}
-                    {% if course_match.abroadCourse.description_url == "" %}
-                        <td>{{ course_match.abroadCourse }} </td>
-                    {% else %}
-                        <td>
-                            <a href={{ course_match.abroadCourse.description_url }}>{{ course_match.abroadCourse }}</a>
-                        </td>
-                    {% endif %}
-                    <td> {{ course_match.abroadCourse.study_points }}</td>
-                    <td> {{ course_match.approval_date }}</td>
-                    <td> {{ course_match.abroadCourse.university }}</td>
-                    <td>{{ course_match.comment }}</td>
-                    <td>
-                        {% if perms.can_edit_course_match %}
-                        <a id="editCourseMatch" class="glyphicon glyphicon-edit" href="{% url 'update_course_match' id=course_match.id %}"></a>
-                        {% endif %}
+        {% for course_match in course_match_list %}
+            <tr class="clickableTableRow noselect">
+                <td id="toggleFormRow" class="glyphicon glyphicon-chevron-down"></td>
+                {% if course_match.homeCourse.description_url == "" %}
+                    <td>{{ course_match.homeCourse }} </td>
+                {% else %}
+                    <td><a href={{ course_match.homeCourse.description_url }}>{{ course_match.homeCourse }}</a>
                     </td>
-                </tr>
-            {% endfor %}
+                {% endif %}
+                {% if course_match.abroadCourse.description_url == "" %}
+                    <td>{{ course_match.abroadCourse }} </td>
+                {% else %}
+                    <td>
+                        <a href={{ course_match.abroadCourse.description_url }}>{{ course_match.abroadCourse }}</a>
+                    </td>
+                {% endif %}
+                <td> {{ course_match.abroadCourse.study_points }}</td>
+                <td> {{ course_match.approval_date }}</td>
+                <td> {{ course_match.abroadCourse.university }}</td>
+                <td>{{ course_match.comment }}</td>
+                <td class="editRow">
+                    {% if perms.can_edit_course_match %}
+                        <a id="editCourseMatch" class="glyphicon glyphicon-edit pointer"
+                           href="{% url 'update_course_match' id=course_match.id %}"></a>
+                        <a id="deleteCourseMatch" data-toggle="confirmation" data-type="course_match" data-id="{{ course_match.id }}"
+                           class="glyphicon glyphicon-remove pointer"> </a>
+                    {% endif %}
+                </td>
+            </tr>
+        {% endfor %}
         </tbody>
     </table>
 
     {% if perms.can_add_course_match %}
-    <button type="button" class="btn btn-primary btn-lg vertical-space-top-big" data-toggle="modal" data-target="#addMatchModal">
-        Legg til fagkobling
-    </button>
+        <button type="button" class="btn btn-primary btn-lg vertical-space-top-big" data-toggle="modal"
+                data-target="#addMatchModal">
+            Legg til fagkobling
+        </button>
     {% endif %}
 
     <!-- Modal -->
-    <div class="modal fade" id="addMatchModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+    <div class="modal fade" id="addMatchModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel"
+         aria-hidden="true">
         <div class="modal-dialog" role="document">
             <div class="modal-content">
                 <div class="modal-header">
@@ -106,5 +111,5 @@
 
     {% load staticfiles %}
     <script src="{% static 'utsida/javascripts/courseMatch/courseMatchTable.js' %}"></script>
-
+    <script src="{% static 'utsida/javascripts/courseMatch/courseMatch.js' %}"></script>
 {% endblock %}
