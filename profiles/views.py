@@ -237,13 +237,13 @@ def save_course_match(request):
     if request.method== "POST":
         homeCode = request.POST["homeCourseCode"]
         abroadCode = request.POST["abroadCourseCode"]
-        stored_course_match = CourseMatch.objects.get(abroadCourse__code=abroadCode,homeCourse__code=homeCode)
+        stored_course_match = CourseMatch.objects.filter(abroadCourse__code=abroadCode,homeCourse__code=homeCode)
         user = User.objects.get(username=request.user)
         hasMatch = user.profile.saved_course_matches.all().filter(abroadCourse__code=abroadCode,homeCourse__code=homeCode)
         if (stored_course_match and hasMatch):
             return HttpResponse(status=409)
         elif (stored_course_match and not hasMatch):
-            user.profile.saved_course_matches.add(stored_course_match)
+            user.profile.saved_course_matches.add(stored_course_match[0])
             return HttpResponse({'code': 200, 'message': 'Match lagret i profil'})
         elif (not stored_course_match and not hasMatch):
             abroad_course = AbroadCourse.objects.get(code=abroadCode)
