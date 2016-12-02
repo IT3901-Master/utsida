@@ -14,3 +14,28 @@ var removeAllCourses = function() {
         document.getElementById("courseList").removeChild(document.getElementById("courseList").firstChild);
     window.location = "/profile/courses/";
 };
+
+//documentation: http://bootstrap-confirmation.js.org/
+$('[data-toggle=confirmation]').confirmation({
+            rootSelector: '[data-toggle=confirmation]',
+			onConfirm: function() {
+                block = $(this).context.parentNode;
+                var id = $(this)[0].dataset["id"];
+                var type = $(this)[0].dataset["type"];
+                if (type == "abroad_course"){
+                    $.post("/profile/remove_course/", {'id': id});
+                }
+                else if (type == "course_match") {
+                    $.post("/profile/remove_course_match/", {'id': id});
+                }
+
+                block.parentNode.removeChild(block);
+
+            },
+            title: "Er du sikker på at du vil slette?",
+            btnOkLabel: "Ja",
+            btnCancelLabel: "Nei",
+            singleton: true,
+            popout: true
+
+		});

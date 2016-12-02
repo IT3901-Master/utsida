@@ -15,6 +15,8 @@ urlpatterns = [
     url(r'^courses/$', views.saved_courses, name='saved_courses'),
     url(r'^save_courses/$', views.save_courses, name='save_courses'),
     url(r'^remove_course/$', views.remove_course, name='remove_course'),
+    url(r'^remove_course_match/$', views.remove_course_match, name='remove_course_match'),
     url(r'^remove_all_courses/$', views.remove_all_courses, name='remove_all_courses'),
     url(r'^send_approval/$', views.send_applation, name="send_approval"),
+    url(r'^save_course_match/$', views.save_course_match, name="save_course_match"),
 ]

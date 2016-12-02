@@ -14,7 +14,7 @@
             Her vises alle fagene du har lagret, og hvilke fag du har tenkt til å erstatte ved NTNU.
         </h3>
         <h3 class="subTitle text-center">
-            Trykk på et fag i hver colonne for å velge de, og dermed på <span class="italic">Match fag</span>
+            Trykk på et fag i hver colonne for å velge de, og dermed på <span class="italic">Lagre fag</span>
             knappen for å lage en fagmatch
         </h3>
 
@@ -25,8 +25,8 @@
                     {% for course in courses %}
                         <div onclick="CourseMatcher.markAwayCourse(this)"
                              class="centerCol courseBlock boxShadow pointer noSelect">
-                            {{ course }}
-                            <span onclick="removeCourse(this.parentNode, '{{ course.code }}', '{{ course.university }}')"
+                            <span id="code">{{ course.code }}</span> - <span id="name">{{ course.name }}</span>
+                            <span data-toggle="confirmation" data-type="abroad_course" data-id="{{ course.id }}"
                                   class="glyphicon glyphicon-remove pull-right pointer">
                             </span>
                         </div>
@@ -39,7 +39,9 @@
                 <div id="homeCourseList">
                     {% for course in home_courses %}
                         <div onclick="CourseMatcher.markHomeCourse(this)"
-                             class="centerCol courseBlock boxShadow pointer noSelect">{{ course }}</div>
+                             class="centerCol courseBlock boxShadow pointer noSelect">
+                            <span id="code">{{ course.code }}</span> - <span id="name">{{ course.name }}</span>
+                        </div>
                     {% endfor %}
                 </div>
             </div>
@@ -52,34 +54,19 @@
             </div>
         </div>
 
-
-        <div id="courseMatchesWrapper" class="row vertical-space-top-big hiddenDiv">
-            <h3 class="text-center">Matcher</h3>
-            <div id="courseMatches" style="width:45%; margin: 0 auto"></div>
-
-            <a class="btn btn-success main-btn center-block vertical-space-top-big vertical-space-bottom square-corners"
-               href="#"
-               data-container="body"
-               data-toggle="popover"
-               data-placement="top"
-               on-click=""
-               data-content="Denne funksjonaliteten er ikke implementert enda.">
-                Legg til
-                <span class="glyphicon glyphicon-chevron-right"></span>
-            </a>
-        </div>
-
         <div class="row vertical-space-top-big vertical-space-bottom-big">
             <div class="col-md-12">
                 <h3 class="text-center"> Her er dine lagrede fag-koblinger </h3>
-                {% for course in course_matches %}
-                    <div class="text-center">
-                        <span class="label label-default"> {{ course.abroadCourse.code }} {{ course.abroadCourse.name }}</span>
-                        <span class="glyphicon glyphicon-link"></span>
-                        <span class="label label-default"> {{ course.homeCourse.code }} {{ course.homeCourse.name }} </span>
-                    </div>
-                {% endfor %}
-
+                <div id="courseMatchList" class="text-center">
+                    {% for course in course_matches %}
+                        <div>
+                            <span class="label label-default"> {{ course.abroadCourse.code }} {{ course.abroadCourse.name }}</span>
+                            <span class="glyphicon glyphicon-link"></span>
+                            <span class="label label-default"> {{ course.homeCourse.code }} {{ course.homeCourse.name }} </span>
+                            <span data-toggle="confirmation" data-type="course_match" data-id="{{ course.id }}" style="margin-left: 5px" class="glyphicon glyphicon-remove pointer"> </span>
+                        </div>
+                    {% endfor %}
+                </div>
                 <button type="button" class="center-block btn btn-primary btn-lg vertical-space-top" data-toggle="modal"
                         data-target="#myModal">
                     Send fag til godkjenning
@@ -104,13 +91,15 @@
                             <label for="user">Bruker:</label>
                             <div id="user">{{ request.user.first_name }} {{ request.user.last_name }}</div>
                             <label for="courseMatches"> Fag-koblinger</label>
-                            {% for course in course_matches %}
-                                <div><span
-                                        class="label label-default"> {{ course.abroadCourse.code }} {{ course.abroadCourse.name }}</span>
-                                    <span class="glyphicon glyphicon-link"></span>
-                                    <span class="label label-default"> {{ course.homeCourse.code }} {{ course.homeCourse.name }} </span>
-                                </div>
-                            {% endfor %}
+                            <div id="courseMatchListModal">
+                                {% for course in course_matches %}
+                                    <div>
+                                        <span class="label label-default"> {{ course.abroadCourse.code }} {{ course.abroadCourse.name }}</span>
+                                        <span class="glyphicon glyphicon-link"></span>
+                                        <span class="label label-default"> {{ course.homeCourse.code }} {{ course.homeCourse.name }} </span>
+                                    </div>
+                                {% endfor %}
+                            </div>
                         </div>
 
                         <div class="form-group">
