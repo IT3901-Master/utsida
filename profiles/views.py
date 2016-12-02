@@ -9,6 +9,7 @@ from django.shortcuts import render, redirect
 from django.contrib.auth import authenticate, login, update_session_auth_hash
 import json
 from django.http import Http404
+from django.views.generic import ListView
 
 from profiles.forms import UserForm, ProfileForm, UpdateUserForm
 from .models import *
@@ -253,3 +254,18 @@ def save_course_match(request):
             user.profile.saved_course_matches.add(course_match)
             return HttpResponse({'code': 200, 'message': 'Match lagret i profil og database'})
 
+@login_required
+def view_applications(request):
+    user = User.objects.get(request.user)
+    applications = Application.objects.filter(user=user)
+
+
+class ApplicationListView(ListView):
+    model = Application
+
+    def get_queryset(self):
+        return Application.objects.filter(user=self.request.user)
+
+    def get_context_data(self, **kwargs):
+        context = super(ApplicationListView, self).get_context_data(**kwargs)
+        return context

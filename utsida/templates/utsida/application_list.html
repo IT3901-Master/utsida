@@ -1,0 +1,32 @@
+{% extends "utsida/layout.html" %}
+
+
+{% block content %}
+    {% load widget_tweaks %}
+    <div class="row">
+        <div class="col-md-8 col-md-offset-2">
+            <h1>Dine søknader: </h1>
+            {% if object_list %}
+                {% for application in object_list %}
+                    <div class="courseBlock boxShadow">
+                        <label>ID:</label>
+                        <span>{{ application.id }}</span>
+                        <h5>Fag-koblinger:</h5>
+                        {% for course_match in application.course_matches.all %}
+                            <label>ID:</label>
+                            <span>{{ course_match.id }}</span>
+                            <br>
+                            <label>NTNU fag: </label>
+                            <span>{{ course_match.homeCourse.code }} - {{ course_match.homeCourse.name }}</span>
+                        {% empty %}
+                            <div>Det er ingen fag-koblinger i denne søknaden</div>
+                        {% endfor %}
+                    </div>
+                {% endfor %}
+            {% else %}
+                <div>Du har ingen søknader</div>
+            {% endif %}
+        </div>
+    </div>
+
+{% endblock %}

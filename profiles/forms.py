@@ -65,3 +65,4 @@ class AdminProfileForm(forms.ModelForm):
 
     coursesToTake = make_ajax_field(Profile, 'coursesToTake', 'homeCourse', help_text="Please enter your course taken",required=False)
 
+

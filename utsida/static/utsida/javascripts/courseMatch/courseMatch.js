@@ -20,6 +20,6 @@ $('[data-toggle=confirmation]').confirmation({
     btnCancelLabel: "Nei",
     singleton: true,
     popout: true,
-    placement: "bottom"
+    placement: "left"
 
 });
