@@ -1,24 +1,25 @@
 /* Formatting function for row details - modify as you need */
 function format(d) {
     // `d` is the original data object for the row
-    return '<table cellpadding="5" cellspacing="0" border="0" style="padding-left:50px;">' +
+    return '<table class="course-match-details" cellpadding="5" cellspacing="2" border="0" style="padding-left:50px;">' +
         '<tr>' +
-        '<td>Godkjent:  </td>' +
+        '<td class="bold">Godkjent:  </td>' +
         '<td>' + d[4] + '</td>' +
         '</tr>' +
         '<tr>' +
-        '<td>Universitet: </td>' +
+        '<td class="bold">Universitet: </td>' +
         '<td>' + d[5] + '</td>' +
         '</tr>' +
         '<tr>' +
-        '<td>Kommentar: </td>' +
+        '<td class="bold">Kommentar: </td>' +
         '<td>' + d[6] + '</td>' +
         '</tr>' +
         '<tr>' +
-        '<td>Studiepoeng: </td>' +
+        '<td class="bold">Studiepoeng: </td>' +
         '<td>' + d[3] + '</td>' +
         '</tr>' +
-        '</table>';
+        '</table>' +
+        '<button class="btn btn-primary" onclick="addCourseMatch('+d[8]+')" style="margin-top: 5px;">' + 'Legg til i dine fag'+  '</button>';
 }
 
 
@@ -54,6 +55,10 @@ $(document).ready(function () {
                 "orderable": false,
                 "defaultContent": '',
                 "width": "4.5%"
+            },
+            {
+                "targets": [8],
+                "visible": false
             }
         ]
     });

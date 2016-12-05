@@ -21,6 +21,7 @@
             <th class="select-filter">Universitet</th>
             <th>Comment</th>
             <th></th>
+            <th>ID</th>
         </tr>
         </thead>
         <tbody>
@@ -43,7 +44,7 @@
                 <td> {{ course_match.abroadCourse.study_points }}</td>
                 <td> {{ course_match.approval_date }}</td>
                 <td> {{ course_match.abroadCourse.university }}</td>
-                <td>{{ course_match.comment }}</td>
+                <td> {{ course_match.comment }}</td>
                 <td class="editRow">
                     {% if perms.can_edit_course_match %}
                         <a id="editCourseMatch" class="glyphicon glyphicon-edit pointer"
@@ -52,6 +53,7 @@
                            class="glyphicon glyphicon-remove pointer"> </a>
                     {% endif %}
                 </td>
+            <td> {{ course_match.id }}</td>
             </tr>
         {% endfor %}
         </tbody>

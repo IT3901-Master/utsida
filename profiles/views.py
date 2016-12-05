@@ -5,7 +5,7 @@ from django.contrib.auth.forms import PasswordChangeForm
 from django.db import transaction
 from django.http import HttpResponse
 from django.http import HttpResponseRedirect
-from django.shortcuts import render, redirect
+from django.shortcuts import render, redirect, get_object_or_404
 from django.contrib.auth import authenticate, login, update_session_auth_hash
 import json
 from django.http import Http404
@@ -253,6 +253,18 @@ def save_course_match(request):
             course_match.save()
             user.profile.saved_course_matches.add(course_match)
             return HttpResponse({'code': 200, 'message': 'Match lagret i profil og database'})
+
+def save_course_match_id(request):
+    if request.method == "POST":
+        user = User.objects.get(username=request.user)
+        id = request.POST["id"]
+        stored_course_match = get_object_or_404(CourseMatch,id=id)
+        hasMatch = user.profile.saved_course_matches.all().filter(id=id)
+        if (hasMatch):
+            return HttpResponse(status=409)
+        else:
+            user.profile.saved_course_matches.add(stored_course_match)
+            return HttpResponse({'code': 200, 'message': 'Match lagret i profil'})
 
 @login_required
 def view_applications(request):

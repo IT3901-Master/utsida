@@ -14,7 +14,7 @@ function sendApproval() {
             $("#myModal").modal('hide');
             Messager.init();
             Messager.sendMessage("Fagene er lagt inn for godkjenning","success");
-            window.location("#top-navbar");
+            window.location = "#top-navbar";
         },
         error: function (e, x, r) {
             console.log(e);

@@ -225,7 +225,10 @@ html, body {
     right: auto;
     margin-right: -1px;
     margin-left: -1px;
+}
 
+.course-match-details td{
+    padding-right: 5px;
 }
 
 

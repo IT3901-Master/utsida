@@ -19,13 +19,13 @@ var removeAllCourses = function() {
 $('[data-toggle=confirmation]').confirmation({
             rootSelector: '[data-toggle=confirmation]',
 			onConfirm: function() {
-                block = $(this).context.parentNode;
+                var block = $(this).context.parentNode;
                 var id = $(this)[0].dataset["id"];
                 var type = $(this)[0].dataset["type"];
                 if (type == "abroad_course"){
                     $.post("/profile/remove_course/", {'id': id});
                 }
-                else if (type == "course_match.js") {
+                else if (type == "course_match") {
                     $.post("/profile/remove_course_match/", {'id': id});
                 }
 

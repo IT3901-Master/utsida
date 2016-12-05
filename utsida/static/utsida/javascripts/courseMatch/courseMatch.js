@@ -23,3 +23,23 @@ $('[data-toggle=confirmation]').confirmation({
     placement: "left"
 
 });
+
+
+var addCourseMatch = function (id) {
+    console.log(document.getElementById("messageContainer"));
+            $.ajax({
+            data: {"id":id},
+            type: "POST",
+            url: "/profile/save_course_match_id/",
+            success: function (response) {
+                Messager.init();
+                Messager.sendMessage("Faget ble lagret", "success");
+            },
+            error: function (error) {
+                if (error.status == 409) {
+                    Messager.init();
+                    Messager.sendMessage("Koblingen er allerede i din profil!", "danger");
+                }
+            }
+        });
+};
