@@ -13,6 +13,8 @@ load:
 	python3 manage.py loaddata course_matches0
 	python3 manage.py loaddata course_matches1
 	python3 manage.py loaddata course_matches2
+	python3 manage.py loaddata abroad_courses_UCSB
+	python3 manage.py loaddata course_matches_UCSB
 
 
 

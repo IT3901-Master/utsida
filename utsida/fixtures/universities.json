@@ -31,5 +31,13 @@
       "acronym": "QUT",
       "country": "Australia"
     }
+  },
+  {
+    "model": "utsida.university",
+    "fields": {
+      "name": "University of California, Santa Barbara",
+      "acronym": "UCSB",
+      "country": "USA"
+    }
   }
 ]

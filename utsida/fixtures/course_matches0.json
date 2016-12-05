@@ -600,21 +600,6 @@
     }
   },
   {
-    "pk": 94,
-    "model": "utsida.coursematch",
-    "fields": {
-      "homeCourse": [
-        "TDT4225"
-      ],
-      "abroadCourse": [
-        "COMP9243",
-        "University of New South Wales"
-      ],
-      "approved": false,
-      "comment": "Group work."
-    }
-  },
-  {
     "pk": 95,
     "model": "utsida.coursematch",
     "fields": {
