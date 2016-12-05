@@ -8,6 +8,7 @@ import json
 from .forms import *
 from profiles.models import *
 from django.contrib.auth.decorators import login_required, user_passes_test, permission_required
+from fuzzywuzzy import fuzz
 
 
 def index(request):
@@ -30,7 +31,7 @@ def result(request, university=None):
         filtered_cases = []
 
         if university == "all":
-            filtered_cases = request.session['result']
+            filtered_cases = request.session['result'][:9]
 
         else:
             for case in request.session['result']:
@@ -74,8 +75,7 @@ def result(request, university=None):
 
             for key, value in r.items():
                 full_case = requests.get("http://localhost:8080/case?caseID=" + key).json()["case"]
-                full_case["Subjects"] = full_case["Subjects"].split(';')
-                del full_case["Subjects"][-1]
+                full_case["Subjects"] = full_case["Subjects"].split('!')
                 full_case["Similarity"] = "%.3f" % value
                 full_similar_cases.append(full_case)
 
@@ -92,16 +92,24 @@ def result(request, university=None):
                         course_wanted_to_be_taken_matches[str(result.abroadCourse)] = course.code
 
             unique_unis = []
-            for case in sorted_full_similar_cases:
+            for case in sorted_full_similar_cases[:9]:
                 if not case['University'] in unique_unis:
                     unique_unis.append(case['University'])
+
+            '''
+            uni_counter = 0
+            for uni in unique_unis:
+                if fuzz.ratio(uni, unique_unis[uni_counter+1]) > 90:
+                    del unique_unis[unique_unis.index(uni)]
+                uni_counter += 1
+            '''
 
             request.session['unique_universities'] = unique_unis
             request.session['result'] = sorted_full_similar_cases
             request.session['matches'] = course_wanted_to_be_taken_matches
 
             return render(request, 'utsida/result.html',
-                          {'form': form, 'similar_cases': sorted_full_similar_cases, 'courses_taken': courses_taken, 'matches': course_wanted_to_be_taken_matches, 'universities': unique_unis, 'show_loader': True})
+                          {'form': form, 'similar_cases': sorted_full_similar_cases[:9], 'courses_taken': courses_taken, 'matches': course_wanted_to_be_taken_matches, 'universities': unique_unis, 'show_loader': True})
 
 
 
