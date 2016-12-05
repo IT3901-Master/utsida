@@ -20,9 +20,10 @@
         <script type="text/javascript" src="{% static "utsida/ajax_select/js/bootstrap.js" %}"></script>
         <script type="text/javascript" src={% static "utsida/ajax_select/js/ajax_select.js" %}></script>
         <script src="{% static 'utsida/javascripts/messageModule.js' %}"></script>
+        <script type="text/javascript" src="{% static 'utsida/javascripts/bootstrap-confirmation.min.js' %}"></script>
     </head>
     <body>
-        <nav class="navbar navbar-default navbar-custom">
+        <nav class="navbar navbar-default navbar-custom" id="top-navbar">
             <div class="container-fluid">
 
                 <div class="navbar-header">
@@ -56,6 +57,7 @@
                             <ul class="dropdown-menu">
                                 {% if user.is_authenticated %}
                                     <li><a href="/profile/courses">Lagrede fag</a></li>
+                                    <li><a href="/profile/soknader">Søknader</a> </li>
                                     <li><a href="/profile/update">Oppdater profil</a></li>
                                     <li><a href="{% url 'password_change' %}">Endre passord</a></li>
                                     <li role="separator" class="divider"></li>

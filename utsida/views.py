@@ -149,7 +149,7 @@ def update_course_match(request, id):
             messages.success(request, "Fag kobling ble endret")
             return render(request, "utsida/courseMatch.html", context)
         else:
-            return HttpResponse("FUCK YOU!!!")
+            return HttpResponse({'code': 500, 'message': 'skjema var ikke gyldig'})
     else:
         #form = CourseMatchForm(initial={"abroadCourse": instance.abroadCourse})
         form = CourseMatchForm(instance=instance)
@@ -170,7 +170,7 @@ def add_course_match(request):
             return render(request, "utsida/courseMatch.html", context)
         else:
             messages.error(request, "Endre feilene under")
-            return HttpResponse("Du må fylle ut alle feltene i formen")
+            return HttpResponse({'code': 500, 'message': 'Du må fylle inn alle feltene'})
 
 
 
@@ -186,5 +186,12 @@ def course_match_select_university(request):
     context = {"university_list":university_list}
     return render(request, "utsida/course_match_university_select.html",context)
 
-
-
+@permission_required('utsida.can_delete_course_match')
+@login_required
+def delete_course_match(request):
+    if request.method == 'POST':
+        course_match_id = request.POST['id']
+        CourseMatch.objects.get(id=course_match_id).delete()
+        return HttpResponse({'code': 200, 'message': 'OK'})
+    else:
+        return HttpResponse({'code': 500, 'message': 'request is not a post request'})

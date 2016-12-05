@@ -140,6 +140,14 @@ class Language(models.Model):
 
 
 
+class Application(models.Model):
+    user = models.ForeignKey(User)
+    course_matches = models.ManyToManyField(CourseMatch)
+    comment = models.CharField(max_length=400,blank=True)
+    status = models.BooleanField(default=False)
+
+
+
 CHOICES = ((1, 1), (2, 2), (3, 3), (4, 4), (5, 5))
 
 class Case(models.Model):

@@ -1,54 +1,32 @@
 /* Formatting function for row details - modify as you need */
 function format(d) {
     // `d` is the original data object for the row
-    return '<table cellpadding="5" cellspacing="0" border="0" style="padding-left:50px;">' +
+    return '<table class="course-match-details" cellpadding="5" cellspacing="2" border="0" style="padding-left:50px;">' +
         '<tr>' +
-        '<td>Godkjent:  </td>' +
+        '<td class="bold">Godkjent:  </td>' +
         '<td>' + d[4] + '</td>' +
         '</tr>' +
         '<tr>' +
-        '<td>Universitet: </td>' +
+        '<td class="bold">Universitet: </td>' +
         '<td>' + d[5] + '</td>' +
         '</tr>' +
         '<tr>' +
-        '<td>Kommentar: </td>' +
+        '<td class="bold">Kommentar: </td>' +
         '<td>' + d[6] + '</td>' +
         '</tr>' +
         '<tr>' +
-        '<td>Studiepoeng: </td>' +
+        '<td class="bold">Studiepoeng: </td>' +
         '<td>' + d[3] + '</td>' +
         '</tr>' +
-        '</table>';
+        '</table>' +
+        '<button class="btn btn-primary" onclick="addCourseMatch('+d[8]+')" style="margin-top: 5px;">' + 'Legg til i dine fag'+  '</button>';
 }
 
-setTimeout(function () {
-    $('#sucessAlert').fadeOut('slow');
-}, 5000);
 
 $(document).ready(function () {
 
 
     var table = $('#example').DataTable({
-        initComplete: function () {
-            this.api().columns('.select-filter').every(function () {
-                var column = this;
-                var select = $('<select class="form-control"><option value="" disabled selected>Velg Universitet</option><option value=""></option></select>')
-                    .appendTo($('#selection').empty())
-                    .on('change', function () {
-                        var val = $.fn.dataTable.util.escapeRegex(
-                            $(this).val()
-                        );
-
-                        column
-                            .search(val ? '^' + val + '$' : '', true, false)
-                            .draw();
-                    });
-
-                column.data().unique().sort().each(function (d, j) {
-                    select.append('<option value="' + d + '">' + d + '</option>')
-                });
-            });
-        },
         "order": [[1, 'asc']],
         "columnDefs": [
             {
@@ -70,12 +48,17 @@ $(document).ready(function () {
             },
             {
                 "targets": [6],
-                "visible": false
+                "visible": false,
             },
             {
                 "targets": [7],
                 "orderable": false,
-                "defaultContent": ''
+                "defaultContent": '',
+                "width": "4.5%"
+            },
+            {
+                "targets": [8],
+                "visible": false
             }
         ]
     });
@@ -85,7 +68,11 @@ $(document).ready(function () {
 
     $('#example tbody').on('click', 'td', function () {
         var tr = $(this).closest('tr');
+        var td = $(this).closest('td')[0].className;
         var row = table.row(tr);
+        if (td == "editRow") {
+            return;
+        }
         if (row.child.isShown()) {
             // This row is already open - close it
             row.child.hide();
