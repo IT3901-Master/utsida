@@ -74,7 +74,8 @@ def result(request, university=None):
 
             for key, value in r.items():
                 full_case = requests.get("http://localhost:8080/case?caseID=" + key).json()["case"]
-                full_case["Subjects"] = full_case["Subjects"].split('!')
+                full_case["Subjects"] = full_case["Subjects"].split(';')
+                del full_case["Subjects"][-1]
                 full_case["Similarity"] = "%.3f" % value
                 full_similar_cases.append(full_case)
 
