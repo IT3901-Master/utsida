@@ -251,6 +251,7 @@ def save_course_match(request):
             user.profile.saved_course_matches.add(course_match)
             return HttpResponse({'code': 200, 'message': 'Match lagret i profil og database'})
 
+@login_required
 def save_course_match_id(request):
     if request.method == "POST":
         user = User.objects.get(username=request.user)
@@ -263,10 +264,7 @@ def save_course_match_id(request):
             user.profile.saved_course_matches.add(stored_course_match)
             return HttpResponse({'code': 200, 'message': 'Match lagret i profil'})
 
-@login_required
-def view_applications(request):
-    user = User.objects.get(request.user)
-    applications = Application.objects.filter(user=user)
+
 
 
 class ApplicationListView(ListView):
@@ -278,3 +276,13 @@ class ApplicationListView(ListView):
     def get_context_data(self, **kwargs):
         context = super(ApplicationListView, self).get_context_data(**kwargs)
         return context
+
+
+def remove_application(request):
+    if request.method == 'POST':
+        application_id = request.POST['id']
+        Application.objects.get(id=application_id,user=request.user).delete()
+
+        return HttpResponse({'code': 200, 'message': 'OK'})
+    else:
+        return HttpResponse({'code': 500, 'message': 'request is not a post request'})

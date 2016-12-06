@@ -20,7 +20,6 @@ CourseMatcher = {
         s = this.s;
         if (document.getElementById("courseList")) {
             s.awayCourses = document.getElementById("courseList").children;
-
         }
         else {
             s.awayCourses = [];

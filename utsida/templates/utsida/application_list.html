@@ -5,28 +5,62 @@
     {% load widget_tweaks %}
     <div class="row">
         <div class="col-md-8 col-md-offset-2">
+
+
             <h1>Dine søknader: </h1>
             {% if object_list %}
                 {% for application in object_list %}
-                    <div class="courseBlock boxShadow">
-                        <label>ID:</label>
+                    {% if application.status == "A" %}
+                        <div class="courseBlock boxShadow" style="background-color: #dff0d8">
+                    {% elif application.status == "P" %}
+                        <div class="courseBlock boxShadow" style="background-color: #fcf8e3">
+                    {% elif application.status == "D" %}
+                        <div class="courseBlock boxShadow" style="background-color: #f2dede">
+                    {% endif %}
+                <div class="row">
+                    <div class="col-md-11">
+                        <label>SøknadsID:</label>
                         <span>{{ application.id }}</span>
-                        <h5>Fag-koblinger:</h5>
-                        {% for course_match in application.course_matches.all %}
-                            <label>ID:</label>
-                            <span>{{ course_match.id }}</span>
-                            <br>
-                            <label>NTNU fag: </label>
-                            <span>{{ course_match.homeCourse.code }} - {{ course_match.homeCourse.name }}</span>
-                        {% empty %}
-                            <div>Det er ingen fag-koblinger i denne søknaden</div>
-                        {% endfor %}
                     </div>
+                    <div class="col-md-1" id="removeContainer">
+                        <span class="glyphicon glyphicon-trash pointer" data-toggle="confirmation" data-id="{{ application.id }}"></span>
+                    </div>
+                </div>
+                <label>Status</label>
+                {% if application.status == "A" %}
+                    <span>Godkjent</span>
+                {% elif application.status == "P" %}
+                    <span>Til godkjenning</span>
+                {% elif application.status == "D" %}
+                    <span> Ikke godkjent</span>
+                {% endif %}
+                <div class="bold">Fag-koblinger:</div>
+                {% for course_match in application.course_matches.all %}
+                    <div>
+                        <span class="label label-default"> {{ course_match.abroadCourse.code }} {{ course_match.abroadCourse.name }}</span>
+                        <span class="glyphicon glyphicon-link"></span>
+                        <span class="label label-default"> {{ course_match.homeCourse.code }} {{ course_match.homeCourse.name }} </span>
+                    </div>
+                {% empty %}
+                    <div>Det er ingen fag-koblinger i denne søknaden</div>
+                {% endfor %}
+                <label>Kommentar</label>
+                {% if application.comment and application.comment.strip %}
+                    <div> {{ application.comment }}</div>
+                {% else %}
+                    <div class="italic"> (tom)</div>
+                {% endif %}
+                </div>
                 {% endfor %}
             {% else %}
                 <div>Du har ingen søknader</div>
             {% endif %}
-        </div>
-    </div>
+
+
+            </div>
+            </div>
+
+        {% load staticfiles %}
+        <script src="{% static 'utsida/javascripts/profile/applicationHandler.js' %}"></script>
 
 {% endblock %}
