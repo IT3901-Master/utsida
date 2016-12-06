@@ -3,6 +3,29 @@
 {% block content %}
     {% load widget_tweaks %}
 
+    <div id="loadingScreen" class="hidden">
+        <div class="row">
+            <div id="searchParameters" class="col-md-6 col-md-offset-3">
+                <h2 class="text-center">Søker etter turer som likner på din</h2>
+                <div class="well vertical-space-top">
+                    <ul>
+                        <li>Institutt hjemme: <span id="institute" style="font-weight: bold">{{ user.profile.institute }}</span></li>
+                        <li>Verdensdel: <span id="continent" style="font-weight: bold">{{ form.data.continent }}</span></li>
+                        <li>Land: <span id="country" style="font-weight: bold">{{ form.data.country }}</span></li>
+                        <li>Universitet: <span id="university" style="font-weight: bold">{{ form.data.university }}</span></li>
+                        <li>Studiespråk: <span id="language" style="font-weight: bold">{{ form.data.language }}</span></li>
+                        <li>Studieår: <span id="studyPeriod" style="font-weight: bold">{{ form.data.studyPeriod }}</span></li>
+                        <li>Akademisk kvalitet: <span id="academicQuality" style="font-weight: bold">{{ form.data.academicQualityRating }}</span></li>
+                        <li>Sosial kvalitet: <span id="socialQuality" style="font-weight: bold">{{ form.data.socialQualityRating }}</span></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <img id="loader" src="../../static/utsida/images/loading.gif">
+        </div>
+    </div>
+
     <h2 class="text-center">Velg alternativene som stemmer for deg</h2>
     <h3 class="subTitle text-center">Du trenger kun å fylle ut det du vet</h3>
 
@@ -44,7 +67,9 @@
                 </div>
 
                 <div class="form-group vertical-space-top">
-                    <button type="submit" class="btn btn-primary square-corners center-block searchBtn">Søk <span class="glyphicon glyphicon-chevron-right"></span></button>
+                    <button onclick="startLoad()" type="submit" class="btn btn-primary square-corners center-block searchBtn">
+                        Søk <span class="glyphicon glyphicon-chevron-right"></span>
+                    </button>
                 </div>
             </form>
 
@@ -55,5 +80,6 @@
 
     {% load staticfiles %}
     <script src="{% static 'utsida/javascripts/process/form.js' %}"></script>
-    
+    <script src="{% static 'utsida/javascripts/process/loadingScreen.js' %}"></script>
+
 {% endblock %}

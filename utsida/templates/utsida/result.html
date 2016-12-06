@@ -25,31 +25,7 @@
     </div>
 
 
-    {% if show_loader %}
-    <div id="loadingScreen" class="loadScreen">
-        <div class="row">
-            <div id="searchParameters" class="col-md-6 col-md-offset-3">
-                <h2 class="text-center">Søker etter turer som likner på din</h2>
-                <div class="well vertical-space-top">
-                    <ul>
-                        <li>Institutt hjemme: <span id="institute" style="font-weight: bold">{{ user.profile.institute }}</span></li>
-                        <li>Verdensdel: <span id="continent" style="font-weight: bold">{{ form.data.continent }}</span></li>
-                        <li>Land: <span id="country" style="font-weight: bold">{{ form.data.country }}</span></li>
-                        <li>Universitet: <span id="university" style="font-weight: bold">{{ form.data.university }}</span></li>
-                        <li>Studiespråk: <span id="language" style="font-weight: bold">{{ form.data.language }}</span></li>
-                        <li>Studieår: <span id="studyPeriod" style="font-weight: bold">{{ form.data.studyPeriod }}</span></li>
-                        <li>Akademisk kvalitet: <span id="academicQuality" style="font-weight: bold">{{ form.data.academicQualityRating }}</span></li>
-                        <li>Sosial kvalitet: <span id="socialQuality" style="font-weight: bold">{{ form.data.socialQualityRating }}</span></li>
-                    </ul>
-                </div>
-            </div>
-        </div>
-        <div class="row">
-            <img id="loader" src="../../static/utsida/images/loading.gif">
-        </div>
 
-    </div>
-    {% endif %}
 
     <div id="filters" class="row vertical-space-bottom-big">
         <h2 class="text-center">Her er turene som likner mest på din situasjon.</h2>
@@ -116,9 +92,7 @@
     <script src="{% static 'utsida/javascripts/result/showHiddenContent.js' %}"></script>
     <script src="{% static 'utsida/javascripts/result/universityHighlighter.js' %}"></script>
     <script src="{% static 'utsida/javascripts/result/courseSelector.js' %}"></script>
-    {% if show_loader %}
-        <script src="{% static 'utsida/javascripts/result/loadingScreen.js' %}"></script>
-    {% endif %}
+
 
 
 
