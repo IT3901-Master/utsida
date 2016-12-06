@@ -15,7 +15,6 @@ from profiles.forms import UserForm, ProfileForm, UpdateUserForm
 from .models import *
 
 
-# Create your views here.
 @login_required
 def get_user_profile(request, username):
     user = User.objects.get(username=username)
@@ -64,10 +63,8 @@ def update_profile(request):
         profile_form = ProfileForm(request.POST, instance=request.user.profile)
         if user_form.is_valid() and profile_form.is_valid():
             user = user_form.save()
-            # user.refresh_from_db()
             profile_form.save()
             messages.success(request, 'Profilen din ble endret!')
-            # login(request, user)
             return redirect('index')
         else:
             messages.error(request, 'Vennligst rett feilen under.')
