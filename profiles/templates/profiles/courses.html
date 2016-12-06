@@ -23,7 +23,7 @@
             <h4>Lagrede fag ved {{ university }}, {{ university.country }}</h4>
             <div id="courseList">
                 {% for course in courses %}
-                    <div onclick="CourseMatcher.markAwayCourse(this)"
+                    <div class="blockElement" onclick="CourseMatcher.markAwayCourse(this)"
                          class="centerCol courseBlock boxShadow pointer noSelect">
                         <span id="code">{{ course.code }}</span> - <span id="name">{{ course.name }}</span>
                         <span data-toggle="confirmation" data-type="abroad_course" data-id="{{ course.id }}"
@@ -63,7 +63,7 @@
         <h3 class="text-center"> Her er dine lagrede fag-koblinger </h3>
         <div id="courseMatchList" class="text-center">
             {% for course in course_matches %}
-                <div>
+                <div class="blockElement">
                     <span class="label label-default"> {{ course.abroadCourse.code }} {{ course.abroadCourse.name }}</span>
                     <span class="glyphicon glyphicon-link"></span>
                     <span class="label label-default"> {{ course.homeCourse.code }} {{ course.homeCourse.name }} </span>
