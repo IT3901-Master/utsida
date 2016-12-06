@@ -102,10 +102,10 @@ def saved_courses(request):
 
     courses = profile.saved_courses.all()
 
-    if not courses:
-        return render(request, 'profiles/courses.html')
-
-    university = courses[0].university
+    if (courses):
+        university = courses[0].university
+    else:
+        university = ""
 
     home_courses = profile.coursesToTake.all()
     course_matches = profile.saved_course_matches.all()
@@ -182,7 +182,7 @@ def remove_course(request):
     if request.method == 'POST':
         profile = Profile.objects.get(user=request.user)
         course_id = request.POST['id']
-        profile.saved_courses.get(id=course_id).delete()
+        profile.saved_courses.remove(profile.saved_courses.get(id=course_id))
         profile.save()
 
         return HttpResponse({'code': 200, 'message': 'OK'})
@@ -195,7 +195,7 @@ def remove_course_match(request):
     if request.method == 'POST':
         profile = Profile.objects.get(user=request.user)
         course_match_id = request.POST['id']
-        profile.saved_course_matches.get(id=course_match_id).delete()
+        profile.saved_course_matches.remove(profile.saved_course_matches.get(id=course_match_id))
         profile.save()
         return HttpResponse({'code': 200, 'message': 'OK'})
     else:
