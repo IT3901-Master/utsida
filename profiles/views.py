@@ -216,7 +216,7 @@ def remove_all_courses(request):
     else:
         return HttpResponse({'code': 500, 'message': 'request is not a post request'})
 
-@login_required
+
 def university_exists(u):
     for uni in University.objects.all():
         if uni.name == u:
