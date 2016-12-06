@@ -34,7 +34,7 @@
             Du finner dine lagrede fag i <span class="italic">Lagrede fag</span> under profilen din.
         </h3>
 
-        <div class="col-md-6 col-md-offset-3">
+        <div class="col-md-8 col-md-offset-2">
             <a href="/process/result/all"><button class="btn btn-default vertical-space-bottom-small">All</button></a>
             {% for university in universities %}
                 <a href="/process/result/{{ university }}"><button class="btn btn-default vertical-space-bottom-small">{{ university }}</button></a>
@@ -49,7 +49,7 @@
             <div class="col-md-4">
                 <div class="panel panel-primary square-corners boxShadow">
                     <div class="panel-heading square-corners">
-                        {{ case.University }} ({{ case.Country }}) <span class="pull-right badge">{{ case.Similarity }}</span>
+                        <span class="resultPanelUniversity">{{ case.University }} ({{ case.Country }})</span> <span class="pull-right badge">{{ case.Similarity }}</span>
                     </div>
                     <div class="panel-body">
                         <div class="subjectsContainer">
@@ -70,6 +70,7 @@
                                 <p><span class="bold">Institutt hjemme:</span> {{ case.Institute }}</p>
                                 <p><span class="bold">Verdensdel:</span> {{ case.Continent }}</p>
                                 <p><span class="bold">Land:</span> {{ case.Country }}</p>
+                                <p><span class="bold">Universitet:</span> {{ case.University }}</p>
                                 <p><span class="bold">Studiespråk:</span> {{ case.Language }}</p>
                                 <p><span class="bold">Studieperiode:</span> {{ case.StudyPeriod }}</p>
                                 <p><span class="bold">Vurdering av akademisk kvalitet:</span> {{ case.AcademicQuality }}</p>

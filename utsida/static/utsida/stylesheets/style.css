@@ -171,7 +171,7 @@ html, body {
     display: none;
 }
 .hiddenInformation.show {
-    height: 250px;
+    height: 280px;
     transition: height 0.1s;
 }
 .hiddenInformation.show div{
@@ -199,13 +199,29 @@ html, body {
     font-size: 10px;
     margin-bottom: 3px;
     padding: 3px;
+    width: 80%;
     font-weight: bold;
+    text-align: left;
+    white-space: nowrap;
+    overflow:hidden !important;
+    text-overflow: ellipsis;
+}
+.courseBtn:hover {
+    width: 100%;
 }
 
 .checkoutBtn {
     position: fixed;
     bottom: 150px;
     right: 30px;
+}
+
+.resultPanelUniversity {
+    display: inline-block;
+    width: 85%;
+    white-space: nowrap;
+    overflow:hidden !important;
+    text-overflow: ellipsis;
 }
 
 /* 8 - Saved Courses */
