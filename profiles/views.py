@@ -269,6 +269,7 @@ def save_course_match_id(request):
 
 class ApplicationListView(ListView):
     model = Application
+    template_name = 'profiles/application_list.html'
 
     def get_queryset(self):
         return Application.objects.filter(user=self.request.user)
