@@ -21,5 +21,6 @@ urlpatterns = [
     url(r'^send_approval/$', views.send_applation, name="send_approval"),
     url(r'^save_course_match/$', views.save_course_match, name="save_course_match"),
     url(r'^save_course_match_id/$', views.save_course_match_id, name="save_course_match_id"),
-    url(r'^soknader/$', ApplicationListView.as_view(), name='article-list')
+    url(r'^soknader/$', ApplicationListView.as_view(), name='article-list'),
+    url(r'^remove_application/$', views.remove_application, name='remove_application')
 ]
