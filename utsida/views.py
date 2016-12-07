@@ -89,7 +89,7 @@ def result(request, university=None):
                 results = CourseMatch.objects.filter(homeCourse=course)
                 if results:
                     for result in results:
-                        course_wanted_to_be_taken_matches[str(result.abroadCourse)] = course.code
+                        course_wanted_to_be_taken_matches[str(result.abroadCourse)] = course.code + ' ' + course.name
 
             unique_unis = []
             for case in sorted_full_similar_cases[:9]:

@@ -212,8 +212,9 @@ html, body {
 
 .checkoutBtn {
     position: fixed;
-    bottom: 150px;
+    bottom: 80px;
     right: 30px;
+    z-index: 1000;
 }
 
 .resultPanelUniversity {

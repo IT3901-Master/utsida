@@ -64,6 +64,7 @@ courseSelector = {
         while(s.selectedCourseList.firstChild) {
             s.selectedCourseList.removeChild(s.selectedCourseList.firstChild)
         }
+        s.university = null;
         this.hideContainer();
     },
 

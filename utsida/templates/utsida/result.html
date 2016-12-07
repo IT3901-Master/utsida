@@ -24,15 +24,22 @@
         </div>
     </div>
 
-
-
-
     <div id="filters" class="row vertical-space-bottom-big">
         <h2 class="text-center">Her er turene som likner mest på din situasjon.</h2>
-        <h3 class="subTitle text-center vertical-space-bottom-big">
+        <h3 class="subTitle text-center vertical-space-bottom">
             Trykk på knappene under for å filtrere på universitet, og legg til fag du ønsker å ta ved å trykke på de.
             Du finner dine lagrede fag i <span class="italic">Lagrede fag</span> under profilen din.
         </h3>
+
+        <div class="row vertical-space-bottom">
+            <div class="col-md-12 text-center">
+                <p class="italic">Relasjoner til dine valgte fag på NTNU</p>
+                <label class="label label-warning">Ingen spesiell relasjon</label>
+                <label class="label label-success">Godkjent</label>
+                <label class="label label-info">Søkt om godkjenning</label>
+                <label class="label label-danger">Ikke godkjent</label>
+            </div>
+        </div>
 
         <div class="col-md-8 col-md-offset-2">
             <a href="/process/result/all"><button class="btn btn-default vertical-space-bottom-small">All</button></a>
@@ -49,14 +56,21 @@
             <div class="col-md-4">
                 <div class="panel panel-primary square-corners boxShadow">
                     <div class="panel-heading square-corners">
-                        <span class="resultPanelUniversity">{{ case.University }} ({{ case.Country }})</span> <span class="pull-right badge">{{ case.Similarity }}</span>
+                        <span class="resultPanelUniversity">{{ case.University }} ({{ case.Country }})</span> <span class="pull-right badge similarityBadge">{{ case.Similarity|parse_similarity:100 }}</span>
                     </div>
                     <div class="panel-body">
                         <div class="subjectsContainer">
                             {% for subject in case.Subjects %}
                                 {% if subject in matches.keys %}
-                                    <div onclick="courseSelector.addCourse(this)" class="btn btn-success courseBtn">{{ subject }} - {{matches | get:subject}}</div>
-
+                                    <div onclick="courseSelector.addCourse(this)"
+                                         class="btn btn-success courseBtn"
+                                         data-container="body"
+                                         data-toggle="popover"
+                                         data-placement="top"
+                                         data-content="Dette faget er en godkjent erstatning for ditt følgende valgt fag på NTNU: {{ matches | get:subject }}"
+                                         data-trigger="hover">
+                                    {{ subject }}
+                                    </div>
                                 {% else %}
                                     <div onclick="courseSelector.addCourse(this)" class="btn btn-warning courseBtn">{{ subject }}</div>
                                 {% endif %}
