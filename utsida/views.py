@@ -99,7 +99,11 @@ def result(request, university=None):
             '''
             uni_counter = 0
             for uni in unique_unis:
-                if fuzz.ratio(uni, unique_unis[uni_counter+1]) > 90:
+                if fuzz.ratio(uni, unique_unis[uni_c
+
+
+
+                ounter+1]) > 90:
                     del unique_unis[unique_unis.index(uni)]
                 uni_counter += 1
             '''
