@@ -64,6 +64,7 @@ courseSelector = {
         while(s.selectedCourseList.firstChild) {
             s.selectedCourseList.removeChild(s.selectedCourseList.firstChild)
         }
+        s.university = null;
         this.hideContainer();
     },
 
@@ -107,48 +108,4 @@ courseSelector = {
 
 };
 
-// Uncomment this to enable drag and drop functionality on the course selector
-
-/*
-courseContainerDrag = {
-    settings: {
-        selected: null,
-        xPos: 0,
-        yPos: 0,
-        xElem: 0,
-        yElem: 0,
-        handle: document.getElementById("selectedCourseContainer")
-    },
-
-    init: function() {
-        v = this.settings;
-        document.onmousemove = this.moveElement;
-        document.onmouseup = this.destroy;
-        v.handle.onmousedown = function() {
-            courseContainerDrag.initDrag(this);
-            return false;
-        }
-    },
-
-    initDrag: function(elem) {
-        v.selected = elem;
-        v.xElem = v.xPos - v.selected.offsetLeft;
-        v.yElem = v.yPos - v.selected.offsetTop;
-    },
-
-    destroy: function() {
-        v.selected = null;
-    },
-
-    moveElement: function(e) {
-        v.xPos = document.all ? window.event.clientX : e.pageX;
-        v.yPos = document.all ? window.event.clientY : e.pageY;
-        if (v.selected !== null) {
-            v.selected.style.left = (v.xPos - v.xElem) + 'px';
-            v.selected.style.top = (v.yPos - v.yElem) + 'px';
-        }
-    }
-};
-*/
 courseSelector.init();
-//courseContainerDrag.init();

@@ -89,7 +89,7 @@ def result(request, university=None):
                 results = CourseMatch.objects.filter(homeCourse=course)
                 if results:
                     for result in results:
-                        course_wanted_to_be_taken_matches[str(result.abroadCourse)] = course.code
+                        course_wanted_to_be_taken_matches[str(result.abroadCourse)] = course.code + ' ' + course.name
 
             unique_unis = []
             for case in sorted_full_similar_cases[:9]:
@@ -99,7 +99,11 @@ def result(request, university=None):
             '''
             uni_counter = 0
             for uni in unique_unis:
-                if fuzz.ratio(uni, unique_unis[uni_counter+1]) > 90:
+                if fuzz.ratio(uni, unique_unis[uni_c
+
+
+
+                ounter+1]) > 90:
                     del unique_unis[unique_unis.index(uni)]
                 uni_counter += 1
             '''
