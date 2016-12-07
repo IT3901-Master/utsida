@@ -23,8 +23,8 @@
             <h4>Lagrede fag ved {{ university }}, {{ university.country }}</h4>
             <div id="courseList">
                 {% for course in courses %}
-                    <div class="blockElement" onclick="CourseMatcher.markAwayCourse(this)"
-                         class="centerCol courseBlock boxShadow pointer noSelect">
+                    <div onclick="CourseMatcher.markAwayCourse(this)"
+                         class="centerCol courseBlock boxShadow pointer noSelect blockElement">
                         <span id="code">{{ course.code }}</span> - <span id="name">{{ course.name }}</span>
                         <span data-toggle="confirmation" data-type="abroad_course" data-id="{{ course.id }}"
                               class="glyphicon glyphicon-remove pull-right pointer">
