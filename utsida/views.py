@@ -63,7 +63,7 @@ def result(request, university=None):
                 "SocialQuality": form.data["socialQualityRating"],
             })
             headers = {
-                'content-type': 'course_match_application/json'
+                'content-type': 'application/json'
             }
 
             r = requests.post("http://localhost:8080/retrieval?casebase=main_case_base&concept%20name=Trip",
