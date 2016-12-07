@@ -15,7 +15,6 @@ from profiles.forms import UserForm, ProfileForm, UpdateUserForm
 from .models import *
 
 
-# Create your views here.
 @login_required
 def get_user_profile(request, username):
     user = User.objects.get(username=username)
@@ -64,10 +63,8 @@ def update_profile(request):
         profile_form = ProfileForm(request.POST, instance=request.user.profile)
         if user_form.is_valid() and profile_form.is_valid():
             user = user_form.save()
-            # user.refresh_from_db()
             profile_form.save()
             messages.success(request, 'Profilen din ble endret!')
-            # login(request, user)
             return redirect('index')
         else:
             messages.error(request, 'Vennligst rett feilen under.')
@@ -105,10 +102,10 @@ def saved_courses(request):
 
     courses = profile.saved_courses.all()
 
-    if not courses:
-        return render(request, 'profiles/courses.html')
-
-    university = courses[0].university
+    if (courses):
+        university = courses[0].university
+    else:
+        university = ""
 
     home_courses = profile.coursesToTake.all()
     course_matches = profile.saved_course_matches.all()
@@ -185,7 +182,7 @@ def remove_course(request):
     if request.method == 'POST':
         profile = Profile.objects.get(user=request.user)
         course_id = request.POST['id']
-        profile.saved_courses.get(id=course_id).delete()
+        profile.saved_courses.remove(profile.saved_courses.get(id=course_id))
         profile.save()
 
         return HttpResponse({'code': 200, 'message': 'OK'})
@@ -198,7 +195,7 @@ def remove_course_match(request):
     if request.method == 'POST':
         profile = Profile.objects.get(user=request.user)
         course_match_id = request.POST['id']
-        profile.saved_course_matches.get(id=course_match_id).delete()
+        profile.saved_course_matches.remove(profile.saved_course_matches.get(id=course_match_id))
         profile.save()
         return HttpResponse({'code': 200, 'message': 'OK'})
     else:
@@ -254,6 +251,7 @@ def save_course_match(request):
             user.profile.saved_course_matches.add(course_match)
             return HttpResponse({'code': 200, 'message': 'Match lagret i profil og database'})
 
+@login_required
 def save_course_match_id(request):
     if request.method == "POST":
         user = User.objects.get(username=request.user)
@@ -266,14 +264,12 @@ def save_course_match_id(request):
             user.profile.saved_course_matches.add(stored_course_match)
             return HttpResponse({'code': 200, 'message': 'Match lagret i profil'})
 
-@login_required
-def view_applications(request):
-    user = User.objects.get(request.user)
-    applications = Application.objects.filter(user=user)
+
 
 
 class ApplicationListView(ListView):
     model = Application
+    template_name = 'profiles/application_list.html'
 
     def get_queryset(self):
         return Application.objects.filter(user=self.request.user)
@@ -281,3 +277,13 @@ class ApplicationListView(ListView):
     def get_context_data(self, **kwargs):
         context = super(ApplicationListView, self).get_context_data(**kwargs)
         return context
+
+
+def remove_application(request):
+    if request.method == 'POST':
+        application_id = request.POST['id']
+        Application.objects.get(id=application_id,user=request.user).delete()
+
+        return HttpResponse({'code': 200, 'message': 'OK'})
+    else:
+        return HttpResponse({'code': 500, 'message': 'request is not a post request'})

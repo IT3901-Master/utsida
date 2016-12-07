@@ -11,7 +11,9 @@ $('[data-toggle=confirmation]').confirmation({
         var id = $(this)[0].dataset["id"];
         var type = $(this)[0].dataset["type"];
         $.post("/courseMatch/delete/", {'id': id},function () {
-            $('#example').DataTable().row(block.parents('tr')).remove().draw();
+            block.parents('tr').fadeOut("slow", function (block) {
+                $('#example').DataTable().draw();
+            });
         });
 
     },

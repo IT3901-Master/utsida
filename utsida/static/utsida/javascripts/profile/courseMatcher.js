@@ -18,7 +18,12 @@ CourseMatcher = {
 
     init: function () {
         s = this.s;
-        s.awayCourses = document.getElementById("courseList").children;
+        if (document.getElementById("courseList")) {
+            s.awayCourses = document.getElementById("courseList").children;
+        }
+        else {
+            s.awayCourses = [];
+        }
         s.homeCourses = document.getElementById("homeCourseList").children;
         s.courseMatchesContainer = document.getElementById("courseMatches");
         s.wrapper = document.getElementById("courseMatchesWrapper");

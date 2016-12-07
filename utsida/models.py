@@ -139,13 +139,17 @@ class Language(models.Model):
         return self.name
 
 
+STATUS = (
+        ('P', 'Pending'),
+        ('A', 'Approved'),
+        ('D', 'Disapproved'),
+    )
 
 class Application(models.Model):
     user = models.ForeignKey(User)
     course_matches = models.ManyToManyField(CourseMatch)
     comment = models.CharField(max_length=400,blank=True)
-    status = models.BooleanField(default=False)
-
+    status = models.CharField(max_length=2, choices=STATUS, default="P")
 
 
 CHOICES = ((1, 1), (2, 2), (3, 3), (4, 4), (5, 5))

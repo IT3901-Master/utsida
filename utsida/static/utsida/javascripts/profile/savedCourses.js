@@ -19,6 +19,7 @@ var removeAllCourses = function() {
 $('[data-toggle=confirmation]').confirmation({
             rootSelector: '[data-toggle=confirmation]',
 			onConfirm: function() {
+                var here = this;
                 var block = $(this).context.parentNode;
                 var id = $(this)[0].dataset["id"];
                 var type = $(this)[0].dataset["type"];
@@ -29,7 +30,7 @@ $('[data-toggle=confirmation]').confirmation({
                     $.post("/profile/remove_course_match/", {'id': id});
                 }
 
-                block.parentNode.removeChild(block);
+                $(this).closest('.blockElement').fadeOut("slow",function(here) {block.parentNode.removeChild(block)});
 
             },
             title: "Er du sikker på at du vil slette?",
