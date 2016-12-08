@@ -1,95 +1,101 @@
 {% load staticfiles %}
+{% load result_extras %}
 
 <!DOCTYPE html>
 <html lang="en">
-    <head>
-        <meta charset="UTF-8">
-        <title>Utsida</title>
-        <link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
-        <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.12/css/dataTables.bootstrap.min.css">
-        <link rel="stylesheet" type="text/css" href="{% static "utsida/stylesheets/style.css" %}">
-        <link rel="stylesheet" type="text/css" href="{% static "utsida/stylesheets/customBootstrap.css" %}">
-        <link rel="stylesheet" type="text/css" media="all" href={% static "utsida/ajax_select/css/ajax_select.css" %}>
-        <link rel="stylesheet" type="text/css" href="//code.jquery.com/ui/1.10.3/themes/smoothness/jquery-ui.css">
+<head>
+    <meta charset="UTF-8">
+    <title>Utsida</title>
+    <link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.12/css/dataTables.bootstrap.min.css">
+    <link rel="stylesheet" type="text/css" href="{% static "utsida/stylesheets/style.css" %}">
+    <link rel="stylesheet" type="text/css" href="{% static "utsida/stylesheets/customBootstrap.css" %}">
+    <link rel="stylesheet" type="text/css" media="all" href={% static "utsida/ajax_select/css/ajax_select.css" %}>
+    <link rel="stylesheet" type="text/css" href="//code.jquery.com/ui/1.10.3/themes/smoothness/jquery-ui.css">
 
-        <script type="text/javascript" src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
-        <script type="text/javascript" src="//code.jquery.com/ui/1.10.3/jquery-ui.js"></script>
-        <script type="text/javascript" src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
-        <script type="text/javascript" src="https://cdn.datatables.net/1.10.12/js/jquery.dataTables.min.js"></script>
-        <script type="text/javascript" src="https://cdn.datatables.net/1.10.12/js/dataTables.bootstrap.min.js"></script>
-        <script type="text/javascript" src="{% static "utsida/ajax_select/js/bootstrap.js" %}"></script>
-        <script type="text/javascript" src={% static "utsida/ajax_select/js/ajax_select.js" %}></script>
-        <script src="{% static 'utsida/javascripts/messageModule.js' %}"></script>
-        <script type="text/javascript" src="{% static 'utsida/javascripts/bootstrap-confirmation.min.js' %}"></script>
-    </head>
-    <body>
-        <nav class="navbar navbar-default navbar-custom" id="top-navbar">
-            <div class="container-fluid">
+    <script type="text/javascript" src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+    <script type="text/javascript" src="//code.jquery.com/ui/1.10.3/jquery-ui.js"></script>
+    <script type="text/javascript" src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"
+            integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa"
+            crossorigin="anonymous"></script>
+    <script type="text/javascript" src="https://cdn.datatables.net/1.10.12/js/jquery.dataTables.min.js"></script>
+    <script type="text/javascript" src="https://cdn.datatables.net/1.10.12/js/dataTables.bootstrap.min.js"></script>
+    <script type="text/javascript" src="{% static "utsida/ajax_select/js/bootstrap.js" %}"></script>
+    <script type="text/javascript" src={% static "utsida/ajax_select/js/ajax_select.js" %}></script>
+    <script src="{% static 'utsida/javascripts/messageModule.js' %}"></script>
+    <script type="text/javascript" src="{% static 'utsida/javascripts/bootstrap-confirmation.min.js' %}"></script>
+</head>
+<body>
+<nav class="navbar navbar-default navbar-custom" id="top-navbar">
+    <div class="container-fluid">
 
-                <div class="navbar-header">
-                    <button type="button" class="navbar-toggle collapsed" data-toggle="collapse"
-                            data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
-                        <span class="sr-only">Toggle navigation</span>
-                        <span class="icon-bar"></span>
-                        <span class="icon-bar"></span>
-                        <span class="icon-bar"></span>
-                    </button>
-                    <a class="navbar-brand" href="/">Utsida</a>
-                </div>
-
-                <div class="collapse navbar-collapse">
-                    <ul class="nav navbar-nav">
-                        {% if user.is_authenticated %}
-                        <li><a href="/process">Få anbefaling</a></li>
-                        <li><a href="/courseMatch">Godkjente fag</a></li>
-                        {% endif %}
-                        <li class="dropdown" style="position: absolute; right: 10px">
-                            <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true"
-                               aria-expanded="false">
-                                <span class="glyphicon glyphicon-user"></span>
-                                {% if user.is_authenticated %}
-                                    Logget inn som <span style="font-weight: bold">{{ user }}</span>
-                                {% endif %}
-                                {% if user.is_authenticated == False %}
-                                    Ikke innlogget
-                                {% endif %}
-                            </a>
-                            <ul class="dropdown-menu">
-                                {% if user.is_authenticated %}
-                                    <li><a href="/profile/courses">Lagrede fag</a></li>
-                                    <li><a href="/profile/soknader">Søknader</a> </li>
-                                    <li><a href="/profile/update">Oppdater profil</a></li>
-                                    <li><a href="{% url 'password_change' %}">Endre passord</a></li>
-                                    <li role="separator" class="divider"></li>
-                                    <li><a href="/profile/logout">Logg ut</a></li>
-                                {% endif %}
-                                {% if user.is_authenticated == False %}
-                                    <li><a href="/profile/register">Registrer bruker</a></li>
-                                    <li role="separator" class="divider"></li>
-                                    <li><a href="/profile/login">Logg inn</a></li>
-                                {% endif %}
-                            </ul>
-                        </li>
-                    </ul>
-                </div>
-            </div>
-        </nav>
-        <div class="main-wrapper">
-            <div class="container">
-                <div id="messageContainer"></div>
-                {% block content %}
-                {% endblock %}
-            </div>
-
-            <div class="footer-wrapper">
-                <footer class="footer">
-                    <span class="author-text">Utvikles av Lars Liverød Andersen & Truls Mørk Pettersen</span>
-                </footer>
-            </div>
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse"
+                    data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand" href="/">Utsida</a>
         </div>
 
-        <script src="{% static 'utsida/javascripts/popover.js' %}"></script>
-        <script src="{% static 'utsida/javascripts/ajaxPostConfig.js' %}"></script>
+        <div class="collapse navbar-collapse">
+            <ul class="nav navbar-nav">
+                {% if user.is_authenticated %}
+                    <li><a href="/process">Få anbefaling</a></li>
+                    <li><a href="/courseMatch">Godkjente fag</a></li>
+                {% endif %}
+                {% if user|has_group:"Advisors" %}
+                    <li><a href="/profile/soknader/all">Søknader</a></li>
+                {% endif %}
+                <li class="dropdown" style="position: absolute; right: 10px">
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true"
+                       aria-expanded="false">
+                        <span class="glyphicon glyphicon-user"></span>
+                        {% if user.is_authenticated %}
+                            Logget inn som <span style="font-weight: bold">{{ user }}</span>
+                        {% endif %}
+                        {% if user.is_authenticated == False %}
+                            Ikke innlogget
+                        {% endif %}
+                    </a>
+                    <ul class="dropdown-menu">
+                        {% if user.is_authenticated %}
+                            <li><a href="/profile/courses">Lagrede fag</a></li>
+                            <li><a href="/profile/soknader">Søknader</a></li>
+                            <li><a href="/profile/update">Oppdater profil</a></li>
+                            <li><a href="{% url 'password_change' %}">Endre passord</a></li>
+                            <li role="separator" class="divider"></li>
+                            <li><a href="/profile/logout">Logg ut</a></li>
+                        {% endif %}
+                        {% if user.is_authenticated == False %}
+                            <li><a href="/profile/register">Registrer bruker</a></li>
+                            <li role="separator" class="divider"></li>
+                            <li><a href="/profile/login">Logg inn</a></li>
+                        {% endif %}
+                    </ul>
+                </li>
+            </ul>
+        </div>
+    </div>
+</nav>
+<div class="main-wrapper">
+    <div class="container">
+        <div id="messageContainer"></div>
+        {% block content %}
+        {% endblock %}
+    </div>
 
-    </body>
+    <div class="footer-wrapper">
+        <footer class="footer">
+            <span class="author-text">Utvikles av Lars Liverød Andersen & Truls Mørk Pettersen</span>
+        </footer>
+    </div>
+</div>
+
+<script src="{% static 'utsida/javascripts/popover.js' %}"></script>
+<script src="{% static 'utsida/javascripts/ajaxPostConfig.js' %}"></script>
+
+</body>
 </html>
