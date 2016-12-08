@@ -59,14 +59,18 @@
                     <label>Navn: </label>
                     <span> {{ application.user.first_name }} {{ application.user.last_name }}</span>
                 </div>
-                <label>Status</label>
-                {% if application.status == "A" %}
-                    <span class="status">Godkjent</span>
-                {% elif application.status == "P" %}
-                    <span class="status">Til godkjenning</span>
-                {% elif application.status == "D" %}
-                    <span class="status"> Ikke godkjent</span>
-                {% endif %}
+                <div>
+                    <label>Status</label>
+                    {% if application.status == "A" %}
+                        <span class="status">Godkjent</span>
+                    {% elif application.status == "P" %}
+                        <span class="status">Til godkjenning</span>
+                    {% elif application.status == "D" %}
+                        <span class="status"> Ikke godkjent</span>
+                    {% endif %}
+                </div>
+                <label>Universitet</label>
+                <span> {{ application.course_matches.all.0.abroadCourse.university }}</span>
                 <div class="bold">Fag-koblinger:</div>
                 {% for course_match in application.course_matches.all %}
                     <div>
