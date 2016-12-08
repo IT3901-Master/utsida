@@ -25,4 +25,6 @@ urlpatterns = [
     url(r'^soknader/$', ApplicationListView.as_view(), name='article-list'),
     url(r'^remove_application/$', views.remove_application, name='remove_application'),
     url(r'^soknader/all/$', views.ApplicationListAll.as_view(), name='article-list'),
+    url(r'^application/editstatus/$', views.edit_status_application, name='remove_application'),
+
 ]

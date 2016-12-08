@@ -295,10 +295,37 @@ class ApplicationListAll(UserPassesTestMixin,ListView):
         return context
 
 
+@login_required
 def remove_application(request):
     if request.method == 'POST':
         application_id = request.POST['id']
         Application.objects.get(id=application_id,user=request.user).delete()
+
+        return HttpResponse({'code': 200, 'message': 'OK'})
+    else:
+        return HttpResponse({'code': 500, 'message': 'request is not a post request'})
+
+
+def user_is_advisor(user):
+    return user.groups.filter(name__in=['Advisors'])
+
+
+@login_required
+@user_passes_test(user_is_advisor)
+def edit_status_application(request):
+    if request.method == 'POST':
+        application_id = request.POST['id']
+        change_status_to = request.POST["type"]
+        if (change_status_to == "approve"):
+            application = Application.objects.get(id=application_id)
+            application.status = 'A'
+            application.save()
+        elif (change_status_to == "disapprove"):
+            application = Application.objects.get(id=application_id)
+            application.status = 'D'
+            application.save()
+        else:
+            return HttpResponse({'code': 400, 'message': 'invalid request'})
 
         return HttpResponse({'code': 200, 'message': 'OK'})
     else:
