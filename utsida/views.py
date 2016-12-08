@@ -78,10 +78,13 @@ def result(request, university=None):
 
             # Filling each case with their full information, and formatting them
             for key, value in r.items():
-                full_case = requests.get("http://localhost:8080/case?caseID=" + key).json()["case"]
-                full_case["Subjects"] = full_case["Subjects"].split('!')
-                full_case["Similarity"] = "%.3f" % value
-                full_similar_cases.append(full_case)
+
+                # Sorting out every case below 0.20 similarity
+                if value > 0.2:
+                    full_case = requests.get("http://localhost:8080/case?caseID=" + key).json()["case"]
+                    full_case["Subjects"] = full_case["Subjects"].split('!')
+                    full_case["Similarity"] = "%.3f" % value
+                    full_similar_cases.append(full_case)
 
             # Sorting the case list based on similarity
             sorted_full_similar_cases = sorted(full_similar_cases, key=lambda k: k['Similarity'], reverse=True)
