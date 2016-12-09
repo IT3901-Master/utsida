@@ -20,6 +20,7 @@ universityHighlighter = {
             if (s.buttons[i].innerHTML.toLowerCase() == s.url.toLowerCase()) {
                 s.buttons[i].style.backgroundColor = "#5cb85c";
                 s.buttons[i].style.color = "#FFF";
+                s.buttons[i].style.borderColor = "#4cae4c";
             }
         }
     }
