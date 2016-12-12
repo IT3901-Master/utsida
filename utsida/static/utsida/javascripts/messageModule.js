@@ -18,12 +18,13 @@ Messager = {
     sendMessage: function(message, type) {
         m.container.className = "alert alert-" + type;
         if (m.container.firstChild)
-            m.container.removeChild(s.container.firstChild);
+            m.container.removeChild(m.container.firstChild);
         m.container.appendChild(document.createTextNode(message));
         m.container.addEventListener('click', function(e) {
             e.preventDefault();
             m.container.className = "hiddenDiv";
         });
+        location.href = "#messageContainer";
     }
 
 };
