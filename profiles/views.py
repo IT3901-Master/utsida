@@ -1,7 +1,8 @@
 from ajax_select.fields import AutoCompleteField, autoselect_fields_check_can_add
 from django.contrib import messages
-from django.contrib.auth.decorators import login_required
+from django.contrib.auth.decorators import login_required, user_passes_test
 from django.contrib.auth.forms import PasswordChangeForm
+from django.contrib.auth.mixins import UserPassesTestMixin, LoginRequiredMixin
 from django.db import transaction
 from django.http import HttpResponse
 from django.http import HttpResponseRedirect
@@ -9,6 +10,7 @@ from django.shortcuts import render, redirect, get_object_or_404
 from django.contrib.auth import authenticate, login, update_session_auth_hash
 import json
 from django.http import Http404
+from django.utils.decorators import method_decorator
 from django.views.generic import ListView
 
 from profiles.forms import UserForm, ProfileForm, UpdateUserForm
@@ -267,7 +269,7 @@ def save_course_match_id(request):
 
 
 
-class ApplicationListView(ListView):
+class ApplicationListView(LoginRequiredMixin,ListView):
     model = Application
     template_name = 'profiles/application_list.html'
 
@@ -278,11 +280,52 @@ class ApplicationListView(ListView):
         context = super(ApplicationListView, self).get_context_data(**kwargs)
         return context
 
+class ApplicationListAll(UserPassesTestMixin,ListView):
+    model = Application
+    template_name = 'profiles/application_list_all.html'
 
+    def test_func(self):
+        return self.request.user.groups.filter(name__in=['Advisors'])
+
+    def get_queryset(self):
+        return Application.objects.all()
+
+    def get_context_data(self, **kwargs):
+        context = super(ApplicationListAll, self).get_context_data(**kwargs)
+        return context
+
+
+@login_required
 def remove_application(request):
     if request.method == 'POST':
         application_id = request.POST['id']
         Application.objects.get(id=application_id,user=request.user).delete()
+
+        return HttpResponse({'code': 200, 'message': 'OK'})
+    else:
+        return HttpResponse({'code': 500, 'message': 'request is not a post request'})
+
+
+def user_is_advisor(user):
+    return user.groups.filter(name__in=['Advisors'])
+
+
+@login_required
+@user_passes_test(user_is_advisor)
+def edit_status_application(request):
+    if request.method == 'POST':
+        application_id = request.POST['id']
+        change_status_to = request.POST["type"]
+        if (change_status_to == "approve"):
+            application = Application.objects.get(id=application_id)
+            application.status = 'A'
+            application.save()
+        elif (change_status_to == "disapprove"):
+            application = Application.objects.get(id=application_id)
+            application.status = 'D'
+            application.save()
+        else:
+            return HttpResponse({'code': 400, 'message': 'invalid request'})
 
         return HttpResponse({'code': 200, 'message': 'OK'})
     else:

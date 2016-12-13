@@ -1,6 +1,7 @@
 from django.conf.urls import url, include
+from django.contrib.auth.decorators import user_passes_test
 
-from profiles.views import ApplicationListView
+from profiles.views import ApplicationListView, ApplicationListAll
 from . import views
 from django.contrib.auth import views as auth_views
 from ajax_select import urls as ajax_select_urls
@@ -22,5 +23,8 @@ urlpatterns = [
     url(r'^save_course_match/$', views.save_course_match, name="save_course_match"),
     url(r'^save_course_match_id/$', views.save_course_match_id, name="save_course_match_id"),
     url(r'^soknader/$', ApplicationListView.as_view(), name='article-list'),
-    url(r'^remove_application/$', views.remove_application, name='remove_application')
+    url(r'^remove_application/$', views.remove_application, name='remove_application'),
+    url(r'^soknader/all/$', views.ApplicationListAll.as_view(), name='article-list'),
+    url(r'^application/editstatus/$', views.edit_status_application, name='remove_application'),
+
 ]
