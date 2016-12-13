@@ -1,5 +1,4 @@
 import re
-
 from django.db import transaction
 from django.http import HttpResponse
 from django.shortcuts import render, redirect, get_object_or_404
@@ -8,7 +7,6 @@ import json
 from .forms import *
 from profiles.models import *
 from django.contrib.auth.decorators import login_required, user_passes_test, permission_required
-from fuzzywuzzy import fuzz
 
 
 def index(request):
@@ -27,6 +25,8 @@ def process(request):
 def result(request, university=None):
     if not request.user.is_authenticated():
         return redirect("login")
+
+    # If the request has a university parameter, return a every case with that university
     if university:
         filtered_cases = []
 
@@ -38,8 +38,11 @@ def result(request, university=None):
                 if case['University'] == university:
                     filtered_cases.append(case)
 
-        return render(request, 'utsida/result.html', {'similar_cases': filtered_cases, 'universities': request.session['unique_universities'], 'matches': request.session['matches'], 'show_loader': False})
+        return render(request, 'utsida/result.html',
+                      {'similar_cases': filtered_cases[:9], 'universities': request.session['unique_universities'],
+                       'matches': request.session['matches']})
 
+    # Else the request is a normal query
     if request.method == 'POST':
         form = QueryCaseBaseForm(request.POST)
         user_profile = User.objects.get(username=request.user).profile
@@ -73,12 +76,17 @@ def result(request, university=None):
 
             full_similar_cases = []
 
+            # Filling each case with their full information, and formatting them
             for key, value in r.items():
-                full_case = requests.get("http://localhost:8080/case?caseID=" + key).json()["case"]
-                full_case["Subjects"] = full_case["Subjects"].split('!')
-                full_case["Similarity"] = "%.3f" % value
-                full_similar_cases.append(full_case)
 
+                # Sorting out every case below 0.20 similarity
+                if value > 0.2:
+                    full_case = requests.get("http://localhost:8080/case?caseID=" + key).json()["case"]
+                    full_case["Subjects"] = full_case["Subjects"].split('!')
+                    full_case["Similarity"] = "%.3f" % value
+                    full_similar_cases.append(full_case)
+
+            # Sorting the case list based on similarity
             sorted_full_similar_cases = sorted(full_similar_cases, key=lambda k: k['Similarity'], reverse=True)
 
             courses = request.user.profile.coursesToTake.all()
@@ -89,34 +97,28 @@ def result(request, university=None):
                 results = CourseMatch.objects.filter(homeCourse=course)
                 if results:
                     for result in results:
-                        course_wanted_to_be_taken_matches[str(result.abroadCourse)] = course.code
+                        course_wanted_to_be_taken_matches[str(result.abroadCourse)] = course.code + ' ' + course.name
 
             unique_unis = []
             for case in sorted_full_similar_cases[:9]:
                 if not case['University'] in unique_unis:
                     unique_unis.append(case['University'])
 
-            '''
-            uni_counter = 0
-            for uni in unique_unis:
-                if fuzz.ratio(uni, unique_unis[uni_counter+1]) > 90:
-                    del unique_unis[unique_unis.index(uni)]
-                uni_counter += 1
-            '''
-
             request.session['unique_universities'] = unique_unis
             request.session['result'] = sorted_full_similar_cases
             request.session['matches'] = course_wanted_to_be_taken_matches
 
             return render(request, 'utsida/result.html',
-                          {'form': form, 'similar_cases': sorted_full_similar_cases[:9], 'courses_taken': courses_taken, 'matches': course_wanted_to_be_taken_matches, 'universities': unique_unis, 'show_loader': True})
-
-
+                          {'form': form, 'similar_cases': sorted_full_similar_cases[:9], 'courses_taken': courses_taken,
+                           'matches': course_wanted_to_be_taken_matches, 'universities': unique_unis})
 
     else:
         form = QueryCaseBaseForm()
 
     return render(request, 'utsida/process.html', {'form': form})
+
+
+
 
 
 @login_required
