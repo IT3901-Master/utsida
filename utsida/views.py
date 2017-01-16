@@ -80,7 +80,7 @@ def result(request, university=None):
             for key, value in r.items():
 
                 # Sorting out every case below 0.20 similarity
-                if value > 0.2:
+                if value > 0.3:
                     full_case = requests.get("http://localhost:8080/case?caseID=" + key).json()["case"]
                     full_case["Subjects"] = full_case["Subjects"].split('!')
                     full_case["Similarity"] = "%.3f" % value
