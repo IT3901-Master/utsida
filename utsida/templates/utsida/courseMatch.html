@@ -9,6 +9,8 @@
         {% endif %}
     {% endfor %}
 
+    <div id="selection"> </div>
+
     <h2 class="text-center vertical-space-bottom-big">Godkjente fag fra {{ university_name }}</h2>
     <table id="example" class="table table-striped" style="opacity: 0">
         <thead>
@@ -18,7 +20,7 @@
             <th>Fag ute</th>
             <th>Studiepoeng</th>
             <th>Godkjent dato</th>
-            <th class="select-filter">Universitet</th>
+            <th>Universitet</th>
             <th>Comment</th>
             <th></th>
             <th>ID</th>
@@ -43,7 +45,7 @@
                 {% endif %}
                 <td> {{ course_match.abroadCourse.study_points }}</td>
                 <td> {{ course_match.approval_date }}</td>
-                <td> {{ course_match.abroadCourse.university }}</td>
+                <td class="select-filter"> {{ course_match.abroadCourse.university }}</td>
                 <td> {{ course_match.comment }}</td>
                 <td class="editRow">
                     {% if perms.can_edit_course_match %}

@@ -2,130 +2,140 @@
 
 {% block content %}
 
-{% for message in messages %}
-    {% if 'success' in message.tags %}
-        <div id="sucessAlert" class="alert alert-success">{{ message }}</div>
-    {% endif %}
-{% endfor %}
+    {% for message in messages %}
+        {% if 'success' in message.tags %}
+            <div id="sucessAlert" class="alert alert-success">{{ message }}</div>
+        {% endif %}
+    {% endfor %}
 
 
-<h3 class="text-center">
-    Her vises alle fagene du har lagret, og hvilke fag du har tenkt til å erstatte ved NTNU.
-</h3>
-<h3 class="subTitle text-center">
-    Trykk på et fag i hver colonne for å velge de, og dermed på <span class="italic">Lagre fag</span>
-    knappen for å lage en fagmatch
-</h3>
+    <h3 class="text-center">
+        Her vises alle fagene du har lagret, og hvilke fag du har tenkt til å erstatte ved NTNU.
+    </h3>
+    <h3 class="subTitle text-center">
+        Trykk på et fag i hver colonne for å velge de, og dermed på <span class="italic">Lagre fag</span>
+        knappen for å lage en fagmatch
+    </h3>
 
-<div class="row vertical-space-top-big">
-    <div class="col-md-6">
-        {% if university %}
-            <h4>Lagrede fag ved {{ university }}, {{ university.country }}</h4>
-            <div id="courseList">
-                {% for course in courses %}
-                    <div onclick="CourseMatcher.markAwayCourse(this)"
-                         class="centerCol courseBlock boxShadow pointer noSelect blockElement">
-                        <span id="code">{{ course.code }}</span> - <span id="name">{{ course.name }}</span>
-                        <span data-toggle="confirmation" data-type="abroad_course" data-id="{{ course.id }}"
-                              class="glyphicon glyphicon-remove pull-right pointer">
+    <div class="row vertical-space-top-big">
+        <div class="col-md-6">
+            {% if university %}
+                <h4>Lagrede fag ved {{ university }}, {{ university.country }}</h4>
+                <div id="courseList">
+                    {% for course in courses %}
+                        <div onclick="CourseMatcher.markAwayCourse(this)"
+                             class="centerCol courseBlock boxShadow pointer noSelect blockElement">
+                            <span id="code">{{ course.code }}</span> - <span id="name">{{ course.name }}</span>
+                            <span data-toggle="confirmation" data-type="abroad_course" data-id="{{ course.id }}"
+                                  class="glyphicon glyphicon-remove pull-right pointer">
                             </span>
+                        </div>
+                    {% endfor %}
+                </div>
+
+            {% else %}
+                <h3 class="text-center">Du har ikke lagret noen fag</h3>
+            {% endif %}
+        </div>
+
+        <div class="col-md-6">
+            <h4>Fag du vil erstatte ved NTNU</h4>
+            <div id="homeCourseList">
+                {% for course in home_courses %}
+                    <div onclick="CourseMatcher.markHomeCourse(this)"
+                         class="centerCol courseBlock boxShadow pointer noSelect">
+                        <span id="code">{{ course.code }}</span> - <span id="name">{{ course.name }}</span>
                     </div>
                 {% endfor %}
             </div>
-
-        {% else %}
-            <h3 class="text-center">Du har ikke lagret noen fag</h3>
-        {% endif %}
-    </div>
-
-    <div class="col-md-6">
-        <h4>Fag du vil erstatte ved NTNU</h4>
-        <div id="homeCourseList">
-            {% for course in home_courses %}
-                <div onclick="CourseMatcher.markHomeCourse(this)"
-                     class="centerCol courseBlock boxShadow pointer noSelect">
-                    <span id="code">{{ course.code }}</span> - <span id="name">{{ course.name }}</span>
-                </div>
-            {% endfor %}
         </div>
     </div>
-</div>
 
-<div class="row vertical-space-top-big vertical-space-bottom-big">
-    <div class="col-md-12">
-        <button onclick="CourseMatcher.matchSelectedCourses()" class="btn btn-primary center-block">Lagre
-        </button>
-    </div>
-</div>
-
-<div class="row vertical-space-top-big vertical-space-bottom-big">
-    <div class="col-md-12">
-        <h3 class="text-center"> Her er dine lagrede fag-koblinger </h3>
-        <div id="courseMatchList" class="text-center">
-            {% for course in course_matches %}
-                <div class="blockElement">
-                    <span class="label label-default"> {{ course.abroadCourse.code }} {{ course.abroadCourse.name }}</span>
-                    <span class="glyphicon glyphicon-link"></span>
-                    <span class="label label-default"> {{ course.homeCourse.code }} {{ course.homeCourse.name }} </span>
-                    <span data-toggle="confirmation" data-type="course_match" data-id="{{ course.id }}"
-                          style="margin-left: 5px" class="glyphicon glyphicon-remove pointer"> </span>
-                </div>
-            {% endfor %}
+    <div class="row vertical-space-top-big vertical-space-bottom-big">
+        <div class="col-md-12">
+            <button onclick="CourseMatcher.matchSelectedCourses()" class="btn btn-primary center-block">Lagre
+            </button>
         </div>
-        <button type="button" class="center-block btn btn-primary btn-lg vertical-space-top" data-toggle="modal"
-                data-target="#myModal">
-            Send til godkjenning
-        </button>
     </div>
-</div>
 
 
-<!-- Modal -->
-<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel"
-     aria-hidden="true">
-    <div class="modal-dialog" role="document">
-        <div class="modal-content">
-            <div class="modal-header">
-                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                    <span aria-hidden="true">&times;</span>
-                </button>
-                <h4 class="modal-title" id="myModalLabel">Søknad</h4>
+    <div class="row vertical-space-top-big vertical-space-bottom-big">
+        <div class="col-md-12">
+            <h3 class="text-center"> Her er dine lagrede fag-koblinger </h3>
+            <div id="courseMatchList">
+                <table class="table table-striped">
+                    <thead>
+                    <tr>
+                       <th>Fag ute</th>
+                        <th>Fag hjemme</th>
+                        <th></th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    {% for course in course_matches %}
+                        <tr>
+                        <td> {{ course.abroadCourse.code }} {{ course.abroadCourse.name }}</td>
+                        <td> {{ course.homeCourse.code }} {{ course.homeCourse.name }} </td>
+                        <td data-toggle="confirmation" data-type="course_match" data-id="{{ course.id }}" class="glyphicon glyphicon-remove pointer"> </td>
+                        </tr>
+                {% endfor %}
+                    </tbody>
+                </table>
             </div>
-            <div class="modal-body">
-                <div class="form-group">
-                    <label for="user">Bruker:</label>
-                    <div id="user">{{ request.user.first_name }} {{ request.user.last_name }}</div>
-                    <label for="courseMatches"> Fag-koblinger</label>
-                    <div id="courseMatchListModal">
-                        {% for course in course_matches %}
-                            <div>
-                                <span class="label label-default"> {{ course.abroadCourse.code }} {{ course.abroadCourse.name }}</span>
-                                <span class="glyphicon glyphicon-link"></span>
-                                <span class="label label-default"> {{ course.homeCourse.code }} {{ course.homeCourse.name }} </span>
-                            </div>
-                        {% endfor %}
+            <button type="button" class="center-block btn btn-primary btn-lg vertical-space-top" data-toggle="modal"
+                    data-target="#myModal">
+                Send til godkjenning
+            </button>
+        </div>
+    </div>
+
+
+    <!-- Modal -->
+    <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel"
+         aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                    <h4 class="modal-title" id="myModalLabel">Søknad</h4>
+                </div>
+                <div class="modal-body">
+                    <div class="form-group">
+                        <label for="user">Bruker:</label>
+                        <div id="user">{{ request.user.first_name }} {{ request.user.last_name }}</div>
+                        <label for="courseMatches"> Fag-koblinger</label>
+                        <div id="courseMatchListModal">
+                            {% for course in course_matches %}
+                                <div>
+                                    <span class="label label-default"> {{ course.abroadCourse.code }} {{ course.abroadCourse.name }}</span>
+                                    <span class="glyphicon glyphicon-link"></span>
+                                    <span class="label label-default"> {{ course.homeCourse.code }} {{ course.homeCourse.name }} </span>
+                                </div>
+                            {% endfor %}
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="comment">Kommentar</label>
+                        <textarea id="comment" class="form-control"> </textarea>
                     </div>
                 </div>
-
-                <div class="form-group">
-                    <label for="comment">Kommentar</label>
-                    <textarea id="comment" class="form-control"> </textarea>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Lukk</button>
+                    <button type="submit" onclick="sendApproval()" class="btn btn-primary">Send</button>
                 </div>
-            </div>
-            <div class="modal-footer">
-                <button type="button" class="btn btn-secondary" data-dismiss="modal">Lukk</button>
-                <button type="submit" onclick="sendApproval()" class="btn btn-primary">Send</button>
             </div>
         </div>
     </div>
-</div>
 
-{% load staticfiles %}
-<script src="{% static 'utsida/javascripts/profile/savedCourses.js' %}"></script>
-<script src="{% static 'utsida/javascripts/profile/courseMatcher.js' %}"></script>
-<script src="{% static 'utsida/javascripts/profile/course_approval_request.js' %}"></script>
-<script> setTimeout(function () {
-    $('#sucessAlert').fadeOut('slow');
-}, 5000);</script>
+    {% load staticfiles %}
+    <script src="{% static 'utsida/javascripts/profile/savedCourses.js' %}"></script>
+    <script src="{% static 'utsida/javascripts/profile/courseMatcher.js' %}"></script>
+    <script src="{% static 'utsida/javascripts/profile/course_approval_request.js' %}"></script>
+    <script> setTimeout(function () {
+        $('#sucessAlert').fadeOut('slow');
+    }, 5000);</script>
 
 {% endblock %}
