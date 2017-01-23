@@ -62,7 +62,7 @@
     <div class="row vertical-space-top-big vertical-space-bottom-big">
         <div class="col-md-12">
             <h3 class="text-center"> Her er dine lagrede fag-koblinger </h3>
-            <div id="courseMatchList">
+            <div>
                 <table class="table table-striped">
                     <thead>
                     <tr>
@@ -71,12 +71,12 @@
                         <th></th>
                     </tr>
                     </thead>
-                    <tbody>
+                    <tbody id="courseMatchList">
                     {% for course in course_matches %}
                         <tr>
                         <td> {{ course.abroadCourse.code }} {{ course.abroadCourse.name }}</td>
                         <td> {{ course.homeCourse.code }} {{ course.homeCourse.name }} </td>
-                        <td data-toggle="confirmation" data-type="course_match" data-id="{{ course.id }}" class="glyphicon glyphicon-remove pointer"> </td>
+                        <td style="" data-toggle="confirmation" data-type="course_match" data-id="{{ course.id }}" class="glyphicon glyphicon-remove pointer"> </td>
                         </tr>
                 {% endfor %}
                     </tbody>

@@ -25,12 +25,13 @@ $('[data-toggle=confirmation]').confirmation({
                 var type = $(this)[0].dataset["type"];
                 if (type == "abroad_course"){
                     $.post("/profile/remove_course/", {'id': id});
+                    $(this).closest('.blockElement').fadeOut("slow",function(here) {block.parentNode.removeChild(block)});
                 }
                 else if (type == "course_match") {
                     $.post("/profile/remove_course_match/", {'id': id});
+                    $(this).closest('tr').fadeOut("slow",function(here) {$(this).closest("tr").remove()});
                 }
 
-                $(this).closest('.blockElement').fadeOut("slow",function(here) {block.parentNode.removeChild(block)});
 
             },
             title: "Er du sikker på at du vil slette?",
