@@ -62,9 +62,9 @@
                     </a>
                     <ul class="dropdown-menu">
                         {% if user.is_authenticated %}
-                            <li><a href="/profile/courses">Lagrede fag</a></li>
-                            <li><a href="/profile/soknader">Søknader</a></li>
-                            <li><a href="/profile/update">Oppdater profil</a></li>
+                            <li><a href="/profile/courses">Mine lagrede fag</a></li>
+                            <li><a href="/profile/soknader">Mine søknader</a></li>
+                            <li><a href="/profile/update">Min profil</a></li>
                             <li><a href="{% url 'password_change' %}">Endre passord</a></li>
                             <li role="separator" class="divider"></li>
                             <li><a href="/profile/logout">Logg ut</a></li>
