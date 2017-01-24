@@ -86,6 +86,7 @@ def result(request, university=None):
                 if value > 0.6:
                     full_case = requests.get("http://localhost:8080/case?caseID=" + key).json()["case"]
                     full_case["Subjects"] = full_case["Subjects"].split('!')
+                    full_case["Language"] = full_case["Language"].split('!')
                     full_case["Similarity"] = "%.3f" % value
                     full_similar_cases.append(full_case)
 

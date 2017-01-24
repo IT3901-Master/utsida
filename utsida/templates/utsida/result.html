@@ -85,7 +85,12 @@
                                 <p><span class="bold">Verdensdel:</span> {{ case.Continent }}</p>
                                 <p><span class="bold">Land:</span> {{ case.Country }}</p>
                                 <p><span class="bold">Universitet:</span> {{ case.University }}</p>
-                                <p><span class="bold">Studiespråk:</span> {{ case.Language }}</p>
+                                <p>
+                                    <span class="bold">Studiespråk:</span>
+                                    {% for language in case.Language %}
+                                        {{ language }}
+                                    {% endfor %}
+                                </p>
                                 <p><span class="bold">Studieperiode:</span> {{ case.StudyPeriod }}</p>
                                 <p><span class="bold">Vurdering av akademisk kvalitet:</span> {{ case.AcademicQuality }}</p>
                                 <p><span class="bold">Vurdering av sosial kvalitet:</span> {{ case.SocialQuality}}</p>
