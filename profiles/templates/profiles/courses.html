@@ -106,15 +106,24 @@
                         <label for="user">Bruker:</label>
                         <div id="user">{{ request.user.first_name }} {{ request.user.last_name }}</div>
                         <label for="courseMatches"> Fag-koblinger</label>
-                        <div id="courseMatchListModal">
-                            {% for course in course_matches %}
-                                <div>
-                                    <span class="label label-default"> {{ course.abroadCourse.code }} {{ course.abroadCourse.name }}</span>
-                                    <span class="glyphicon glyphicon-link"></span>
-                                    <span class="label label-default"> {{ course.homeCourse.code }} {{ course.homeCourse.name }} </span>
-                                </div>
-                            {% endfor %}
-                        </div>
+                        <div>
+                <table class="table table-striped">
+                    <thead>
+                    <tr>
+                       <th>Fag ute</th>
+                        <th>Fag hjemme</th>
+                        <th></th>
+                    </tr>
+                    </thead>
+                    <tbody id="courseMatchListModal">
+                    {% for course in course_matches %}
+                        <tr>
+                        <td> {{ course.abroadCourse.code }} {{ course.abroadCourse.name }}</td>
+                        <td> {{ course.homeCourse.code }} {{ course.homeCourse.name }} </td>
+                {% endfor %}
+                    </tbody>
+                </table>
+            </div>
                     </div>
 
                     <div class="form-group">
