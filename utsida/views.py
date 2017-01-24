@@ -64,6 +64,9 @@ def result(request, university=None):
                 "StudyPeriod": datetime.date.today().year,
                 "AcademicQuality": form.data["academicQualityRating"],
                 "SocialQuality": form.data["socialQualityRating"],
+                "ResidentialQuality": form.data["residentialQualityRating"],
+                "ReceptionQuality": form.data["receptionQualityRating"],
+
             })
             headers = {
                 'content-type': 'application/json'
@@ -80,7 +83,7 @@ def result(request, university=None):
             for key, value in r.items():
 
                 # Sorting out every case below 0.20 similarity
-                if value > 0.3:
+                if value > 0.6:
                     full_case = requests.get("http://localhost:8080/case?caseID=" + key).json()["case"]
                     full_case["Subjects"] = full_case["Subjects"].split('!')
                     full_case["Similarity"] = "%.3f" % value

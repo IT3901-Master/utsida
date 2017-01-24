@@ -152,7 +152,8 @@ class Application(models.Model):
     status = models.CharField(max_length=2, choices=STATUS, default="P")
 
 
-CHOICES = ((1, 1), (2, 2), (3, 3), (4, 4), (5, 5))
+CHOICES = ((1, 1), (2, 2), (3, 3), (4, 4), (5, 5), (6, 6), (7, 7), (8, 8), (9, 9), (10, 10))
+
 
 class Case(models.Model):
     homeInstitute = models.ForeignKey(Institute)
@@ -163,6 +164,8 @@ class Case(models.Model):
     language = models.ForeignKey(Language)
     academicQualityRating = models.IntegerField(choices=CHOICES)
     socialQualityRating = models.IntegerField(choices=CHOICES)
+    residentialQualityRating = models.IntegerField(choices=CHOICES)
+    receptionQualityRating = models.IntegerField(choices=CHOICES)
     subjects = models.ManyToManyField(AbroadCourse)
 
     def __str__(self):
@@ -178,6 +181,8 @@ class Query(models.Model):
     language = models.ForeignKey(Language)
     academicQualityRating = models.IntegerField(choices=CHOICES)
     socialQualityRating = models.IntegerField(choices=CHOICES)
+    residentialQualityRating = models.IntegerField(choices=CHOICES)
+    receptionQualityRating = models.IntegerField(choices=CHOICES)
 
     def __str__(self):
         return self.university + ':' + str(self.pk)

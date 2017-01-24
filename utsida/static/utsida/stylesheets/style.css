@@ -175,6 +175,40 @@ html, body {
     margin: auto;
 }
 
+input[type=range]{
+    -webkit-appearance: none;
+}
+
+input[type=range]::-webkit-slider-runnable-track {
+    width: 100%;
+    height: 5px;
+    background: #ddd;
+    border: none;
+    border-radius: 3px;
+}
+
+input[type=range]::-webkit-slider-thumb {
+    -webkit-appearance: none;
+    border: none;
+    height: 20px;
+    width: 20px;
+    border-radius: 50%;
+    background-color: #337ab7;
+    margin-top: -7px;
+}
+
+input[type=range]:focus {
+    outline: none;
+}
+
+input[type=range]:focus::-webkit-slider-runnable-track {
+    background: #ccc;
+}
+
+#socialOutput, #academicOutput, #residentialOutput, #receptionOutput {
+    background-color: #337ab7;
+}
+
 
 
 /* 7.0 Result */
@@ -186,7 +220,7 @@ html, body {
     display: none;
 }
 .hiddenInformation.show {
-    height: 280px;
+    height: 330px;
     transition: height 0.1s;
 }
 .hiddenInformation.show div{
@@ -278,6 +312,8 @@ html, body {
     background-color: #dff0d8;
     transition: all 1s ease 0s;
 }
+
+
 
 
 
