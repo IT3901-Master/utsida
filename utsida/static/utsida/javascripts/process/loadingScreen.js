@@ -2,6 +2,7 @@
 
 var startLoad = function() {
     document.getElementById("loadingScreen").className = "fadeScreen";
+    window.location = "#loadingScreen"
 };
 
 

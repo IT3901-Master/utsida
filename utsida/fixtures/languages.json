@@ -1,52 +1,57 @@
 [
   {
     "model": "utsida.language",
-    "pk": "English",
+    "pk": "Engelsk",
     "fields": {}
   },
   {
     "model": "utsida.language",
-    "pk": "Spanish",
+    "pk": "Spansk",
     "fields": {}
   },
   {
     "model": "utsida.language",
-    "pk": "French",
+    "pk": "Fransk",
     "fields": {}
   },
   {
     "model": "utsida.language",
-    "pk": "Deutsch",
+    "pk": "Tysk",
+    "fields": {}
+  },
+    {
+    "model": "utsida.language",
+    "pk": "Italiensk",
     "fields": {}
   },
   {
     "model": "utsida.language",
-    "pk": "Norwegian",
+    "pk": "Norsk",
     "fields": {}
   },
   {
     "model": "utsida.language",
-    "pk": "Swedish",
+    "pk": "Svensk",
     "fields": {}
   },
   {
     "model": "utsida.language",
-    "pk": "Danish",
+    "pk": "Dansk",
     "fields": {}
   },
   {
     "model": "utsida.language",
-    "pk": "Chinese",
+    "pk": "Kinesisk",
     "fields": {}
   },
   {
     "model": "utsida.language",
-    "pk": "Japanese",
+    "pk": "Japansk",
     "fields": {}
   },
   {
     "model": "utsida.language",
-    "pk": "Indian",
+    "pk": "Indisk",
     "fields": {}
   }
 ]
