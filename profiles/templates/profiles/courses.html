@@ -1,6 +1,7 @@
 {% extends "utsida/layout.html" %}
 
 {% block content %}
+    {% load widget_tweaks %}
 
     {% for message in messages %}
         {% if 'success' in message.tags %}
@@ -36,6 +37,10 @@
             {% else %}
                 <h3 class="text-center">Du har ikke lagret noen fag</h3>
             {% endif %}
+            <button type="button" class="btn btn-primary vertical-space-top" data-toggle="modal"
+                    data-target="#addAbroadModal">
+                Legg til fag
+            </button>
         </div>
 
         <div class="col-md-6">
@@ -45,9 +50,20 @@
                     <div onclick="CourseMatcher.markHomeCourse(this)"
                          class="centerCol courseBlock boxShadow pointer noSelect">
                         <span id="code">{{ course.code }}</span> - <span id="name">{{ course.name }}</span>
+                        <span data-toggle="confirmation" data-type="home_course" data-id="{{ course.id }}"
+                              class="glyphicon glyphicon-remove pull-right pointer">
+                            </span>
                     </div>
                 {% endfor %}
             </div>
+            <form id="add-course-form">
+                <div class="homeCourse form-group vertical-space-top">
+                    <div class="vertical-space-bottom-small">
+                        {{ courses_to_take_form.coursesToTake | add_class:"form-control" }}
+                    </div>
+                    <button id="addHomeCourse" class="btn btn-primary" type="submit">Legg til</button>
+                </div>
+            </form>
         </div>
     </div>
 
@@ -66,7 +82,7 @@
                 <table class="table table-striped">
                     <thead>
                     <tr>
-                       <th>Fag ute</th>
+                        <th>Fag ute</th>
                         <th>Fag hjemme</th>
                         <th></th>
                     </tr>
@@ -74,11 +90,13 @@
                     <tbody id="courseMatchList">
                     {% for course in course_matches %}
                         <tr>
-                        <td> {{ course.abroadCourse.code }} {{ course.abroadCourse.name }}</td>
-                        <td> {{ course.homeCourse.code }} {{ course.homeCourse.name }} </td>
-                        <td style="" data-toggle="confirmation" data-type="course_match" data-id="{{ course.id }}" class="glyphicon glyphicon-remove pointer"> </td>
+                            <td> {{ course.abroadCourse.code }} {{ course.abroadCourse.name }}</td>
+                            <td> {{ course.homeCourse.code }} {{ course.homeCourse.name }} </td>
+                            <td>
+                                <span data-toggle="confirmation" data-type="course_match" data-id="{{ course.id }}"
+                                      class="glyphicon glyphicon-remove pointer"></span></td>
                         </tr>
-                {% endfor %}
+                    {% endfor %}
                     </tbody>
                 </table>
             </div>
@@ -93,7 +111,7 @@
     <!-- Modal -->
     <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel"
          aria-hidden="true">
-        <div class="modal-dialog" role="document">
+        <div class="modal-dialog modal-lg" role="document">
             <div class="modal-content">
                 <div class="modal-header">
                     <button type="button" class="close" data-dismiss="modal" aria-label="Close">
@@ -107,23 +125,16 @@
                         <div id="user">{{ request.user.first_name }} {{ request.user.last_name }}</div>
                         <label for="courseMatches"> Fag-koblinger</label>
                         <div>
-                <table class="table table-striped">
-                    <thead>
-                    <tr>
-                       <th>Fag ute</th>
-                        <th>Fag hjemme</th>
-                        <th></th>
-                    </tr>
-                    </thead>
-                    <tbody id="courseMatchListModal">
-                    {% for course in course_matches %}
-                        <tr>
-                        <td> {{ course.abroadCourse.code }} {{ course.abroadCourse.name }}</td>
-                        <td> {{ course.homeCourse.code }} {{ course.homeCourse.name }} </td>
-                {% endfor %}
-                    </tbody>
-                </table>
-            </div>
+                            <table class="table table-striped">
+                                <tbody id="courseMatchListModal">
+                                {% for course in course_matches %}
+                                    <tr>
+                                    <td> {{ course.abroadCourse.code }} {{ course.abroadCourse.name }}</td>
+                                    <td> {{ course.homeCourse.code }} {{ course.homeCourse.name }} </td>
+                                {% endfor %}
+                                </tbody>
+                            </table>
+                        </div>
                     </div>
 
                     <div class="form-group">
@@ -139,12 +150,61 @@
         </div>
     </div>
 
+
+    <!-- Modal -->
+    <div class="modal fade" id="addAbroadModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel"
+         aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                    <h4 class="modal-title" id="myModalLabel">Legg til nytt fag ved {{ university }}</h4>
+                </div>
+                <div class="modal-body">
+                    <form id="add-abroad-course-form" action="/abroadCourse/add/" method="post" novalidate="novalidate">
+                        {% csrf_token %}
+                        <div class="modal-body">
+                            <div class="form-group">
+                                <label> Kode </label>
+                                {{ add_abroad_form.code | add_class:"form-control" }}
+                            </div>
+                            <div class="homeCourse form-group">
+                                <label> Navn </label>
+                                {{ add_abroad_form.name | add_class:"form-control" }}
+                            </div>
+                            <div class="form-group">
+                                <label> Link </label>
+                                {{ add_abroad_form.description_url | add_class:"form-control" }}
+                            </div>
+                            <div class="form-group">
+                                <label> Studiepoeng </label>
+                                {{ add_abroad_form.study_points | add_class:"form-control" }}
+                            </div>
+                        </div>
+                        <input type="hidden" id="add-form-university" name="university" value="{{ university }}"/>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-secondary" data-dismiss="modal">Lukk</button>
+                            <button type="submit" class="btn btn-primary">Lagre</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+
     {% load staticfiles %}
     <script src="{% static 'utsida/javascripts/profile/savedCourses.js' %}"></script>
     <script src="{% static 'utsida/javascripts/profile/courseMatcher.js' %}"></script>
     <script src="{% static 'utsida/javascripts/profile/course_approval_request.js' %}"></script>
     <script> setTimeout(function () {
         $('#sucessAlert').fadeOut('slow');
-    }, 5000);</script>
+    }, 5000);
+
+    $('#id_coursesToTake').prop('required', true);
+    $('#id_coursesToTake').attr("placeholder", "Søk etter fag her");
+    </script>
+
 
 {% endblock %}

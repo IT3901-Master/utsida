@@ -26,3 +26,27 @@ class CourseLookup(LookupChannel):
 
     def format_item_display(self, obj):
         return "<span class="">%s, %s </span>" % (escape(obj.code), escape(obj.name))
+
+
+
+@register('singleHomeCourse')
+class singleHomeCourse(LookupChannel):
+
+    model = Profile
+    min_length = 3
+
+    def check_auth(self, request):
+        if request.user.is_authenticated():
+            return True
+
+    def get_query(self, q, request):
+        return HomeCourse.objects.filter(Q(name__icontains=q) | Q(code__istartswith=q)).order_by('name')[:10]
+
+    def get_result(self, obj):
+        return text_type(obj.code) + " - " + text_type(obj.name)
+
+    def format_match(self, obj):
+        return self.format_item_display(obj)
+
+    def format_item_display(self, obj):
+        return "<span class="">%s, %s </span>" % (escape(obj.code), escape(obj.name))
