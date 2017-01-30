@@ -64,12 +64,12 @@ class University(models.Model):
 
 
 class AbroadCourseManager(models.Manager):
-    def get_by_natural_key(self, code, university):
-        return self.get(code=code, university__name=university)
+    def get_by_natural_key(self, code, name, university):
+        return self.get(code=code, name=name, university__name=university)
 
 
 class AbroadCourse(models.Model):
-    code = models.CharField(max_length=10)
+    code = models.CharField(max_length=10, blank=True)
     name = models.CharField(max_length=50)
     pre_requisites = models.ManyToManyField('self', blank=True)
     university = models.ForeignKey(University)
@@ -78,18 +78,19 @@ class AbroadCourse(models.Model):
     objects = AbroadCourseManager()
 
     class Meta:
-        unique_together = ["code", "university"]
+        unique_together = ["code", "name", "university"]
 
     def __str__(self):
         return self.code + ' ' + self.name
 
     def natural_key(self):
-        return (self.code, self.university,)
+        return self.code, self.name, self.university
 
 
 class HomeCourseManager(models.Manager):
     def get_by_natural_key(self, code):
         return self.get(code=code)
+
 
 class HomeCourse(models.Model):
     code = models.CharField(max_length=10, unique=True)

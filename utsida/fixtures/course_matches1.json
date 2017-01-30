@@ -1,6 +1,5 @@
 [
   {
-    "pk": 17,
     "model": "utsida.coursematch",
     "fields": {
       "homeCourse": [
@@ -8,6 +7,7 @@
       ],
       "abroadCourse": [
         "COMP4403",
+        "Compilers and Interpreters",
         "University of Queensland"
       ],
       "approved": true,
@@ -16,7 +16,6 @@
     }
   },
   {
-    "pk": 18,
     "model": "utsida.coursematch",
     "fields": {
       "homeCourse": [
@@ -24,6 +23,7 @@
       ],
       "abroadCourse": [
         "COMP4403",
+        "Compilers and Interpreters",
         "University of Queensland"
       ],
       "approved": true,
@@ -32,7 +32,6 @@
     }
   },
   {
-    "pk": 19,
     "model": "utsida.coursematch",
     "fields": {
       "homeCourse": [
@@ -40,6 +39,7 @@
       ],
       "abroadCourse": [
         "COMP4500",
+        "Advanced Algorithms &amp; Data Structures",
         "University of Queensland"
       ],
       "approved": true,
@@ -48,7 +48,6 @@
     }
   },
   {
-    "pk": 20,
     "model": "utsida.coursematch",
     "fields": {
       "homeCourse": [
@@ -56,6 +55,7 @@
       ],
       "abroadCourse": [
         "COMP4702",
+        "Machine Learning",
         "University of Queensland"
       ],
       "approved": true,
@@ -64,7 +64,6 @@
     }
   },
   {
-    "pk": 21,
     "model": "utsida.coursematch",
     "fields": {
       "homeCourse": [
@@ -72,6 +71,7 @@
       ],
       "abroadCourse": [
         "COMS3000",
+        "Information Security",
         "University of Queensland"
       ],
       "approved": true,
@@ -80,7 +80,6 @@
     }
   },
   {
-    "pk": 22,
     "model": "utsida.coursematch",
     "fields": {
       "homeCourse": [
@@ -88,15 +87,14 @@
       ],
       "abroadCourse": [
         "COSC3000",
+        "Visualization, Computer Graphics &amp; Data Analysis",
         "University of Queensland"
       ],
-      "approved": true,
-      "approval_date": "2015-01-15",
+      "approved": false,
       "comment": "vår (grafikk 50% ok),image part not covered"
     }
   },
   {
-    "pk": 23,
     "model": "utsida.coursematch",
     "fields": {
       "homeCourse": [
@@ -104,6 +102,7 @@
       ],
       "abroadCourse": [
         "COSC3500",
+        "HighPerformance Computing",
         "University of Queensland"
       ],
       "approved": true,
@@ -112,7 +111,6 @@
     }
   },
   {
-    "pk": 24,
     "model": "utsida.coursematch",
     "fields": {
       "homeCourse": [
@@ -120,6 +118,7 @@
       ],
       "abroadCourse": [
         "COSC3500",
+        "HighPerformance Computing",
         "University of Queensland"
       ],
       "approved": true,
@@ -128,7 +127,6 @@
     }
   },
   {
-    "pk": 25,
     "model": "utsida.coursematch",
     "fields": {
       "homeCourse": [
@@ -136,6 +134,7 @@
       ],
       "abroadCourse": [
         "CSSE2002",
+        "Programming in the largeCOMP2500  Adv SE (Intro!)",
         "University of Queensland"
       ],
       "approved": true,
@@ -144,7 +143,6 @@
     }
   },
   {
-    "pk": 26,
     "model": "utsida.coursematch",
     "fields": {
       "homeCourse": [
@@ -152,6 +150,7 @@
       ],
       "abroadCourse": [
         "CSSE3010",
+        "Embedded Systems Design &amp; Interfacing",
         "University of Queensland"
       ],
       "approved": true,
@@ -160,7 +159,6 @@
     }
   },
   {
-    "pk": 27,
     "model": "utsida.coursematch",
     "fields": {
       "homeCourse": [
@@ -168,6 +166,7 @@
       ],
       "abroadCourse": [
         "CSSE4004",
+        "Distributed Computing",
         "University of Queensland"
       ],
       "approved": true,
@@ -176,23 +175,21 @@
     }
   },
   {
-    "pk": 28,
     "model": "utsida.coursematch",
     "fields": {
       "homeCourse": [
-        "TDT4295"
+        "TDT4290"
       ],
       "abroadCourse": [
         "CSSE4004",
+        "Distributed Computing",
         "University of Queensland"
       ],
-      "approved": true,
-      "approval_date": "2016-07-20",
+      "approved": false,
       "comment": "COMP4301 (COMP7301) is equal. vårvår"
     }
   },
   {
-    "pk": 29,
     "model": "utsida.coursematch",
     "fields": {
       "homeCourse": [
@@ -200,6 +197,7 @@
       ],
       "abroadCourse": [
         "CSSE4011",
+        "Advanced Embedded Systems",
         "University of Queensland"
       ],
       "approved": true,
@@ -208,7 +206,6 @@
     }
   },
   {
-    "pk": 30,
     "model": "utsida.coursematch",
     "fields": {
       "homeCourse": [
@@ -216,6 +213,7 @@
       ],
       "abroadCourse": [
         "CSSE4603",
+        "Models of Software Systems",
         "University of Queensland"
       ],
       "approved": true,
@@ -224,7 +222,6 @@
     }
   },
   {
-    "pk": 31,
     "model": "utsida.coursematch",
     "fields": {
       "homeCourse": [
@@ -232,6 +229,7 @@
       ],
       "abroadCourse": [
         "CSSE7001",
+        "The software process",
         "University of Queensland"
       ],
       "approved": true,
@@ -240,7 +238,6 @@
     }
   },
   {
-    "pk": 32,
     "model": "utsida.coursematch",
     "fields": {
       "homeCourse": [
@@ -248,6 +245,7 @@
       ],
       "abroadCourse": [
         "CSSE7032",
+        "Models of Software Systems",
         "University of Queensland"
       ],
       "approved": true,
@@ -256,7 +254,6 @@
     }
   },
   {
-    "pk": 33,
     "model": "utsida.coursematch",
     "fields": {
       "homeCourse": [
@@ -264,6 +261,7 @@
       ],
       "abroadCourse": [
         "DECO3500",
+        "Social &amp; Mobile Computing",
         "University of Queensland"
       ],
       "approved": true,
@@ -272,7 +270,6 @@
     }
   },
   {
-    "pk": 34,
     "model": "utsida.coursematch",
     "fields": {
       "homeCourse": [
@@ -280,6 +277,7 @@
       ],
       "abroadCourse": [
         "ELEC3400",
+        "Electronic Circuits",
         "University of Queensland"
       ],
       "approved": true,
@@ -288,7 +286,6 @@
     }
   },
   {
-    "pk": 35,
     "model": "utsida.coursematch",
     "fields": {
       "homeCourse": [
@@ -296,6 +293,7 @@
       ],
       "abroadCourse": [
         "ENGG4800",
+        "Project Management",
         "University of Queensland"
       ],
       "approved": true,
@@ -304,7 +302,6 @@
     }
   },
   {
-    "pk": 36,
     "model": "utsida.coursematch",
     "fields": {
       "homeCourse": [
@@ -312,6 +309,7 @@
       ],
       "abroadCourse": [
         "ENGG7020",
+        "Systems Safety Engineering",
         "University of Queensland"
       ],
       "approved": true,
@@ -320,7 +318,6 @@
     }
   },
   {
-    "pk": 37,
     "model": "utsida.coursematch",
     "fields": {
       "homeCourse": [
@@ -328,6 +325,7 @@
       ],
       "abroadCourse": [
         "ENGG7811",
+        "Research Methods",
         "University of Queensland"
       ],
       "approved": true,
@@ -336,7 +334,6 @@
     }
   },
   {
-    "pk": 38,
     "model": "utsida.coursematch",
     "fields": {
       "homeCourse": [
@@ -344,6 +341,7 @@
       ],
       "abroadCourse": [
         "ENVM7523",
+        "Systems thinking for sustainability",
         "University of Queensland"
       ],
       "approved": true,
@@ -352,7 +350,6 @@
     }
   },
   {
-    "pk": 39,
     "model": "utsida.coursematch",
     "fields": {
       "homeCourse": [
@@ -360,6 +357,7 @@
       ],
       "abroadCourse": [
         "HLTH7001",
+        "Healthcare in Cyberspace",
         "University of Queensland"
       ],
       "approved": true,
@@ -368,7 +366,6 @@
     }
   },
   {
-    "pk": 40,
     "model": "utsida.coursematch",
     "fields": {
       "homeCourse": [
@@ -376,6 +373,7 @@
       ],
       "abroadCourse": [
         "INFS1300",
+        "Web From The Inside Out (50% project)",
         "University of Queensland"
       ],
       "approved": true,
@@ -384,7 +382,6 @@
     }
   },
   {
-    "pk": 41,
     "model": "utsida.coursematch",
     "fields": {
       "homeCourse": [
@@ -392,6 +389,7 @@
       ],
       "abroadCourse": [
         "INFS3204",
+        "ServiceOriented Architectures",
         "University of Queensland"
       ],
       "approved": true,
@@ -400,7 +398,6 @@
     }
   },
   {
-    "pk": 42,
     "model": "utsida.coursematch",
     "fields": {
       "homeCourse": [
@@ -408,6 +405,7 @@
       ],
       "abroadCourse": [
         "INFS4203",
+        "Data Mining",
         "University of Queensland"
       ],
       "approved": true,
@@ -416,7 +414,6 @@
     }
   },
   {
-    "pk": 43,
     "model": "utsida.coursematch",
     "fields": {
       "homeCourse": [
@@ -424,6 +421,7 @@
       ],
       "abroadCourse": [
         "INFS4205",
+        "Spatial and Multimedia Databases",
         "University of Queensland"
       ],
       "approved": true,
@@ -432,7 +430,6 @@
     }
   },
   {
-    "pk": 44,
     "model": "utsida.coursematch",
     "fields": {
       "homeCourse": [
@@ -440,6 +437,7 @@
       ],
       "abroadCourse": [
         "INFS7203",
+        "Data Mining",
         "University of Queensland"
       ],
       "approved": true,
@@ -448,7 +446,6 @@
     }
   },
   {
-    "pk": 45,
     "model": "utsida.coursematch",
     "fields": {
       "homeCourse": [
@@ -456,6 +453,7 @@
       ],
       "abroadCourse": [
         "INFS7204",
+        "ServiceOriented Architectures",
         "University of Queensland"
       ],
       "approved": true,
@@ -464,7 +462,6 @@
     }
   },
   {
-    "pk": 46,
     "model": "utsida.coursematch",
     "fields": {
       "homeCourse": [
@@ -472,6 +469,7 @@
       ],
       "abroadCourse": [
         "INFS7205",
+        "Spatial and Multimedia Databases",
         "University of Queensland"
       ],
       "approved": true,
@@ -480,7 +478,6 @@
     }
   },
   {
-    "pk": 47,
     "model": "utsida.coursematch",
     "fields": {
       "homeCourse": [
@@ -488,6 +485,7 @@
       ],
       "abroadCourse": [
         "INFS7255",
+        "Business Information Systems Analysis and Design",
         "University of Queensland"
       ],
       "approved": true,
@@ -496,7 +494,6 @@
     }
   },
   {
-    "pk": 48,
     "model": "utsida.coursematch",
     "fields": {
       "homeCourse": [
@@ -504,6 +501,7 @@
       ],
       "abroadCourse": [
         "INFS7410",
+        "Information Retrieval and Web Search",
         "University of Queensland"
       ],
       "approved": true,
@@ -512,7 +510,6 @@
     }
   },
   {
-    "pk": 49,
     "model": "utsida.coursematch",
     "fields": {
       "homeCourse": [
@@ -520,6 +517,7 @@
       ],
       "abroadCourse": [
         "INFS7907",
+        "Advanced Database Systems",
         "University of Queensland"
       ],
       "approved": true,
@@ -528,7 +526,6 @@
     }
   },
   {
-    "pk": 50,
     "model": "utsida.coursematch",
     "fields": {
       "homeCourse": [
@@ -536,6 +533,7 @@
       ],
       "abroadCourse": [
         "MATH3302",
+        "Coding and Cryptography",
         "University of Queensland"
       ],
       "approved": true,
@@ -544,7 +542,6 @@
     }
   },
   {
-    "pk": 51,
     "model": "utsida.coursematch",
     "fields": {
       "homeCourse": [
@@ -552,6 +549,7 @@
       ],
       "abroadCourse": [
         "MGTS7217",
+        "Advanced Business Data Analysis",
         "University of Queensland"
       ],
       "approved": true,
@@ -560,7 +558,6 @@
     }
   },
   {
-    "pk": 52,
     "model": "utsida.coursematch",
     "fields": {
       "homeCourse": [
@@ -568,6 +565,7 @@
       ],
       "abroadCourse": [
         "MGTS7217",
+        "Advanced Business Data Analysis",
         "University of Queensland"
       ],
       "approved": true,

@@ -129,7 +129,7 @@ def save_courses(request):
             course_uni = course["university"]
             course_country = course["country"]
 
-            if profile.saved_courses.filter(code=course_code):
+            if profile.saved_courses.filter(name=course_name):
                 return HttpResponse(json.dumps({
                     'error': 'illegal course',
                     'message': 'Ett eller fler av fagene du prøvde å legge til er allerede lagret.'
@@ -142,8 +142,8 @@ def save_courses(request):
                     'message': 'Nye valgte fag må være fra samme universitet som dine tidligere lagrede fag.'
                 }))
 
-            if AbroadCourse.objects.all().filter(code=course_code):
-                new_course = AbroadCourse.objects.get(code=course_code)
+            if AbroadCourse.objects.all().filter(name=course_name, code=course_code, university=University.objects.all().filter(name=course_uni)):
+                new_course = AbroadCourse.objects.get(name=course_name, code=course_code, university=University.objects.get(name=course_uni))
                 profile.saved_courses.add(new_course)
                 profile.save()
 
@@ -159,12 +159,15 @@ def save_courses(request):
                         university=new_uni
                     )
                 else:
+                    print("HERE?")
                     new_abroad_course = AbroadCourse(
                         code=course_code,
                         name=course_name,
                         university=University.objects.get(name=course_uni)
                     )
 
+                print("OKEY SO")
+                print(new_abroad_course)
                 new_abroad_course.save()
                 profile.saved_courses.add(new_abroad_course)
                 profile.save()
