@@ -159,15 +159,12 @@ def save_courses(request):
                         university=new_uni
                     )
                 else:
-                    print("HERE?")
                     new_abroad_course = AbroadCourse(
                         code=course_code,
                         name=course_name,
                         university=University.objects.get(name=course_uni)
                     )
 
-                print("OKEY SO")
-                print(new_abroad_course)
                 new_abroad_course.save()
                 profile.saved_courses.add(new_abroad_course)
                 profile.save()
@@ -181,6 +178,7 @@ def save_courses(request):
             'code': 500,
             'message': 'request is not a post request'
         }))
+
 
 @login_required
 def remove_course(request):
@@ -225,6 +223,7 @@ def university_exists(u):
             return True
     return False
 
+
 @login_required
 def send_applation(request):
     if request.method == "POST":
@@ -234,6 +233,7 @@ def send_applation(request):
         course_approval_request.save()
         course_approval_request.course_matches = user.profile.saved_course_matches.all()
         return HttpResponse({'code': 200, 'message': 'OK'})
+
 
 @login_required
 def save_course_match(request):
@@ -256,6 +256,7 @@ def save_course_match(request):
             user.profile.saved_course_matches.add(course_match)
             return HttpResponse({'code': 200, 'message': 'Match lagret i profil og database'})
 
+
 @login_required
 def save_course_match_id(request):
     if request.method == "POST":
@@ -270,8 +271,6 @@ def save_course_match_id(request):
             return HttpResponse({'code': 200, 'message': 'Match lagret i profil'})
 
 
-
-
 class ApplicationListView(LoginRequiredMixin,ListView):
     model = Application
     template_name = 'profiles/application_list.html'
@@ -282,6 +281,7 @@ class ApplicationListView(LoginRequiredMixin,ListView):
     def get_context_data(self, **kwargs):
         context = super(ApplicationListView, self).get_context_data(**kwargs)
         return context
+
 
 class ApplicationListAll(UserPassesTestMixin,ListView):
     model = Application
