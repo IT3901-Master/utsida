@@ -64,7 +64,7 @@ class abroadCourseForm(forms.ModelForm):
                 attrs={'id': 'add-form-name', 'required': True, 'placeholder': 'Legg til fag-navn...'}
             ),
             'university': forms.TextInput(
-                attrs={'id': 'add-form-university', 'required': True, 'placeholder': ''}
+                attrs={'id': 'add-form-university', 'required': True, 'placeholder': 'Velg universitet'}
             ),
             'description_url': forms.URLInput(
                 attrs={'id': 'add-form-url', 'required': False, 'placeholder': 'Legg til fag-url...'}

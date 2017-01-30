@@ -160,7 +160,11 @@
                     <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                         <span aria-hidden="true">&times;</span>
                     </button>
+                    {% if university %}
                     <h4 class="modal-title" id="myModalLabel">Legg til nytt fag ved {{ university }}</h4>
+                    {% else %}
+                    <h4 class="modal-title" id="myModalLabel">Legg til nytt fag</h4>
+                    {% endif %}
                 </div>
                 <div class="modal-body">
                     <form id="add-abroad-course-form" action="/abroadCourse/add/" method="post" novalidate="novalidate">
@@ -182,8 +186,15 @@
                                 <label> Studiepoeng </label>
                                 {{ add_abroad_form.study_points | add_class:"form-control" }}
                             </div>
+                        {% if university %}
+                            <input type="hidden" id="add-form-university" name="university" value="{{ university }}"/>
+                        {% else %}
+                            <div class="form-group">
+                            <label>Universitet</label>
+                            {{ add_abroad_form.university | add_class:"form-control" }}
+                            </div>
+                        {% endif %}
                         </div>
-                        <input type="hidden" id="add-form-university" name="university" value="{{ university }}"/>
                         <div class="modal-footer">
                             <button type="button" class="btn btn-secondary" data-dismiss="modal">Lukk</button>
                             <button type="submit" class="btn btn-primary">Lagre</button>
