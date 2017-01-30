@@ -1,0 +1,576 @@
+[
+  {
+    "model": "utsida.coursematch",
+    "fields": {
+      "homeCourse": [
+        "TDT4205"
+      ],
+      "abroadCourse": [
+        "COMP4403",
+        "Compilers and Interpreters",
+        "University of Queensland"
+      ],
+      "approved": true,
+      "approval_date": "2015-01-15",
+      "comment": "vår (Som Masterfag, post-grad) "
+    }
+  },
+  {
+    "model": "utsida.coursematch",
+    "fields": {
+      "homeCourse": [
+        "TDT4260"
+      ],
+      "abroadCourse": [
+        "COMP4403",
+        "Compilers and Interpreters",
+        "University of Queensland"
+      ],
+      "approved": true,
+      "approval_date": "2016-03-11",
+      "comment": "vår (Som Masterfag, post-grad) "
+    }
+  },
+  {
+    "model": "utsida.coursematch",
+    "fields": {
+      "homeCourse": [
+        "TDT4125"
+      ],
+      "abroadCourse": [
+        "COMP4500",
+        "Advanced Algorithms &amp; Data Structures",
+        "University of Queensland"
+      ],
+      "approved": true,
+      "approval_date": "2015-01-15",
+      "comment": "høst"
+    }
+  },
+  {
+    "model": "utsida.coursematch",
+    "fields": {
+      "homeCourse": [
+        "TDT4173"
+      ],
+      "abroadCourse": [
+        "COMP4702",
+        "Machine Learning",
+        "University of Queensland"
+      ],
+      "approved": true,
+      "approval_date": "2016-01-11",
+      "comment": "COMP3700 is equal."
+    }
+  },
+  {
+    "model": "utsida.coursematch",
+    "fields": {
+      "homeCourse": [
+        "TTM4135"
+      ],
+      "abroadCourse": [
+        "COMS3000",
+        "Information Security",
+        "University of Queensland"
+      ],
+      "approved": true,
+      "approval_date": "2015-12-15",
+      "comment": "høst"
+    }
+  },
+  {
+    "model": "utsida.coursematch",
+    "fields": {
+      "homeCourse": [
+        "TDT4195"
+      ],
+      "abroadCourse": [
+        "COSC3000",
+        "Visualization, Computer Graphics &amp; Data Analysis",
+        "University of Queensland"
+      ],
+      "approved": false,
+      "comment": "vår (grafikk 50% ok),image part not covered"
+    }
+  },
+  {
+    "model": "utsida.coursematch",
+    "fields": {
+      "homeCourse": [
+        "TDT4255"
+      ],
+      "abroadCourse": [
+        "COSC3500",
+        "HighPerformance Computing",
+        "University of Queensland"
+      ],
+      "approved": true,
+      "approval_date": "2015-12-15",
+      "comment": "Anbefalt med forkunnskaper i C"
+    }
+  },
+  {
+    "model": "utsida.coursematch",
+    "fields": {
+      "homeCourse": [
+        "TDT4200"
+      ],
+      "abroadCourse": [
+        "COSC3500",
+        "HighPerformance Computing",
+        "University of Queensland"
+      ],
+      "approved": true,
+      "approval_date": "2015-12-15",
+      "comment": "Anbefalt med forkunnskaper i C"
+    }
+  },
+  {
+    "model": "utsida.coursematch",
+    "fields": {
+      "homeCourse": [
+        "TDT4242"
+      ],
+      "abroadCourse": [
+        "CSSE2002",
+        "Programming in the largeCOMP2500  Adv SE (Intro!)",
+        "University of Queensland"
+      ],
+      "approved": true,
+      "approval_date": "2016-01-11",
+      "comment": "PostGrad, men for likt TDT4100/4102COMP2500 / COMP7908 / CSSE7023 same"
+    }
+  },
+  {
+    "model": "utsida.coursematch",
+    "fields": {
+      "homeCourse": [
+        "TDT4258"
+      ],
+      "abroadCourse": [
+        "CSSE3010",
+        "Embedded Systems Design &amp; Interfacing",
+        "University of Queensland"
+      ],
+      "approved": true,
+      "approval_date": "2015-01-15",
+      "comment": "vår"
+    }
+  },
+  {
+    "model": "utsida.coursematch",
+    "fields": {
+      "homeCourse": [
+        "TDT4225"
+      ],
+      "abroadCourse": [
+        "CSSE4004",
+        "Distributed Computing",
+        "University of Queensland"
+      ],
+      "approved": true,
+      "approval_date": "2015-09-24",
+      "comment": "COMP4301 (COMP7301) is equal. vårvår"
+    }
+  },
+  {
+    "model": "utsida.coursematch",
+    "fields": {
+      "homeCourse": [
+        "TDT4290"
+      ],
+      "abroadCourse": [
+        "CSSE4004",
+        "Distributed Computing",
+        "University of Queensland"
+      ],
+      "approved": false,
+      "comment": "COMP4301 (COMP7301) is equal. vårvår"
+    }
+  },
+  {
+    "model": "utsida.coursematch",
+    "fields": {
+      "homeCourse": [
+        "TTK4155"
+      ],
+      "abroadCourse": [
+        "CSSE4011",
+        "Advanced Embedded Systems",
+        "University of Queensland"
+      ],
+      "approved": true,
+      "approval_date": "2015-09-24",
+      "comment": "Vår (Ekstra-godkjent som IaS)"
+    }
+  },
+  {
+    "model": "utsida.coursematch",
+    "fields": {
+      "homeCourse": [
+        "TDT4240"
+      ],
+      "abroadCourse": [
+        "CSSE4603",
+        "Models of Software Systems",
+        "University of Queensland"
+      ],
+      "approved": true,
+      "approval_date": "2016-01-11",
+      "comment": "vår"
+    }
+  },
+  {
+    "model": "utsida.coursematch",
+    "fields": {
+      "homeCourse": [
+        "TDT4242"
+      ],
+      "abroadCourse": [
+        "CSSE7001",
+        "The software process",
+        "University of Queensland"
+      ],
+      "approved": true,
+      "approval_date": "2016-03-11",
+      "comment": "PreReq er PU og OOP"
+    }
+  },
+  {
+    "model": "utsida.coursematch",
+    "fields": {
+      "homeCourse": [
+        "TDT4240"
+      ],
+      "abroadCourse": [
+        "CSSE7032",
+        "Models of Software Systems",
+        "University of Queensland"
+      ],
+      "approved": true,
+      "approval_date": "2016-01-11",
+      "comment": " "
+    }
+  },
+  {
+    "model": "utsida.coursematch",
+    "fields": {
+      "homeCourse": [
+        "TDT4245"
+      ],
+      "abroadCourse": [
+        "DECO3500",
+        "Social &amp; Mobile Computing",
+        "University of Queensland"
+      ],
+      "approved": true,
+      "approval_date": "2015-01-15",
+      "comment": "høst, 70% prosjekt"
+    }
+  },
+  {
+    "model": "utsida.coursematch",
+    "fields": {
+      "homeCourse": [
+        "TET4100"
+      ],
+      "abroadCourse": [
+        "ELEC3400",
+        "Electronic Circuits",
+        "University of Queensland"
+      ],
+      "approved": true,
+      "approval_date": "2015-09-24",
+      "comment": "Vår"
+    }
+  },
+  {
+    "model": "utsida.coursematch",
+    "fields": {
+      "homeCourse": [
+        "EiT"
+      ],
+      "abroadCourse": [
+        "ENGG4800",
+        "Project Management",
+        "University of Queensland"
+      ],
+      "approved": true,
+      "approval_date": "2016-03-11",
+      "comment": "65% gruppearbeid"
+    }
+  },
+  {
+    "model": "utsida.coursematch",
+    "fields": {
+      "homeCourse": [
+        "TDT4237"
+      ],
+      "abroadCourse": [
+        "ENGG7020",
+        "Systems Safety Engineering",
+        "University of Queensland"
+      ],
+      "approved": true,
+      "approval_date": "2016-01-11",
+      "comment": " "
+    }
+  },
+  {
+    "model": "utsida.coursematch",
+    "fields": {
+      "homeCourse": [
+        "IT3010"
+      ],
+      "abroadCourse": [
+        "ENGG7811",
+        "Research Methods",
+        "University of Queensland"
+      ],
+      "approved": true,
+      "approval_date": "2015-01-15",
+      "comment": "vår"
+    }
+  },
+  {
+    "model": "utsida.coursematch",
+    "fields": {
+      "homeCourse": [
+        "EiT"
+      ],
+      "abroadCourse": [
+        "ENVM7523",
+        "Systems thinking for sustainability",
+        "University of Queensland"
+      ],
+      "approved": true,
+      "approval_date": "2016-03-11",
+      "comment": " "
+    }
+  },
+  {
+    "model": "utsida.coursematch",
+    "fields": {
+      "homeCourse": [
+        "TDT4210"
+      ],
+      "abroadCourse": [
+        "HLTH7001",
+        "Healthcare in Cyberspace",
+        "University of Queensland"
+      ],
+      "approved": true,
+      "approval_date": "2016-01-11",
+      "comment": "Ikke valgbart for utvekslingsstudenter 2016"
+    }
+  },
+  {
+    "model": "utsida.coursematch",
+    "fields": {
+      "homeCourse": [
+        "EiT"
+      ],
+      "abroadCourse": [
+        "INFS1300",
+        "Web From The Inside Out (50% project)",
+        "University of Queensland"
+      ],
+      "approved": true,
+      "approval_date": "2016-07-20",
+      "comment": "COMP1900 is equal"
+    }
+  },
+  {
+    "model": "utsida.coursematch",
+    "fields": {
+      "homeCourse": [
+        "TMM4230"
+      ],
+      "abroadCourse": [
+        "INFS3204",
+        "ServiceOriented Architectures",
+        "University of Queensland"
+      ],
+      "approved": true,
+      "approval_date": "2016-03-11",
+      "comment": "Mer et dataemne enn et ingeniøremne"
+    }
+  },
+  {
+    "model": "utsida.coursematch",
+    "fields": {
+      "homeCourse": [
+        "TDT4300"
+      ],
+      "abroadCourse": [
+        "INFS4203",
+        "Data Mining",
+        "University of Queensland"
+      ],
+      "approved": true,
+      "approval_date": "2015-12-15",
+      "comment": "høst"
+    }
+  },
+  {
+    "model": "utsida.coursematch",
+    "fields": {
+      "homeCourse": [
+        "EiT"
+      ],
+      "abroadCourse": [
+        "INFS4205",
+        "Spatial and Multimedia Databases",
+        "University of Queensland"
+      ],
+      "approved": true,
+      "approval_date": "2016-03-11",
+      "comment": "vår"
+    }
+  },
+  {
+    "model": "utsida.coursematch",
+    "fields": {
+      "homeCourse": [
+        "TDT4300"
+      ],
+      "abroadCourse": [
+        "INFS7203",
+        "Data Mining",
+        "University of Queensland"
+      ],
+      "approved": true,
+      "approval_date": "2016-03-11",
+      "comment": " "
+    }
+  },
+  {
+    "model": "utsida.coursematch",
+    "fields": {
+      "homeCourse": [
+        "TDT4215"
+      ],
+      "abroadCourse": [
+        "INFS7204",
+        "ServiceOriented Architectures",
+        "University of Queensland"
+      ],
+      "approved": true,
+      "approval_date": "2016-09-06",
+      "comment": "InfosysHøst"
+    }
+  },
+  {
+    "model": "utsida.coursematch",
+    "fields": {
+      "homeCourse": [
+        "EiT"
+      ],
+      "abroadCourse": [
+        "INFS7205",
+        "Spatial and Multimedia Databases",
+        "University of Queensland"
+      ],
+      "approved": true,
+      "approval_date": "2016-09-13",
+      "comment": " "
+    }
+  },
+  {
+    "model": "utsida.coursematch",
+    "fields": {
+      "homeCourse": [
+        "TDT4252"
+      ],
+      "abroadCourse": [
+        "INFS7255",
+        "Business Information Systems Analysis and Design",
+        "University of Queensland"
+      ],
+      "approved": true,
+      "approval_date": "2016-01-11",
+      "comment": " "
+    }
+  },
+  {
+    "model": "utsida.coursematch",
+    "fields": {
+      "homeCourse": [
+        "TDT4117"
+      ],
+      "abroadCourse": [
+        "INFS7410",
+        "Information Retrieval and Web Search",
+        "University of Queensland"
+      ],
+      "approved": true,
+      "approval_date": "2015-12-15",
+      "comment": "høst"
+    }
+  },
+  {
+    "model": "utsida.coursematch",
+    "fields": {
+      "homeCourse": [
+        "TDT4150"
+      ],
+      "abroadCourse": [
+        "INFS7907",
+        "Advanced Database Systems",
+        "University of Queensland"
+      ],
+      "approved": true,
+      "approval_date": "2016-01-11",
+      "comment": " "
+    }
+  },
+  {
+    "model": "utsida.coursematch",
+    "fields": {
+      "homeCourse": [
+        "TTM4135"
+      ],
+      "abroadCourse": [
+        "MATH3302",
+        "Coding and Cryptography",
+        "University of Queensland"
+      ],
+      "approved": true,
+      "approval_date": "2016-09-13",
+      "comment": " "
+    }
+  },
+  {
+    "model": "utsida.coursematch",
+    "fields": {
+      "homeCourse": [
+        "TDT4305"
+      ],
+      "abroadCourse": [
+        "MGTS7217",
+        "Advanced Business Data Analysis",
+        "University of Queensland"
+      ],
+      "approved": true,
+      "approval_date": "2016-01-11",
+      "comment": " "
+    }
+  },
+  {
+    "model": "utsida.coursematch",
+    "fields": {
+      "homeCourse": [
+        "TDT4300"
+      ],
+      "abroadCourse": [
+        "MGTS7217",
+        "Advanced Business Data Analysis",
+        "University of Queensland"
+      ],
+      "approved": true,
+      "approval_date": "2016-01-11",
+      "comment": " "
+    }
+  }
+]

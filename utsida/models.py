@@ -64,12 +64,12 @@ class University(models.Model):
 
 
 class AbroadCourseManager(models.Manager):
-    def get_by_natural_key(self, code, university):
-        return self.get(code=code, university__name=university)
+    def get_by_natural_key(self, code, name, university):
+        return self.get(code=code, name=name, university__name=university)
 
 
 class AbroadCourse(models.Model):
-    code = models.CharField(max_length=10)
+    code = models.CharField(max_length=10, blank=True)
     name = models.CharField(max_length=50)
     pre_requisites = models.ManyToManyField('self', blank=True)
     university = models.ForeignKey(University)
@@ -78,18 +78,19 @@ class AbroadCourse(models.Model):
     objects = AbroadCourseManager()
 
     class Meta:
-        unique_together = ["code", "university"]
+        unique_together = ["code", "name", "university"]
 
     def __str__(self):
         return self.code + ' ' + self.name
 
     def natural_key(self):
-        return (self.code, self.university,)
+        return self.code, self.name, self.university
 
 
 class HomeCourseManager(models.Manager):
     def get_by_natural_key(self, code):
         return self.get(code=code)
+
 
 class HomeCourse(models.Model):
     code = models.CharField(max_length=10, unique=True)
@@ -152,7 +153,8 @@ class Application(models.Model):
     status = models.CharField(max_length=2, choices=STATUS, default="P")
 
 
-CHOICES = ((1, 1), (2, 2), (3, 3), (4, 4), (5, 5))
+CHOICES = ((1, 1), (2, 2), (3, 3), (4, 4), (5, 5), (6, 6), (7, 7), (8, 8), (9, 9), (10, 10))
+
 
 class Case(models.Model):
     homeInstitute = models.ForeignKey(Institute)
@@ -163,6 +165,8 @@ class Case(models.Model):
     language = models.ForeignKey(Language)
     academicQualityRating = models.IntegerField(choices=CHOICES)
     socialQualityRating = models.IntegerField(choices=CHOICES)
+    residentialQualityRating = models.IntegerField(choices=CHOICES)
+    receptionQualityRating = models.IntegerField(choices=CHOICES)
     subjects = models.ManyToManyField(AbroadCourse)
 
     def __str__(self):
@@ -178,6 +182,8 @@ class Query(models.Model):
     language = models.ForeignKey(Language)
     academicQualityRating = models.IntegerField(choices=CHOICES)
     socialQualityRating = models.IntegerField(choices=CHOICES)
+    residentialQualityRating = models.IntegerField(choices=CHOICES)
+    receptionQualityRating = models.IntegerField(choices=CHOICES)
 
     def __str__(self):
         return self.university + ':' + str(self.pk)

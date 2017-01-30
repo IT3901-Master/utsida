@@ -133,7 +133,7 @@ def save_courses(request):
             course_uni = course["university"]
             course_country = course["country"]
 
-            if profile.saved_courses.filter(code=course_code):
+            if profile.saved_courses.filter(name=course_name):
                 return HttpResponse(json.dumps({
                     'error': 'illegal course',
                     'message': 'Ett eller fler av fagene du prøvde å legge til er allerede lagret.'
@@ -146,8 +146,8 @@ def save_courses(request):
                     'message': 'Nye valgte fag må være fra samme universitet som dine tidligere lagrede fag.'
                 }))
 
-            if AbroadCourse.objects.all().filter(code=course_code):
-                new_course = AbroadCourse.objects.get(code=course_code)
+            if AbroadCourse.objects.all().filter(name=course_name, code=course_code, university=University.objects.all().filter(name=course_uni)):
+                new_course = AbroadCourse.objects.get(name=course_name, code=course_code, university=University.objects.get(name=course_uni))
                 profile.saved_courses.add(new_course)
                 profile.save()
 
@@ -276,7 +276,9 @@ def save_course_match_id(request):
             return HttpResponse({'code': 200, 'message': 'Match lagret i profil'})
 
 
+
 class ApplicationListView(LoginRequiredMixin, ListView):
+
     model = Application
     template_name = 'profiles/application_list.html'
 
@@ -288,7 +290,9 @@ class ApplicationListView(LoginRequiredMixin, ListView):
         return context
 
 
+
 class ApplicationListAll(UserPassesTestMixin, ListView):
+
     model = Application
     template_name = 'profiles/application_list_all.html'
 

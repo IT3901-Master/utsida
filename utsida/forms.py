@@ -1,10 +1,8 @@
-from datetime import date
-
 from ajax_select import make_ajax_field
-from ajax_select.fields import AutoCompleteSelectField
 from django import forms
-
+from django.forms.widgets import NumberInput
 from .models import Query, University, CourseMatch, HomeCourse, AbroadCourse
+
 
 
 class QueryCaseBaseForm(forms.ModelForm):
@@ -12,7 +10,18 @@ class QueryCaseBaseForm(forms.ModelForm):
     class Meta:
         model = Query
         fields = ("homeInstitute", "continent", "country", "university",
-                  "language", "academicQualityRating", "socialQualityRating")
+                  "language", "academicQualityRating", "socialQualityRating",
+                  "residentialQualityRating", "receptionQualityRating")
+        widgets = {
+            'academicQualityRating': NumberInput(attrs={'type': 'range', 'step': '1', 'max': '10', 'min': '1',
+                                                        'value': '5', 'oninput': 'academicOutput.value=this.value'}),
+            'socialQualityRating': NumberInput(attrs={'type': 'range', 'step': '1', 'max': '10', 'min': '1',
+                                                      'value': '5', 'oninput': 'socialOutput.value=this.value'}),
+            'residentialQualityRating': NumberInput(attrs={'type': 'range', 'step': '1', 'max': '10', 'min': '1',
+                                                           'value': '5', 'oninput': 'residentialOutput.value=this.value'}),
+            'receptionQualityRating': NumberInput(attrs={'type': 'range', 'step': '1', 'max': '10', 'min': '1',
+                                                         'value': '5', 'oninput': 'receptionOutput.value=this.value'}),
+        }
 
     def __init__(self, *args, **kwargs):
         super(QueryCaseBaseForm, self).__init__(*args, **kwargs)
@@ -25,10 +34,14 @@ class QueryCaseBaseForm(forms.ModelForm):
         self.fields["language"].required = False
         self.fields["academicQualityRating"].required = False
         self.fields["socialQualityRating"].required = False
+        self.fields["residentialQualityRating"].required = False
+        self.fields["receptionQualityRating"].required = False
 
 
 class DateInput(forms.DateInput):
     input_type = 'date'
+
+
 
 class CourseMatchForm(forms.ModelForm):
 
