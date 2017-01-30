@@ -13,7 +13,8 @@ from django.http import Http404
 from django.utils.decorators import method_decorator
 from django.views.generic import ListView
 
-from profiles.forms import UserForm, ProfileForm, UpdateUserForm
+from profiles.forms import UserForm, ProfileForm, UpdateUserForm, CoursesToTakeForm
+from utsida.forms import abroadCourseForm
 from .models import *
 
 
@@ -111,10 +112,13 @@ def saved_courses(request):
 
     home_courses = profile.coursesToTake.all()
     course_matches = profile.saved_course_matches.all()
+    abroad_course_form = abroadCourseForm()
+    courses_to_take_form = CoursesToTakeForm()
 
     return render(request, 'profiles/courses.html',
                   {'courses': courses, 'university': university, 'home_courses': home_courses,
-                   'course_matches': course_matches})
+                   'course_matches': course_matches, 'add_abroad_form': abroad_course_form,
+                   'courses_to_take_form': courses_to_take_form})
 
 
 @login_required
@@ -237,12 +241,13 @@ def send_applation(request):
 
 @login_required
 def save_course_match(request):
-    if request.method== "POST":
+    if request.method == "POST":
         homeCode = request.POST["homeCourseCode"]
         abroadCode = request.POST["abroadCourseCode"]
-        stored_course_match = CourseMatch.objects.filter(abroadCourse__code=abroadCode,homeCourse__code=homeCode)
+        stored_course_match = CourseMatch.objects.filter(abroadCourse__code=abroadCode, homeCourse__code=homeCode)
         user = User.objects.get(username=request.user)
-        hasMatch = user.profile.saved_course_matches.all().filter(abroadCourse__code=abroadCode,homeCourse__code=homeCode)
+        hasMatch = user.profile.saved_course_matches.all().filter(abroadCourse__code=abroadCode,
+                                                                  homeCourse__code=homeCode)
         if (stored_course_match and hasMatch):
             return HttpResponse(status=409)
         elif (stored_course_match and not hasMatch):
@@ -251,7 +256,7 @@ def save_course_match(request):
         elif (not stored_course_match and not hasMatch):
             abroad_course = AbroadCourse.objects.get(code=abroadCode)
             home_course = HomeCourse.objects.get(code=homeCode)
-            course_match = CourseMatch(abroadCourse=abroad_course,homeCourse=home_course)
+            course_match = CourseMatch(abroadCourse=abroad_course, homeCourse=home_course)
             course_match.save()
             user.profile.saved_course_matches.add(course_match)
             return HttpResponse({'code': 200, 'message': 'Match lagret i profil og database'})
@@ -262,7 +267,7 @@ def save_course_match_id(request):
     if request.method == "POST":
         user = User.objects.get(username=request.user)
         id = request.POST["id"]
-        stored_course_match = get_object_or_404(CourseMatch,id=id)
+        stored_course_match = get_object_or_404(CourseMatch, id=id)
         hasMatch = user.profile.saved_course_matches.all().filter(id=id)
         if (hasMatch):
             return HttpResponse(status=409)
@@ -271,7 +276,9 @@ def save_course_match_id(request):
             return HttpResponse({'code': 200, 'message': 'Match lagret i profil'})
 
 
-class ApplicationListView(LoginRequiredMixin,ListView):
+
+class ApplicationListView(LoginRequiredMixin, ListView):
+
     model = Application
     template_name = 'profiles/application_list.html'
 
@@ -283,7 +290,9 @@ class ApplicationListView(LoginRequiredMixin,ListView):
         return context
 
 
-class ApplicationListAll(UserPassesTestMixin,ListView):
+
+class ApplicationListAll(UserPassesTestMixin, ListView):
+
     model = Application
     template_name = 'profiles/application_list_all.html'
 
@@ -302,7 +311,7 @@ class ApplicationListAll(UserPassesTestMixin,ListView):
 def remove_application(request):
     if request.method == 'POST':
         application_id = request.POST['id']
-        Application.objects.get(id=application_id,user=request.user).delete()
+        Application.objects.get(id=application_id, user=request.user).delete()
 
         return HttpResponse({'code': 200, 'message': 'OK'})
     else:
@@ -331,5 +340,22 @@ def edit_status_application(request):
             return HttpResponse({'code': 400, 'message': 'invalid request'})
 
         return HttpResponse({'code': 200, 'message': 'OK'})
+    else:
+        return HttpResponse({'code': 500, 'message': 'request is not a post request'})
+
+
+def save_home_course(request):
+    if request.method == 'POST':
+        user = User.objects.get(username=request.user)
+        home_course = get_object_or_404(HomeCourse,name=request.POST.get('name'),code=request.POST.get('code'))
+        user.profile.coursesToTake.add(home_course)
+        response_data = {}
+        response_data["code"] = request.POST.get('code')
+        response_data["name"] = request.POST.get('name')
+
+        return HttpResponse(
+            json.dumps(response_data),
+            content_type="application/json"
+        )
     else:
         return HttpResponse({'code': 500, 'message': 'request is not a post request'})

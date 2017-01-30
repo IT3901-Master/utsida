@@ -1,7 +1,8 @@
 from ajax_select import make_ajax_field
 from django import forms
-from .models import Query, CourseMatch
 from django.forms.widgets import NumberInput
+from .models import Query, University, CourseMatch, HomeCourse, AbroadCourse
+
 
 
 class QueryCaseBaseForm(forms.ModelForm):
@@ -41,6 +42,7 @@ class DateInput(forms.DateInput):
     input_type = 'date'
 
 
+
 class CourseMatchForm(forms.ModelForm):
 
     class Meta:
@@ -61,5 +63,28 @@ class CourseMatchForm(forms.ModelForm):
             courseMatch.save()
 
         return courseMatch
+
+class abroadCourseForm(forms.ModelForm):
+
+    class Meta:
+        model = AbroadCourse
+        fields = ['code','name','university','description_url','study_points']
+        widgets = {
+            'code': forms.TextInput(
+                attrs={'id': 'add-form-code', 'required': True, 'placeholder': 'Legg til fag-kode...'}
+            ),
+            'name': forms.TextInput(
+                attrs={'id': 'add-form-name', 'required': True, 'placeholder': 'Legg til fag-navn...'}
+            ),
+            'university': forms.TextInput(
+                attrs={'id': 'add-form-university', 'required': True, 'placeholder': 'Velg universitet'}
+            ),
+            'description_url': forms.URLInput(
+                attrs={'id': 'add-form-url', 'required': False, 'placeholder': 'Legg til fag-url...'}
+            ),
+            'study_points': forms.NumberInput(
+                attrs={'id': 'add-form-study-points', 'required': False, 'placeholder': 'Legg til antall studiepoeng'}
+            )
+        }
 
 

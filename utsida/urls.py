@@ -13,5 +13,6 @@ urlpatterns = [
     url(r'^courseMatch/university/$', views.courseMatch, name='courseMatch'),
     url(r'^courseMatch/add/$', views.add_course_match, name='add_course_match'),
     url(r'^courseMatch/delete/$', views.delete_course_match, name='add_course_match'),
-    url(r'^courseMatch/update/(?P<id>\d+)/$', views.update_course_match, name="update_course_match")
+    url(r'^courseMatch/update/(?P<id>\d+)/$', views.update_course_match, name="update_course_match"),
+    url(r'^abroadCourse/add/$', views.add_abroad_course, name='add_abroad_course'),
 ]

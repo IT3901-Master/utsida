@@ -1,4 +1,5 @@
 from ajax_select import make_ajax_field
+from ajax_select.fields import AutoCompleteField, AutoCompleteSelectField
 from django import forms
 from django.contrib.auth.forms import UserCreationForm
 from django.contrib.auth.models import User
@@ -26,7 +27,6 @@ class UserForm(UserCreationForm):
         return user
 
 
-
 class UpdateUserForm(forms.ModelForm):
     email = forms.EmailField(required=True)
     first_name = forms.CharField(required=True)
@@ -48,21 +48,32 @@ class UpdateUserForm(forms.ModelForm):
         return user
 
 
-
 class ProfileForm(forms.ModelForm):
     class Meta:
         model = Profile
 
-        fields = ('institute','coursesToTake',)
+        fields = ('institute', 'coursesToTake',)
 
-    coursesToTake = make_ajax_field(Profile, 'coursesToTake', 'homeCourse', help_text="Please enter your course taken",required=False)
+    coursesToTake = make_ajax_field(Profile, 'coursesToTake', 'homeCourse', help_text="Please enter your course taken",
+                                    required=True)
+
+
+class CoursesToTakeForm(forms.ModelForm):
+    class Meta:
+        model = Profile
+
+        fields = ('coursesToTake',)
+
+
+
+    coursesToTake = AutoCompleteField('singleHomeCourse', help_text=None, required=False)
+
 
 class AdminProfileForm(forms.ModelForm):
     class Meta:
         model = Profile
 
-        fields = ('institute','coursesToTake','saved_course_matches','saved_courses',)
+        fields = ('institute', 'coursesToTake', 'saved_course_matches', 'saved_courses',)
 
-    coursesToTake = make_ajax_field(Profile, 'coursesToTake', 'homeCourse', help_text="Please enter your course taken",required=False)
-
-
+    coursesToTake = make_ajax_field(Profile, 'coursesToTake', 'homeCourse', help_text="Please enter your course taken",
+                                    required=False)

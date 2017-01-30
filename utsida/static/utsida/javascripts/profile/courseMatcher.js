@@ -58,23 +58,17 @@ CourseMatcher = {
             type: "POST",
             url: "/profile/save_course_match/",
             success: function (response) {
-                var content = document.createElement("div");
-                var abroadCourseSpan = document.createElement("span");
-                abroadCourseSpan.className = "label label-default";
-                abroadCourseSpan.innerText = s.courseMatchList["abroadCourseCode"] + " - " + s.courseMatchList["abroadCourseName"];
+                var content = document.createElement("tr");
+                var abroadCourseTD = document.createElement("td");
+                abroadCourseTD.innerText = s.courseMatchList["abroadCourseCode"] + " - " + s.courseMatchList["abroadCourseName"];
 
-                var fillerSpan = document.createElement("span");
-                fillerSpan.className = "glyphicon glyphicon-link";
-                fillerSpan.style.paddingRight = "10px";
-                fillerSpan.style.paddingLeft = "10px";
+                var homeCourseTD = document.createElement("td");
+                homeCourseTD.innerText = s.courseMatchList["homeCourseCode"] + " - " + s.courseMatchList["homeCourseName"];
 
-                var homeCourseSpan = document.createElement("span");
-                homeCourseSpan.className = "label label-default";
-                homeCourseSpan.innerText = s.courseMatchList["homeCourseCode"] + " - " + s.courseMatchList["homeCourseName"];
+                var deleteTD = document.createElement('td');
 
-                content.appendChild(abroadCourseSpan);
-                content.appendChild(fillerSpan);
-                content.appendChild(homeCourseSpan);
+                content.appendChild(abroadCourseTD);
+                content.appendChild(homeCourseTD);
 
                 var content2 = content.cloneNode(true);
                 document.getElementById("courseMatchList").appendChild(content);

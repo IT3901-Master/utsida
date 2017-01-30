@@ -7,6 +7,7 @@ import json
 from .forms import *
 from profiles.models import *
 from django.contrib.auth.decorators import login_required, user_passes_test, permission_required
+from django.core.validators import *
 
 
 def index(request):
@@ -122,20 +123,16 @@ def result(request, university=None):
     return render(request, 'utsida/process.html', {'form': form})
 
 
-
-
-
 @login_required
 def courseMatch(request):
     university = request.POST["university"]
-    #Remove the paranthesis, example: (103)
+    # Remove the paranthesis, example: (103)
     university = re.sub(r'\([^)]*\)', '', university)[:-1]
     add_form = CourseMatchForm()
     add_form.fields["abroadCourse"].queryset = AbroadCourse.objects.filter(university__name=university)
     course_matches = CourseMatch.objects.all().filter(abroadCourse__university__name=university)
-    context = {"course_match_list": course_matches,"university_name":university, "add_form":add_form}
+    context = {"course_match_list": course_matches, "university_name": university, "add_form": add_form}
     return render(request, "utsida/courseMatch.html", context)
-
 
 
 @login_required
@@ -144,7 +141,7 @@ def courseMatch(request):
 def update_course_match(request, id):
     instance = get_object_or_404(CourseMatch, id=id)
     if request.method == "POST":
-        form = CourseMatchForm(request.POST,instance=instance)
+        form = CourseMatchForm(request.POST, instance=instance)
         if form.is_valid():
             form.save()
             university = form.cleaned_data["abroadCourse"].university
@@ -157,9 +154,10 @@ def update_course_match(request, id):
         else:
             return HttpResponse({'code': 500, 'message': 'skjema var ikke gyldig'})
     else:
-        #form = CourseMatchForm(initial={"abroadCourse": instance.abroadCourse})
+        # form = CourseMatchForm(initial={"abroadCourse": instance.abroadCourse})
         form = CourseMatchForm(instance=instance)
-        return render(request,"utsida/update_course_match.html", {"form":form,"id":id})
+        return render(request, "utsida/update_course_match.html", {"form": form, "id": id})
+
 
 @permission_required('utsida.can_add_course_match')
 def add_course_match(request):
@@ -172,11 +170,32 @@ def add_course_match(request):
             add_form.fields["abroadCourse"].queryset = AbroadCourse.objects.filter(university__name=university)
             course_matches = CourseMatch.objects.all().filter(abroadCourse__university__name=university)
             context = {"course_match_list": course_matches, "university_name": university, "add_form": add_form}
-            messages.success(request,"Ny fag-kobling ble lagt til")
+            messages.success(request, "Ny fag-kobling ble lagt til")
             return render(request, "utsida/courseMatch.html", context)
         else:
             messages.error(request, "Endre feilene under")
             return HttpResponse({'code': 500, 'message': 'Du må fylle inn alle feltene'})
+
+
+@login_required
+def add_abroad_course(request):
+    if request.method == 'POST':
+        user = User.objects.get(username=request.user)
+        university = get_object_or_404(University,name=request.POST.get('university'))
+        course = AbroadCourse(code=request.POST.get('code'), name=request.POST.get('name'),
+                              study_points=request.POST.get('study_points'), university=university,
+                              description_url=request.POST.get('url'))
+
+        response_data = {}
+        response_data["code"] = request.POST.get('code')
+        response_data["name"] = request.POST.get('name')
+        course.save()
+        user.profile.saved_courses.add(course)
+
+        return HttpResponse(
+            json.dumps(response_data),
+            content_type="application/json"
+        )
 
 
 
@@ -189,8 +208,9 @@ def course_match_select_university(request):
     for university in university_list:
         university.count = len(CourseMatch.objects.all().filter(abroadCourse__university__name=university.name))
 
-    context = {"university_list":university_list}
-    return render(request, "utsida/course_match_university_select.html",context)
+    context = {"university_list": university_list}
+    return render(request, "utsida/course_match_university_select.html", context)
+
 
 @permission_required('utsida.can_delete_course_match')
 @login_required
