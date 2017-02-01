@@ -1,0 +1,316 @@
+[
+  {
+    "model": "utsida.coursematch",
+    "fields": {
+      "homeCourse": [
+        "TDT4242"
+      ],
+      "abroadCourse": [
+        "CMPE 2002",
+        "Requirements Engineering",
+        "Curtin University"
+      ],
+      "approved": false,
+      "comment": "Too Basic"
+    }
+  },
+  {
+    "model": "utsida.coursematch",
+    "fields": {
+      "homeCourse": [
+        "TDT4242"
+      ],
+      "abroadCourse": [
+        "CMPE 4001",
+        "Software Engineering Testing",
+        "Curtin University"
+      ],
+      "approved": true,
+      "approval_date": "2015-04-23",
+      "comment": " "
+    }
+  },
+  {
+    "model": "utsida.coursematch",
+    "fields": {
+      "homeCourse": [
+        "TDT4250"
+      ],
+      "abroadCourse": [
+        "CMPE 6001",
+        "Computer Aided Engineering of Digital Systems",
+        "Curtin University"
+      ],
+      "approved": false,
+      "comment": "Different"
+    }
+  },
+  {
+    "model": "utsida.coursematch",
+    "fields": {
+      "homeCourse": [
+        "TDT4102"
+      ],
+      "abroadCourse": [
+        "COMP 1000",
+        "Unix and C Programming",
+        "Curtin University"
+      ],
+      "approved": true,
+      "approval_date": "2015-04-24",
+      "comment": " "
+    }
+  },
+  {
+    "model": "utsida.coursematch",
+    "fields": {
+      "homeCourse": [
+        "TDT4195"
+      ],
+      "abroadCourse": [
+        "COMP 2004",
+        "Computer Graphics",
+        "Curtin University"
+      ],
+      "approved": true,
+      "approval_date": "2015-04-23",
+      "comment": "Cover 50% (graphics)NOT 50% (vision)OK if taken together with COMP4001"
+    }
+  },
+  {
+    "model": "utsida.coursematch",
+    "fields": {
+      "homeCourse": [
+        "TDT4290"
+      ],
+      "abroadCourse": [
+        "COMP 3004",
+        "Computer Project 1",
+        "Curtin University"
+      ],
+      "approved": true,
+      "approval_date": "2015-04-23",
+      "comment": " "
+    }
+  },
+  {
+    "model": "utsida.coursematch",
+    "fields": {
+      "homeCourse": [
+        "TDT4136"
+      ],
+      "abroadCourse": [
+        "COMP 3006",
+        "Artificial and Machine Intelligence",
+        "Curtin University"
+      ],
+      "approved": true,
+      "approval_date": "2015-04-24",
+      "comment": "Req: TDT4136"
+    }
+  },
+  {
+    "model": "utsida.coursematch",
+    "fields": {
+      "homeCourse": [
+        "TDT4171"
+      ],
+      "abroadCourse": [
+        "COMP 3006",
+        "Artificial and Machine Intelligence",
+        "Curtin University"
+      ],
+      "approved": false,
+      "comment": "Req: TDT4136"
+    }
+  },
+  {
+    "model": "utsida.coursematch",
+    "fields": {
+      "homeCourse": [
+        "TDT4265"
+      ],
+      "abroadCourse": [
+        "COMP 4001",
+        "Machine Perception",
+        "Curtin University"
+      ],
+      "approved": true,
+      "approval_date": "2015-04-24",
+      "comment": "Covers 50% vision-part of TDT4195"
+    }
+  },
+  {
+    "model": "utsida.coursematch",
+    "fields": {
+      "homeCourse": [
+        "TDT4225"
+      ],
+      "abroadCourse": [
+        "COMP 4002",
+        "Software Components",
+        "Curtin University"
+      ],
+      "approved": false,
+      "comment": " "
+    }
+  },
+  {
+    "model": "utsida.coursematch",
+    "fields": {
+      "homeCourse": [
+        "TTM4133"
+      ],
+      "abroadCourse": [
+        "COMT 6004",
+        "Wireless Data Networks",
+        "Curtin University"
+      ],
+      "approved": true,
+      "approval_date": "2015-04-23",
+      "comment": " "
+    }
+  },
+  {
+    "model": "utsida.coursematch",
+    "fields": {
+      "homeCourse": [
+        "IT3402"
+      ],
+      "abroadCourse": [
+        "ICTE 4000",
+        "Human Computer Interface",
+        "Curtin University"
+      ],
+      "approved": true,
+      "approval_date": "2015-04-23",
+      "comment": " "
+    }
+  },
+  {
+    "model": "utsida.coursematch",
+    "fields": {
+      "homeCourse": [
+        "TDT4290"
+      ],
+      "abroadCourse": [
+        "ISAD 3000",
+        "Software Engineering Project 1",
+        "Curtin University"
+      ],
+      "approved": true,
+      "approval_date": "2015-04-23",
+      "comment": " "
+    }
+  },
+  {
+    "model": "utsida.coursematch",
+    "fields": {
+      "homeCourse": [
+        "EiT"
+      ],
+      "abroadCourse": [
+        "ISAD 3000",
+        "Software Engineering Project 1",
+        "Curtin University"
+      ],
+      "approved": true,
+      "approval_date": "2015-04-23",
+      "comment": " "
+    }
+  },
+  {
+    "model": "utsida.coursematch",
+    "fields": {
+      "homeCourse": [
+        "TDT4237"
+      ],
+      "abroadCourse": [
+        "ISEC 3001",
+        "Advanced Cryptography",
+        "Curtin University"
+      ],
+      "approved": false,
+      "comment": "Requires: ISEC5002"
+    }
+  },
+  {
+    "model": "utsida.coursematch",
+    "fields": {
+      "homeCourse": [
+        "TTM4135"
+      ],
+      "abroadCourse": [
+        "ISEC 5002",
+        "Introduction to Cryptography",
+        "Curtin University"
+      ],
+      "approved": true,
+      "approval_date": "2015-04-23",
+      "comment": " "
+    }
+  },
+  {
+    "model": "utsida.coursematch",
+    "fields": {
+      "homeCourse": [
+        "TDT4290"
+      ],
+      "abroadCourse": [
+        "ISEC 5002",
+        "Introduction to Cryptography",
+        "Curtin University"
+      ],
+      "approved": true,
+      "approval_date": "2015-04-23",
+      "comment": " "
+    }
+  },
+  {
+    "model": "utsida.coursematch",
+    "fields": {
+      "homeCourse": [
+        "EiT"
+      ],
+      "abroadCourse": [
+        "ISEC 5002",
+        "Introduction to Cryptography",
+        "Curtin University"
+      ],
+      "approved": true,
+      "approval_date": "2015-04-23",
+      "comment": " "
+    }
+  },
+  {
+    "model": "utsida.coursematch",
+    "fields": {
+      "homeCourse": [
+        "TMM4220"
+      ],
+      "abroadCourse": [
+        "ORGM 6001",
+        "Creativity and Innovation",
+        "Curtin University"
+      ],
+      "approved": true,
+      "approval_date": "2015-04-23",
+      "comment": " "
+    }
+  },
+  {
+    "model": "utsida.coursematch",
+    "fields": {
+      "homeCourse": [
+        "EiT"
+      ],
+      "abroadCourse": [
+        "PRJM 3000",
+        "Project Design and Management",
+        "Curtin University"
+      ],
+      "approved": false,
+      "comment": " "
+    }
+  }
+]

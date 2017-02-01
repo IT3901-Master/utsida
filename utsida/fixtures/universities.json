@@ -39,5 +39,14 @@
       "acronym": "UCSB",
       "country": "USA"
     }
+  },
+
+  {
+    "model": "utsida.university",
+    "fields": {
+      "name": "Royal Melbourne Institute of Technology",
+      "acronym": "RMIT",
+      "country": "Australia"
+    }
   }
 ]

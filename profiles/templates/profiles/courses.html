@@ -46,6 +46,7 @@
         <div class="col-md-6">
             <h4>Fag du vil erstatte ved NTNU</h4>
             <div id="homeCourseList">
+            {% if home_courses %}
                 {% for course in home_courses %}
                     <div onclick="CourseMatcher.markHomeCourse(this)"
                          class="centerCol courseBlock boxShadow pointer noSelect">
@@ -55,6 +56,9 @@
                             </span>
                     </div>
                 {% endfor %}
+            {% else %}
+                <p class="text-center">Du har ikke lagret noen fag</p>
+            {% endif %}
             </div>
             <form id="add-course-form">
                 <div class="homeCourse form-group vertical-space-top">
