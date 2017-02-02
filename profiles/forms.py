@@ -1,7 +1,7 @@
 from ajax_select import make_ajax_field
 from ajax_select.fields import AutoCompleteField, AutoCompleteSelectField
 from django import forms
-from django.contrib.auth.forms import UserCreationForm, PasswordChangeForm
+from django.contrib.auth.forms import UserCreationForm, PasswordChangeForm, AuthenticationForm
 from django.contrib.auth.models import User
 from django.forms import CharField, PasswordInput
 
@@ -9,6 +9,10 @@ from profiles.models import Profile
 
 
 class UserForm(UserCreationForm):
+    error_messages = {'password_incorrect':
+                          "Passordet stemmer ikke, prøv igjen", 'required': 'Mangler ditt gamle passord',
+                      'password_mismatch': 'Passordene var ulike, prøv igjen'}
+
     username = forms.CharField(label="Brukernavn")
     email = forms.EmailField(required=True, label="Epost")
     first_name = forms.CharField(required=True, label="Fornavn")
@@ -30,11 +34,19 @@ class UserForm(UserCreationForm):
 
         return user
 
+class MyAuthenticationForm(AuthenticationForm):
+    username = CharField(label="Brukernavn")
+    password = CharField(widget=PasswordInput())
+
+    error_messages = {
+        'invalid_login':
+            "Kontoen eksisterer ikke, eller kombinasjonen av brukernavn og passord er feil."}
+
 
 class PasswordChangeCustomForm(PasswordChangeForm):
     error_messages = {'password_incorrect':
-                          "Passordet stemmer ikke, prøv igjen", 'required': 'Mangler ditt gamle passord',
-                      'password_mismatch': 'Passordene var ulike, prøv igjen'}
+                          "Passordet stemmer ikke", 'required': 'Mangler ditt gamle passord',
+                      'password_mismatch': 'Passordene var ulike'}
 
     old_password = CharField(label='Gammelt passord',
                              widget=PasswordInput(attrs={
@@ -75,6 +87,8 @@ class ProfileRegisterForm(forms.ModelForm):
 
         fields = ('institute',)
 
+    institute = AutoCompleteField('institute', help_text=None, required=True, attrs={"placeholder":"Søk på navn eller akronym"},label="Institutt")
+
 
 class ProfileForm(forms.ModelForm):
     class Meta:
@@ -82,8 +96,10 @@ class ProfileForm(forms.ModelForm):
 
         fields = ('institute', 'coursesToTake',)
 
-    coursesToTake = make_ajax_field(Profile, 'coursesToTake', 'homeCourse', help_text="Please enter your course taken",
+    coursesToTake = make_ajax_field(Profile, 'coursesToTake', 'homeCourse', help_text=None,
                                     required=False)
+
+    institute = AutoCompleteField('institute', help_text=None, required=True, attrs={"placeholder": "Endre institutt ved å søke på navn eller akronym"}, label="Institutt")
 
 
 class CoursesToTakeForm(forms.ModelForm):
