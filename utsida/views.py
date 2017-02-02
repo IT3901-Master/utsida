@@ -13,6 +13,7 @@ from django.core.validators import *
 def index(request):
     if not request.user.is_authenticated():
         return redirect("login")
+    print(request.user.last_name)
     return render(request, "utsida/index.html")
 
 

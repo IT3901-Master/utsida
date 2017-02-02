@@ -49,16 +49,10 @@
                 {% if user|has_group:"Advisors" %}
                     <li><a href="/profile/soknader/all">Søknader</a></li>
                 {% endif %}
-                <li class="dropdown" style="position: absolute; right: 10px">
+                <li class="dropdown menu-button">
                     <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true"
                        aria-expanded="false">
-                        <span class="glyphicon glyphicon-user"></span>
-                        {% if user.is_authenticated %}
-                            Logget inn som <span style="font-weight: bold">{{ user }}</span>
-                        {% endif %}
-                        {% if user.is_authenticated == False %}
-                            Ikke innlogget
-                        {% endif %}
+                        <span class="glyphicon glyphicon-user menu-icon"></span>
                     </a>
                     <ul class="dropdown-menu">
                         {% if user.is_authenticated %}
@@ -75,6 +69,16 @@
                             <li><a href="/profile/login">Logg inn</a></li>
                         {% endif %}
                     </ul>
+                </li>
+                <li class="user-name">
+                <a>
+                    {% if user.is_authenticated %}
+                        <span style="font-weight: bold">{{ user.first_name }} {{ user.last_name }}</span>
+                    {% endif %}
+                    {% if user.is_authenticated == False %}
+                        Ikke innlogget
+                    {% endif %}
+                </a>
                 </li>
             </ul>
         </div>
