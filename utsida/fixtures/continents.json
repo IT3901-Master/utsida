@@ -6,27 +6,27 @@
   },
   {
     "model": "utsida.continent",
-    "pk": "Europa",
+    "pk": "Europe",
     "fields": {}
   },
   {
     "model": "utsida.continent",
-    "pk": "Oseania",
+    "pk": "Oceania",
     "fields": {}
   },
   {
     "model": "utsida.continent",
-    "pk": "Afrika",
+    "pk": "Africa",
     "fields": {}
   },
   {
     "model": "utsida.continent",
-    "pk": "Sør-Amerika",
+    "pk": "South America",
     "fields": {}
   },
   {
     "model": "utsida.continent",
-    "pk": "Nord-Amerika",
+    "pk": "North America",
     "fields": {}
   }
 ]

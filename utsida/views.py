@@ -1,4 +1,4 @@
-import re
+from django.core import serializers
 from django.db import transaction
 from django.http import HttpResponse
 from django.shortcuts import render, redirect, get_object_or_404
@@ -222,3 +222,11 @@ def delete_course_match(request):
         return HttpResponse({'code': 200, 'message': 'OK'})
     else:
         return HttpResponse({'code': 500, 'message': 'request is not a post request'})
+
+
+def get_countries(request):
+    continent = request.POST.get('continent')
+    countries = Country.objects.all().filter(continent=continent)
+    response = serializers.serialize("json", countries)
+
+    return HttpResponse(response, content_type="application/json")

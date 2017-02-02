@@ -15,4 +15,5 @@ urlpatterns = [
     url(r'^courseMatch/delete/$', views.delete_course_match, name='add_course_match'),
     url(r'^courseMatch/update/(?P<id>\d+)/$', views.update_course_match, name="update_course_match"),
     url(r'^abroadCourse/add/$', views.add_abroad_course, name='add_abroad_course'),
+    url(r'^api/countries/$', views.get_countries),
 ]
