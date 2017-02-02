@@ -37,7 +37,6 @@ def send_login_message(sender, user, request, **kwargs):
 def send_logout_message(sender, user, request, **kwargs):
     messages.success(request,'Du ble logget ut')
 
-user_logged_out.connect(send_logout_message)
 user_logged_in.connect(send_login_message)
 
 
