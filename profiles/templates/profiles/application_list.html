@@ -35,15 +35,24 @@
                 {% elif application.status == "D" %}
                     <span> Ikke godkjent</span>
                 {% endif %}
-                <div class="bold">Fag-koblinger:</div>
-                {% for course_match in application.course_matches.all %}
-                    <div>
-                        <span class="label label-default"> {{ course_match.abroadCourse.code }} {{ course_match.abroadCourse.name }}</span>
-                        <span class="glyphicon glyphicon-link"></span>
-                        <span class="label label-default"> {{ course_match.homeCourse.code }} {{ course_match.homeCourse.name }} </span>
-                    </div>
-                {% empty %}
+                <div class="bold h5">Fag-koblinger</div>
+                {% if application.course_matches %}
+                    <table class="table table-hover">
+                    <thead>
+                    <th>Bortefag</th>
+                    <th>Hjemmefag</th>
+                    </thead>
+                        <tbody id="courseMatchList">
+                        {% for course in application.course_matches.all %}
+                            <tr>
+                            <td> {{ course.abroadCourse.code }} {{ course.abroadCourse.name }}</td>
+                            <td> {{ course.homeCourse.code }} {{ course.homeCourse.name }} </td>
+                        {% endfor %}
+                        </tbody>
+                    </table>
+                {% else %}
                     <div>Det er ingen fag-koblinger i denne søknaden</div>
+                {% endif %}
                 {% endfor %}
                 <label>Kommentar</label>
                 {% if application.comment and application.comment.strip %}
