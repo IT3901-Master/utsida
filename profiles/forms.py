@@ -4,8 +4,11 @@ from django import forms
 from django.contrib.auth.forms import UserCreationForm, PasswordChangeForm, AuthenticationForm
 from django.contrib.auth.models import User
 from django.forms import CharField, PasswordInput
+from django.utils.encoding import force_text
+from django_select2.forms import Select2Widget, ModelSelect2Widget
 
 from profiles.models import Profile
+from utsida.models import Institute
 
 
 class UserForm(UserCreationForm):
@@ -79,15 +82,11 @@ class UpdateUserForm(forms.ModelForm):
 
         return user
 
-
 class ProfileRegisterForm(forms.ModelForm):
 
     class Meta:
         model = Profile
-
         fields = ('institute',)
-
-    institute = AutoCompleteField('institute', help_text=None, required=True, attrs={"placeholder":"Søk på navn eller akronym"},label="Institutt")
 
 
 class ProfileForm(forms.ModelForm):
@@ -99,8 +98,6 @@ class ProfileForm(forms.ModelForm):
     coursesToTake = make_ajax_field(Profile, 'coursesToTake', 'homeCourse', help_text=None,
                                     required=False)
 
-    institute = AutoCompleteField('institute', help_text=None, required=True, attrs={"placeholder": "Endre institutt ved å søke på navn eller akronym"}, label="Institutt")
-
 
 class CoursesToTakeForm(forms.ModelForm):
     class Meta:
@@ -108,7 +105,7 @@ class CoursesToTakeForm(forms.ModelForm):
 
         fields = ('coursesToTake',)
 
-    coursesToTake = AutoCompleteField('singleHomeCourse', help_text=None, required=False)
+    coursesToTake = AutoCompleteField('singleHomeCourse', help_text=None, required=False, attrs={"placeholder":"Søk på fagnavn/kode"})
 
 
 class AdminProfileForm(forms.ModelForm):
