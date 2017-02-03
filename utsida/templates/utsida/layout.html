@@ -45,6 +45,7 @@
                 {% if user.is_authenticated %}
                     <li><a href="/process">Få anbefaling</a></li>
                     <li><a href="/courseMatch">Fagkoblinger</a></li>
+                    <li><a href="/information">FAQ</a></li>
                 {% endif %}
                 {% if user|has_group:"Advisors" %}
                     <li><a href="/profile/soknader/all">Søknader</a></li>

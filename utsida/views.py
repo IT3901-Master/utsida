@@ -16,6 +16,10 @@ def index(request):
     return render(request, "utsida/index.html")
 
 
+def information(request):
+    return render(request, 'utsida/information.html')
+
+
 def process(request):
     if not request.user.is_authenticated():
         return redirect("login")
@@ -181,22 +185,23 @@ def add_course_match(request):
 def add_abroad_course(request):
     if request.method == 'POST':
         user = User.objects.get(username=request.user)
-        university = get_object_or_404(University,name=request.POST.get('university'))
+        university = get_object_or_404(University, name=request.POST.get('university'))
         course = AbroadCourse(code=request.POST.get('code'), name=request.POST.get('name'),
                               study_points=request.POST.get('study_points'), university=university,
                               description_url=request.POST.get('url'))
-
-        response_data = {}
-        response_data["code"] = request.POST.get('code')
-        response_data["name"] = request.POST.get('name')
         course.save()
+
+        response_data = {
+            "code": request.POST.get('code'),
+            "name": request.POST.get('name'),
+            "id": course.pk
+        }
         user.profile.saved_courses.add(course)
 
         return HttpResponse(
             json.dumps(response_data),
             content_type="application/json"
         )
-
 
 
 @login_required

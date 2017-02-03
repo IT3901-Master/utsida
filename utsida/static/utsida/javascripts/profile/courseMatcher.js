@@ -85,6 +85,7 @@ CourseMatcher = {
                 deleteBtn.className = "glyphicon glyphicon-remove pointer";
                 deleteBtn.setAttribute("data-toggle", "confirmation");
                 deleteBtn.setAttribute("data-type", "course_match");
+                //deleteBtn.setAttribute("data-id", response.course_match_id);
                 deleteTD.appendChild(deleteBtn);
 
                 content.appendChild(abroadCourseTD);
@@ -94,6 +95,8 @@ CourseMatcher = {
                 var content2 = content.cloneNode(true);
                 document.getElementById("courseMatchList").appendChild(content);
                 document.getElementById("courseMatchListModal").appendChild(content2);
+
+                refreshConfirmation();
 
                 Messager.init();
                 Messager.sendMessage("Fagene ble koblet", "success");

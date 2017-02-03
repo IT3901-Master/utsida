@@ -20,9 +20,7 @@ var removeAllCourses = function () {
 };
 
 
-
-//documentation: http://bootstrap-confirmation.js.org/
-$('[data-toggle=confirmation]').confirmation({
+var confirmationSettings = {
     rootSelector: '[data-toggle=confirmation]',
     onConfirm: function () {
         var here = this;
@@ -47,16 +45,22 @@ $('[data-toggle=confirmation]').confirmation({
                 block.parentNode.removeChild(block)
             });
         }
-
-
     },
     title: "Er du sikker på at du vil slette?",
     btnOkLabel: "Ja",
     btnCancelLabel: "Nei",
     singleton: true,
     popout: true
+};
 
-});
+function refreshConfirmation() {
+    $(document).ajaxStop(function() {
+        $(document).find('[data-toggle=confirmation]').confirmation(confirmationSettings);
+    });
+}
+
+//documentation: http://bootstrap-confirmation.js.org/
+$('[data-toggle=confirmation]').confirmation(confirmationSettings);
 
 function create_post() {
     $.ajax({
@@ -80,11 +84,13 @@ function create_post() {
             span2 = document.createElement('span');
             span2.setAttribute("data-toggle", "confirmation");
             span2.setAttribute("data-type", "abroad_course");
-            span2.setAttribute("data-id", 1);
+            span2.setAttribute("data-id", json.id);
             span2.className = "glyphicon glyphicon-remove pull-right pointer";
             mainDiv.append(span2);
             $('#courseList').append(mainDiv);
-            $('#add-abroad-course-form').reset();
+            //$('#add-abroad-course-form').reset();
+
+            refreshConfirmation();
         },
         error: function (xhr, errmsg, err) {
             $('#addAbroadModal').modal('hide');
@@ -120,11 +126,12 @@ $('#add-course-form').on('submit', function (event) {
             mainDiv.innerHTML = "<span id='code'>" + json.code + "</span>" + ' - ' + "<span id='name'>" + json.name + "</span>";
             span2 = document.createElement('span');
             span2.setAttribute("data-toggle", "confirmation");
-            span2.setAttribute("data-type", "abroad_course");
-            span2.setAttribute("data-id", 1);
+            span2.setAttribute("data-type", "home_course");
+            span2.setAttribute("data-id", json.id);
             span2.className = "glyphicon glyphicon-remove pull-right pointer";
             mainDiv.append(span2);
             $('#homeCourseList').append(mainDiv);
+            refreshConfirmation();
         },
         error: function (xhr, errmsg, err) {
 

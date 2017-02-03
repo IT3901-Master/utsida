@@ -10,12 +10,11 @@
     {% endfor %}
 
 
-    <h3 class="text-center">
-        Her vises alle fagene du har lagret, og hvilke fag du har tenkt til å erstatte ved NTNU.
-    </h3>
+    <h2 class="text-center">
+        Dine lagrede fag og fag-koblinger
+    </h2>
     <h3 class="subTitle text-center">
-        Trykk på et fag i hver colonne for å velge de, og dermed på <span class="italic">Lagre fag</span>
-        knappen for å lage en fagmatch
+        Trykk på et fag i hver colonne for å velge de, og dermed på <span class="italic">Koble fag-</span>knappen for å lage en fag-kobling
     </h3>
 
     <div class="row vertical-space-top-big">
@@ -47,7 +46,7 @@
         </div>
 
         <div class="col-md-6">
-            <h4>Fag du vil erstatte ved NTNU</h4>
+            <h4>Dine nødvendige NTNU fag</h4>
             <div id="homeCourseList">
                 {% if home_courses %}
                     {% for course in home_courses %}
@@ -84,7 +83,9 @@
 
     <div class="row vertical-space-top vertical-space-bottom-big">
         <div class="col-md-12">
-            <button onclick="CourseMatcher.matchSelectedCourses()" class="btn btn-primary btn-lg center-block">Koble fag
+            <button onclick="CourseMatcher.matchSelectedCourses()" class="btn btn-primary btn-lg center-block">
+                <span class="glyphicon glyphicon-link"></span>
+                Koble fag
             </button>
         </div>
     </div>
@@ -92,7 +93,7 @@
 
     <div class="row vertical-space-top-big vertical-space-bottom-big">
         <div class="col-md-12">
-            <h3 class="text-center"> Her er dine lagrede fag-koblinger </h3>
+            <h3 class="text-center"> Lagrede fag-koblinger </h3>
             <div>
                 <table class="table table-striped">
                     <thead>
