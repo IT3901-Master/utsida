@@ -85,7 +85,7 @@ CourseMatcher = {
                 deleteBtn.className = "glyphicon glyphicon-remove pointer";
                 deleteBtn.setAttribute("data-toggle", "confirmation");
                 deleteBtn.setAttribute("data-type", "course_match");
-                //deleteBtn.setAttribute("data-id", response.course_match_id);
+                deleteBtn.setAttribute("data-id", response.course_match_id);
                 deleteTD.appendChild(deleteBtn);
 
                 content.appendChild(abroadCourseTD);

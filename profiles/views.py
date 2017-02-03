@@ -215,8 +215,8 @@ def remove_home_course(request):
 def remove_course_match(request):
     if request.method == 'POST':
         profile = Profile.objects.get(user=request.user)
-        course_match_id = request.POST['id']
-        profile.saved_course_matches.remove(profile.saved_course_matches.get(id=course_match_id))
+        course_match_id = request.POST.get('id')
+        profile.saved_course_matches.remove(profile.saved_course_matches.get(pk=course_match_id))
         profile.save()
         return HttpResponse({'code': 200, 'message': 'OK'})
     else:
@@ -269,7 +269,17 @@ def save_course_match(request):
             return HttpResponse(status=409)
         elif (stored_course_match and not hasMatch):
             user.profile.saved_course_matches.add(stored_course_match[0])
-            return HttpResponse({'code': 200, 'message': 'Match lagret i profil'})
+
+            response = {
+                'code': 200,
+                'message': 'Match lagret i profil',
+                'course_match_id': stored_course_match[0].pk
+            }
+            return HttpResponse(
+                json.dumps(response),
+                content_type="application/json"
+            )
+
         elif (not stored_course_match and not hasMatch):
             abroad_course = AbroadCourse.objects.get(code=abroadCode, name=abroad_name)
             home_course = HomeCourse.objects.get(code=homeCode)
@@ -277,11 +287,16 @@ def save_course_match(request):
             course_match.save()
             user.profile.saved_course_matches.add(course_match)
 
-            return HttpResponse(json.dumps({
+            response = {
                 'code': 200,
                 'message': 'Match lagret i profil og database',
                 'course_match_id': course_match.pk
-            }))
+            }
+
+            return HttpResponse(
+                json.dumps(response),
+                content_type="application/json"
+            )
 
 
 
