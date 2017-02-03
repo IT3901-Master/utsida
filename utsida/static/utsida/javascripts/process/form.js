@@ -5,7 +5,7 @@ Logic for adding new form fields when they are appropriate to appear in /process
 var formStep = function() {
     var selectedContinent = $("#continentField :selected").text();
     var countryRow = document.getElementById("countryRow");
-    var countrySelectBox = document.getElementById("countrySelectBox");
+    var countrySelectBox = document.getElementById("countryField");
 
     var clearSelectBox = function() {
         for (var i = countrySelectBox.options.length - 1; i >= 0; i--) {
