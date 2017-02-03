@@ -48,5 +48,13 @@
       "acronym": "RMIT",
       "country": "Australia"
     }
+  },
+  {
+    "model": "utsida.university",
+    "fields": {
+      "name": "Curtin University",
+      "acronym": "CU",
+      "country": "Australia"
+    }
   }
 ]

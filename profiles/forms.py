@@ -1,14 +1,10 @@
 from ajax_select import make_ajax_field
-from ajax_select.fields import AutoCompleteField, AutoCompleteSelectField
+from ajax_select.fields import AutoCompleteField
 from django import forms
 from django.contrib.auth.forms import UserCreationForm, PasswordChangeForm, AuthenticationForm
 from django.contrib.auth.models import User
 from django.forms import CharField, PasswordInput
-from django.utils.encoding import force_text
-from django_select2.forms import Select2Widget, ModelSelect2Widget
-
 from profiles.models import Profile
-from utsida.models import Institute
 
 
 class UserForm(UserCreationForm):

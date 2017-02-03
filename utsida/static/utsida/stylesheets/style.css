@@ -105,6 +105,32 @@ html, body {
     border: 0;
 }
 
+.menu-button {
+    position: absolute !important;
+    right: 120px;
+    background-color: #737373 !important;
+}
+.menu-button:hover {
+    background-color: #8c8c8c;
+}
+.menu-button:active {
+    background-color: #737373;
+}
+.menu-icon {
+    width: 30px;
+    text-align: center;
+}
+
+.user-name {
+    position: absolute !important;
+    right: 10px;
+    color: white;
+}
+.user-name:hover {
+    opacity: 1.0 !important;
+    color: white !important;
+}
+
 
 /* 4.0 Footer */
 
@@ -281,6 +307,25 @@ input[type=range]:focus::-webkit-slider-runnable-track {
     margin-top: 10px;
 }
 
+.plus-btn {
+    border-radius: 90px;
+    border: none;
+    background-color: white;
+    height: 40px;
+    width: 40px;
+    text-align: center;
+    line-height: 40px;
+    font-size: 20px;
+    cursor: pointer;
+}
+.plus-btn:hover {
+    border: solid #337ab7 1px;
+}
+
+#addHomeCourseBlock {
+    display: none;
+}
+
 /* 9 - Course Match Table */
 #editCourseMatch, #deleteCourseMatch {
     text-decoration: none;
@@ -312,6 +357,8 @@ input[type=range]:focus::-webkit-slider-runnable-track {
     background-color: #dff0d8;
     transition: all 1s ease 0s;
 }
+
+
 
 
 

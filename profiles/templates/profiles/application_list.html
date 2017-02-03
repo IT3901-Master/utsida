@@ -7,7 +7,8 @@
         <div class="col-md-8 col-md-offset-2">
 
 
-            <h1>Dine søknader </h1>
+            <h2 class="text-center">Mine søknader </h2>
+            <h3 class="subTitle text-center"></h3>
             {% if object_list %}
                 {% for application in object_list %}
                     {% if application.status == "A" %}

@@ -34,21 +34,32 @@ CourseMatcher = {
     matchSelectedCourses: function () {
         var awayCourse = "";
         var homeCourse = "";
+        var code = "";
+        var name = "";
+
         for (var i = 0; i < s.awayCourses.length; i++) {
             if (s.awayCourses[i].style.backgroundColor == "rgb(51, 122, 183)") {
                 awayCourse = s.awayCourses[i].innerText;
-                var code = s.awayCourses[i].children[0].innerText;
-                var name = s.awayCourses[i].children[1].innerText;
-                s.courseMatchList["abroadCourseCode"] = code;
-                s.courseMatchList["abroadCourseName"] = name;
+                if (/-/.test(awayCourse)) {
+                    code = s.awayCourses[i].children[0].innerText;
+                    name = s.awayCourses[i].children[1].innerText;
+                    s.courseMatchList["abroadCourseCode"] = code;
+                    s.courseMatchList["abroadCourseName"] = name;
+                }
+                else {
+                    code = "";
+                    name = s.awayCourses[i].children[0].innerText;
+                    s.courseMatchList["abroadCourseName"] = name;
+                    s.courseMatchList["abroadCourseCode"] = code
+                }
             }
         }
 
         for (var j = 0; j < s.homeCourses.length; j++) {
             if (s.homeCourses[j].style.backgroundColor == "rgb(51, 122, 183)") {
                 homeCourse = s.homeCourses[j].innerText;
-                var code = s.homeCourses[j].children[0].innerText;
-                var name = s.homeCourses[j].children[1].innerText;
+                code = s.homeCourses[j].children[0].innerText;
+                name = s.homeCourses[j].children[1].innerText;
                 s.courseMatchList["homeCourseCode"] = code;
                 s.courseMatchList["homeCourseName"] = name;
             }
@@ -60,22 +71,35 @@ CourseMatcher = {
             success: function (response) {
                 var content = document.createElement("tr");
                 var abroadCourseTD = document.createElement("td");
-                abroadCourseTD.innerText = s.courseMatchList["abroadCourseCode"] + " - " + s.courseMatchList["abroadCourseName"];
+
+                if (s.courseMatchList["abroadCourseCode"] == "")
+                    abroadCourseTD.innerText = s.courseMatchList["abroadCourseName"];
+
+                abroadCourseTD.innerText = s.courseMatchList["abroadCourseCode"] + "  " + s.courseMatchList["abroadCourseName"];
 
                 var homeCourseTD = document.createElement("td");
-                homeCourseTD.innerText = s.courseMatchList["homeCourseCode"] + " - " + s.courseMatchList["homeCourseName"];
+                homeCourseTD.innerText = s.courseMatchList["homeCourseCode"] + "  " + s.courseMatchList["homeCourseName"];
 
                 var deleteTD = document.createElement('td');
+                var deleteBtn = document.createElement('span');
+                deleteBtn.className = "glyphicon glyphicon-remove pointer";
+                deleteBtn.setAttribute("data-toggle", "confirmation");
+                deleteBtn.setAttribute("data-type", "course_match");
+                deleteBtn.setAttribute("data-id", response.course_match_id);
+                deleteTD.appendChild(deleteBtn);
 
                 content.appendChild(abroadCourseTD);
                 content.appendChild(homeCourseTD);
+                content.appendChild(deleteTD);
 
                 var content2 = content.cloneNode(true);
                 document.getElementById("courseMatchList").appendChild(content);
                 document.getElementById("courseMatchListModal").appendChild(content2);
 
+                refreshConfirmation();
+
                 Messager.init();
-                Messager.sendMessage("Faget ble lagret", "success");
+                Messager.sendMessage("Fagene ble koblet", "success");
             },
             error: function (error) {
                 if (error.status == 409) {
@@ -116,7 +140,16 @@ CourseMatcher = {
             s.homeCourses[i].style.backgroundColor = "#FFF";
             s.homeCourses[i].style.color = "black";
         }
+    },
+
+    toggleAddHomeCourse: function() {
+        var form = document.getElementById("addHomeCourseBlock");
+        var toggleBtn = document.getElementById("toggleAddHomeCourseBtn");
+        form.style.display = form.style.display === 'block' ? 'none' : 'block';
+        toggleBtn.innerText = toggleBtn.innerText === '-' ? '+' : '-';
+
     }
+
 };
 
 CourseMatcher.init();

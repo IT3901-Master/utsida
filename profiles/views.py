@@ -199,11 +199,24 @@ def remove_course(request):
 
 
 @login_required
+def remove_home_course(request):
+    if request.method == 'POST':
+        profile = Profile.objects.get(user=request.user)
+        course_id = request.POST.get('id')
+        profile.coursesToTake.remove(profile.coursesToTake.get(id=course_id))
+        profile.save()
+
+        return HttpResponse({'code': 200, 'message': 'OK'})
+    else:
+        return HttpResponse({'code': 500, 'message': 'request is not a post request'})
+
+
+@login_required
 def remove_course_match(request):
     if request.method == 'POST':
         profile = Profile.objects.get(user=request.user)
-        course_match_id = request.POST['id']
-        profile.saved_course_matches.remove(profile.saved_course_matches.get(id=course_match_id))
+        course_match_id = request.POST.get('id')
+        profile.saved_course_matches.remove(profile.saved_course_matches.get(pk=course_match_id))
         profile.save()
         return HttpResponse({'code': 200, 'message': 'OK'})
     else:
@@ -245,22 +258,46 @@ def save_course_match(request):
     if request.method == "POST":
         homeCode = request.POST["homeCourseCode"]
         abroadCode = request.POST["abroadCourseCode"]
-        stored_course_match = CourseMatch.objects.filter(abroadCourse__code=abroadCode, homeCourse__code=homeCode)
+        abroad_name = request.POST["abroadCourseName"]
+        stored_course_match = CourseMatch.objects.filter(abroadCourse__name=abroad_name, homeCourse__code=homeCode)
+
         user = User.objects.get(username=request.user)
-        hasMatch = user.profile.saved_course_matches.all().filter(abroadCourse__code=abroadCode,
+
+        hasMatch = user.profile.saved_course_matches.all().filter(abroadCourse__name=abroad_name,
                                                                   homeCourse__code=homeCode)
         if (stored_course_match and hasMatch):
             return HttpResponse(status=409)
         elif (stored_course_match and not hasMatch):
             user.profile.saved_course_matches.add(stored_course_match[0])
-            return HttpResponse({'code': 200, 'message': 'Match lagret i profil'})
+
+            response = {
+                'code': 200,
+                'message': 'Match lagret i profil',
+                'course_match_id': stored_course_match[0].pk
+            }
+            return HttpResponse(
+                json.dumps(response),
+                content_type="application/json"
+            )
+
         elif (not stored_course_match and not hasMatch):
-            abroad_course = AbroadCourse.objects.get(code=abroadCode)
+            abroad_course = AbroadCourse.objects.get(code=abroadCode, name=abroad_name)
             home_course = HomeCourse.objects.get(code=homeCode)
             course_match = CourseMatch(abroadCourse=abroad_course, homeCourse=home_course)
             course_match.save()
             user.profile.saved_course_matches.add(course_match)
-            return HttpResponse({'code': 200, 'message': 'Match lagret i profil og database'})
+
+            response = {
+                'code': 200,
+                'message': 'Match lagret i profil og database',
+                'course_match_id': course_match.pk
+            }
+
+            return HttpResponse(
+                json.dumps(response),
+                content_type="application/json"
+            )
+
 
 
 @login_required
@@ -350,9 +387,11 @@ def save_home_course(request):
         user = User.objects.get(username=request.user)
         home_course = get_object_or_404(HomeCourse,name=request.POST.get('name'),code=request.POST.get('code'))
         user.profile.coursesToTake.add(home_course)
+
         response_data = {}
         response_data["code"] = request.POST.get('code')
         response_data["name"] = request.POST.get('name')
+        response_data["id"] = home_course.pk
 
         return HttpResponse(
             json.dumps(response_data),
