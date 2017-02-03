@@ -19,10 +19,7 @@ var removeAllCourses = function () {
     window.location = "/profile/courses/";
 };
 
-var toggleAddHomeCourse = function() {
-    var form = document.getElementById("add-course-form");
-    form.style.display = form.style.display === 'block' ? 'none' : 'block';
-};
+
 
 //documentation: http://bootstrap-confirmation.js.org/
 $('[data-toggle=confirmation]').confirmation({

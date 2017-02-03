@@ -81,16 +81,22 @@ CourseMatcher = {
                 homeCourseTD.innerText = s.courseMatchList["homeCourseCode"] + "  " + s.courseMatchList["homeCourseName"];
 
                 var deleteTD = document.createElement('td');
+                var deleteBtn = document.createElement('span');
+                deleteBtn.className = "glyphicon glyphicon-remove pointer";
+                deleteBtn.setAttribute("data-toggle", "confirmation");
+                deleteBtn.setAttribute("data-type", "course_match");
+                deleteTD.appendChild(deleteBtn);
 
                 content.appendChild(abroadCourseTD);
                 content.appendChild(homeCourseTD);
+                content.appendChild(deleteTD);
 
                 var content2 = content.cloneNode(true);
                 document.getElementById("courseMatchList").appendChild(content);
                 document.getElementById("courseMatchListModal").appendChild(content2);
 
                 Messager.init();
-                Messager.sendMessage("Faget ble lagret", "success");
+                Messager.sendMessage("Fagene ble koblet", "success");
             },
             error: function (error) {
                 if (error.status == 409) {
@@ -131,7 +137,16 @@ CourseMatcher = {
             s.homeCourses[i].style.backgroundColor = "#FFF";
             s.homeCourses[i].style.color = "black";
         }
+    },
+
+    toggleAddHomeCourse: function() {
+        var form = document.getElementById("addHomeCourseBlock");
+        var toggleBtn = document.getElementById("toggleAddHomeCourseBtn");
+        form.style.display = form.style.display === 'block' ? 'none' : 'block';
+        toggleBtn.innerText = toggleBtn.innerText === '-' ? '+' : '-';
+
     }
+
 };
 
 CourseMatcher.init();

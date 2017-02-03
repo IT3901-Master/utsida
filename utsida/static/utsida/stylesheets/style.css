@@ -322,7 +322,7 @@ input[type=range]:focus::-webkit-slider-runnable-track {
     border: solid #337ab7 1px;
 }
 
-#add-course-form {
+#addHomeCourseBlock {
     display: none;
 }
 
