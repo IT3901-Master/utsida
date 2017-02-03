@@ -25,9 +25,22 @@ courseSelector = {
         var uni = c.parentNode.parentNode.previousSibling.previousSibling.innerText.split('(').slice()[0].slice(0, -1);
         var country = c.parentNode.parentNode.previousSibling.previousSibling.innerText.split('(').slice()[1].split(')')[0];
         var course = c.innerHTML;
-        var splitCourse = course.split(' ');
-        var code = splitCourse.shift();
-        var name = splitCourse.join(' ');
+        var code = "";
+        var name = "";
+
+        function hasNumber(string) {
+            return /\d/.test(string);
+        }
+
+        if (!hasNumber(course.split(' ').shift())) {
+            code = "";
+            name = course;
+        }
+        else {
+            var splitCourse = course.split(' ');
+            code = splitCourse.shift();
+            name = splitCourse.join(' ');
+        }
 
         if ((uni == s.university || s.university == null) && !(this.isCourseAlreadyAdded(name))) {
             s.university = uni;

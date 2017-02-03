@@ -7,6 +7,10 @@ var removeCourse = function (block, code, university) {
     block.parentNode.removeChild(block);
 };
 
+var removeHomeCourse = function(course) {
+    console.log(course)
+}
+
 
 var removeAllCourses = function () {
     $.post("/profile/remove_all_courses/");
@@ -38,6 +42,12 @@ $('[data-toggle=confirmation]').confirmation({
             $.post("/profile/remove_course_match/", {'id': id});
             $(this).closest('tr').fadeOut("slow", function (here) {
                 $(this).closest("tr").remove()
+            });
+        }
+        else if (type == "home_course") {
+            $.post("/profile/remove_home_course/", {'id': id});
+            $(this).closest('.blockElement').fadeOut("slow", function (here) {
+                block.parentNode.removeChild(block)
             });
         }
 

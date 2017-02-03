@@ -26,7 +26,11 @@
                     {% for course in courses %}
                         <div onclick="CourseMatcher.markAwayCourse(this)"
                              class="centerCol courseBlock boxShadow pointer noSelect blockElement">
-                            <span id="code">{{ course.code }}</span> - <span id="name">{{ course.name }}</span>
+                            {% if course.code == "" %}
+                                <span id="name">{{ course.name }}</span>
+                            {% else %}
+                                <span id="code">{{ course.code }}</span> - <span id="name">{{ course.name }}</span>
+                            {% endif %}
                             <span data-toggle="confirmation" data-type="abroad_course" data-id="{{ course.id }}"
                                   class="glyphicon glyphicon-remove pull-right pointer">
                             </span>
@@ -48,7 +52,7 @@
             {% if home_courses %}
                 {% for course in home_courses %}
                     <div onclick="CourseMatcher.markHomeCourse(this)"
-                         class="centerCol courseBlock boxShadow pointer noSelect">
+                         class="centerCol courseBlock boxShadow pointer noSelect blockElement">
                         <span id="code">{{ course.code }}</span> - <span id="name">{{ course.name }}</span>
                         <span data-toggle="confirmation" data-type="home_course" data-id="{{ course.id }}"
                               class="glyphicon glyphicon-remove pull-right pointer">

@@ -108,6 +108,7 @@ class HomeCourse(models.Model):
     def natural_key(self):
         return (self.code,)
 
+
 class CourseMatchManager(models.Manager):
     def get_by_natural_key(self,homeCourse,abroadCourse):
         return self.get(homeCourse=homeCourse,abroadCourse=abroadCourse)

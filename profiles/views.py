@@ -198,6 +198,19 @@ def remove_course(request):
 
 
 @login_required
+def remove_home_course(request):
+    if request.method == 'POST':
+        profile = Profile.objects.get(user=request.user)
+        course_id = request.POST.get('id')
+        profile.coursesToTake.remove(profile.coursesToTake.get(id=course_id))
+        profile.save()
+
+        return HttpResponse({'code': 200, 'message': 'OK'})
+    else:
+        return HttpResponse({'code': 500, 'message': 'request is not a post request'})
+
+
+@login_required
 def remove_course_match(request):
     if request.method == 'POST':
         profile = Profile.objects.get(user=request.user)
@@ -244,17 +257,24 @@ def save_course_match(request):
     if request.method == "POST":
         homeCode = request.POST["homeCourseCode"]
         abroadCode = request.POST["abroadCourseCode"]
-        stored_course_match = CourseMatch.objects.filter(abroadCourse__code=abroadCode, homeCourse__code=homeCode)
+        abroad_name = request.POST["abroadCourseName"]
+        stored_course_match = CourseMatch.objects.filter(abroadCourse__name=abroad_name, homeCourse__code=homeCode)
+
+        print("STORED CORSE MATCH:", stored_course_match)
         user = User.objects.get(username=request.user)
-        hasMatch = user.profile.saved_course_matches.all().filter(abroadCourse__code=abroadCode,
+
+
+        hasMatch = user.profile.saved_course_matches.all().filter(abroadCourse__name=abroad_name,
                                                                   homeCourse__code=homeCode)
+
+        print("HAS MACTCH: ", hasMatch)
         if (stored_course_match and hasMatch):
             return HttpResponse(status=409)
         elif (stored_course_match and not hasMatch):
             user.profile.saved_course_matches.add(stored_course_match[0])
             return HttpResponse({'code': 200, 'message': 'Match lagret i profil'})
         elif (not stored_course_match and not hasMatch):
-            abroad_course = AbroadCourse.objects.get(code=abroadCode)
+            abroad_course = AbroadCourse.objects.get(code=abroadCode, name=abroad_name)
             home_course = HomeCourse.objects.get(code=homeCode)
             course_match = CourseMatch(abroadCourse=abroad_course, homeCourse=home_course)
             course_match.save()
