@@ -31,13 +31,12 @@ def save_user_profile(sender, instance, **kwargs):
 
 
 def send_login_message(sender, user, request, **kwargs):
-    messages.success(request,'Du ble logget inn uten problemer')
+    messages.success(request,'Du ble logget inn som '+ user.username)
 
 
 def send_logout_message(sender, user, request, **kwargs):
     messages.success(request,'Du ble logget ut')
 
-user_logged_out.connect(send_logout_message)
 user_logged_in.connect(send_login_message)
 
 

@@ -1,6 +1,7 @@
 from django.conf.urls import url, include
 from django.contrib.auth.decorators import user_passes_test
 
+from profiles.forms import MyAuthenticationForm
 from profiles.views import ApplicationListView, ApplicationListAll
 from . import views
 from django.contrib.auth import views as auth_views
@@ -10,7 +11,7 @@ urlpatterns = [
     url(r'user/(?P<username>[a-zA-Z0-9]+)$', views.get_user_profile, name="profile"),
     url(r'register/$', views.register_user, name="register"),
     url(r'update/$', views.update_profile, name="update"),
-    url(r'^login/$', auth_views.login, name='login'),
+    url(r'^login/$', auth_views.login, {'authentication_form':MyAuthenticationForm}, name='login', ),
     url(r'^logout/$', auth_views.logout, {'next_page': '/'}, name='logout'),
     url(r'^ajax_select/', include(ajax_select_urls)),
     url(r'^change_password/$', views.change_password, name='password_change'),

@@ -4,6 +4,9 @@
 
 {% block content %}
     {% load widget_tweaks %}
+    {% load crispy_forms_tags %}
+
+
     <h2 class="text-center">Logg inn</h2>
 
     <div class="row">
@@ -12,14 +15,7 @@
 
             <form method="post">
             {% csrf_token %}
-                <div class="form-group">
-                    <label>Brukernavn</label>
-                    {{ form.username|add_class:"form-control" }}
-                </div>
-                <div class="form-group">
-                    <label>Passord</label>
-                    {{ form.password|add_class:"form-control" }}
-                </div>
+                {{ form | crispy }}
 
                 <div class="form-group vertical-space-top">
                     <input type="submit" value="Logg inn" class="btn btn-primary center-block" style="width:100px; height:50px;">
