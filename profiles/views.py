@@ -13,7 +13,8 @@ from django.http import Http404
 from django.utils.decorators import method_decorator
 from django.views.generic import ListView
 
-from profiles.forms import UserForm, ProfileForm, UpdateUserForm, CoursesToTakeForm
+from profiles.forms import UserForm, ProfileForm, UpdateUserForm, CoursesToTakeForm, ProfileRegisterForm, \
+    PasswordChangeCustomForm
 from utsida.forms import abroadCourseForm
 from .models import *
 
@@ -33,25 +34,25 @@ class MyRegistrationForm(object):
 def register_user(request):
     if request.method == 'POST':
         user_form = UserForm(request.POST)
-        profile_form = ProfileForm(request.POST)
+        profile_form = ProfileRegisterForm(request.POST)
+        print(user_form.is_valid())
+        print(profile_form.is_valid())
         if user_form.is_valid() and profile_form.is_valid():
             user = user_form.save()
             user.refresh_from_db()  # This will load the Profile created by the Signal
-            profile_form = ProfileForm(request.POST,
+            profile_form = ProfileRegisterForm(request.POST,
                                        instance=user.profile)  # Reload the profile form with the profile instance
-            profile_form.full_clean()  # Manually clean the form this time. It is implicitly called by "is_valid()" method
-            profile_form.save()  # Gracefully save the form
+            profile_form.full_clean()
+            profile_form.save()
             new_user = authenticate(username=user_form.cleaned_data['username'],
                                     password=user_form.cleaned_data['password1'], )
             login(request, new_user)
-            messages.success(request, 'Your account was succesfully created')
             return redirect('index')
-            # else:
-            # Could add a message error here if wanted
-            # messages.error(request, 'Please correct the error below.')
+        else:
+            messages.error(request, "Brukeren ble ikke opprettet, vennligst rett feilene under")
     else:
         user_form = UserForm()
-        profile_form = ProfileForm()
+        profile_form = ProfileRegisterForm()
     return render(request, 'profiles/register.html', {
         'user_form': user_form,
         'profile_form': profile_form
@@ -84,16 +85,16 @@ def update_profile(request):
 @transaction.atomic
 def change_password(request):
     if request.method == 'POST':
-        form = PasswordChangeForm(request.user, request.POST)
+        form = PasswordChangeCustomForm(request.user, request.POST)
         if form.is_valid():
             user = form.save()
             update_session_auth_hash(request, user)  # Important!
             messages.success(request, 'Passordet ditt ble endret!')
             return redirect('index')
         else:
-            messages.error(request, 'Vennligst rett feilen under.')
+            messages.error(request, "Passordet ditt ble ikke endret, vennligst rett feilene")
     else:
-        form = PasswordChangeForm(request.user)
+        form = PasswordChangeCustomForm(request.user)
     return render(request, 'profiles/change_password.html', {
         'form': form
     })

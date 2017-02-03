@@ -13,7 +13,7 @@ function sendApproval() {
         success: function (response) {
             $("#myModal").modal('hide');
             Messager.init();
-            Messager.sendMessage("Fagene er lagt inn for godkjenning","success");
+            Messager.sendMessage("Søknaden er sendt til godkjenning","success");
             window.location = "#top-navbar";
         },
         error: function (e, x, r) {
