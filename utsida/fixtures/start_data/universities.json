@@ -56,5 +56,53 @@
       "acronym": "CU",
       "country": "Australia"
     }
+  },
+  {
+    "model": "utsida.university",
+    "fields": {
+      "name": "University of Auckland",
+      "acronym": "UA",
+      "country": "New Zealand"
+    }
+  },
+  {
+    "model": "utsida.university",
+    "fields": {
+      "name": "University of Melbourne",
+      "acronym": "UM",
+      "country": "Australia"
+    }
+  },
+  {
+    "model": "utsida.university",
+    "fields": {
+      "name": "University of Western Australia",
+      "acronym": "UWA",
+      "country": "Australia"
+    }
+  },
+  {
+    "model": "utsida.university",
+    "fields": {
+      "name": "University of Wollongong",
+      "acronym": "UOW",
+      "country": "Australia"
+    }
+  },
+  {
+    "model": "utsida.university",
+    "fields": {
+      "name": "University of British Columbia",
+      "acronym": "UBC",
+      "country": "Canada"
+    }
+  },
+  {
+    "model": "utsida.university",
+    "fields": {
+      "name": "Universidad de Buenos Aires",
+      "acronym": "UBA",
+      "country": "Argentina"
+    }
   }
 ]

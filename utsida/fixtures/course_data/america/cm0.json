@@ -1,0 +1,114 @@
+[
+  {
+    "model": "utsida.coursematch",
+    "fields": {
+      "homeCourse": [
+        "K-emne"
+      ],
+      "abroadCourse": [
+        "BIOL 111",
+        "Introduction to Modern Biology",
+        "University of British Columbia"
+      ],
+      "approved": true,
+      "approval_date": "2016-01-26",
+      "comment": " "
+    }
+  },
+  {
+    "model": "utsida.coursematch",
+    "fields": {
+      "homeCourse": [
+        "TDT4290"
+      ],
+      "abroadCourse": [
+        "CPEN 492",
+        "Software Engineering Capstone Design Project",
+        "University of British Columbia"
+      ],
+      "approved": true,
+      "approval_date": "2016-01-26",
+      "comment": "Erstatter kombinasjonen av TDT4290(15sp) og EiT (7,5 sp)"
+    }
+  },
+  {
+    "model": "utsida.coursematch",
+    "fields": {
+      "homeCourse": [
+        "EiT"
+      ],
+      "abroadCourse": [
+        "CPEN 492",
+        "Software Engineering Capstone Design Project",
+        "University of British Columbia"
+      ],
+      "approved": true,
+      "approval_date": "2016-01-26",
+      "comment": "Erstatter kombinasjonen av TDT4290(15sp) og EiT (7,5 sp)"
+    }
+  },
+  {
+    "model": "utsida.coursematch",
+    "fields": {
+      "homeCourse": [
+        "TDT4242"
+      ],
+      "abroadCourse": [
+        "CPSC 410",
+        "Advanced Software Engineering",
+        "University of British Columbia"
+      ],
+      "approved": true,
+      "approval_date": "2016-01-26",
+      "comment": " "
+    }
+  },
+  {
+    "model": "utsida.coursematch",
+    "fields": {
+      "homeCourse": [
+        "TDT4125"
+      ],
+      "abroadCourse": [
+        "CPSC 420",
+        "Advanced Algorithms Design and Analysis",
+        "University of British Columbia"
+      ],
+      "approved": true,
+      "approval_date": "2016-01-26",
+      "comment": " "
+    }
+  },
+  {
+    "model": "utsida.coursematch",
+    "fields": {
+      "homeCourse": [
+        "TDT4250"
+      ],
+      "abroadCourse": [
+        "EECE 514",
+        "Software Verification and Testing",
+        "University of British Columbia"
+      ],
+      "approved": true,
+      "approval_date": "2016-01-26",
+      "comment": " "
+    }
+  },
+  {
+    "model": "utsida.coursematch",
+    "fields": {
+      "homeCourse": [
+        "TTM4185"
+      ],
+      "abroadCourse": [
+        "EECE 513",
+        "Fault Tolerant Digital Systems",
+        "University of British Columbia"
+      ],
+      "approved": true,
+      "approval_date": "2016-01-26",
+      "comment": " "
+    }
+  }
+]

@@ -1,0 +1,418 @@
+[
+  {
+    "model": "utsida.coursematch",
+    "fields": {
+      "homeCourse": [
+        "MOL4010"
+      ],
+      "abroadCourse": [
+        "BIOSCI 201",
+        "Cellular and Molecular Biology",
+        "University of Auckland"
+      ],
+      "approved": true,
+      "approval_date": "2015-09-03",
+      "comment": "Godkjennes som ingeniøremne for datateknologi"
+    }
+  },
+  {
+    "model": "utsida.coursematch",
+    "fields": {
+      "homeCourse": [
+        "TDT4105"
+      ],
+      "abroadCourse": [
+        "COMPSCI 101",
+        "Principles of Programming",
+        "University of Auckland"
+      ],
+      "approved": true,
+      "approval_date": "2016-02-03",
+      "comment": "Litt mer programmering enn ITGK."
+    }
+  },
+  {
+    "model": "utsida.coursematch",
+    "fields": {
+      "homeCourse": [
+        "TDT4110"
+      ],
+      "abroadCourse": [
+        "COMPSCI 101",
+        "Principles of Programming",
+        "University of Auckland"
+      ],
+      "approved": true,
+      "approval_date": "2016-02-03",
+      "comment": "Kan godkjennes for TDT4100/TDT4102. for andre studieprogram enn TDT/IT"
+    }
+  },
+  {
+    "model": "utsida.coursematch",
+    "fields": {
+      "homeCourse": [
+        "TDT4195"
+      ],
+      "abroadCourse": [
+        "COMPSCI 273",
+        "Graph&amp;Visual",
+        "University of Auckland"
+      ],
+      "approved": true,
+      "approval_date": "2015-09-03",
+      "comment": " "
+    }
+  },
+  {
+    "model": "utsida.coursematch",
+    "fields": {
+      "homeCourse": [
+        "TDT4145"
+      ],
+      "abroadCourse": [
+        "COMPSCI 351",
+        "Fund DB Systems",
+        "University of Auckland"
+      ],
+      "approved": true,
+      "approval_date": "2015-09-03",
+      "comment": " "
+    }
+  },
+  {
+    "model": "utsida.coursematch",
+    "fields": {
+      "homeCourse": [
+        "TDT4200"
+      ],
+      "abroadCourse": [
+        "COMPSCI 711",
+        "Parallel and Distributed Computing",
+        "University of Auckland"
+      ],
+      "approved": true,
+      "approval_date": "2016-02-16",
+      "comment": " "
+    }
+  },
+  {
+    "model": "utsida.coursematch",
+    "fields": {
+      "homeCourse": [
+        "TDT4290"
+      ],
+      "abroadCourse": [
+        "COMPSCI 719",
+        "Programming with Web Technology",
+        "University of Auckland"
+      ],
+      "approved": true,
+      "approval_date": "2016-02-04",
+      "comment": "Forbehold om at man jobber i grupper. Informasjon kommer senere."
+    }
+  },
+  {
+    "model": "utsida.coursematch",
+    "fields": {
+      "homeCourse": [
+        "TDT4237"
+      ],
+      "abroadCourse": [
+        "COMPSCI 726",
+        "Network Defence and Countermeasures",
+        "University of Auckland"
+      ],
+      "approved": true,
+      "approval_date": "2016-02-04",
+      "comment": "Faget har et omfattende gruppe prosjekt som teller 25% på karakteren"
+    }
+  },
+  {
+    "model": "utsida.coursematch",
+    "fields": {
+      "homeCourse": [
+        "TDT4290"
+      ],
+      "abroadCourse": [
+        "COMPSCI 726",
+        "Network Defence and Countermeasures",
+        "University of Auckland"
+      ],
+      "approved": true,
+      "approval_date": "2016-02-04",
+      "comment": "Faget har et omfattende gruppe prosjekt som teller 25% på karakteren"
+    }
+  },
+  {
+    "model": "utsida.coursematch",
+    "fields": {
+      "homeCourse": [
+        "TDT4300"
+      ],
+      "abroadCourse": [
+        "COMPSCI 734",
+        "Web, Mobile and Enterprise Computing",
+        "University of Auckland"
+      ],
+      "approved": true,
+      "approval_date": "2016-09-06",
+      "comment": " "
+    }
+  },
+  {
+    "model": "utsida.coursematch",
+    "fields": {
+      "homeCourse": [
+        "TDT4290"
+      ],
+      "abroadCourse": [
+        "COMPSCI 742",
+        "Advanced Internet: Global Data Communications",
+        "University of Auckland"
+      ],
+      "approved": true,
+      "approval_date": "2016-08-01",
+      "comment": "Håvard Hagen Falk. Faget har et omfattende gruppe prosjekt som teller 30% på karakteren"
+    }
+  },
+  {
+    "model": "utsida.coursematch",
+    "fields": {
+      "homeCourse": [
+        "TDT4150"
+      ],
+      "abroadCourse": [
+        "COMPSCI 751",
+        "Adv Topics in DB Sys",
+        "University of Auckland"
+      ],
+      "approved": true,
+      "approval_date": "2015-09-03",
+      "comment": "Write report on Architecture of DB. Query optimization. Parallel and distributed database systems. Indexing of multidimensional data. New database architectures and query operators."
+    }
+  },
+  {
+    "model": "utsida.coursematch",
+    "fields": {
+      "homeCourse": [
+        "TDT4305"
+      ],
+      "abroadCourse": [
+        "COMPSCI 752",
+        "Semantic Web Technologies",
+        "University of Auckland"
+      ],
+      "approved": true,
+      "approval_date": "2016-07-20",
+      "comment": "Somewhat different, but acceptable. Not much DB. Som IT3010 (Sammen med f.eks. IS341, essay)."
+    }
+  },
+  {
+    "model": "utsida.coursematch",
+    "fields": {
+      "homeCourse": [
+        "TDT4173"
+      ],
+      "abroadCourse": [
+        "COMPSCI 760",
+        "Datamining and Machine Learning",
+        "University of Auckland"
+      ],
+      "approved": true,
+      "approval_date": "2016-02-04",
+      "comment": " "
+    }
+  },
+  {
+    "model": "utsida.coursematch",
+    "fields": {
+      "homeCourse": [
+        "IT3105"
+      ],
+      "abroadCourse": [
+        "COMPSCI 761",
+        "Advanced Topics in Artificial Intelligence",
+        "University of Auckland"
+      ],
+      "approved": true,
+      "approval_date": "2016-02-04",
+      "comment": "Håvard Hagen Falk"
+    }
+  },
+  {
+    "model": "utsida.coursematch",
+    "fields": {
+      "homeCourse": [
+        "EiT"
+      ],
+      "abroadCourse": [
+        "COMPSCI 765",
+        "Interactive Cognitive Systems",
+        "University of Auckland"
+      ],
+      "approved": true,
+      "approval_date": "2015-09-03",
+      "comment": " "
+    }
+  },
+  {
+    "model": "utsida.coursematch",
+    "fields": {
+      "homeCourse": [
+        "IT3105"
+      ],
+      "abroadCourse": [
+        "COMPSCI 767",
+        "Intelligent Software Agents",
+        "University of Auckland"
+      ],
+      "approved": true,
+      "approval_date": "2016-02-16",
+      "comment": " "
+    }
+  },
+  {
+    "model": "utsida.coursematch",
+    "fields": {
+      "homeCourse": [
+        "TDT4230"
+      ],
+      "abroadCourse": [
+        "COMPSCI 771",
+        "AdvGraph&amp;ImgProc",
+        "University of Auckland"
+      ],
+      "approved": true,
+      "approval_date": "2015-09-03",
+      "comment": "(Only with report on Graphics)"
+    }
+  },
+  {
+    "model": "utsida.coursematch",
+    "fields": {
+      "homeCourse": [
+        "TDT4265"
+      ],
+      "abroadCourse": [
+        "COMPSCI 773",
+        "Intelligent Vision Systems",
+        "University of Auckland"
+      ],
+      "approved": true,
+      "approval_date": "2015-09-03",
+      "comment": " "
+    }
+  },
+  {
+    "model": "utsida.coursematch",
+    "fields": {
+      "homeCourse": [
+        "SØK1151"
+      ],
+      "abroadCourse": [
+        "ENON 151G",
+        "Understanding the Global Economy",
+        "University of Auckland"
+      ],
+      "approved": true,
+      "approval_date": "2016-02-04",
+      "comment": "K-emne / IaS"
+    }
+  },
+  {
+    "model": "utsida.coursematch",
+    "fields": {
+      "homeCourse": [
+        "TIØ4295"
+      ],
+      "abroadCourse": [
+        "ENON 151G",
+        "Understanding the Global Economy",
+        "University of Auckland"
+      ],
+      "approved": true,
+      "approval_date": "2016-02-04",
+      "comment": " "
+    }
+  },
+  {
+    "model": "utsida.coursematch",
+    "fields": {
+      "homeCourse": [
+        "TIØ4146"
+      ],
+      "abroadCourse": [
+        "ENON 151G",
+        "Understanding the Global Economy",
+        "University of Auckland"
+      ],
+      "approved": true,
+      "approval_date": "2016-02-04",
+      "comment": " "
+    }
+  },
+  {
+    "model": "utsida.coursematch",
+    "fields": {
+      "homeCourse": [
+        "TTM4185"
+      ],
+      "abroadCourse": [
+        "INFOSYS 341",
+        "Management of Information Systems",
+        "University of Auckland"
+      ],
+      "approved": true,
+      "approval_date": "2016-02-16",
+      "comment": "For mer info om faget, se her. EiT. Gruppeprosjekt teller 20 %."
+    }
+  },
+  {
+    "model": "utsida.coursematch",
+    "fields": {
+      "homeCourse": [
+        "IAS"
+      ],
+      "abroadCourse": [
+        "INFOSYS 727",
+        "Advanced information security",
+        "University of Auckland"
+      ],
+      "approved": true,
+      "approval_date": "2016-02-04",
+      "comment": "Telematikk-retning. Hvilket fag? EiT. Gruppeprosjekt teller 20 %."
+    }
+  },
+  {
+    "model": "utsida.coursematch",
+    "fields": {
+      "homeCourse": [
+        "IAS"
+      ],
+      "abroadCourse": [
+        "MATHS 363",
+        "Advanced Modelling and Computation",
+        "University of Auckland"
+      ],
+      "approved": true,
+      "approval_date": "2016-09-06",
+      "comment": "Ikke på listen til data, men ligner nok på andre IaS som Matte 2 etc. til at det er greit."
+    }
+  },
+  {
+    "model": "utsida.coursematch",
+    "fields": {
+      "homeCourse": [
+        "TFE4160"
+      ],
+      "abroadCourse": [
+        "PHYSICS 726",
+        "Optoelectronics",
+        "University of Auckland"
+      ],
+      "approved": true,
+      "approval_date": "2016-01-19",
+      "comment": "Godkjennes som ingeniøremne for datateknologi. Hvilket?"
+    }
+  }
+]

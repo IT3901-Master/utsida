@@ -41110,5 +41110,23 @@
       "name": "Cryptography, Introduction",
       "code": "TMA4155"
     }
+  },
+  {
+    "model": "utsida.homecourse",
+    "pk": 4570,
+    "fields": {
+      "description_url": "",
+      "name": "Human Resource Management",
+      "code": "TIØ4164"
+    }
+  },
+  {
+    "model": "utsida.homecourse",
+    "pk": 4571,
+    "fields": {
+      "description_url": "",
+      "name": "Ingeniøremne annet studieprogram",
+      "code": "IAS"
+    }
   }
 ]
