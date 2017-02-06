@@ -18,7 +18,7 @@
     </h3>
 
     <div class="row vertical-space-top-big">
-        <div class="col-md-6">
+        <div id="abroadCourseListContainer" class="col-md-6">
             {% if university %}
                 <h4>Lagrede fag ved {{ university }}, {{ university.country }}</h4>
                 <div id="courseList">
@@ -38,7 +38,7 @@
                 </div>
 
             {% else %}
-                <h3 class="text-center">Du har ikke lagret noen fag</h3>
+                <h3 id="noAbroadCourseHeader" class="text-center">Du har ikke lagret noen fag</h3>
             {% endif %}
             <div class="plus-btn boxShadow borderBox centerCol vertical-space-top noSelect" data-toggle="modal"
                     data-target="#addAbroadModal">+

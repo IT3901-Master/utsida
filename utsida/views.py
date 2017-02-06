@@ -185,6 +185,7 @@ def add_course_match(request):
 def add_abroad_course(request):
     if request.method == 'POST':
         user = User.objects.get(username=request.user)
+        print(request.POST.get('university'))
         university = get_object_or_404(University, name=request.POST.get('university'))
         course = AbroadCourse(code=request.POST.get('code'), name=request.POST.get('name'),
                               study_points=request.POST.get('study_points'), university=university,
@@ -194,7 +195,9 @@ def add_abroad_course(request):
         response_data = {
             "code": request.POST.get('code'),
             "name": request.POST.get('name'),
-            "id": course.pk
+            "id": course.pk,
+            "university": course.university.name,
+            "country": course.university.country.name
         }
         user.profile.saved_courses.add(course)
 

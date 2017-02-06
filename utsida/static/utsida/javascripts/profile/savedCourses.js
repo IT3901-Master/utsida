@@ -32,6 +32,11 @@ var confirmationSettings = {
             $(this).closest('.blockElement').fadeOut("slow", function (here) {
                 block.parentNode.removeChild(block)
             });
+            console.log($('#courseList').children().length);
+            if ($('#courseList').children().length == 1){
+                $('#courseList').remove();
+                $('#universityHeader').innerHTML = "Du har ikke lagret noen fag";
+            }
         }
         else if (type == "course_match") {
             $.post("/profile/remove_course_match/", {'id': id});
@@ -63,6 +68,13 @@ function refreshConfirmation() {
 $('[data-toggle=confirmation]').confirmation(confirmationSettings);
 
 function create_post() {
+    if ($('#id_university').length > 0) {
+        var university = $('#id_university').find(":selected").text();
+    }
+    else {
+        var university = $('#add-form-university').val();
+    }
+    console.log(university);
     $.ajax({
         url: "/abroadCourse/add/",
         type: "POST",
@@ -70,7 +82,7 @@ function create_post() {
             code: $('#add-form-code').val(),
             name: $('#add-form-name').val(),
             url: $('#add-form-url').val(),
-            university: $('#add-form-university').val(),
+            university: university,
             study_points: $('#add-form-study-points').val()
         },
         success: function (json) {
@@ -87,8 +99,30 @@ function create_post() {
             span2.setAttribute("data-id", json.id);
             span2.className = "glyphicon glyphicon-remove pull-right pointer";
             mainDiv.append(span2);
+
+            //Check if no courses had been added before
+            if ($('#courseList').length == 0) {
+                $('#noAbroadCourseHeader').remove();
+                var courseList = document.createElement('div');
+                courseList.setAttribute("id","courseList");
+                $('#abroadCourseListContainer').prepend(courseList);
+                var universityHeader = document.createElement('h4');
+                universityHeader.innerText = "Lagrede fag ved " + json.university + ', ' + json.country;
+                universityHeader.setAttribute("id","universityHeader");
+                $('#abroadCourseListContainer').prepend(universityHeader);
+
+                //Delete university selection from form and add hidden input
+                $('#id_university').parent().remove();
+
+                var hiddenUniversityInput = document.createElement('input');
+                hiddenUniversityInput.setAttribute("type","hidden");
+                hiddenUniversityInput.setAttribute("id","add-form-university");
+                hiddenUniversityInput.setAttribute("name","university");
+                hiddenUniversityInput.setAttribute("value",json.university);
+                $('#add-abroad-course-form .modal-body')[0].append(hiddenUniversityInput);
+            }
             $('#courseList').append(mainDiv);
-            //$('#add-abroad-course-form').reset();
+            $('#add-abroad-course-form')[0].reset();
 
             refreshConfirmation();
         },
@@ -117,7 +151,6 @@ $('#add-course-form').on('submit', function (event) {
             name: name
         },
         success: function (json) {
-            console.log("YEEEEY, saved!!");
             Messager.init();
             Messager.sendMessage("Faget ble lagt til", "success");
             mainDiv = document.createElement('div');
