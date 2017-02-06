@@ -1,5 +1,6 @@
 from ajax_select import make_ajax_field
 from django import forms
+from django.forms import ChoiceField
 from django.forms.widgets import NumberInput
 from .models import Query, University, CourseMatch, HomeCourse, AbroadCourse
 
@@ -75,9 +76,6 @@ class abroadCourseForm(forms.ModelForm):
             ),
             'name': forms.TextInput(
                 attrs={'id': 'add-form-name', 'required': True, 'placeholder': 'Legg til fag-navn...'}
-            ),
-            'university': forms.TextInput(
-                attrs={'id': 'add-form-university', 'required': True, 'placeholder': 'Velg universitet'}
             ),
             'description_url': forms.URLInput(
                 attrs={'id': 'add-form-url', 'required': False, 'placeholder': 'Legg til fag-url...'}
