@@ -360,7 +360,7 @@ input[type=range]:focus::-webkit-slider-runnable-track {
 
 
 /* 10 - Courses */
-.divider {
+.divider-line {
     position: absolute;
     left: 0;
     border-bottom: 1px solid black;

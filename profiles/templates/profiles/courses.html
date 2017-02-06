@@ -20,7 +20,7 @@
     <div class="row vertical-space-top-big">
         <div class="col-md-6">
             {% if university %}
-                <h4>Lagrede fag ved {{ university }}, {{ university.country }}</h4>
+                <h4 class="text-center">Lagrede fag ved {{ university }}, {{ university.country }}</h4>
                 <div id="courseList">
                     {% for course in courses %}
                         <div onclick="CourseMatcher.markAwayCourse(this)"
@@ -46,22 +46,27 @@
         </div>
 
         <div class="col-md-6">
-            <h4>Dine nødvendige NTNU fag</h4>
-            <div id="homeCourseList">
-                {% if home_courses %}
+            {% if home_courses %}
+                <h4 class="text-center">Dine nødvendige NTNU fag</h4>
+                <div id="homeCourseList">
+
                     {% for course in home_courses %}
                         <div onclick="CourseMatcher.markHomeCourse(this)"
                              class="centerCol courseBlock boxShadow pointer noSelect blockElement">
                             <span id="code">{{ course.code }}</span> - <span id="name">{{ course.name }}</span>
                             <span data-toggle="confirmation" data-type="home_course" data-id="{{ course.id }}"
                                   class="glyphicon glyphicon-remove pull-right pointer">
-                                </span>
+                            </span>
                         </div>
                     {% endfor %}
-                {% else %}
-                    <p class="text-center">Du har ikke lagret noen fag</p>
-                {% endif %}
-                <div class = "centerCol courseBlock boxShadow pointer noSelect blockElement" id="addHomeCourseBlock">
+                </div>
+
+            {% else %}
+                <h4 class="text-center">Du har ikke lagret noen nødvendige NTNU fag</h4>
+                <div id="homeCourseList"></div>
+            {% endif %}
+
+                <div class ="centerCol courseBlock boxShadow pointer noSelect blockElement" id="addHomeCourseBlock">
                     <form id="add-course-form">
                         <div class="row">
                             <div class="col-md-9">
@@ -75,7 +80,7 @@
                         </div>
                     </form>
                 </div>
-            </div>
+
             <div class="plus-btn centerCol boxShadow vertical-space-top noSelect" onclick="CourseMatcher.toggleAddHomeCourse()" id="toggleAddHomeCourseBtn">+</div>
 
         </div>
@@ -90,7 +95,8 @@
         </div>
     </div>
 
-    <div class="divider"></div>
+    <div class="divider-line"></div>
+
 
     <div class="row vertical-space-top-big vertical-space-bottom-big">
         <div class="col-md-12 vertical-space-top-big">
