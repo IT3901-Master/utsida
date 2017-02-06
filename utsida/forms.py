@@ -28,6 +28,7 @@ class QueryCaseBaseForm(forms.ModelForm):
         self.fields["homeInstitute"].required = False
         self.fields["continent"].required = False
         self.fields["continent"].widget.attrs.update({'id': 'continentField'})
+        self.fields["continent"].widget.attrs.update({'onchange': 'filterCountries()'})
         self.fields["country"].required = False
         self.fields["country"].widget.attrs.update({'id': 'countryField'})
         self.fields["university"].required = False

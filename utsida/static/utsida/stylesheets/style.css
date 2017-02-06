@@ -359,6 +359,16 @@ input[type=range]:focus::-webkit-slider-runnable-track {
 }
 
 
+/* 10 - Courses */
+.divider {
+    position: absolute;
+    left: 0;
+    border-bottom: 1px solid black;
+    opacity: 0.3;
+    width: 100%;
+}
+
+
 
 
 
