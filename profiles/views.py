@@ -385,13 +385,15 @@ def edit_status_application(request):
 def save_home_course(request):
     if request.method == 'POST':
         user = User.objects.get(username=request.user)
-        home_course = get_object_or_404(HomeCourse,name=request.POST.get('name'),code=request.POST.get('code'))
-        user.profile.coursesToTake.add(home_course)
-
         response_data = {}
-        response_data["code"] = request.POST.get('code')
-        response_data["name"] = request.POST.get('name')
-        response_data["id"] = home_course.pk
+        home_course = get_object_or_404(HomeCourse,name=request.POST.get('name'),code=request.POST.get('code'))
+        if (user.profile.coursesToTake.filter(code=request.POST.get('code'))):
+            response_data["error"] = "Faget finnes allerede i din profil"
+        else:
+            user.profile.coursesToTake.add(home_course)
+            response_data["code"] = request.POST.get('code')
+            response_data["name"] = request.POST.get('name')
+            response_data["id"] = home_course.pk
 
         return HttpResponse(
             json.dumps(response_data),

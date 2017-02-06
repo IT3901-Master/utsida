@@ -7,7 +7,7 @@ var removeCourse = function (block, code, university) {
     block.parentNode.removeChild(block);
 };
 
-var removeHomeCourse = function(course) {
+var removeHomeCourse = function (course) {
     console.log(course)
 }
 
@@ -33,7 +33,7 @@ var confirmationSettings = {
                 block.parentNode.removeChild(block)
             });
             console.log($('#courseList').children().length);
-            if ($('#courseList').children().length == 1){
+            if ($('#courseList').children().length == 1) {
                 $('#courseList').remove();
                 $('#universityHeader').innerHTML = "Du har ikke lagret noen fag";
             }
@@ -59,7 +59,7 @@ var confirmationSettings = {
 };
 
 function refreshConfirmation() {
-    $(document).ajaxStop(function() {
+    $(document).ajaxStop(function () {
         $(document).find('[data-toggle=confirmation]').confirmation(confirmationSettings);
     });
 }
@@ -104,21 +104,21 @@ function create_post() {
             if ($('#courseList').length == 0) {
                 $('#noAbroadCourseHeader').remove();
                 var courseList = document.createElement('div');
-                courseList.setAttribute("id","courseList");
+                courseList.setAttribute("id", "courseList");
                 $('#abroadCourseListContainer').prepend(courseList);
                 var universityHeader = document.createElement('h4');
                 universityHeader.innerText = "Lagrede fag ved " + json.university + ', ' + json.country;
-                universityHeader.setAttribute("id","universityHeader");
+                universityHeader.setAttribute("id", "universityHeader");
                 $('#abroadCourseListContainer').prepend(universityHeader);
 
                 //Delete university selection from form and add hidden input
                 $('#id_university').parent().remove();
 
                 var hiddenUniversityInput = document.createElement('input');
-                hiddenUniversityInput.setAttribute("type","hidden");
-                hiddenUniversityInput.setAttribute("id","add-form-university");
-                hiddenUniversityInput.setAttribute("name","university");
-                hiddenUniversityInput.setAttribute("value",json.university);
+                hiddenUniversityInput.setAttribute("type", "hidden");
+                hiddenUniversityInput.setAttribute("id", "add-form-university");
+                hiddenUniversityInput.setAttribute("name", "university");
+                hiddenUniversityInput.setAttribute("value", json.university);
                 $('#add-abroad-course-form .modal-body')[0].append(hiddenUniversityInput);
             }
             $('#courseList').append(mainDiv);
@@ -141,8 +141,8 @@ $('#add-abroad-course-form').on('submit', function (event) {
 $('#add-course-form').on('submit', function (event) {
     event.preventDefault();
     var course = $('#id_coursesToTake').val();
-    var code = course.split(/-(.+)/)[0].replace(" ","");
-    var name = course.split(/-(.+)/)[1].replace(" ","");
+    var code = course.split(/-(.+)/)[0].replace(" ", "");
+    var name = course.split(/-(.+)/)[1].replace(" ", "");
     $.ajax({
         url: "/profile/save_home_course/",
         type: "POST",
@@ -151,20 +151,27 @@ $('#add-course-form').on('submit', function (event) {
             name: name
         },
         success: function (json) {
+
             Messager.init();
-            Messager.sendMessage("Faget ble lagt til", "success");
-            mainDiv = document.createElement('div');
-            mainDiv.setAttribute('onclick', "CourseMatcher.markAwayCourse(this)");
-            mainDiv.className = "centerCol courseBlock boxShadow pointer noSelect blockElement";
-            mainDiv.innerHTML = "<span id='code'>" + json.code + "</span>" + ' - ' + "<span id='name'>" + json.name + "</span>";
-            span2 = document.createElement('span');
-            span2.setAttribute("data-toggle", "confirmation");
-            span2.setAttribute("data-type", "home_course");
-            span2.setAttribute("data-id", json.id);
-            span2.className = "glyphicon glyphicon-remove pull-right pointer";
-            mainDiv.append(span2);
-            $('#homeCourseList').append(mainDiv);
-            refreshConfirmation();
+            if (json.error) {
+                Messager.sendMessage(json.error,"danger");
+            }
+            else {
+                Messager.sendMessage("Faget ble lagt til", "success");
+                mainDiv = document.createElement('div');
+                mainDiv.setAttribute('onclick', "CourseMatcher.markAwayCourse(this)");
+                mainDiv.className = "centerCol courseBlock boxShadow pointer noSelect blockElement";
+                mainDiv.innerHTML = "<span id='code'>" + json.code + "</span>" + ' - ' + "<span id='name'>" + json.name + "</span>";
+                span2 = document.createElement('span');
+                span2.setAttribute("data-toggle", "confirmation");
+                span2.setAttribute("data-type", "home_course");
+                span2.setAttribute("data-id", json.id);
+                span2.className = "glyphicon glyphicon-remove pull-right pointer";
+                mainDiv.append(span2);
+                $('#homeCourseList').prepend(mainDiv);
+                $('#id_coursesToTake').val('');
+                refreshConfirmation();
+            }
         },
         error: function (xhr, errmsg, err) {
 
