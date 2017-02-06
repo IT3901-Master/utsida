@@ -12,7 +12,7 @@
     <div class="row vertical-space-top-big">
 
         <div class="col-md-4">
-            <a class="btn btn-primary main-btn square-corners"
+            <a class="btn btn-primary main-btn square-corners boxShadow"
                href="/profile/courses"
                data-container="body"
                data-toggle="popover"
@@ -24,7 +24,7 @@
         </div>
 
         <div class="col-md-4">
-            <a class="btn btn-primary main-btn square-corners"
+            <a class="btn btn-primary main-btn square-corners boxShadow"
                href="/courseMatch"
                data-container="body"
                data-toggle="popover"
@@ -35,7 +35,7 @@
         </div>
 
         <div class="col-md-4">
-            <a class="btn btn-primary main-btn square-corners"
+            <a class="btn btn-primary main-btn square-corners boxShadow"
                href="/profile/soknader"
                data-container="body"
                data-toggle="popover"
@@ -49,7 +49,7 @@
 
     <div class="row vertical-space-top-big">
         <div class="col-md-4 col-md-offset-4">
-            <a class="btn btn-success main-btn square-corners"
+            <a class="btn btn-success main-btn square-corners boxShadow"
                href="/process"
                data-container="body"
                data-toggle="popover"
@@ -68,17 +68,13 @@
         </div>
     </div>
 
-    <script>
-        $(function() {
-            $('#world-map').vectorMap({map: 'world_mill'});
-        });
-    </script>
-
     <script> setTimeout(function() {$('#sucessAlert').fadeOut('slow');}, 5000);</script>
 
     {% load staticfiles %}
     <script src="{% static 'utsida/javascripts/jquery.jvectormap.min.js' %}"></script>
     <script src="{% static 'utsida/javascripts/jquery-jvectormap-world-mill.js' %}"></script>
+    <script src="{% static 'utsida/javascripts/frontPage/map.js' %}"></script>
+    <script src="{% static 'utsida/javascripts/frontPage/country_codes.js' %}"></script>
 
 {% endblock %}
 
