@@ -309,6 +309,18 @@ input[type=range]:focus::-webkit-slider-runnable-track {
     text-overflow: ellipsis;
 }
 
+.savedCoursesContainer {
+    position: fixed;
+    left: 20px;
+    top: 70px;
+    z-index: 2;
+    width: 13%;
+}
+#savedCoursesContainerBody {
+    display: none;
+}
+
+
 /* 8 - Saved Courses */
 .courseBlock {
     background-color: white;
