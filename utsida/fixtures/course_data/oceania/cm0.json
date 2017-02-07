@@ -90,8 +90,9 @@
         "Visualization, Computer Graphics &amp; Data Analysis",
         "University of Queensland"
       ],
-      "approved": false,
-      "comment": "vår (grafikk 50% ok),image part not covered"
+      "approved": true,
+      "approval_date": "2015-01-15",
+      "comment": "vår (grafikk 50% ok)"
     }
   },
   {
@@ -130,22 +131,6 @@
     "model": "utsida.coursematch",
     "fields": {
       "homeCourse": [
-        "TDT4242"
-      ],
-      "abroadCourse": [
-        "CSSE2002",
-        "Programming in the largeCOMP2500  Adv SE (Intro!)",
-        "University of Queensland"
-      ],
-      "approved": true,
-      "approval_date": "2016-01-11",
-      "comment": "PostGrad, men for likt TDT4100/4102COMP2500 / COMP7908 / CSSE7023 same"
-    }
-  },
-  {
-    "model": "utsida.coursematch",
-    "fields": {
-      "homeCourse": [
         "TDT4258"
       ],
       "abroadCourse": [
@@ -171,14 +156,14 @@
       ],
       "approved": true,
       "approval_date": "2015-09-24",
-      "comment": "COMP4301 (COMP7301) is equal. vårvår"
+      "comment": "COMP4301 (COMP7301) is equal. vår"
     }
   },
   {
     "model": "utsida.coursematch",
     "fields": {
       "homeCourse": [
-        "TDT4290"
+        "TDT4295"
       ],
       "abroadCourse": [
         "CSSE4004",
@@ -186,7 +171,7 @@
         "University of Queensland"
       ],
       "approved": false,
-      "comment": "COMP4301 (COMP7301) is equal. vårvår"
+      "comment": "COMP4301 (COMP7301) is equal. vår"
     }
   },
   {
@@ -258,6 +243,22 @@
     "fields": {
       "homeCourse": [
         "TDT4245"
+      ],
+      "abroadCourse": [
+        "DECO3500",
+        "Social &amp; Mobile Computing",
+        "University of Queensland"
+      ],
+      "approved": true,
+      "approval_date": "2015-01-15",
+      "comment": "høst, 70% prosjekt"
+    }
+  },
+  {
+    "model": "utsida.coursematch",
+    "fields": {
+      "homeCourse": [
+        "EiT"
       ],
       "abroadCourse": [
         "DECO3500",
@@ -373,7 +374,7 @@
       ],
       "abroadCourse": [
         "INFS1300",
-        "Web From The Inside Out (50% project)",
+        "Web From The Inside Out",
         "University of Queensland"
       ],
       "approved": true,
@@ -459,6 +460,22 @@
       "approved": true,
       "approval_date": "2016-09-06",
       "comment": "InfosysHøst"
+    }
+  },
+  {
+    "model": "utsida.coursematch",
+    "fields": {
+      "homeCourse": [
+        "TMM4230"
+      ],
+      "abroadCourse": [
+        "INFS7204",
+        "ServiceOriented Architectures",
+        "University of Queensland"
+      ],
+      "approved": true,
+      "approval_date": "2016-01-11",
+      "comment": "Høst"
     }
   },
   {

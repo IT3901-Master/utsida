@@ -1,0 +1,223 @@
+[
+  {
+    "model": "utsida.coursematch",
+    "fields": {
+      "homeCourse": [
+        "TMA4240"
+      ],
+      "abroadCourse": [
+        "7103",
+        "Estadistica Técnica",
+        "Universidad de Buenos Aires"
+      ],
+      "approved": false,
+      "comment": "Ask Math department (P. Bergh)"
+    }
+  },
+  {
+    "model": "utsida.coursematch",
+    "fields": {
+      "homeCourse": [
+        "TDT4110"
+      ],
+      "abroadCourse": [
+        "7502",
+        "Algoritmos y Programación I",
+        "Universidad de Buenos Aires"
+      ],
+      "approved": true,
+      "approval_date": "2016-07-25",
+      "comment": " "
+    }
+  },
+  {
+    "model": "utsida.coursematch",
+    "fields": {
+      "homeCourse": [
+        "TDT4102"
+      ],
+      "abroadCourse": [
+        "7502",
+        "Algoritmos y Programación I",
+        "Universidad de Buenos Aires"
+      ],
+      "approved": true,
+      "approval_date": "2016-07-25",
+      "comment": " "
+    }
+  },
+  {
+    "model": "utsida.coursematch",
+    "fields": {
+      "homeCourse": [
+        "TDT4102"
+      ],
+      "abroadCourse": [
+        "7504",
+        "Algoritmos y Programación II",
+        "Universidad de Buenos Aires"
+      ],
+      "approved": true,
+      "approval_date": "2016-07-25",
+      "comment": " "
+    }
+  },
+  {
+    "model": "utsida.coursematch",
+    "fields": {
+      "homeCourse": [
+        "TDT4165"
+      ],
+      "abroadCourse": [
+        "7516",
+        "Lenguajes de Programación",
+        "Universidad de Buenos Aires"
+      ],
+      "approved": true,
+      "approval_date": "2015-09-09",
+      "comment": " "
+    }
+  },
+  {
+    "model": "utsida.coursematch",
+    "fields": {
+      "homeCourse": [
+        "TDT4136"
+      ],
+      "abroadCourse": [
+        "7523",
+        "Inteligencia Artificial",
+        "Universidad de Buenos Aires"
+      ],
+      "approved": true,
+      "approval_date": "2015-09-09",
+      "comment": " "
+    }
+  },
+  {
+    "model": "utsida.coursematch",
+    "fields": {
+      "homeCourse": [
+        "TDT4140"
+      ],
+      "abroadCourse": [
+        "7544",
+        "Admin. y Control de Proyectos Inform. I",
+        "Universidad de Buenos Aires"
+      ],
+      "approved": true,
+      "approval_date": "2015-09-13",
+      "comment": " "
+    }
+  },
+  {
+    "model": "utsida.coursematch",
+    "fields": {
+      "homeCourse": [
+        "TDT4175"
+      ],
+      "abroadCourse": [
+        "7544",
+        "Admin. y Control de Proyectos Inform. I",
+        "Universidad de Buenos Aires"
+      ],
+      "approved": false,
+      "comment": "7544 er mest prosjektstyring"
+    }
+  },
+  {
+    "model": "utsida.coursematch",
+    "fields": {
+      "homeCourse": [
+        "TDT4171"
+      ],
+      "abroadCourse": [
+        "7550",
+        "Introd. a los Sistemas Inteligentes",
+        "Universidad de Buenos Aires"
+      ],
+      "approved": true,
+      "approval_date": "2015-09-09",
+      "comment": " "
+    }
+  },
+  {
+    "model": "utsida.coursematch",
+    "fields": {
+      "homeCourse": [
+        "TDT4240"
+      ],
+      "abroadCourse": [
+        "7553",
+        "Técnicas de Producción de Software ll",
+        "Universidad de Buenos Aires"
+      ],
+      "approved": true,
+      "approval_date": "2016-07-25",
+      "comment": "Ask Alf Inge Wang"
+    }
+  },
+  {
+    "model": "utsida.coursematch",
+    "fields": {
+      "homeCourse": [
+        "TDT4140"
+      ],
+      "abroadCourse": [
+        "7553",
+        "Técnicas de Producción de Software ll",
+        "Universidad de Buenos Aires"
+      ],
+      "approved": true,
+      "approval_date": "2016-07-25",
+      "comment": "Ask Alf Inge Wang"
+    }
+  },
+  {
+    "model": "utsida.coursematch",
+    "fields": {
+      "homeCourse": [
+        "TMA4135"
+      ],
+      "abroadCourse": [
+        "7568",
+        "Sistemas de Soporte para Celdas de Producción Flexible",
+        "Universidad de Buenos Aires"
+      ],
+      "approved": false,
+      "comment": "Ask Math department (P. Bergh)"
+    }
+  },
+  {
+    "model": "utsida.coursematch",
+    "fields": {
+      "homeCourse": [
+        "TDT4173"
+      ],
+      "abroadCourse": [
+        "7570",
+        "Sistemas de Programacción no Convencional de Robots",
+        "Universidad de Buenos Aires"
+      ],
+      "approved": true,
+      "approval_date": "2016-07-29",
+      "comment": "evt. annet AI-fag"
+    }
+  },
+  {
+    "model": "utsida.coursematch",
+    "fields": {
+      "homeCourse": [
+        "TDT4240"
+      ],
+      "abroadCourse": [
+        "7573",
+        "Arquitectura de Software",
+        "Universidad de Buenos Aires"
+      ],
+      "approved": true,
+      "approval_date": "2016-07-29",
+      "comment": " "
+    }
+  }
+]
