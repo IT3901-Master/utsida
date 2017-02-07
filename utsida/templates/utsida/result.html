@@ -6,11 +6,26 @@
 {% block content %}
     {% load result_extras %}
 
+    <div id="savedCoursesContainer" class="panel panel-primary square-corners boxShadow savedCoursesContainer">
+        <div class="panel-heading pointer noSelect square-corners" onclick="toggleSavedCoursesContainer()">
+            Dine NTNU fag
+            <span class="badge">{{ user.profile.coursesToTake.all.count }}</span>
+            <span id="savedCoursesContainerChevron" class="glyphicon glyphicon-chevron-down pull-right"></span>
+        </div>
+        <div class="panel-body" id="savedCoursesContainerBody">
+            <ul>
+                {% for course in user.profile.coursesToTake.all %}
+                    <li>{{ course }}</li>
+                {% endfor %}
+            </ul>
+        </div>
+    </div>
+
     <div id="selectedCourseContainer" class="panel panel-primary square-corners boxShadow selectedCourseContainer">
-        <div id="handle" class="panel-heading square-corners">
+        <div id="handle" class="panel-heading square-corners pointer" onclick="courseSelector.toggleSelectedCourses()">
             Dine valgte fag
             <span class="badge" id="numSelectedCoursesBadge"></span>
-            <span id="selectedCourseToggleBtn" onclick="courseSelector.toggleSelectedCourses()" class="pull-right glyphicon glyphicon-chevron-up"></span>
+            <span id="selectedCourseToggleBtn" class="pull-right glyphicon glyphicon-chevron-up"></span>
         </div>
         <div id="selectedCourseBody" class="panel-body">
             <ul id="selectedCourseList"></ul>
@@ -110,6 +125,10 @@
         <button class="btn btn-success boxShadow square-corners checkoutBtn" onclick="courseSelector.checkout()">Gå til lagrede fag <span class="glyphicon glyphicon-chevron-right"></span></button>
     </div>
 
+    <script>
+
+    </script>
+
     {% load staticfiles %}
     <script src="{% static 'utsida/javascripts/result/showHiddenContent.js' %}"></script>
     <script src="{% static 'utsida/javascripts/result/universityHighlighter.js' %}"></script>
@@ -119,4 +138,3 @@
 
 
 {% endblock %}
-
