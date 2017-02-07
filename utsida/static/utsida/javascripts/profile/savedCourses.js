@@ -77,18 +77,17 @@ function create_post() {
             $('#addAbroadModal').modal('hide');
             Messager.init();
             Messager.sendMessage("Faget ble lagt til", "success");
-            mainDiv = document.createElement('div');
+            var mainDiv = document.createElement('div');
             mainDiv.setAttribute('onclick', "CourseMatcher.markAwayCourse(this)");
             mainDiv.className = "centerCol courseBlock boxShadow pointer noSelect blockElement";
             mainDiv.innerHTML = "<span id='code'>" + json.code + "</span>" + ' - ' + "<span id='name'>" + json.name + "</span>";
-            span2 = document.createElement('span');
+            var span2 = document.createElement('span');
             span2.setAttribute("data-toggle", "confirmation");
             span2.setAttribute("data-type", "abroad_course");
             span2.setAttribute("data-id", json.id);
             span2.className = "glyphicon glyphicon-remove pull-right pointer";
             mainDiv.append(span2);
             $('#courseList').append(mainDiv);
-            //$('#add-abroad-course-form').reset();
 
             refreshConfirmation();
         },
