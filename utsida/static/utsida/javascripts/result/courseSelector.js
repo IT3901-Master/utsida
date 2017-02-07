@@ -14,7 +14,7 @@ courseSelector = {
         numSelectedCoursesBadge: document.getElementById("numSelectedCoursesBadge"),
         selectedCourseFooter: document.getElementById("selectedCourseFooter"),
         selectedCourseList: document.getElementById("selectedCourseList"),
-        selectedCourseContainer: document.getElementById("selectedCourseContainer")
+        selectedCourseContainer: document.getElementById("selectedCourseContainer"),
     },
 
     init: function() {
@@ -89,6 +89,7 @@ courseSelector = {
         s.selectedCourseBody.style.display = s.selectedCourseBody.style.display == "none" ? "block" : "none";
         s.selectedCourseToggleBtn.className = s.selectedCourseToggleBtn.className == "pull-right glyphicon glyphicon-chevron-down" ? "pull-right glyphicon glyphicon-chevron-up" : "pull-right glyphicon glyphicon-chevron-down";
         s.selectedCourseFooter.style.display = s.selectedCourseFooter.style.display == "none" ? "block" : "none";
+        s.selectedCourseContainer.style.width = s.selectedCourseContainer.style.width == "13%" ? "30%" : "13%";
     },
 
     hideContainer: function() {
