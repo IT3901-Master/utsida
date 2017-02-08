@@ -307,7 +307,6 @@ def save_course_match_id(request):
         id = request.POST["id"]
         stored_course_match = get_object_or_404(CourseMatch, id=id)
         hasMatch = user.profile.saved_course_matches.all().filter(id=id)
-        response_data = {}
         same_university_as_stored = user.profile.saved_course_matches.all()[0].abroadCourse.university.name == stored_course_match.abroadCourse.university.name
         if (hasMatch):
             return HttpResponse(status=409)
