@@ -17,6 +17,22 @@ for (var i = 0; i < acc.length; i++) {
 }
 
 
+var savedCoursesContainer = document.getElementById("savedCoursesContainer");
+var savedCoursesContainerBody = document.getElementById("savedCoursesContainerBody");
+var savedCoursesContainerChevron = document.getElementById("savedCoursesContainerChevron");
+
+var toggleSavedCoursesContainer = function() {
+    savedCoursesContainer.style.width = savedCoursesContainer.style.width === "30%" ? "13%" : "30%";
+    savedCoursesContainerBody.style.display = savedCoursesContainerBody.style.display === "block" ? "none" : "block";
+    if (savedCoursesContainerChevron.className === "glyphicon glyphicon-chevron-down pull-right") {
+        savedCoursesContainerChevron.className = "glyphicon glyphicon-chevron-up pull-right";
+    }
+    else if (savedCoursesContainerChevron.className === "glyphicon glyphicon-chevron-up pull-right"){
+        savedCoursesContainerChevron.className = "glyphicon glyphicon-chevron-down pull-right";
+    }
+};
+
+
 // Uncomment to remove textwrapping on overflowing text in results panel headings
 /*
 for (var j = 0; j < headers.length; j++) {

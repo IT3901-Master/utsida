@@ -156,12 +156,21 @@ html, body {
 /* 5.0 - Index */
 
 .main-btn {
-    width: 250px;
-    height: 70px;
-    line-height: 57px;
+    width: 100%;
+    height: 90px;
+    line-height: 70px;
     vertical-align: middle;
     font-weight: bold;
     font-size: 18px;
+}
+
+.gradient-bar {
+    height: 25px;
+    background: red; /* For browsers that do not support gradients */
+    background: -webkit-linear-gradient(left, #cceeff , #0077b3); /* For Safari 5.1 to 6.0 */
+    background: -o-linear-gradient(right, #cceeff, #0077b3); /* For Opera 11.1 to 12.0 */
+    background: -moz-linear-gradient(right, #cceeff, #0077b3); /* For Firefox 3.6 to 15 */
+    background: linear-gradient(to right, #cceeff , #0077b3); /* Standard syntax (must be last) */
 }
 
 
@@ -300,6 +309,18 @@ input[type=range]:focus::-webkit-slider-runnable-track {
     text-overflow: ellipsis;
 }
 
+.savedCoursesContainer {
+    position: fixed;
+    left: 20px;
+    top: 70px;
+    z-index: 2;
+    width: 13%;
+}
+#savedCoursesContainerBody {
+    display: none;
+}
+
+
 /* 8 - Saved Courses */
 .courseBlock {
     background-color: white;
@@ -356,6 +377,16 @@ input[type=range]:focus::-webkit-slider-runnable-track {
 .bg-success {
     background-color: #dff0d8;
     transition: all 1s ease 0s;
+}
+
+
+/* 10 - Courses */
+.divider-line {
+    position: absolute;
+    left: 0;
+    border-bottom: 1px solid black;
+    opacity: 0.3;
+    width: 100%;
 }
 
 
