@@ -1,0 +1,41 @@
+{% extends "utsida/layout.html" %}
+
+{% block content %}
+    {% load widget_tweaks %}
+    <div class="row vertical-space-bottom-big">
+        <div class="col-md-12">
+            <h2 class="text-center">Velg universitetet du vil se godkjente fag for</h2>
+            <h3 class="subTitle text-center"> Fag er foreløpig bare hentet fra WIKI sidene til IDI</h3>
+        </div>
+    </div>
+
+
+    <div class="row">
+        <div class="col-md-6 col-md-offset-3">
+            <form action="/courseMatch/university/" method="post">
+            {% csrf_token %}
+                <div class="form-group">
+                    <select id="continent_select" class="form-control" name="university">
+                        <option value="" disabled selected>-Velg kontinent-</option>
+                        {% for continent in continent_list %}
+                            <option>{{ continent }}</option>
+                        {% endfor %}
+                    </select>
+                </div>
+                <div id="university_select_country"></div>
+                <div id="university_select_university"></div>
+                <div class="form-group vertical-space-top-big">
+                    <button id="selectUniversityButton" type="submit" disabled
+                            class="btn btn-primary square-corners center-block searchBtn disabled">Velg
+                        <span
+                                class="glyphicon glyphicon-chevron-right"></span></button>
+
+                </div>
+            </form>
+        </div>
+    </div>
+
+    {% load staticfiles %}
+    <script src="{% static 'utsida/javascripts/courseMatch/selectUniversity.js' %}"></script>
+
+{% endblock %}

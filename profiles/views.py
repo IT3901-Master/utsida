@@ -307,8 +307,11 @@ def save_course_match_id(request):
         id = request.POST["id"]
         stored_course_match = get_object_or_404(CourseMatch, id=id)
         hasMatch = user.profile.saved_course_matches.all().filter(id=id)
+        same_university_as_stored = user.profile.saved_course_matches.all()[0].abroadCourse.university.name == stored_course_match.abroadCourse.university.name
         if (hasMatch):
             return HttpResponse(status=409)
+        elif(not same_university_as_stored):
+            return HttpResponse(status=406)
         else:
             user.profile.saved_course_matches.add(stored_course_match)
             return HttpResponse({'code': 200, 'message': 'Match lagret i profil'})
@@ -385,13 +388,15 @@ def edit_status_application(request):
 def save_home_course(request):
     if request.method == 'POST':
         user = User.objects.get(username=request.user)
-        home_course = get_object_or_404(HomeCourse,name=request.POST.get('name'),code=request.POST.get('code'))
-        user.profile.coursesToTake.add(home_course)
-
         response_data = {}
-        response_data["code"] = request.POST.get('code')
-        response_data["name"] = request.POST.get('name')
-        response_data["id"] = home_course.pk
+        home_course = get_object_or_404(HomeCourse,name=request.POST.get('name'),code=request.POST.get('code'))
+        if (user.profile.coursesToTake.filter(code=request.POST.get('code'))):
+            response_data["error"] = "Faget finnes allerede i din profil"
+        else:
+            user.profile.coursesToTake.add(home_course)
+            response_data["code"] = request.POST.get('code')
+            response_data["name"] = request.POST.get('name')
+            response_data["id"] = home_course.pk
 
         return HttpResponse(
             json.dumps(response_data),
