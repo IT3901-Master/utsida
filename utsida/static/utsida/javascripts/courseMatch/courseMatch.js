@@ -42,6 +42,10 @@ var addCourseMatch = function (id) {
                     Messager.init();
                     Messager.sendMessage("Koblingen er allerede i din profil!", "danger");
                 }
+                else if (error.status == 406) {
+                    Messager.init();
+                    Messager.sendMessage("Det finnes fag fra et annet universitet i din profil", "danger");
+                }
             }
         });
 };
