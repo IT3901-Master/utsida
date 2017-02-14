@@ -7,3 +7,6 @@ fuzzywuzzy==0.14.0
 pycountry==16.11.8
 titlecase==0.8.1
 urllib3==1.13.1
+requests==2.11.1
+simplejson==3.8.2
+
