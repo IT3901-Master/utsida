@@ -1,12 +1,9 @@
-from ajax_select import make_ajax_form
 from django.contrib import admin
 
-from profiles.forms import ProfileForm, AdminProfileForm
+from profiles.forms import AdminProfileForm
 from profiles.models import Profile
 from utsida.models import *
 from django.contrib.auth.admin import UserAdmin as BaseUserAdmin
-# Register your models here.
-
 
 admin.site.register(AbroadCourse)
 admin.site.register(Case)

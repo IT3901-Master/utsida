@@ -19,13 +19,6 @@ from utsida.forms import abroadCourseForm
 from .models import *
 
 
-@login_required
-def get_user_profile(request, username):
-    user = User.objects.get(username=username)
-    context = {"user": user}
-    return render(request, 'profiles/user_profile.html', context)
-
-
 class MyRegistrationForm(object):
     pass
 
@@ -53,7 +46,7 @@ def register_user(request):
     else:
         user_form = UserForm()
         profile_form = ProfileRegisterForm()
-    return render(request, 'profiles/register.html', {
+    return render(request, 'registration/register.html', {
         'user_form': user_form,
         'profile_form': profile_form
     })
@@ -321,7 +314,7 @@ def save_course_match_id(request):
 class ApplicationListView(LoginRequiredMixin, ListView):
 
     model = Application
-    template_name = 'profiles/application_list.html'
+    template_name = 'application/application_list.html'
 
     def get_queryset(self):
         return Application.objects.filter(user=self.request.user)
@@ -335,7 +328,7 @@ class ApplicationListView(LoginRequiredMixin, ListView):
 class ApplicationListAll(UserPassesTestMixin, ListView):
 
     model = Application
-    template_name = 'profiles/application_list_all.html'
+    template_name = 'application/application_list_all.html'
 
     def test_func(self):
         return self.request.user.groups.filter(name__in=['Advisors'])

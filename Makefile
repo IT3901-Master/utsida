@@ -1,5 +1,10 @@
 
 #loading startup data for the application
+
+load:
+	make loadstart
+	make loadcourse
+
 loadstart:
 	python3 manage.py loaddata start_data/continents.json
 	python3 manage.py loaddata start_data/countries.json
@@ -36,13 +41,17 @@ loadcourse:
 
 
 makemigrations:
-	python3 manage.py makemigrations utsida
-	python3 manage.py makemigrations profiles
+	python3 manage.py makemigrations utsida --settings=config.settings.local
+	python3 manage.py makemigrations profiles --settings=config.settings.local
 
 migrate:
-	python3 manage.py migrate
+	python3 manage.py migrate --settings=config.settings.local
 
-run: 
-	python3 manage.py runserver
+lrun:
+	python3 manage.py runserver --settings=config.settings.local
+	
+prun:
+	python3 manage.py runserver --settings=config.settings.production
+
 super:
 	python3 manage.py createsuperuser
