@@ -1,6 +1,6 @@
 code;level;name;shortName;parentCode;notes
 AD;"1";Andorra;Andorra;;
-AE;"1";"De Forente Arabiske Emirater";"Arab.Emirater";;
+AE;"1";De Forente Arabiske Emirater;"Arab.Emirater";;
 AF;"1";Afghanistan;Afghanistan;;
 AG;"1";"Antigua og Barbuda";"Antigua/Barb.";;
 AI;"1";Anguilla;Anguilla;;
@@ -46,7 +46,7 @@ CL;"1";Chile;Chile;;
 CM;"1";Kamerun;Kamerun;;
 CN;"1";Kina;Kina;;
 CO;"1";Colombia;Colombia;;
-CR;"1";"Costa Rica";"Costa Rica";;
+CR;"1";Costa Rica;"Costa Rica";;
 CU;"1";Cuba;Cuba;;
 CV;"1";"Kapp Verde";"Kapp Verde";;
 CW;"1";Curacao;;;"Ny fra 2011."
@@ -167,7 +167,7 @@ NO;"1";Norge;Norge;;
 NP;"1";Nepal;Nepal;;
 NR;"1";Nauru;Nauru;;
 NU;"1";Niue;Niue;;
-NZ;"1";"New Zealand";"New Zealand";;
+NZ;"1";New Zealand;"New Zealand";;
 OM;"1";Oman;Oman;;
 PA;"1";Panama;Panama;;
 PE;"1";Peru;Peru;;
@@ -245,6 +245,6 @@ XC;"1";"Ceuta og Melilla";"Ceuta/Melilla";;
 XK;"1";Kosovo;Kosovo;;"Ny fra 01.01.2009"
 YE;"1";Jemen;Jemen;;
 YT;"1";Mayotte;Mayotte;;
-ZA;"1";"Sør-Afrika";"Sør-Afrika";;
+ZA;"1";Sør Afrika;"Sør-Afrika";;
 ZM;"1";Zambia;Zambia;;
 ZW;"1";Zimbabwe;Zimbabwe;;

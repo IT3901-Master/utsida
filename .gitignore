@@ -66,3 +66,6 @@ local_settings.py
 db.sqlite3
 media
 UtsidaDB
+
+# Secret files
+config/settings/secrets.py
