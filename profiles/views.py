@@ -34,7 +34,7 @@ def register_user(request):
             user = user_form.save()
             user.refresh_from_db()  # This will load the Profile created by the Signal
             profile_form = ProfileRegisterForm(request.POST,
-                                       instance=user.profile)  # Reload the profile form with the profile instance
+                                               instance=user.profile)  # Reload the profile form with the profile instance
             profile_form.full_clean()
             profile_form.save()
             new_user = authenticate(username=user_form.cleaned_data['username'],
@@ -140,8 +140,10 @@ def save_courses(request):
                     'message': 'Nye valgte fag må være fra samme universitet som dine tidligere lagrede fag.'
                 }))
 
-            if AbroadCourse.objects.all().filter(name=course_name, code=course_code, university=University.objects.all().filter(name=course_uni)):
-                new_course = AbroadCourse.objects.get(name=course_name, code=course_code, university=University.objects.get(name=course_uni))
+            if AbroadCourse.objects.all().filter(name=course_name, code=course_code,
+                                                 university=University.objects.all().filter(name=course_uni)):
+                new_course = AbroadCourse.objects.get(name=course_name, code=course_code,
+                                                      university=University.objects.get(name=course_uni))
                 profile.saved_courses.add(new_course)
                 profile.save()
 
@@ -292,7 +294,6 @@ def save_course_match(request):
             )
 
 
-
 @login_required
 def save_course_match_id(request):
     if request.method == "POST":
@@ -300,19 +301,18 @@ def save_course_match_id(request):
         id = request.POST["id"]
         stored_course_match = get_object_or_404(CourseMatch, id=id)
         hasMatch = user.profile.saved_course_matches.all().filter(id=id)
-        same_university_as_stored = user.profile.saved_course_matches.all()[0].abroadCourse.university.name == stored_course_match.abroadCourse.university.name
+        same_university_as_stored = user.profile.saved_course_matches.all()[
+                                        0].abroadCourse.university.name == stored_course_match.abroadCourse.university.name
         if (hasMatch):
             return HttpResponse(status=409)
-        elif(not same_university_as_stored):
+        elif (not same_university_as_stored):
             return HttpResponse(status=406)
         else:
             user.profile.saved_course_matches.add(stored_course_match)
             return HttpResponse({'code': 200, 'message': 'Match lagret i profil'})
 
 
-
 class ApplicationListView(LoginRequiredMixin, ListView):
-
     model = Application
     template_name = 'application/application_list.html'
 
@@ -324,9 +324,7 @@ class ApplicationListView(LoginRequiredMixin, ListView):
         return context
 
 
-
 class ApplicationListAll(UserPassesTestMixin, ListView):
-
     model = Application
     template_name = 'application/application_list_all.html'
 
@@ -365,11 +363,20 @@ def edit_status_application(request):
         if (change_status_to == "approve"):
             application = Application.objects.get(id=application_id)
             application.status = 'A'
-            application.save()
+            for course_match in application.course_matches.all():
+                cm = CourseMatch.objects.get(id=course_match.pk)
+                cm.approved = True
+                cm.approval_date = datetime.date.today()
+                cm.save()
         elif (change_status_to == "disapprove"):
             application = Application.objects.get(id=application_id)
             application.status = 'D'
             application.save()
+            for course_match in application.course_matches.all():
+                cm = CourseMatch.objects.get(id=course_match.pk)
+                cm.approved = False
+                cm.approval_date = None
+                cm.save()
         else:
             return HttpResponse({'code': 400, 'message': 'invalid request'})
 
@@ -382,7 +389,7 @@ def save_home_course(request):
     if request.method == 'POST':
         user = User.objects.get(username=request.user)
         response_data = {}
-        home_course = get_object_or_404(HomeCourse,name=request.POST.get('name'),code=request.POST.get('code'))
+        home_course = get_object_or_404(HomeCourse, name=request.POST.get('name'), code=request.POST.get('code'))
         if (user.profile.coursesToTake.filter(code=request.POST.get('code'))):
             response_data["error"] = "Faget finnes allerede i din profil"
         else:
