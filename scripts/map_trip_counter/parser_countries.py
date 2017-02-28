@@ -78,38 +78,17 @@ def make_js_file():
         target.write("var country_code_data = {")
         for k, v in COUNTRY_COUNT.items():
 
-            if k == "Brazil":
-                k = "Brasil"
-            elif k == "Sweden":
-                k = "Sverige"
-            elif k == "Germany":
-                k = "Tyskland"
-            elif k == "albania":
-                k = "Albania"
-            elif k == "Columbia":
-                k = "Colombia"
-            elif k == "SørAfrika":
-                k = "Sør Afrika"
-            elif k == "TheNetherlands":
-                k = "Nederland"
-            elif k == "NewZealand":
-                k = "New Zealand"
-            elif k == "CostaRica":
-                k = "Costa Rica"
-
             try:
                 code = COUNTRY_CODE_DICT[k]
 
                 if counter == len(COUNTRY_COUNT)-1:
-                    target.write("'" + COUNTRY_CODE_DICT[k] + "': " + str(v))
-                    target.write('}')
+                    target.write("'" + code + "': " + str(v))
+                    target.write('};')
                 else:
-                    target.write("'" + COUNTRY_CODE_DICT[k] + "': " + str(v) + ',')
+                    target.write("'" + code + "': " + str(v) + ',')
                     counter += 1
 
             except KeyError as err:
-                print("ERROR: ", err)
-                time.sleep(1)
                 counter += 1
                 continue
 
