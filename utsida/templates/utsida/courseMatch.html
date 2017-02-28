@@ -9,7 +9,7 @@
         {% endif %}
     {% endfor %}
 
-    <div id="selection"> </div>
+    <div id="selection"></div>
 
     <h2 class="text-center vertical-space-bottom-big">Godkjente fag fra {{ university_name }}</h2>
     <table id="example" class="table table-striped" style="opacity: 0">
@@ -28,35 +28,38 @@
         </thead>
         <tbody>
         {% for course_match in course_match_list %}
-            <tr class="clickableTableRow noselect">
-                <td id="toggleFormRow" class="glyphicon glyphicon-chevron-down"></td>
-                {% if course_match.homeCourse.description_url == "" %}
-                    <td>{{ course_match.homeCourse }} </td>
-                {% else %}
-                    <td><a href={{ course_match.homeCourse.description_url }}>{{ course_match.homeCourse }}</a>
-                    </td>
-                {% endif %}
-                {% if course_match.abroadCourse.description_url == "" %}
-                    <td>{{ course_match.abroadCourse }} </td>
-                {% else %}
-                    <td>
-                        <a href={{ course_match.abroadCourse.description_url }}>{{ course_match.abroadCourse }}</a>
-                    </td>
-                {% endif %}
-                <td> {{ course_match.abroadCourse.study_points }}</td>
-                <td> {{ course_match.approval_date }}</td>
-                <td class="select-filter"> {{ course_match.abroadCourse.university }}</td>
-                <td> {{ course_match.comment }}</td>
-                <td class="editRow">
-                    {% if perms.can_edit_course_match %}
-                        <a id="editCourseMatch" class="glyphicon glyphicon-edit pointer"
-                           href="{% url 'update_course_match' id=course_match.id %}"></a>
-                        <a id="deleteCourseMatch" data-toggle="confirmation" data-type="course_match" data-id="{{ course_match.id }}"
-                           class="glyphicon glyphicon-remove pointer"> </a>
+            {% if course_match.approved %}
+                <tr class="clickableTableRow noselect">
+                    <td id="toggleFormRow" class="glyphicon glyphicon-chevron-down"></td>
+                    {% if course_match.homeCourse.description_url == "" %}
+                        <td>{{ course_match.homeCourse }} </td>
+                    {% else %}
+                        <td><a href={{ course_match.homeCourse.description_url }}>{{ course_match.homeCourse }}</a>
+                        </td>
                     {% endif %}
-                </td>
-            <td> {{ course_match.id }}</td>
-            </tr>
+                    {% if course_match.abroadCourse.description_url == "" %}
+                        <td>{{ course_match.abroadCourse }} </td>
+                    {% else %}
+                        <td>
+                            <a href={{ course_match.abroadCourse.description_url }}>{{ course_match.abroadCourse }}</a>
+                        </td>
+                    {% endif %}
+                    <td> {{ course_match.abroadCourse.study_points }}</td>
+                    <td> {{ course_match.approval_date }}</td>
+                    <td class="select-filter"> {{ course_match.abroadCourse.university }}</td>
+                    <td> {{ course_match.comment }}</td>
+                    <td class="editRow">
+                        {% if perms.can_edit_course_match %}
+                            <a id="editCourseMatch" class="glyphicon glyphicon-edit pointer"
+                               href="{% url 'update_course_match' id=course_match.id %}"></a>
+                            <a id="deleteCourseMatch" data-toggle="confirmation" data-type="course_match"
+                               data-id="{{ course_match.id }}"
+                               class="glyphicon glyphicon-remove pointer"> </a>
+                        {% endif %}
+                    </td>
+                    <td> {{ course_match.id }}</td>
+                </tr>
+            {% endif %}
         {% endfor %}
         </tbody>
     </table>
