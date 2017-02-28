@@ -25,7 +25,12 @@ Messager = {
             m.container.className = "hiddenDiv";
         });
         location.href = "#messageContainer";
+        this.fadeMessage();
+    },
+
+    fadeMessage: function() {
+        setTimeout(function() {
+            $(m.container).fadeOut('slow');
+        }, 5000);
     }
-
 };
-

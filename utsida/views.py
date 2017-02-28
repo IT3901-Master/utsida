@@ -71,7 +71,6 @@ def result(request, university=None):
                 "SocialQuality": form.data["socialQualityRating"],
                 "ResidentialQuality": form.data["residentialQualityRating"],
                 "ReceptionQuality": form.data["receptionQualityRating"],
-
             })
             headers = {
                 'content-type': 'application/json'
