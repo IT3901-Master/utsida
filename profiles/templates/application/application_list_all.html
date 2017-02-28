@@ -81,7 +81,13 @@
                         <tbody id="courseMatchList">
                         {% for course in application.course_matches.all %}
                             <tr>
-                            <td> {{ course.abroadCourse.code }} {{ course.abroadCourse.name }}</td>
+                            {% if course.abroadCourse.description_url %}
+                                <td>
+                                    <a href="{{ course.abroadCourse.description_url }}">{{ course.abroadCourse.code }} {{ course.abroadCourse.name }}</a>
+                                </td>
+                            {% else %}
+                                <td> {{ course.abroadCourse.code }} {{ course.abroadCourse.name }}</td>
+                            {% endif %}
                             <td> {{ course.homeCourse.code }} {{ course.homeCourse.name }} </td>
                         {% endfor %}
                         </tbody>

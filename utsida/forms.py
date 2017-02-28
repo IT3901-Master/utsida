@@ -1,5 +1,6 @@
 from ajax_select import make_ajax_field
 from django import forms
+from django.core.validators import URLValidator
 from django.forms import ChoiceField
 from django.forms.widgets import NumberInput
 from .models import Query, University, CourseMatch, HomeCourse, AbroadCourse
@@ -79,7 +80,7 @@ class abroadCourseForm(forms.ModelForm):
                 attrs={'id': 'add-form-name', 'required': True, 'placeholder': 'Legg til fag-navn...'}
             ),
             'description_url': forms.URLInput(
-                attrs={'id': 'add-form-url', 'required': False, 'placeholder': 'Legg til fag-url...'}
+                attrs={'id': 'add-form-url', 'required': False, 'placeholder': 'Legg til fag-url...', "pattern":"https?://.+"}
             ),
             'study_points': forms.NumberInput(
                 attrs={'id': 'add-form-study-points', 'required': False, 'placeholder': 'Legg til antall studiepoeng'}

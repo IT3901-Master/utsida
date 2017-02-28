@@ -191,6 +191,7 @@ def add_abroad_course(request):
         course = AbroadCourse(code=request.POST.get('code'), name=request.POST.get('name'),
                               study_points=request.POST.get('study_points'), university=university,
                               description_url=request.POST.get('url'))
+        course.full_clean()
         course.save()
 
         response_data = {
