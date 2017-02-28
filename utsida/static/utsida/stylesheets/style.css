@@ -306,7 +306,7 @@ input[type=range]:focus::-webkit-slider-runnable-track {
     display: inline-block;
     width: 85%;
     white-space: nowrap;
-    overflow:hidden !important;
+    overflow: hidden !important;
     text-overflow: ellipsis;
 }
 
