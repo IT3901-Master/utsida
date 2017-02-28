@@ -76,6 +76,7 @@ def result(request, university=None):
             headers = {
                 'content-type': 'application/json'
             }
+            print(payload)
 
             r = requests.post("http://localhost:8080/retrieval?casebase=main_case_base&concept%20name=Trip",
                               data=payload,
@@ -213,7 +214,7 @@ def course_match_select_university(request):
     university_list = University.objects.all().filter(country__name=country)
 
     for university in university_list:
-        university.count = len(CourseMatch.objects.all().filter(abroadCourse__university__name=university.name))
+        university.count = len(CourseMatch.objects.all().filter(abroadCourse__university__name=university.name,approved=True))
 
     response_data = []
 
