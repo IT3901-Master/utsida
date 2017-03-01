@@ -133,10 +133,13 @@ def courseMatch(request):
     university = request.POST.get("university")
     # Remove the paranthesis, example: (103)
     university = re.sub(r'\([^)]*\)', '', university)[:-1]
+    full_university = get_object_or_404(University, name=university)
     add_form = CourseMatchForm()
     add_form.fields["abroadCourse"].queryset = AbroadCourse.objects.filter(university__name=university)
     course_matches = CourseMatch.objects.all().filter(abroadCourse__university__name=university)
-    context = {"course_match_list": course_matches, "university_name": university, "add_form": add_form}
+    abroad_course_form = abroadCourseForm()
+    context = {"course_match_list": course_matches, "university_name": university, "university": full_university,
+               "add_form": add_form, "add_abroad_form": abroad_course_form}
     return render(request, "utsida/courseMatch.html", context)
 
 
@@ -167,46 +170,74 @@ def update_course_match(request, id):
 @permission_required('utsida.can_add_course_match')
 def add_course_match(request):
     if request.POST:
-        form = CourseMatchForm(request.POST)
-        if form.is_valid():
-            form.save()
-            university = form.cleaned_data["abroadCourse"].university
-            add_form = CourseMatchForm()
-            add_form.fields["abroadCourse"].queryset = AbroadCourse.objects.filter(university__name=university)
-            course_matches = CourseMatch.objects.all().filter(abroadCourse__university__name=university)
-            context = {"course_match_list": course_matches, "university_name": university, "add_form": add_form}
-            messages.success(request, "Ny fag-kobling ble lagt til")
-            return render(request, "utsida/courseMatch.html", context)
-        else:
-            messages.error(request, "Endre feilene under")
-            return HttpResponse({'code': 500, 'message': 'Du må fylle inn alle feltene'})
+        home_course = get_object_or_404(HomeCourse, code=request.POST['homeCourse'].split('-')[0].strip())
+        abroad_course = get_object_or_404(AbroadCourse, code=request.POST['abroadCourse'].split('-')[0].strip(),
+                                          university__name=request.POST['university'])
+        approved = False
+        if (request.POST['approved'] == "on"):
+            approved = True
+        approval_date = request.POST['approval_date']
+        course_match = CourseMatch(homeCourse=home_course, abroadCourse=abroad_course, approved=approved,
+                                   approval_date=approval_date)
+        course_match.save()
+        university = abroad_course.university
+        add_form = CourseMatchForm()
+        add_form.fields["abroadCourse"].queryset = AbroadCourse.objects.filter(university__name=university)
+        course_matches = CourseMatch.objects.all().filter(abroadCourse__university__name=university)
+        context = {"course_match_list": course_matches, "university_name": university, "add_form": add_form}
+        messages.success(request, "Ny fag-kobling ble lagt til")
+        return render(request, "utsida/courseMatch.html", context)
+    else:
+        messages.error(request, "Endre feilene under")
+        return HttpResponse({'code': 500, 'message': 'Du må fylle inn alle feltene'})
 
+
+# @login_required
+# def add_abroad_course(request):
+#     if request.method == 'POST':
+#         user = User.objects.get(username=request.user)
+#         university = get_object_or_404(University, name=request.POST.get('university'))
+#
+#         course = AbroadCourse.objects.filter(code=request.POST.get('code'),university=university)
+#         if (course):
+#             return HttpResponse(status=409)
+#         else:
+#             course = AbroadCourse(code=request.POST.get('code'), name=request.POST.get('name'),
+#                               study_points=request.POST.get('study_points'), university=university,
+#                               description_url=request.POST.get('url'))
+#
+#         response_data = {
+#             "code": request.POST.get('code'),
+#             "name": request.POST.get('name'),
+#             "id": course.pk,
+#             "university": course.university.name,
+#             "country": course.university.country.name
+#         }
+#
+#         return HttpResponse(
+#             json.dumps(response_data),
+#             content_type="application/json"
+#         )
 
 @login_required
 def add_abroad_course(request):
     if request.method == 'POST':
         user = User.objects.get(username=request.user)
-        print(request.POST.get('university'))
-        university = get_object_or_404(University, name=request.POST.get('university'))
-        course = AbroadCourse(code=request.POST.get('code'), name=request.POST.get('name'),
-                              study_points=request.POST.get('study_points'), university=university,
-                              description_url=request.POST.get('url'))
-        course.full_clean()
-        course.save()
 
-        response_data = {
-            "code": request.POST.get('code'),
-            "name": request.POST.get('name'),
-            "id": course.pk,
-            "university": course.university.name,
-            "country": course.university.country.name
-        }
-        user.profile.saved_courses.add(course)
-
-        return HttpResponse(
-            json.dumps(response_data),
-            content_type="application/json"
-        )
+        abroad_course = AbroadCourse(university=get_object_or_404(University, name=request.POST['university']),
+                                     name=request.POST['name'], code=request.POST['code'],
+                                     description_url=request.POST['description_url'],
+                                     study_points=request.POST['study_points'])
+        abroad_course.save()
+        university = abroad_course.university
+        add_form = CourseMatchForm()
+        add_form.fields["abroadCourse"].queryset = AbroadCourse.objects.filter(university__name=university)
+        course_matches = CourseMatch.objects.all().filter(abroadCourse__university__name=university)
+        context = {"course_match_list": course_matches, "university_name": university, "add_form": add_form}
+        messages.success(request, "Nytt fag ble lagt til")
+        return render(request, "utsida/courseMatch.html", context)
+    else:
+        print("not valid")
 
 
 @login_required
@@ -215,18 +246,20 @@ def course_match_select_university(request):
     university_list = University.objects.all().filter(country__name=country)
 
     for university in university_list:
-        university.count = len(CourseMatch.objects.all().filter(abroadCourse__university__name=university.name,approved=True))
+        university.count = len(
+            CourseMatch.objects.all().filter(abroadCourse__university__name=university.name, approved=True))
 
     response_data = []
 
     for university in university_list:
-        data = {"name":university.name,"count":university.count}
+        data = {"name": university.name, "count": university.count}
         response_data.append(data)
 
     return HttpResponse(
         json.dumps(response_data),
         content_type="application/json"
     )
+
 
 @login_required
 def course_match_select_continent(request):
@@ -238,6 +271,7 @@ def course_match_select_continent(request):
 
     context = {"continent_list": unique_continents}
     return render(request, "utsida/course_match_continent_select.html", context)
+
 
 @login_required
 def course_match_select_country(request):
@@ -252,6 +286,7 @@ def course_match_select_country(request):
         json.dumps(country_list),
         content_type="application/json"
     )
+
 
 @permission_required('utsida.can_delete_course_match')
 @login_required

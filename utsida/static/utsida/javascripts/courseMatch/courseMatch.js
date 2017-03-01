@@ -49,3 +49,45 @@ var addCourseMatch = function (id) {
             }
         });
 };
+
+
+var create_abroad_course = function create_post() {
+    if ($('#id_university').length > 0) {
+        var university = $('#id_university').find(":selected").text();
+    }
+    else {
+        var university = $('#add-form-university').val();
+    }
+    $.ajax({
+        url: "/abroadCourse/add/",
+        type: "POST",
+        data: {
+            code: $('#add-form-code').val(),
+            name: $('#add-form-name').val(),
+            url: $('#add-form-url').val(),
+            university: university,
+            study_points: $('#add-form-study-points').val()
+        },
+        success: function (json) {
+            $('#addAbroadModal').modal('hide');
+            Messager.init();
+            Messager.sendMessage("Faget ble lagt til", "success");
+        },
+        error: function (err) {
+            $('#addAbroadModal').modal('hide');
+            if (err.status == 409) {
+                Messager.init();
+                Messager.sendMessage("faget finnes allerede!", "danger");
+            }
+            else {
+                Messager.init();
+                Messager.sendMessage("Fikk ikke lagt til faget, prøv igjen", "danger")
+            }
+        }
+    })
+};
+
+$('#add-abroad-course-form').on('submit', function (event) {
+    //event.preventDefault();
+    //create_abroad_course();
+});
