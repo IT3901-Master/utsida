@@ -34,3 +34,11 @@ All cusotm overrides done to bootstrap.css
 .dropdown-menu {
     z-index: 1100;
 }
+
+.popover-content {
+    font-size: 16px;
+}
+
+.popover {
+    max-width: 400px;
+}

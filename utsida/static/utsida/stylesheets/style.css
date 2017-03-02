@@ -149,8 +149,6 @@ html, body {
 }
 .author-text {
     font-size: 16px;
-    line-height: 100px;
-    vertical-align: middle;
 }
 
 
@@ -172,6 +170,28 @@ html, body {
     background: -o-linear-gradient(right, #cceeff, #0077b3); /* For Opera 11.1 to 12.0 */
     background: -moz-linear-gradient(right, #cceeff, #0077b3); /* For Firefox 3.6 to 15 */
     background: linear-gradient(to right, #cceeff , #0077b3); /* Standard syntax (must be last) */
+}
+
+.number-circle {
+    border-radius: 90px;
+    width: 40px;
+    height: 40px;
+    color: black;
+    font-weight: bold;
+    font-size: 16px;
+    line-height: 40px;
+    text-align: center;
+}
+.number-circle:hover {
+    background-color: #d9d9d9;
+}
+
+.info-text {
+    font-size: 16px;
+}
+
+.col-padding {
+    padding: 20px;
 }
 
 

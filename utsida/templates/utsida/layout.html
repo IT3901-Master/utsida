@@ -47,11 +47,11 @@
                 {% if user.is_authenticated %}
                     <li><a href="/process">Få anbefaling</a></li>
                     <li><a href="/courseMatch">Fagkoblinger</a></li>
-                    <li><a href="/information">FAQ</a></li>
                 {% endif %}
                 {% if user|has_group:"Advisors" %}
                     <li><a href="/profile/soknader/all">Søknader</a></li>
                 {% endif %}
+                <li class="pull-right"><a href="/information">Om Utsida</a></li>
                 <li class="dropdown menu-button">
                     <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true"
                        aria-expanded="false">
@@ -96,7 +96,8 @@
 
     <div class="footer-wrapper">
         <footer class="footer">
-            <span class="author-text">Utvikles av Lars Liverød Andersen & Truls Mørk Pettersen</span>
+            <span class="author-text">Utvikles av Lars Liverød Andersen & Truls Mørk Pettersen</span><br>
+            <span style="font-size: 20px"><a style="color: white"  href="/information/">Om Utsida</a></span>
         </footer>
     </div>
 </div>
