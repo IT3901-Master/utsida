@@ -89,7 +89,7 @@ $('[data-toggle=changeStatusConfirmation]').confirmation({
                 ref.closest('.courseBlock').removeClass("bg-neutral");
                 ref.closest('.courseBlock').removeClass("bg-danger");
                 ref.closest('.courseBlock').addClass("bg-success");
-                ref.parent().parent().siblings('.status')[0].innerText = "Godkjent"
+                ref.parent().parent().parent().find('.status')[0].innerText = "Godkjent";
             });
         }
         else {
@@ -97,7 +97,7 @@ $('[data-toggle=changeStatusConfirmation]').confirmation({
                 ref.closest('.courseBlock').removeClass("bg-success");
                 ref.closest('.courseBlock').removeClass("bg-neutral");
                 ref.closest('.courseBlock').addClass("bg-danger");
-                ref.parent().parent().siblings('.status')[0].innerText = "Ikke godkjent"
+                ref.parent().parent().parent().find('.status')[0].innerText = "Ikke godkjent";
             });
         }
     },

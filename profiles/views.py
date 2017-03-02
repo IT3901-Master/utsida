@@ -397,6 +397,7 @@ def edit_status_application(request):
         if (change_status_to == "approve"):
             application = Application.objects.get(id=application_id)
             application.status = 'A'
+            application.save()
             for course_match in application.course_matches.all():
                 cm = CourseMatch.objects.get(id=course_match.pk)
                 cm.approved = True
