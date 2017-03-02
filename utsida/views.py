@@ -75,7 +75,6 @@ def result(request, university=None):
             headers = {
                 'content-type': 'application/json'
             }
-            print(payload)
 
             r = requests.post("http://localhost:8080/retrieval?casebase=main_case_base&concept%20name=Trip",
                               data=payload,
@@ -235,8 +234,6 @@ def add_abroad_course(request):
         context = {"course_match_list": course_matches, "university_name": university, "add_form": add_form}
         messages.success(request, "Nytt fag ble lagt til")
         return render(request, "utsida/courseMatch.html", context)
-    else:
-        print("not valid")
 
 
 @login_required
