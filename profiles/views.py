@@ -181,6 +181,40 @@ def save_courses(request):
 
 
 @login_required
+def add_abroad_course_to_profile(request):
+    if request.method == 'POST':
+        user = User.objects.get(username=request.user)
+        university = get_object_or_404(University, name=request.POST.get('university'))
+
+        course = AbroadCourse.objects.get(code=request.POST.get('code'),university=university)
+        if (course):
+            if (course in user.profile.saved_courses.all()):
+                return HttpResponse(status=409)
+            course.full_clean()
+            course.save()
+        else:
+            course = AbroadCourse(code=request.POST.get('code'), name=request.POST.get('name'),
+                              study_points=request.POST.get('study_points'), university=university,
+                              description_url=request.POST.get('url'))
+
+        response_data = {
+            "code": request.POST.get('code'),
+            "name": request.POST.get('name'),
+            "id": course.pk,
+            "university": course.university.name,
+            "country": course.university.country.name
+        }
+        user.profile.saved_courses.add(course)
+
+        return HttpResponse(
+            json.dumps(response_data),
+            content_type="application/json"
+        )
+
+
+
+
+@login_required
 def remove_course(request):
     if request.method == 'POST':
         profile = Profile.objects.get(user=request.user)
