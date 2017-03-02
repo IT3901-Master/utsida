@@ -61,14 +61,14 @@ def start():
     counter = 0
     stopper = 0
     for file in file_list:
-        print("Starting: " + str(file))
+        #print("Starting: " + str(file))
         run(file)
         if stopper >= 100000:
             return
 
         counter += 1
         stopper += 1
-        print("Finished: " + str(file) + " (" + str(counter) + '/' + "10857)")
+        #print("Finished: " + str(file) + " (" + str(counter) + '/' + "10857)")
 
 
 def make_js_file():
@@ -89,6 +89,7 @@ def make_js_file():
                     counter += 1
 
             except KeyError as err:
+                print('ERROR: ', err)
                 counter += 1
                 continue
 
@@ -109,7 +110,24 @@ def make_country_code_dict():
     data.close()
 
 
-def print_cases():
+def fix_dictionary():
+        COUNTRY_COUNT["De Forente Arabiske Emirater"] = COUNTRY_COUNT.pop("Forentearabiskeemirater")
+        COUNTRY_COUNT["New Zealand"] = COUNTRY_COUNT.pop("NewZealand")
+        COUNTRY_COUNT["Tyskland"] = COUNTRY_COUNT.pop("Germany")
+        COUNTRY_COUNT["Østerrike"] = COUNTRY_COUNT.pop("Ã˜sterrike")
+        COUNTRY_COUNT["Sør Afrika"] = COUNTRY_COUNT.pop("SÃ¸rAfrika")
+        COUNTRY_COUNT["Sør Afrika"] = COUNTRY_COUNT.pop("SørAfrika")
+        COUNTRY_COUNT["Den Dominikanske Republikk"] = COUNTRY_COUNT.pop("DenDominikanskerepublikk")
+        COUNTRY_COUNT["Albania"] = COUNTRY_COUNT.pop("albania")
+        COUNTRY_COUNT["Reunion"] = COUNTRY_COUNT.pop("LaRéunion")
+        COUNTRY_COUNT["Costa Rica"] = COUNTRY_COUNT.pop("CostaRica")
+        COUNTRY_COUNT["Brasil"] = COUNTRY_COUNT.pop("Brazil")
+        COUNTRY_COUNT["Sverige"] = COUNTRY_COUNT.pop("Sweden")
+        COUNTRY_COUNT["Nederland"] = COUNTRY_COUNT.pop("TheNetherlands")
+        COUNTRY_COUNT["Colombia"] = COUNTRY_COUNT.pop("Columbia")
+
+
+def print_dict():
     for k, v in COUNTRY_COUNT.items():
         print(k, ': ', v)
 
@@ -117,5 +135,8 @@ def print_cases():
 if __name__ == "__main__":
     make_country_code_dict()
     start()
-    #print_cases()
+    fix_dictionary()
+    print_dict()
+    time.sleep(3)
     make_js_file()
+
