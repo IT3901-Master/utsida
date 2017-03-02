@@ -18,6 +18,47 @@
     </h3>
 
     <div class="row vertical-space-top-big">
+
+        <div class="col-md-6">
+            {% if home_courses %}
+                <h4 class="text-center">Dine nødvendige NTNU fag</h4>
+                <div id="homeCourseList">
+
+                    {% for course in home_courses %}
+                        <div onclick="CourseMatcher.markHomeCourse(this)"
+                             class="centerCol courseBlock boxShadow pointer noSelect blockElement">
+                            <span id="code">{{ course.code }}</span> - <span id="name">{{ course.name }}</span>
+                            <span data-toggle="confirmation" data-type="home_course" data-id="{{ course.id }}"
+                                  class="glyphicon glyphicon-remove pull-right pointer">
+                            </span>
+                        </div>
+                    {% endfor %}
+                </div>
+
+            {% else %}
+                <h4 class="text-center">Trykk på knappen under for å legge til NTNU fag.</h4>
+                <div id="homeCourseList"></div>
+            {% endif %}
+
+                <div class ="centerCol courseBlock boxShadow pointer noSelect blockElement" id="addHomeCourseBlock">
+                    <form id="add-course-form">
+                        <div class="row">
+                            <div class="col-md-9">
+                                <div class="vertical-space-bottom-small">
+                                {{ courses_to_take_form.coursesToTake | add_class:"form-control" }}
+                                </div>
+                            </div>
+                            <div class="col-md-3">
+                                <button id="addHomeCourse" class="btn btn-primary" type="submit" onclick="CourseMatcher.toggleAddHomeCourse()">Legg til</button>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+
+            <div class="plus-btn centerCol boxShadow vertical-space-top noSelect" onclick="CourseMatcher.toggleAddHomeCourse()" id="toggleAddHomeCourseBtn">+</div>
+
+        </div>
+
         <div id="abroadCourseListContainer" class="col-md-6">
             {% if university %}
                 <h4 id="#universityHeader" class="text-center">Lagrede fag ved {{ university }}, {{ university.country }}</h4>
@@ -43,46 +84,6 @@
             <div class="plus-btn boxShadow borderBox centerCol vertical-space-top noSelect" data-toggle="modal"
                     data-target="#addAbroadModal">+
             </div>
-        </div>
-
-        <div class="col-md-6">
-            {% if home_courses %}
-                <h4 class="text-center">Dine nødvendige NTNU fag</h4>
-                <div id="homeCourseList">
-
-                    {% for course in home_courses %}
-                        <div onclick="CourseMatcher.markHomeCourse(this)"
-                             class="centerCol courseBlock boxShadow pointer noSelect blockElement">
-                            <span id="code">{{ course.code }}</span> - <span id="name">{{ course.name }}</span>
-                            <span data-toggle="confirmation" data-type="home_course" data-id="{{ course.id }}"
-                                  class="glyphicon glyphicon-remove pull-right pointer">
-                            </span>
-                        </div>
-                    {% endfor %}
-                </div>
-
-            {% else %}
-                <h4 class="text-center">Du har ikke lagret noen nødvendige NTNU fag</h4>
-                <div id="homeCourseList"></div>
-            {% endif %}
-
-                <div class ="centerCol courseBlock boxShadow pointer noSelect blockElement" id="addHomeCourseBlock">
-                    <form id="add-course-form">
-                        <div class="row">
-                            <div class="col-md-9">
-                                <div class="vertical-space-bottom-small">
-                                {{ courses_to_take_form.coursesToTake | add_class:"form-control" }}
-                                </div>
-                            </div>
-                            <div class="col-md-3">
-                                <button id="addHomeCourse" class="btn btn-primary" type="submit" onclick="CourseMatcher.toggleAddHomeCourse()">Legg til</button>
-                            </div>
-                        </div>
-                    </form>
-                </div>
-
-            <div class="plus-btn centerCol boxShadow vertical-space-top noSelect" onclick="CourseMatcher.toggleAddHomeCourse()" id="toggleAddHomeCourseBtn">+</div>
-
         </div>
     </div>
 
