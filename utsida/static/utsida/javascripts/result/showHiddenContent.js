@@ -34,21 +34,19 @@ var toggleSavedCoursesContainer = function() {
 
 
 // Uncomment to remove textwrapping on overflowing text in results panel headings
-/*
+
 for (var j = 0; j < headers.length; j++) {
     headers[j].addEventListener('mouseover', function(e) {
         e.preventDefault();
-        this.children[0].style.width = "100%";
-        this.children[1].style.display = "none";
+        this.children[0].style.whiteSpace = "normal";
     });
 
     headers[j].addEventListener('mouseout', function(e) {
         e.preventDefault();
-        this.children[0].style.width = "80%";
-        this.children[1].style.display = "inline-block";
+        this.children[0].style.whiteSpace = "nowrap";
     });
 }
-*/
+
 
 
 
