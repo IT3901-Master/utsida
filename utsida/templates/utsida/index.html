@@ -10,56 +10,63 @@
     <h1 class="text-center">Velkommen til Utsida</h1>
 
     <div class="row vertical-space-top-big">
-
         <div class="col-md-4">
-            <a class="btn btn-primary main-btn square-corners boxShadow"
-               href="/profile/courses"
-               data-container="body"
-               data-toggle="popover"
-               data-placement="top"
-               data-content="Oversikten over fagene dine. Her ser du alle fag du har lagret
-               ved andre universiteter, eller fag du trenger ved NTNU, og kan lagre koblinger mellom fagene."
-               data-trigger="hover">Mine fag
-            </a>
+            <div class="number-circle centerCol vertical-space-bottom boxShadow"
+                    id="number1"
+                    data-container="body"
+                   data-toggle="popover"
+                   data-placement="top"
+                   data-content="Begynn med å legge til fag du trenger på studiet ditt dette semesteret.
+                   Oversikten over fagene dine. Her ser du alle fag du har lagret
+                   ved andre universiteter, eller fag du trenger ved NTNU, og kan lagre koblinger mellom fagene."
+                   data-trigger="hover">1</div>
         </div>
 
         <div class="col-md-4">
-            <a class="btn btn-primary main-btn square-corners boxShadow"
-               href="/courseMatch"
-               data-container="body"
-               data-toggle="popover"
-               data-placement="top"
-               data-content="Se fag-koblinger andre studenter har fått godkjent tidligere."
-               data-trigger="hover">Fag-koblinger
-            </a>
+            <div class="number-circle centerCol vertical-space-bottom boxShadow"
+                 id="number2"
+                 data-container="body"
+                   data-toggle="popover"
+                   data-placement="top"
+                   data-content="Du kan finne fag-koblinger som allerede er godkjent, eller lage nye , eller nye fag
+                                 ved å bruke Utsidas anbefalingssystem. Fagene og fag-koblingene lagres på 'Mine fag'-siden."
+                   data-trigger="hover"
+            >2</div>
         </div>
 
         <div class="col-md-4">
-            <a class="btn btn-primary main-btn square-corners boxShadow"
-               href="/profile/soknader"
-               data-container="body"
-               data-toggle="popover"
-               data-placement="top"
-               data-content="Se oversikten over dine søknader."
-               data-trigger="hover">Mine søknader
-            </a>
+            <div class="number-circle centerCol vertical-space-bottom boxShadow"
+                 id="number3"
+                 data-container="body"
+                   data-toggle="popover"
+                   data-placement="top"
+                   data-content="Oversikten over fagene dine. Her ser du alle fag du har lagret
+                   ved andre universiteter, eller fag du trenger ved NTNU, og kan lagre koblinger mellom fagene."
+                   data-trigger="hover"
+            >3</div>
         </div>
-
     </div>
 
-    <div class="row vertical-space-top-big">
-        <div class="col-md-4 col-md-offset-4">
-            <a class="btn btn-success main-btn square-corners boxShadow"
-               href="/process"
-               data-container="body"
-               data-toggle="popover"
-               data-placement="top"
-               data-content="La deg inspirere med en intelligent anbefaling på fag og universiteter som kan passe deg."
-               data-trigger="hover">
+    <div class="row vertical-space-top">
+        <div class="col-md-4 text-center col-padding" id="col1">
+            <a class="btn btn-primary main-btn square-corners boxShadow" href="/profile/courses/">Mine fag
+            </a>
+        </div>
+
+        <div class="col-md-4 text-center col-padding" id="col2">
+            <a class="btn btn-primary main-btn square-corners boxShadow" href="/courseMatch/">Fag-koblinger
+            </a>
+            <a class="btn btn-success main-btn square-corners boxShadow vertical-space-top-big" href="/process/">
                 Få anbefaling
                 <span class="glyphicon glyphicon-chevron-right"></span>
             </a>
         </div>
+
+        <div class="col-md-4 text-center col-padding" id="col3">
+            <a class="btn btn-primary main-btn square-corners boxShadow" href="/profile/soknader/">Mine søknader
+            </a>
+        </div>
+
     </div>
 
     <div class="row vertical-space-top-big">
@@ -76,6 +83,7 @@
     <script src="{% static 'utsida/javascripts/jquery-jvectormap-world-mill.js' %}"></script>
     <script src="{% static 'utsida/javascripts/frontPage/map.js' %}"></script>
     <script src="{% static 'utsida/javascripts/frontPage/country_codes.js' %}"></script>
+    <script src="{% static 'utsida/javascripts/frontPage/stepHighlighter.js' %}"></script>
 
 {% endblock %}
 
