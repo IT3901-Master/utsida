@@ -1,4 +1,5 @@
 from django.contrib.auth.models import User
+from django.core.validators import URLValidator
 from django.db import models
 import datetime
 
@@ -73,7 +74,7 @@ class AbroadCourse(models.Model):
     name = models.CharField(max_length=50)
     pre_requisites = models.ManyToManyField('self', blank=True)
     university = models.ForeignKey(University)
-    description_url = models.URLField(max_length=2000, blank=True,default="")
+    description_url = models.URLField(max_length=2000, blank=True,validators=[URLValidator])
     study_points = models.FloatField(blank=True, default=7.5)
     objects = AbroadCourseManager()
 

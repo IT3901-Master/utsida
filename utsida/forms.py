@@ -1,13 +1,13 @@
 from ajax_select import make_ajax_field
+from ajax_select.fields import AutoCompleteField
 from django import forms
+from django.core.validators import URLValidator
 from django.forms import ChoiceField
 from django.forms.widgets import NumberInput
 from .models import Query, University, CourseMatch, HomeCourse, AbroadCourse
 
 
-
 class QueryCaseBaseForm(forms.ModelForm):
-
     class Meta:
         model = Query
         fields = ("homeInstitute", "continent", "country", "university",
@@ -19,7 +19,8 @@ class QueryCaseBaseForm(forms.ModelForm):
             'socialQualityRating': NumberInput(attrs={'type': 'range', 'step': '1', 'max': '10', 'min': '1',
                                                       'value': '5', 'oninput': 'socialOutput.value=this.value'}),
             'residentialQualityRating': NumberInput(attrs={'type': 'range', 'step': '1', 'max': '10', 'min': '1',
-                                                           'value': '5', 'oninput': 'residentialOutput.value=this.value'}),
+                                                           'value': '5',
+                                                           'oninput': 'residentialOutput.value=this.value'}),
             'receptionQualityRating': NumberInput(attrs={'type': 'range', 'step': '1', 'max': '10', 'min': '1',
                                                          'value': '5', 'oninput': 'receptionOutput.value=this.value'}),
         }
@@ -44,17 +45,19 @@ class DateInput(forms.DateInput):
     input_type = 'date'
 
 
-
 class CourseMatchForm(forms.ModelForm):
-
     class Meta:
         model = CourseMatch
-        fields = ['abroadCourse','homeCourse','comment','approval_date','approved',]
+        fields = ['abroadCourse', 'homeCourse', 'comment', 'approval_date', 'approved', ]
         widgets = {
             'approval_date': DateInput()
         }
 
-    homeCourse = make_ajax_field(CourseMatch, 'homeCourse', 'homeCourseFind', show_help_text=False, required=False)
+    homeCourse = AutoCompleteField('homeCourseFind', help_text=None, required=True,
+                                   attrs={"placeholder": "Søk på fagnavn/kode"})
+
+    abroadCourse = AutoCompleteField('abroadCourseFind', help_text=None, required=True,
+                                     attrs={"placeholder": "søk på fagnavn/kode"})
 
     def save(self, commit=True):
         courseMatch = super(CourseMatchForm, self).save(commit=False)
@@ -66,11 +69,11 @@ class CourseMatchForm(forms.ModelForm):
 
         return courseMatch
 
-class abroadCourseForm(forms.ModelForm):
 
+class abroadCourseForm(forms.ModelForm):
     class Meta:
         model = AbroadCourse
-        fields = ['code','name','university','description_url','study_points']
+        fields = ['code', 'name', 'university', 'description_url', 'study_points']
         widgets = {
             'code': forms.TextInput(
                 attrs={'id': 'add-form-code', 'required': True, 'placeholder': 'Legg til fag-kode...'}
@@ -79,11 +82,10 @@ class abroadCourseForm(forms.ModelForm):
                 attrs={'id': 'add-form-name', 'required': True, 'placeholder': 'Legg til fag-navn...'}
             ),
             'description_url': forms.URLInput(
-                attrs={'id': 'add-form-url', 'required': False, 'placeholder': 'Legg til fag-url...'}
+                attrs={'id': 'add-form-url', 'required': False, 'placeholder': 'Legg til fag-url...',
+                       "pattern": "https?://.+"}
             ),
             'study_points': forms.NumberInput(
                 attrs={'id': 'add-form-study-points', 'required': False, 'placeholder': 'Legg til antall studiepoeng'}
             )
         }
-
-

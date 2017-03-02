@@ -74,9 +74,8 @@ function create_post() {
     else {
         var university = $('#add-form-university').val();
     }
-    console.log(university);
     $.ajax({
-        url: "/abroadCourse/add/",
+        url: "/profile/abroadCourse/add/",
         type: "POST",
         data: {
             code: $('#add-form-code').val(),
@@ -126,10 +125,16 @@ function create_post() {
 
             refreshConfirmation();
         },
-        error: function (xhr, errmsg, err) {
+        error: function (err) {
             $('#addAbroadModal').modal('hide');
-            Messager.init();
-            Messager.sendMessage("Fikk ikke lagt til faget, prøv igjen", "error")
+            if (err.status == 409) {
+                Messager.init();
+                Messager.sendMessage("faget er allerede i din profil!", "danger");
+            }
+            else {
+                Messager.init();
+                Messager.sendMessage("Fikk ikke lagt til faget, prøv igjen", "danger")
+            }
         }
     })
 }
@@ -154,7 +159,7 @@ $('#add-course-form').on('submit', function (event) {
 
             Messager.init();
             if (json.error) {
-                Messager.sendMessage(json.error,"danger");
+                Messager.sendMessage(json.error, "danger");
             }
             else {
                 Messager.sendMessage("Faget ble lagt til", "success");
