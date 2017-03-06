@@ -19,4 +19,5 @@ urlpatterns = [
     url(r'^courseMatch/universitySelect/$', views.course_match_select_university, name='course_match_select_continent'),
     url(r'^abroadCourse/add/$', views.add_abroad_course, name='add_abroad_course_to_profile'),
     url(r'^api/countries/$', views.get_countries),
+    url(r'advisors/$', views.advisors, name='advisors'),
 ]

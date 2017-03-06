@@ -20,6 +20,10 @@ def information(request):
     return render(request, 'utsida/information.html')
 
 
+def advisors(request):
+    return render(request, 'utsida/advisors.html')
+
+
 def process(request):
     if not request.user.is_authenticated():
         return redirect("login")

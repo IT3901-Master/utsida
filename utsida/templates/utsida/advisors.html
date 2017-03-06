@@ -1,0 +1,21 @@
+{% extends "utsida/layout.html" %}
+
+{% block content %}
+    {% load widget_tweaks %}
+
+    <h1 class="text-center">Utsida for veiledere</h1>
+
+    <div class="row vertical-space-top">
+        <div class="col-md-4 text-center col-padding col-md-offset-4" >
+            <a  class="btn btn-primary main-btn square-corners boxShadow" href="/courseMatch/">Fag-koblinger
+            </a>
+        </div>
+        
+        <div class="col-md-4 text-center col-padding col-md-offset-4">
+            <a class="btn btn-primary main-btn square-corners boxShadow" href="/profile/soknader/all/">Søknader
+            </a>
+        </div>
+    </div>
+
+
+{% endblock %}
