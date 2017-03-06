@@ -107,8 +107,6 @@ html, body {
 }
 
 .menu-button {
-    position: absolute !important;
-    right: 120px;
     background-color: #737373 !important;
 }
 .menu-button:hover {
@@ -123,8 +121,6 @@ html, body {
 }
 
 .user-name {
-    position: absolute !important;
-    right: 10px;
     color: white;
 }
 .user-name:hover {
