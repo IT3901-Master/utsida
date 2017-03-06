@@ -1,6 +1,7 @@
 $(function () {
     $('#world-map').vectorMap({
         map: 'world_mill',
+        zoomOnScroll: false,
         series: {
             regions: [{
                 values: country_code_data,
