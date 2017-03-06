@@ -113,7 +113,7 @@ def make_country_code_dict():
 def fix_dictionary():
         COUNTRY_COUNT["De Forente Arabiske Emirater"] = COUNTRY_COUNT.pop("Forentearabiskeemirater")
         COUNTRY_COUNT["New Zealand"] = COUNTRY_COUNT.pop("NewZealand")
-        COUNTRY_COUNT["Tyskland"] = COUNTRY_COUNT.pop("Germany")
+        COUNTRY_COUNT["Tyskland"] = COUNTRY_COUNT["Tyskland"] + COUNTRY_COUNT.pop("Germany")
         COUNTRY_COUNT["Østerrike"] = COUNTRY_COUNT.pop("Ã˜sterrike")
         COUNTRY_COUNT["Sør Afrika"] = COUNTRY_COUNT.pop("SÃ¸rAfrika")
         COUNTRY_COUNT["Sør Afrika"] = COUNTRY_COUNT.pop("SørAfrika")
