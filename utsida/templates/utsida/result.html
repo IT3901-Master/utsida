@@ -37,12 +37,12 @@
     </div>
 
     <div id="filters" class="row vertical-space-bottom-big">
-        <h2 class="text-center">Her er turene som likner mest på din situasjon.</h2>
+        <h2 class="text-center">Her er turene som likner mest på ditt søk</h2>
         <h3 class="subTitle text-center vertical-space-bottom">
-            Trykk på knappene under for å filtrere på universitet, og legg til fag du ønsker å ta ved å trykke på de.
-            Du finner dine lagrede fag i <span class="italic">Lagrede fag</span> under profilen din.
+            Trykk på fagene andre studenter har hatt for å velge de.
         </h3>
 
+        <!--
         <div class="row vertical-space-bottom">
             <div class="col-md-12 text-center">
                 <p class="italic">Relasjoner til dine valgte fag på NTNU</p>
@@ -52,8 +52,9 @@
                 <label class="label label-danger">Ikke godkjent</label>
             </div>
         </div>
+        -->
 
-        <div class="col-md-8 col-md-offset-2">
+        <div class="col-md-8 col-md-offset-2 vertical-space-top">
             <a href="/process/result/all"><button class="btn btn-default vertical-space-bottom-small">All</button></a>
             {% for university in universities %}
                 <a href="/process/result/{{ university }}"><button class="btn btn-default vertical-space-bottom-small">{{ university }}</button></a>
