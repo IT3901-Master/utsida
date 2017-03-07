@@ -53,11 +53,13 @@
             </div>
         </div>
 
-        <div class="col-md-8 col-md-offset-2">
-            <a href="/process/result/all"><button class="btn btn-default vertical-space-bottom-small">All</button></a>
-            {% for university in universities %}
-                <a href="/process/result/{{ university }}"><button class="btn btn-default vertical-space-bottom-small">{{ university }}</button></a>
-            {% endfor %}
+        <div class="col-md-6 col-md-offset-3 vertical-space-top">
+            <select class="form-control" onchange="UniversityFilter.filter()" id="universitySelector">
+                <option value="all">Alle</option>
+                {% for university in universities %}
+                    <option value="{{ university }}">{{ university }}</option>
+                {% endfor %}
+            </select>
         </div>
     </div>
 
@@ -130,6 +132,7 @@
     <script src="{% static 'utsida/javascripts/result/showHiddenContent.js' %}"></script>
     <script src="{% static 'utsida/javascripts/result/universityHighlighter.js' %}"></script>
     <script src="{% static 'utsida/javascripts/result/courseSelector.js' %}"></script>
+    <script src="{% static 'utsida/javascripts/result/universityFilter.js' %}"></script>
 
 
 
