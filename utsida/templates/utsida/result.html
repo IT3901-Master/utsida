@@ -51,6 +51,15 @@
             </select>
         </div>
 
+        <!-- Uncomment to switch to label filtering
+        <div class="col-md-8 col-md-offset-2 vertical-space-top">
+            <a href="/process/result/all"><button class="btn btn-default vertical-space-bottom-small">All</button></a>
+            {% for university in universities %}
+                <a href="/process/result/{{ university }}"><button class="btn btn-default vertical-space-bottom-small">{{ university }}</button></a>
+            {% endfor %}
+        </div>
+        -->
+
     </div>
 
     <div id="results" class="row vertical-space-top-big">
