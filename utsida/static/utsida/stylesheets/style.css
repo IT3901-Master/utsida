@@ -178,6 +178,7 @@ html, body {
     font-size: 16px;
     line-height: 40px;
     text-align: center;
+    cursor: default;
 }
 .number-circle:hover {
     background-color: #d9d9d9;
@@ -407,6 +408,10 @@ input[type=range]:focus::-webkit-slider-runnable-track {
     width: 100%;
 }
 
+
+#world-map {
+    border: 5px solid white;
+}
 
 
 
