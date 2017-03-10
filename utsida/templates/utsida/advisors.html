@@ -6,16 +6,65 @@
     <h1 class="text-center">Utsida for veiledere</h1>
 
     <div class="row vertical-space-top">
-        <div class="col-md-4 text-center col-padding col-md-offset-4" >
+        <div class="col-md-4 text-center col-padding" >
             <a  class="btn btn-primary main-btn square-corners boxShadow" href="/courseMatch/">Fag-koblinger
             </a>
         </div>
         
-        <div class="col-md-4 text-center col-padding col-md-offset-4">
-            <a class="btn btn-primary main-btn square-corners boxShadow" href="/profile/soknader/all/">Søknader
+        <div class="col-md-4 text-center col-padding">
+            <a class="btn btn-primary main-btn square-corners boxShadow" href="/profile/soknader/all/">
+                Søknader
+                <span class="badge">{{ application_data.num_pending }}</span>
+            </a>
+        </div>
+
+        <div class="col-md-4 text-center col-padding">
+            <a class="btn btn-primary main-btn square-corners boxShadow" href="/admin/">Administrator panel
             </a>
         </div>
     </div>
+
+    <div class="row vertical-space-top">
+        <div class="col-md-12">
+            <h3 class="text-center">Statistikk</h3>
+            <div class="divider-line-small centerCol"></div>
+        </div>
+    </div>
+
+    <div class="row vertical-space-top-big">
+        <div class="col-md-12">
+            <h4 class="text-center">Registrerte fag-koblinger <span class="badge">{{ course_match_data.count }}</span></h4>
+        </div>
+    </div>
+
+    <div class="row vertical-space-top-big">
+        <h4 class="text-center">Søknader</h4>
+        <table class="table table-bordered centerCol" style="width: 40%">
+            <thead>
+                <tr>
+                    <td class="bold">Status</td>
+                    <td class="bold">Antall</td>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>Ubehandlede</td>
+                    <td><span class="badge">{{ application_data.num_pending }}</span></td>
+                </tr>
+                <tr>
+                    <td>Godkjente</td>
+                    <td><span class="badge">{{ application_data.num_approved }}</span></td>
+                </tr>
+                <tr>
+                    <td>Avviste</td>
+                    <td><span class="badge">{{ application_data.num_rejected }}</span></td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+
+
+
 
 
 {% endblock %}

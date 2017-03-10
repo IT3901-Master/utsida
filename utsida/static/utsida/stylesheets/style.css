@@ -407,6 +407,11 @@ input[type=range]:focus::-webkit-slider-runnable-track {
     opacity: 0.3;
     width: 100%;
 }
+.divider-line-small {
+    border-bottom: 1px solid black;
+    opacity: 0.3;
+    width: 60%;
+}
 
 
 #world-map {
