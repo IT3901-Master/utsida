@@ -148,6 +148,7 @@ STATUS = (
         ('D', 'Disapproved'),
     )
 
+
 class Application(models.Model):
     user = models.ForeignKey(User)
     course_matches = models.ManyToManyField(CourseMatch)

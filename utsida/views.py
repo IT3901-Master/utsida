@@ -20,6 +20,28 @@ def information(request):
     return render(request, 'utsida/information.html')
 
 
+def advisors(request):
+    application_data = {
+        'count': Application.objects.all().count(),
+        'num_approved': Application.objects.all().filter(status='A').count(),
+        'num_pending': Application.objects.all().filter(status='P').count(),
+        'num_rejected': Application.objects.all().filter(status='D').count()
+    }
+
+    course_match_data = {
+        'count': str(CourseMatch.objects.all().count())
+    }
+
+    return render(
+        request,
+        'utsida/advisors.html',
+        {
+            'application_data': application_data,
+            'course_match_data': course_match_data
+        }
+    )
+
+
 def process(request):
     if not request.user.is_authenticated():
         return redirect("login")
