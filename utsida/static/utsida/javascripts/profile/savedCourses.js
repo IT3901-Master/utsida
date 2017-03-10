@@ -164,7 +164,7 @@ $('#add-course-form').on('submit', function (event) {
             else {
                 Messager.sendMessage("Faget ble lagt til", "success");
                 mainDiv = document.createElement('div');
-                mainDiv.setAttribute('onclick', "CourseMatcher.markAwayCourse(this)");
+                mainDiv.setAttribute('onclick', "CourseMatcher.markHomeCourse(this)");
                 mainDiv.className = "centerCol courseBlock boxShadow pointer noSelect blockElement";
                 mainDiv.innerHTML = "<span id='code'>" + json.code + "</span>" + ' - ' + "<span id='name'>" + json.name + "</span>";
                 span2 = document.createElement('span');
@@ -173,9 +173,10 @@ $('#add-course-form').on('submit', function (event) {
                 span2.setAttribute("data-id", json.id);
                 span2.className = "glyphicon glyphicon-remove pull-right pointer";
                 mainDiv.append(span2);
-                $('#homeCourseList').prepend(mainDiv);
+                $('#homeCourseList').append(mainDiv);
                 $('#id_coursesToTake').val('');
                 refreshConfirmation();
+                CourseMatcher.init();
             }
         },
         error: function (xhr, errmsg, err) {
