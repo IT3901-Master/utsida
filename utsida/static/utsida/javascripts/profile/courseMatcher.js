@@ -66,54 +66,60 @@
                     s.courseMatchList["homeCourseName"] = name;
                 }
             }
-            $.ajax({
-                data: s.courseMatchList,
-                type: "POST",
-                url: "/profile/save_course_match/",
-                success: function (response) {
-                    var content = document.createElement("tr");
-                    var abroadCourseTD = document.createElement("td");
 
-                    if (s.courseMatchList["abroadCourseCode"] == "")
-                        abroadCourseTD.innerText = s.courseMatchList["abroadCourseName"];
+            if (s.courseMatchList["homeCourseName"] && s.courseMatchList["abroadCourseName"]) {
+                $.ajax({
+                    data: s.courseMatchList,
+                    type: "POST",
+                    url: "/profile/save_course_match/",
+                    success: function (response) {
+                        var content = document.createElement("tr");
+                        var abroadCourseTD = document.createElement("td");
 
-                    abroadCourseTD.innerText = s.courseMatchList["abroadCourseCode"] + "  " + s.courseMatchList["abroadCourseName"];
+                        if (s.courseMatchList["abroadCourseCode"] == "")
+                            abroadCourseTD.innerText = s.courseMatchList["abroadCourseName"];
 
-                    var homeCourseTD = document.createElement("td");
-                    homeCourseTD.innerText = s.courseMatchList["homeCourseCode"] + "  " + s.courseMatchList["homeCourseName"];
+                        abroadCourseTD.innerText = s.courseMatchList["abroadCourseCode"] + "  " + s.courseMatchList["abroadCourseName"];
 
-                    var deleteTD = document.createElement('td');
-                    var deleteBtn = document.createElement('span');
-                    deleteBtn.className = "glyphicon glyphicon-remove pointer";
-                    deleteBtn.setAttribute("data-toggle", "confirmation");
-                    deleteBtn.setAttribute("data-type", "course_match");
-                    deleteBtn.setAttribute("data-id", response.course_match_id);
-                    deleteTD.appendChild(deleteBtn);
+                        var homeCourseTD = document.createElement("td");
+                        homeCourseTD.innerText = s.courseMatchList["homeCourseCode"] + "  " + s.courseMatchList["homeCourseName"];
 
-                    content.appendChild(abroadCourseTD);
-                    content.appendChild(homeCourseTD);
-                    content.appendChild(deleteTD);
+                        var deleteTD = document.createElement('td');
+                        var deleteBtn = document.createElement('span');
+                        deleteBtn.className = "glyphicon glyphicon-remove pointer";
+                        deleteBtn.setAttribute("data-toggle", "confirmation");
+                        deleteBtn.setAttribute("data-type", "course_match");
+                        deleteBtn.setAttribute("data-id", response.course_match_id);
+                        deleteTD.appendChild(deleteBtn);
 
-                    var content2 = content.cloneNode(true);
-                    document.getElementById("courseMatchList").appendChild(content);
-                    document.getElementById("courseMatchListModal").appendChild(content2);
+                        content.appendChild(abroadCourseTD);
+                        content.appendChild(homeCourseTD);
+                        content.appendChild(deleteTD);
 
-                    refreshConfirmation();
+                        var content2 = content.cloneNode(true);
+                        document.getElementById("courseMatchList").appendChild(content);
+                        document.getElementById("courseMatchListModal").appendChild(content2);
 
-                    Messager.init();
-                    Messager.sendMessage("Fagene ble koblet", "success");
-                },
-                error: function (error) {
-                    if (error.status == 409) {
-                        Messager.init();
-                        Messager.sendMessage("Koblingen er allerede i din profil!", "danger");
+                        refreshConfirmation();
+
+                        Messager.sendMessage("Fagene ble koblet", "success");
+                    },
+                    error: function (error) {
+                        if (error.status == 409) {
+                            Messager.init();
+                            Messager.sendMessage("Koblingen er allerede i din profil!", "danger");
+                        }
+                        else if (error.status == 406) {
+                            Messager.init();
+                            Messager.sendMessage("Det finnes fag fra et annet universitet i din profil", "danger");
+                        }
                     }
-                    else if (error.status == 406) {
-                        Messager.init();
-                        Messager.sendMessage("Det finnes fag fra et annet universitet i din profil", "danger");
-                    }
-                }
-            });
+                });
+            }
+            else {
+                Messager.init();
+                Messager.sendMessage('Du må velge et fag hjemme og borte for å koble de', 'danger')
+            }
 
 
         },
