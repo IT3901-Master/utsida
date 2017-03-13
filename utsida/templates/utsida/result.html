@@ -2,6 +2,7 @@
 
 {% block content %}
     {% load result_extras %}
+    {% load staticfiles %}
 
     <div id="savedCoursesContainer" class="panel panel-primary square-corners boxShadow savedCoursesContainer">
         <div class="panel-heading pointer noSelect square-corners" onclick="toggleSavedCoursesContainer()">
@@ -92,23 +93,70 @@
 
                         <hr>
 
+
+
+
                         <div class="hiddenInformation">
                             <div>
-                                <p><span class="bold">Institutt hjemme:</span> {{ case.Institute }}</p>
-                                <p><span class="bold">Verdensdel:</span> {{ case.Continent }}</p>
-                                <p><span class="bold">Land:</span> {{ case.Country }}</p>
-                                <p><span class="bold">Universitet:</span> {{ case.University }}</p>
-                                <p>
-                                    <span class="bold">Studiespråk:</span>
+                                <div class="flexbox">
+                                    <div class="rating-box"
+                                        data-container="body"
+                                        data-toggle="popover"
+                                        data-placement="top"
+                                        data-trigger="hover"
+                                        data-content="Vurdering av akademisk kvalitet">
+
+                                        <img class="result-icon" src="{% static 'utsida/icons/books.svg' %}">
+                                        <span class="result-rating">{{ case.AcademicQuality }}/10</span>
+                                    </div>
+                                    <div class="rating-box"
+                                        data-container="body"
+                                        data-toggle="popover"
+                                        data-placement="top"
+                                        data-trigger="hover"
+                                        data-content="Vurdering av sosial kvalitet">
+
+                                        <img class="result-icon" src="{% static 'utsida/icons/users.svg' %}">
+                                        <span class="result-rating">{{ case.SocialQuality }}/10</span>
+                                    </div>
+                                    <div class="rating-box"
+                                        data-container="body"
+                                        data-toggle="popover"
+                                        data-placement="top"
+                                        data-trigger="hover"
+                                        data-content="Vurdering boligstandard og tilgjengelighet">
+
+                                        <img class="result-icon" src="{% static 'utsida/icons/home2.svg' %}">
+                                        <span class="result-rating">{{ case.ResidentialQuality }}/10</span>
+                                    </div>
+                                    <div class="rating-box"
+                                        data-container="body"
+                                        data-toggle="popover"
+                                        data-placement="top"
+                                        data-trigger="hover"
+                                        data-content="Vurdering av administrativ støtte og hjelp">
+
+                                        <img class="result-icon" src="{% static 'utsida/icons/info.svg' %}">
+                                        <span class="result-rating">{{ case.ReceptionQuality }}/10</span>
+                                    </div>
+                                </div>
+
+                                <div class="text-center vertical-space-top">
+                                    <span class="bold">Institutt</span><br>
+                                    {{ case.Institute }}
+                                </div>
+                                <div class="col-md-6 text-center vertical-space-top">
+                                    <span class="bold">Studiespråk</span><br>
                                     {% for language in case.Language %}
                                         {{ language }}
                                     {% endfor %}
-                                </p>
-                                <p><span class="bold">Studieperiode:</span> {{ case.StudyPeriod }}</p>
-                                <p><span class="bold">Vurdering av akademisk kvalitet:</span> {{ case.AcademicQuality }}</p>
-                                <p><span class="bold">Vurdering av sosial kvalitet:</span> {{ case.SocialQuality}}</p>
-                                <p><span class="bold">Vurdering av kvalitet og anskaffelse av bolig:</span> {{ case.ResidentialQuality }}</p>
-                                <p><span class="bold">Vurdering av administrativ støtte:</span> {{ case.ReceptionQuality}}</p>
+                                </div>
+                                <div class="col-md-6 text-center vertical-space-top vertical-space-bottom">
+                                    <span class="bold">År</span><br>
+                                    {{ case.StudyPeriod }}
+                                </div>
+
+                                <p class="text-center"><a href="{{ case.Link}}" target="_blank">Se hele rapporten</a></p>
                             </div>
                         </div>
                         <div class="text-center">
@@ -122,12 +170,10 @@
 
         <button class="btn btn-success boxShadow square-corners checkoutBtn" onclick="courseSelector.checkout()">Gå til lagrede fag <span class="glyphicon glyphicon-chevron-right"></span></button>
     </div>
-
     <script>
 
     </script>
 
-    {% load staticfiles %}
     <script src="{% static 'utsida/javascripts/result/showHiddenContent.js' %}"></script>
     <script src="{% static 'utsida/javascripts/result/courseSelector.js' %}"></script>
     <script src="{% static 'utsida/javascripts/result/universityFilter.js' %}"></script>
