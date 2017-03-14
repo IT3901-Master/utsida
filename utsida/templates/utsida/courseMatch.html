@@ -34,14 +34,23 @@
                     {% if course_match.homeCourse.description_url == "" %}
                         <td>{{ course_match.homeCourse }} </td>
                     {% else %}
-                        <td><a href={{ course_match.homeCourse.description_url }}>{{ course_match.homeCourse }}</a>
+                        <td>
+                            <a href="{{ course_match.homeCourse.description_url }}"
+                               target="_blank"
+                               onclick="return alertLink(this)">
+                                {{ course_match.homeCourse }}
+                            </a>
                         </td>
                     {% endif %}
                     {% if course_match.abroadCourse.description_url == "" %}
                         <td>{{ course_match.abroadCourse }} </td>
                     {% else %}
                         <td>
-                            <a href={{ course_match.abroadCourse.description_url }}>{{ course_match.abroadCourse }}</a>
+                            <a href="{{ course_match.abroadCourse.description_url }}"
+                               target="_blank" id="abroadCourseLink"
+                               onclick="return alertLink(this)">
+                                {{ course_match.abroadCourse }}
+                            </a>
                         </td>
                     {% endif %}
                     <td> {{ course_match.abroadCourse.study_points }}</td>
@@ -177,6 +186,12 @@
             </div>
         </div>
     </div>
+
+    <script>
+        var alertLink = function(url) {
+            return confirm("You are about to open the following URL: " + '\n\n' + url.href)
+        }
+    </script>
 
     {% load staticfiles %}
     <script src="{% static 'utsida/javascripts/courseMatch/courseMatchTable.js' %}"></script>
