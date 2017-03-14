@@ -138,6 +138,7 @@ def result(request, university=None):
             request.session['result'] = sorted_full_similar_cases
             request.session['matches'] = course_wanted_to_be_taken_matches
 
+
             return render(request, 'utsida/result.html',
                           {'form': form, 'similar_cases': sorted_full_similar_cases[:9], 'courses_taken': courses_taken,
                            'matches': course_wanted_to_be_taken_matches, 'universities': unique_unis})

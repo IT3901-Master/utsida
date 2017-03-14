@@ -170,6 +170,7 @@ class Case(models.Model):
     socialQualityRating = models.IntegerField(choices=CHOICES)
     residentialQualityRating = models.IntegerField(choices=CHOICES)
     receptionQualityRating = models.IntegerField(choices=CHOICES)
+    documentLink = models.CharField(max_length=50)
     subjects = models.ManyToManyField(AbroadCourse)
 
     def __str__(self):
