@@ -62,7 +62,7 @@ def result(request, university=None):
 
         else:
             for case in request.session['result']:
-                if case['University'] == university:
+                if 'University' in case['content'] and case['content']['University'] == university:
                     filtered_cases.append(case)
 
         return render(request, 'utsida/result.html',
@@ -103,21 +103,15 @@ def result(request, university=None):
                               headers=headers
                               ).json()["similarCases"]
 
-            full_similar_cases = []
+            for case in r:
+                if 'Language' in case['content']:
+                    case['content']['Language'] = case['content']['Language'].split('!')
+                case['content']['Subjects'] = case['content']['Subjects'].split('!')
+                case['similarity'] = "%.3f" % case['similarity']
 
-            # Filling each case with their full information, and formatting them
-            for key, value in r.items():
-
-                # Sorting out every case below 0.20 similarity
-                if value > 0.6:
-                    full_case = requests.get("http://localhost:8080/case?caseID=" + key).json()["case"]
-                    full_case["Subjects"] = full_case["Subjects"].split('!')
-                    full_case["Language"] = full_case["Language"].split('!')
-                    full_case["Similarity"] = "%.3f" % value
-                    full_similar_cases.append(full_case)
 
             # Sorting the case list based on similarity
-            sorted_full_similar_cases = sorted(full_similar_cases, key=lambda k: k['Similarity'], reverse=True)
+            sorted_similar_cases = sorted(r, key=lambda k: k['similarity'], reverse=True)
 
             courses = request.user.profile.coursesToTake.all()
 
@@ -130,17 +124,16 @@ def result(request, university=None):
                         course_wanted_to_be_taken_matches[str(result.abroadCourse)] = course.code + ' ' + course.name
 
             unique_unis = []
-            for case in sorted_full_similar_cases[:9]:
-                if not case['University'] in unique_unis:
-                    unique_unis.append(case['University'])
+            for case in sorted_similar_cases[:9]:
+                if not case['content']['University'] in unique_unis:
+                    unique_unis.append(case['content']['University'])
 
             request.session['unique_universities'] = unique_unis
-            request.session['result'] = sorted_full_similar_cases
+            request.session['result'] = sorted_similar_cases
             request.session['matches'] = course_wanted_to_be_taken_matches
 
-
             return render(request, 'utsida/result.html',
-                          {'form': form, 'similar_cases': sorted_full_similar_cases[:9], 'courses_taken': courses_taken,
+                          {'form': form, 'similar_cases': sorted_similar_cases[:9], 'courses_taken': courses_taken,
                            'matches': course_wanted_to_be_taken_matches, 'universities': unique_unis})
 
     else:
