@@ -61,6 +61,7 @@
         </div>
         -->
 
+
     </div>
 
     <div id="results" class="row vertical-space-top-big">
@@ -70,11 +71,11 @@
             <div class="col-md-4">
                 <div class="panel panel-primary square-corners boxShadow">
                     <div class="panel-heading square-corners">
-                        <span class="resultPanelUniversity">{{ case.University }} ({{ case.Country }})</span> <span class="pull-right badge similarityBadge">{{ case.Similarity|parse_similarity:100 }}</span>
+                        <span class="resultPanelUniversity">{{ case.content.University }} ({{ case.content.Country }})</span> <span class="pull-right badge similarityBadge">{{ case.similarity|parse_similarity:100}}</span>
                     </div>
                     <div class="panel-body">
                         <div class="subjectsContainer">
-                            {% for subject in case.Subjects %}
+                            {% for subject in case.content.Subjects %}
                                 {% if subject in matches.keys %}
                                     <div onclick="courseSelector.addCourse(this)"
                                          class="btn btn-success courseBtn"
@@ -107,7 +108,7 @@
                                         data-content="Vurdering av akademisk kvalitet">
 
                                         <img class="result-icon" src="{% static 'utsida/icons/books.svg' %}">
-                                        <span class="result-rating">{{ case.AcademicQuality }}/10</span>
+                                        <span class="result-rating">{{ case.content.AcademicQuality }}/10</span>
                                     </div>
                                     <div class="rating-box"
                                         data-container="body"
@@ -117,7 +118,7 @@
                                         data-content="Vurdering av sosial kvalitet">
 
                                         <img class="result-icon" src="{% static 'utsida/icons/users.svg' %}">
-                                        <span class="result-rating">{{ case.SocialQuality }}/10</span>
+                                        <span class="result-rating">{{ case.content.SocialQuality }}/10</span>
                                     </div>
                                     <div class="rating-box"
                                         data-container="body"
@@ -127,7 +128,7 @@
                                         data-content="Vurdering boligstandard og tilgjengelighet">
 
                                         <img class="result-icon" src="{% static 'utsida/icons/home2.svg' %}">
-                                        <span class="result-rating">{{ case.ResidentialQuality }}/10</span>
+                                        <span class="result-rating">{{ case.content.ResidentialQuality }}/10</span>
                                     </div>
                                     <div class="rating-box"
                                         data-container="body"
@@ -137,26 +138,26 @@
                                         data-content="Vurdering av administrativ støtte og hjelp">
 
                                         <img class="result-icon" src="{% static 'utsida/icons/info.svg' %}">
-                                        <span class="result-rating">{{ case.ReceptionQuality }}/10</span>
+                                        <span class="result-rating">{{ case.content.ReceptionQuality }}/10</span>
                                     </div>
                                 </div>
 
                                 <div class="text-center vertical-space-top">
                                     <span class="bold">Institutt</span><br>
-                                    {{ case.Institute }}
+                                    {{ case.content.Institute }}
                                 </div>
                                 <div class="col-md-6 text-center vertical-space-top">
                                     <span class="bold">Studiespråk</span><br>
-                                    {% for language in case.Language %}
+                                    {% for language in case.content.Language %}
                                         {{ language }}
                                     {% endfor %}
                                 </div>
                                 <div class="col-md-6 text-center vertical-space-top vertical-space-bottom">
                                     <span class="bold">År</span><br>
-                                    {{ case.StudyPeriod }}
+                                    {{ case.content.StudyPeriod }}
                                 </div>
 
-                                <p class="text-center"><a href="{{ case.Link}}" target="_blank">Se hele rapporten</a></p>
+                                <p class="text-center"><a href="{{ case.content.Link}}" target="_blank">Se hele rapporten</a></p>
                             </div>
                         </div>
                         <div class="text-center">
@@ -173,6 +174,8 @@
     <script>
 
     </script>
+
+
 
     <script src="{% static 'utsida/javascripts/result/showHiddenContent.js' %}"></script>
     <script src="{% static 'utsida/javascripts/result/courseSelector.js' %}"></script>
