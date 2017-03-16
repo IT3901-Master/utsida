@@ -1,0 +1,1984 @@
+[
+  {
+    "model": "utsida.coursematch",
+    "fields": {
+      "homeCourse": [
+        "TDT4290"
+      ],
+      "abroadCourse": [
+        "BUSA 40714",
+        "Project Management Bootcamp",
+        "University of California, San Diego"
+      ],
+      "approved": true,
+      "approval_date": "2015-08-27",
+      "comment": " "
+    }
+  },
+  {
+    "model": "utsida.coursematch",
+    "fields": {
+      "homeCourse": [
+        "TDT4137"
+      ],
+      "abroadCourse": [
+        "COGS 109",
+        "Modeling and Data Analysis",
+        "University of California, San Diego"
+      ],
+      "approved": true,
+      "approval_date": "2014-11-01",
+      "comment": " "
+    }
+  },
+  {
+    "model": "utsida.coursematch",
+    "fields": {
+      "homeCourse": [
+        "TDT4173"
+      ],
+      "abroadCourse": [
+        "COGS 118A",
+        "Natural Computation I",
+        "University of California, San Diego"
+      ],
+      "approved": true,
+      "approval_date": "2015-01-20",
+      "comment": " "
+    }
+  },
+  {
+    "model": "utsida.coursematch",
+    "fields": {
+      "homeCourse": [
+        "TDT4173"
+      ],
+      "abroadCourse": [
+        "COGS 118B",
+        "Natural Computation II",
+        "University of California, San Diego"
+      ],
+      "approved": true,
+      "approval_date": "2015-01-20",
+      "comment": " "
+    }
+  },
+  {
+    "model": "utsida.coursematch",
+    "fields": {
+      "homeCourse": [
+        "TDT4137"
+      ],
+      "abroadCourse": [
+        "COGS 119",
+        "Programming for Experimental Research",
+        "University of California, San Diego"
+      ],
+      "approved": true,
+      "approval_date": "2014-11-01",
+      "comment": " "
+    }
+  },
+  {
+    "model": "utsida.coursematch",
+    "fields": {
+      "homeCourse": [
+        "TDT4290"
+      ],
+      "abroadCourse": [
+        "COGS 121",
+        "HCI Programming Studio",
+        "University of California, San Diego"
+      ],
+      "approved": true,
+      "approval_date": "2015-07-26",
+      "comment": "Students work together in teams"
+    }
+  },
+  {
+    "model": "utsida.coursematch",
+    "fields": {
+      "homeCourse": [
+        "IT3105"
+      ],
+      "abroadCourse": [
+        "COGS 185",
+        "Advanced Machine Learning Methods",
+        "University of California, San Diego"
+      ],
+      "approved": true,
+      "approval_date": "2016-04-07",
+      "comment": "pettefas: project course"
+    }
+  },
+  {
+    "model": "utsida.coursematch",
+    "fields": {
+      "homeCourse": [
+        "IT3708"
+      ],
+      "abroadCourse": [
+        "COGS 189",
+        "Brain Computer Interfaces",
+        "University of California, San Diego"
+      ],
+      "approved": true,
+      "approval_date": "2016-08-05",
+      "comment": "Erlend Emil Nøtsund Vollset. Teamwork"
+    }
+  },
+  {
+    "model": "utsida.coursematch",
+    "fields": {
+      "homeCourse": [
+        "TDT4290"
+      ],
+      "abroadCourse": [
+        "COGS 189",
+        "Brain Computer Interfaces",
+        "University of California, San Diego"
+      ],
+      "approved": true,
+      "approval_date": "2016-08-05",
+      "comment": " "
+    }
+  },
+  {
+    "model": "utsida.coursematch",
+    "fields": {
+      "homeCourse": [
+        "EiT"
+      ],
+      "abroadCourse": [
+        "COGS 189",
+        "Brain Computer Interfaces",
+        "University of California, San Diego"
+      ],
+      "approved": true,
+      "approval_date": "2016-08-05",
+      "comment": " "
+    }
+  },
+  {
+    "model": "utsida.coursematch",
+    "fields": {
+      "homeCourse": [
+        "TDT4137"
+      ],
+      "abroadCourse": [
+        "COGS 202",
+        "Foundation - Comp. Model of Cogn",
+        "University of California, San Diego"
+      ],
+      "approved": true,
+      "approval_date": "2016-09-22",
+      "comment": " "
+    }
+  },
+  {
+    "model": "utsida.coursematch",
+    "fields": {
+      "homeCourse": [
+        "TDT4137"
+      ],
+      "abroadCourse": [
+        "COGS 203",
+        "Thinking and doing",
+        "University of California, San Diego"
+      ],
+      "approved": true,
+      "approval_date": "2015-08-27",
+      "comment": " "
+    }
+  },
+  {
+    "model": "utsida.coursematch",
+    "fields": {
+      "homeCourse": [
+        "TDT4137"
+      ],
+      "abroadCourse": [
+        "COGS 219",
+        "Programming for Experimental Research",
+        "University of California, San Diego"
+      ],
+      "approved": true,
+      "approval_date": "2014-11-01",
+      "comment": "Matlab"
+    }
+  },
+  {
+    "model": "utsida.coursematch",
+    "fields": {
+      "homeCourse": [
+        "TMA4235"
+      ],
+      "abroadCourse": [
+        "COGS 220",
+        "Information Visualization",
+        "University of California, San Diego"
+      ],
+      "approved": true,
+      "approval_date": "2016-01-22",
+      "comment": " "
+    }
+  },
+  {
+    "model": "utsida.coursematch",
+    "fields": {
+      "homeCourse": [
+        "KPro"
+      ],
+      "abroadCourse": [
+        "COGS 229",
+        "Design at Large",
+        "University of California, San Diego"
+      ],
+      "approved": true,
+      "approval_date": "2016-01-22",
+      "comment": " "
+    }
+  },
+  {
+    "model": "utsida.coursematch",
+    "fields": {
+      "homeCourse": [
+        "IT3402"
+      ],
+      "abroadCourse": [
+        "COGS 230",
+        "Research Topics in Human-Computer Interaction",
+        "University of California, San Diego"
+      ],
+      "approved": true,
+      "approval_date": "2015-01-20",
+      "comment": "CSE 216 (equal). research project"
+    }
+  },
+  {
+    "model": "utsida.coursematch",
+    "fields": {
+      "homeCourse": [
+        "TDT4290"
+      ],
+      "abroadCourse": [
+        "COGS 230",
+        "Research Topics in Human-Computer Interaction",
+        "University of California, San Diego"
+      ],
+      "approved": true,
+      "approval_date": "2015-01-20",
+      "comment": " "
+    }
+  },
+  {
+    "model": "utsida.coursematch",
+    "fields": {
+      "homeCourse": [
+        "EiT"
+      ],
+      "abroadCourse": [
+        "COGS 230",
+        "Research Topics in Human-Computer Interaction",
+        "University of California, San Diego"
+      ],
+      "approved": true,
+      "approval_date": "2015-01-20",
+      "comment": " "
+    }
+  },
+  {
+    "model": "utsida.coursematch",
+    "fields": {
+      "homeCourse": [
+        "TDT4160"
+      ],
+      "abroadCourse": [
+        "CSE 30",
+        "Computer Organization and Systems Programming",
+        "University of California, San Diego"
+      ],
+      "approved": true,
+      "approval_date": "2017-02-14",
+      "comment": " "
+    }
+  },
+  {
+    "model": "utsida.coursematch",
+    "fields": {
+      "homeCourse": [
+        "TDT4120"
+      ],
+      "abroadCourse": [
+        "CSE 101",
+        "Algorithms",
+        "University of California, San Diego"
+      ],
+      "approved": true,
+      "approval_date": "2015-04-08",
+      "comment": " "
+    }
+  },
+  {
+    "model": "utsida.coursematch",
+    "fields": {
+      "homeCourse": [
+        "TTM4135"
+      ],
+      "abroadCourse": [
+        "CSE 107",
+        "Introduction to Modern Cryptography",
+        "University of California, San Diego"
+      ],
+      "approved": true,
+      "approval_date": "2015-01-20",
+      "comment": " "
+    }
+  },
+  {
+    "model": "utsida.coursematch",
+    "fields": {
+      "homeCourse": [
+        "TDT4140"
+      ],
+      "abroadCourse": [
+        "CSE 110",
+        "Software Engineering",
+        "University of California, San Diego"
+      ],
+      "approved": true,
+      "approval_date": "2016-08-05",
+      "comment": " "
+    }
+  },
+  {
+    "model": "utsida.coursematch",
+    "fields": {
+      "homeCourse": [
+        "TDT4100"
+      ],
+      "abroadCourse": [
+        "CSE 111",
+        "Object Oriented Software Design",
+        "University of California, San Diego"
+      ],
+      "approved": true,
+      "approval_date": "2014-06-14",
+      "comment": "No longer offered"
+    }
+  },
+  {
+    "model": "utsida.coursematch",
+    "fields": {
+      "homeCourse": [
+        "TDT4242"
+      ],
+      "abroadCourse": [
+        "CSE 112",
+        "Advanced Software Engineering",
+        "University of California, San Diego"
+      ],
+      "approved": true,
+      "approval_date": "2015-07-26",
+      "comment": "Requirements and Testing. project"
+    }
+  },
+  {
+    "model": "utsida.coursematch",
+    "fields": {
+      "homeCourse": [
+        "TDT4250"
+      ],
+      "abroadCourse": [
+        "CSE 112",
+        "Advanced Software Engineering",
+        "University of California, San Diego"
+      ],
+      "approved": true,
+      "approval_date": "2015-01-20",
+      "comment": "class project, \"real world\" conditions"
+    }
+  },
+  {
+    "model": "utsida.coursematch",
+    "fields": {
+      "homeCourse": [
+        "TDT4290"
+      ],
+      "abroadCourse": [
+        "CSE 112",
+        "Advanced Software Engineering",
+        "University of California, San Diego"
+      ],
+      "approved": true,
+      "approval_date": "2015-01-20",
+      "comment": " "
+    }
+  },
+  {
+    "model": "utsida.coursematch",
+    "fields": {
+      "homeCourse": [
+        "TDT4186"
+      ],
+      "abroadCourse": [
+        "CSE 120",
+        "Principles of Computer Operating Systems",
+        "University of California, San Diego"
+      ],
+      "approved": true,
+      "approval_date": "2014-11-01",
+      "comment": " "
+    }
+  },
+  {
+    "model": "utsida.coursematch",
+    "fields": {
+      "homeCourse": [
+        "TTM4100"
+      ],
+      "abroadCourse": [
+        "CSE 123",
+        "Computer Networks",
+        "University of California, San Diego"
+      ],
+      "approved": true,
+      "approval_date": "2016-04-01",
+      "comment": "Sondre Rodahl"
+    }
+  },
+  {
+    "model": "utsida.coursematch",
+    "fields": {
+      "homeCourse": [
+        "EiT"
+      ],
+      "abroadCourse": [
+        "CSE 125",
+        "Software System Design & Implementation",
+        "University of California, San Diego"
+      ],
+      "approved": true,
+      "approval_date": "2015-01-20",
+      "comment": " "
+    }
+  },
+  {
+    "model": "utsida.coursematch",
+    "fields": {
+      "homeCourse": [
+        "TDT4290"
+      ],
+      "abroadCourse": [
+        "CSE 125",
+        "Software System Design & Implementation",
+        "University of California, San Diego"
+      ],
+      "approved": true,
+      "approval_date": "2015-01-20",
+      "comment": " "
+    }
+  },
+  {
+    "model": "utsida.coursematch",
+    "fields": {
+      "homeCourse": [
+        "TTM4135"
+      ],
+      "abroadCourse": [
+        "CSE 127",
+        "Introduction to Computer Security",
+        "University of California, San Diego"
+      ],
+      "approved": true,
+      "approval_date": "2015-08-25",
+      "comment": " "
+    }
+  },
+  {
+    "model": "utsida.coursematch",
+    "fields": {
+      "homeCourse": [
+        "TDT4165"
+      ],
+      "abroadCourse": [
+        "CSE 130",
+        "Programming Languages: Principles and Paradigms",
+        "University of California, San Diego"
+      ],
+      "approved": true,
+      "approval_date": "2014-11-01",
+      "comment": "CSE173 (equal?)"
+    }
+  },
+  {
+    "model": "utsida.coursematch",
+    "fields": {
+      "homeCourse": [
+        "TDT4205"
+      ],
+      "abroadCourse": [
+        "CSE 131",
+        "Compiler Construction",
+        "University of California, San Diego"
+      ],
+      "approved": true,
+      "approval_date": "2014-11-01",
+      "comment": " "
+    }
+  },
+  {
+    "model": "utsida.coursematch",
+    "fields": {
+      "homeCourse": [
+        "TDT4145"
+      ],
+      "abroadCourse": [
+        "CSE 132A",
+        "Database System Principles",
+        "University of California, San Diego"
+      ],
+      "approved": true,
+      "approval_date": "2016-08-05",
+      "comment": " "
+    }
+  },
+  {
+    "model": "utsida.coursematch",
+    "fields": {
+      "homeCourse": [
+        "TDT4145"
+      ],
+      "abroadCourse": [
+        "CSE 132B",
+        "Database Systems Applications",
+        "University of California, San Diego"
+      ],
+      "approved": true,
+      "approval_date": "2015-04-21",
+      "comment": " "
+    }
+  },
+  {
+    "model": "utsida.coursematch",
+    "fields": {
+      "homeCourse": [
+        "TDT4290"
+      ],
+      "abroadCourse": [
+        "CSE 132B",
+        "Database Systems Applications",
+        "University of California, San Diego"
+      ],
+      "approved": true,
+      "approval_date": "2015-04-21",
+      "comment": " "
+    }
+  },
+  {
+    "model": "utsida.coursematch",
+    "fields": {
+      "homeCourse": [
+        "EiT"
+      ],
+      "abroadCourse": [
+        "CSE 134B",
+        "Web Client Languages",
+        "University of California, San Diego"
+      ],
+      "approved": true,
+      "approval_date": "2015-01-20",
+      "comment": "assigned problems & final"
+    }
+  },
+  {
+    "model": "utsida.coursematch",
+    "fields": {
+      "homeCourse": [
+        "TDT4290"
+      ],
+      "abroadCourse": [
+        "CSE 134B",
+        "Web Client Languages",
+        "University of California, San Diego"
+      ],
+      "approved": true,
+      "approval_date": "2015-01-20",
+      "comment": "assigned problems & final"
+    }
+  },
+  {
+    "model": "utsida.coursematch",
+    "fields": {
+      "homeCourse": [
+        "EiT"
+      ],
+      "abroadCourse": [
+        "CSE 135",
+        "Online Database Analytics Applications",
+        "University of California, San Diego"
+      ],
+      "approved": true,
+      "approval_date": "2015-01-20",
+      "comment": " "
+    }
+  },
+  {
+    "model": "utsida.coursematch",
+    "fields": {
+      "homeCourse": [
+        "TDT4290"
+      ],
+      "abroadCourse": [
+        "CSE 135",
+        "Online Database Analytics Applications",
+        "University of California, San Diego"
+      ],
+      "approved": true,
+      "approval_date": "2015-01-20",
+      "comment": " "
+    }
+  },
+  {
+    "model": "utsida.coursematch",
+    "fields": {
+      "homeCourse": [
+        "TDT4136"
+      ],
+      "abroadCourse": [
+        "CSE 150",
+        "Introduction to Artificial Intelligence: Search and Reasoning",
+        "University of California, San Diego"
+      ],
+      "approved": true,
+      "approval_date": "2016-03-04",
+      "comment": " "
+    }
+  },
+  {
+    "model": "utsida.coursematch",
+    "fields": {
+      "homeCourse": [
+        "TDT4171"
+      ],
+      "abroadCourse": [
+        "CSE 151",
+        "Introduction to Artificial Intelligence: Statistical Approaches",
+        "University of California, San Diego"
+      ],
+      "approved": true,
+      "approval_date": "2015-03-09",
+      "comment": " "
+    }
+  },
+  {
+    "model": "utsida.coursematch",
+    "fields": {
+      "homeCourse": [
+        "TDT4200"
+      ],
+      "abroadCourse": [
+        "CSE 160",
+        "Introduction to Parallel Computing",
+        "University of California, San Diego"
+      ],
+      "approved": true,
+      "approval_date": "2017-01-17",
+      "comment": " "
+    }
+  },
+  {
+    "model": "utsida.coursematch",
+    "fields": {
+      "homeCourse": [
+        "TDT4230"
+      ],
+      "abroadCourse": [
+        "CSE 168",
+        "Computer Graphics II: Rendering",
+        "University of California, San Diego"
+      ],
+      "approved": true,
+      "approval_date": "2015-09-17",
+      "comment": " "
+    }
+  },
+  {
+    "model": "utsida.coursematch",
+    "fields": {
+      "homeCourse": [
+        "IT3708"
+      ],
+      "abroadCourse": [
+        "CSE 190A",
+        "Neural Networks",
+        "University of California, San Diego"
+      ],
+      "approved": true,
+      "approval_date": "2015-04-21",
+      "comment": " "
+    }
+  },
+  {
+    "model": "utsida.coursematch",
+    "fields": {
+      "homeCourse": [
+        "EiT"
+      ],
+      "abroadCourse": [
+        "CSE 190",
+        "HCI for Health",
+        "University of California, San Diego"
+      ],
+      "approved": true,
+      "approval_date": "2016-09-22",
+      "comment": " "
+    }
+  },
+  {
+    "model": "utsida.coursematch",
+    "fields": {
+      "homeCourse": [
+        "TDT4290"
+      ],
+      "abroadCourse": [
+        "CSE 190",
+        "HCI for Health",
+        "University of California, San Diego"
+      ],
+      "approved": true,
+      "approval_date": "2016-09-22",
+      "comment": " "
+    }
+  },
+  {
+    "model": "utsida.coursematch",
+    "fields": {
+      "homeCourse": [
+        "EiT"
+      ],
+      "abroadCourse": [
+        "CSE 190C",
+        "Entrepreneur Robotics? Embedded Systems?",
+        "University of California, San Diego"
+      ],
+      "approved": true,
+      "approval_date": "2015-04-21",
+      "comment": " "
+    }
+  },
+  {
+    "model": "utsida.coursematch",
+    "fields": {
+      "homeCourse": [
+        "TIØ4230"
+      ],
+      "abroadCourse": [
+        "CSE 190D",
+        "Successful Entrepreneurship",
+        "University of California, San Diego"
+      ],
+      "approved": true,
+      "approval_date": "2015-09-03",
+      "comment": "IaS (2011)"
+    }
+  },
+  {
+    "model": "utsida.coursematch",
+    "fields": {
+      "homeCourse": [
+        "EiT"
+      ],
+      "abroadCourse": [
+        "CSE 190E00",
+        "Mobile Programming",
+        "University of California, San Diego"
+      ],
+      "approved": true,
+      "approval_date": "2015-04-21",
+      "comment": " "
+    }
+  },
+  {
+    "model": "utsida.coursematch",
+    "fields": {
+      "homeCourse": [
+        "EiT"
+      ],
+      "abroadCourse": [
+        "CSE 190F00",
+        "Mobile Development/Entrepreneurship",
+        "University of California, San Diego"
+      ],
+      "approved": true,
+      "approval_date": "2015-04-21",
+      "comment": " "
+    }
+  },
+  {
+    "model": "utsida.coursematch",
+    "fields": {
+      "homeCourse": [
+        "TDT4125"
+      ],
+      "abroadCourse": [
+        "CSE 202",
+        "Algorithm Design and Analysis",
+        "University of California, San Diego"
+      ],
+      "approved": true,
+      "approval_date": "2014-11-01",
+      "comment": " "
+    }
+  },
+  {
+    "model": "utsida.coursematch",
+    "fields": {
+      "homeCourse": [
+        "TMA4160"
+      ],
+      "abroadCourse": [
+        "CSE 207",
+        "Modern Cryptography",
+        "University of California, San Diego"
+      ],
+      "approved": true,
+      "approval_date": "2015-01-20",
+      "comment": " "
+    }
+  },
+  {
+    "model": "utsida.coursematch",
+    "fields": {
+      "homeCourse": [
+        "TDT4140"
+      ],
+      "abroadCourse": [
+        "CSE 210",
+        "Principles of Software Engineering",
+        "University of California, San Diego"
+      ],
+      "approved": true,
+      "approval_date": "2015-07-26",
+      "comment": " "
+    }
+  },
+  {
+    "model": "utsida.coursematch",
+    "fields": {
+      "homeCourse": [
+        "TDT4250"
+      ],
+      "abroadCourse": [
+        "CSE 210",
+        "Principles of Software Engineering",
+        "University of California, San Diego"
+      ],
+      "approved": false,
+      "comment": " "
+    }
+  },
+  {
+    "model": "utsida.coursematch",
+    "fields": {
+      "homeCourse": [
+        "TDT4252"
+      ],
+      "abroadCourse": [
+        "CSE 210",
+        "Principles of Software Engineering",
+        "University of California, San Diego"
+      ],
+      "approved": false,
+      "comment": " "
+    }
+  },
+  {
+    "model": "utsida.coursematch",
+    "fields": {
+      "homeCourse": [
+        "EiT"
+      ],
+      "abroadCourse": [
+        "CSE 210",
+        "Principles of Software Engineering",
+        "University of California, San Diego"
+      ],
+      "approved": true,
+      "approval_date": "2015-07-30",
+      "comment": "50% project work."
+    }
+  },
+  {
+    "model": "utsida.coursematch",
+    "fields": {
+      "homeCourse": [
+        "TDT4165"
+      ],
+      "abroadCourse": [
+        "CSE 210",
+        "Principles of Software Engineering",
+        "University of California, San Diego"
+      ],
+      "approved": true,
+      "approval_date": "2015-07-26",
+      "comment": "50% project work."
+    }
+  },
+  {
+    "model": "utsida.coursematch",
+    "fields": {
+      "homeCourse": [
+        "TDT4242"
+      ],
+      "abroadCourse": [
+        "CSE 211",
+        "Software Construction",
+        "University of California, San Diego"
+      ],
+      "approved": true,
+      "approval_date": "2015-01-20",
+      "comment": " "
+    }
+  },
+  {
+    "model": "utsida.coursematch",
+    "fields": {
+      "homeCourse": [
+        "IT3402"
+      ],
+      "abroadCourse": [
+        "CSE 216",
+        "Research Topics in Human-Computer Interaction",
+        "University of California, San Diego"
+      ],
+      "approved": true,
+      "approval_date": "2015-01-20",
+      "comment": "COGS 230 (equal). research project"
+    }
+  },
+  {
+    "model": "utsida.coursematch",
+    "fields": {
+      "homeCourse": [
+        "TDT4240"
+      ],
+      "abroadCourse": [
+        "CSE 218",
+        "Advanced Topics in Software Engineering",
+        "University of California, San Diego"
+      ],
+      "approved": true,
+      "approval_date": "2015-09-17",
+      "comment": " "
+    }
+  },
+  {
+    "model": "utsida.coursematch",
+    "fields": {
+      "homeCourse": [
+        "KPro"
+      ],
+      "abroadCourse": [
+        "CSE 219",
+        "Design at Large",
+        "University of California, San Diego"
+      ],
+      "approved": true,
+      "approval_date": "2016-01-22",
+      "comment": " "
+    }
+  },
+  {
+    "model": "utsida.coursematch",
+    "fields": {
+      "homeCourse": [
+        "TDT4225"
+      ],
+      "abroadCourse": [
+        "CSE 223A",
+        "Principles of Distributed Computing",
+        "University of California, San Diego"
+      ],
+      "approved": true,
+      "approval_date": "2015-01-20",
+      "comment": " "
+    }
+  },
+  {
+    "model": "utsida.coursematch",
+    "fields": {
+      "homeCourse": [
+        "TTM4115"
+      ],
+      "abroadCourse": [
+        "CSE 223B",
+        "Distributed Computing and Systems",
+        "University of California, San Diego"
+      ],
+      "approved": true,
+      "approval_date": "2015-01-20",
+      "comment": " "
+    }
+  },
+  {
+    "model": "utsida.coursematch",
+    "fields": {
+      "homeCourse": [
+        "TDT4237"
+      ],
+      "abroadCourse": [
+        "CSE 227",
+        "Computer Security",
+        "University of California, San Diego"
+      ],
+      "approved": true,
+      "approval_date": "2015-01-20",
+      "comment": " "
+    }
+  },
+  {
+    "model": "utsida.coursematch",
+    "fields": {
+      "homeCourse": [
+        "TDT4150"
+      ],
+      "abroadCourse": [
+        "CSE 232",
+        "Principles of Database Systems",
+        "University of California, San Diego"
+      ],
+      "approved": true,
+      "approval_date": "2015-01-20",
+      "comment": " "
+    }
+  },
+  {
+    "model": "utsida.coursematch",
+    "fields": {
+      "homeCourse": [
+        "TDT4117"
+      ],
+      "abroadCourse": [
+        "CSE 232B",
+        "Database Implementation",
+        "University of California, San Diego"
+      ],
+      "approved": true,
+      "approval_date": "2015-07-30",
+      "comment": " "
+    }
+  },
+  {
+    "model": "utsida.coursematch",
+    "fields": {
+      "homeCourse": [
+        "TDT4260"
+      ],
+      "abroadCourse": [
+        "CSE 240A",
+        "Principles of Computer Architecture",
+        "University of California, San Diego"
+      ],
+      "approved": true,
+      "approval_date": "2015-07-30",
+      "comment": " "
+    }
+  },
+  {
+    "model": "utsida.coursematch",
+    "fields": {
+      "homeCourse": [
+        "TFE4152"
+      ],
+      "abroadCourse": [
+        "CSE 243A",
+        "Intro Synthesis Methodologies in VLSI CAD",
+        "University of California, San Diego"
+      ],
+      "approved": true,
+      "approval_date": "2015-07-30",
+      "comment": " "
+    }
+  },
+  {
+    "model": "utsida.coursematch",
+    "fields": {
+      "homeCourse": [
+        "TDT4255"
+      ],
+      "abroadCourse": [
+        "CSE 243A",
+        "Intro Synthesis Methodologies in VLSI CAD",
+        "University of California, San Diego"
+      ],
+      "approved": true,
+      "approval_date": "2015-07-30",
+      "comment": " "
+    }
+  },
+  {
+    "model": "utsida.coursematch",
+    "fields": {
+      "homeCourse": [
+        "TDT4171"
+      ],
+      "abroadCourse": [
+        "CSE 250A",
+        "Principles of Artificial Intelligence",
+        "University of California, San Diego"
+      ],
+      "approved": true,
+      "approval_date": "2015-01-20",
+      "comment": " "
+    }
+  },
+  {
+    "model": "utsida.coursematch",
+    "fields": {
+      "homeCourse": [
+        "TDT4173"
+      ],
+      "abroadCourse": [
+        "CSE 250A",
+        "Principles of Artificial Intelligence",
+        "University of California, San Diego"
+      ],
+      "approved": true,
+      "approval_date": "2015-07-30",
+      "comment": " "
+    }
+  },
+  {
+    "model": "utsida.coursematch",
+    "fields": {
+      "homeCourse": [
+        "IT3708"
+      ],
+      "abroadCourse": [
+        "CSE 250B",
+        "Principles of Artificial Intelligence",
+        "University of California, San Diego"
+      ],
+      "approved": true,
+      "approval_date": "2015-01-20",
+      "comment": " "
+    }
+  },
+  {
+    "model": "utsida.coursematch",
+    "fields": {
+      "homeCourse": [
+        "TDT4173"
+      ],
+      "abroadCourse": [
+        "CSE 250C",
+        "Machine Learning Theory",
+        "University of California, San Diego"
+      ],
+      "approved": true,
+      "approval_date": "2014-09-15",
+      "comment": "Mangler CBR"
+    }
+  },
+  {
+    "model": "utsida.coursematch",
+    "fields": {
+      "homeCourse": [
+        "IT3105"
+      ],
+      "abroadCourse": [
+        "CSE 250C",
+        "Machine Learning Theory",
+        "University of California, San Diego"
+      ],
+      "approved": true,
+      "approval_date": "2014-11-01",
+      "comment": "Mangler CBR"
+    }
+  },
+  {
+    "model": "utsida.coursematch",
+    "fields": {
+      "homeCourse": [
+        "TDT4195"
+      ],
+      "abroadCourse": [
+        "CSE 252A",
+        "Computer Vision I",
+        "University of California, San Diego"
+      ],
+      "approved": true,
+      "approval_date": "2015-07-30",
+      "comment": "Image part, not Graphics part"
+    }
+  },
+  {
+    "model": "utsida.coursematch",
+    "fields": {
+      "homeCourse": [
+        "TDT4265"
+      ],
+      "abroadCourse": [
+        "CSE 252A",
+        "Computer Vision I",
+        "University of California, San Diego"
+      ],
+      "approved": true,
+      "approval_date": "2017-01-17",
+      "comment": " "
+    }
+  },
+  {
+    "model": "utsida.coursematch",
+    "fields": {
+      "homeCourse": [
+        "TDT4265"
+      ],
+      "abroadCourse": [
+        "CSE 252B",
+        "Computer Vision II",
+        "University of California, San Diego"
+      ],
+      "approved": true,
+      "approval_date": "2015-07-30",
+      "comment": "Image part, not Graphics part"
+    }
+  },
+  {
+    "model": "utsida.coursematch",
+    "fields": {
+      "homeCourse": [
+        "IT3708"
+      ],
+      "abroadCourse": [
+        "CSE 253",
+        "Neural Net / Pattern Rec",
+        "University of California, San Diego"
+      ],
+      "approved": true,
+      "approval_date": "2015-09-15",
+      "comment": " "
+    }
+  },
+  {
+    "model": "utsida.coursematch",
+    "fields": {
+      "homeCourse": [
+        "TDT4300"
+      ],
+      "abroadCourse": [
+        "CSE 255",
+        "Data Mining & Analytics",
+        "University of California, San Diego"
+      ],
+      "approved": true,
+      "approval_date": "2015-01-20",
+      "comment": "Ikke i 2016 (ref. BW)"
+    }
+  },
+  {
+    "model": "utsida.coursematch",
+    "fields": {
+      "homeCourse": [
+        "TDT4305"
+      ],
+      "abroadCourse": [
+        "CSE 255",
+        "Data Mining & Analytics",
+        "University of California, San Diego"
+      ],
+      "approved": true,
+      "approval_date": "2016-08-04",
+      "comment": " "
+    }
+  },
+  {
+    "model": "utsida.coursematch",
+    "fields": {
+      "homeCourse": [
+        "TDT4137"
+      ],
+      "abroadCourse": [
+        "CSE 258",
+        "Cognitive Modelling",
+        "University of California, San Diego"
+      ],
+      "approved": true,
+      "approval_date": "2015-08-27",
+      "comment": "100% Prosjekt-gruppe fag"
+    }
+  },
+  {
+    "model": "utsida.coursematch",
+    "fields": {
+      "homeCourse": [
+        "IT3010"
+      ],
+      "abroadCourse": [
+        "CSE 259",
+        "Seminar in AI",
+        "University of California, San Diego"
+      ],
+      "approved": true,
+      "approval_date": "2015-09-15",
+      "comment": " "
+    }
+  },
+  {
+    "model": "utsida.coursematch",
+    "fields": {
+      "homeCourse": [
+        "TDT4200"
+      ],
+      "abroadCourse": [
+        "CSE 262",
+        "SysSupport for Applications of Parallel Computation",
+        "University of California, San Diego"
+      ],
+      "approved": true,
+      "approval_date": "2015-07-30",
+      "comment": "Final Project (TDT4290)"
+    }
+  },
+  {
+    "model": "utsida.coursematch",
+    "fields": {
+      "homeCourse": [
+        "IT3010"
+      ],
+      "abroadCourse": [
+        "CSE 274",
+        "Selected Topics in Graphics",
+        "University of California, San Diego"
+      ],
+      "approved": true,
+      "approval_date": "2015-09-17",
+      "comment": "Final Project (TDT4290)"
+    }
+  },
+  {
+    "model": "utsida.coursematch",
+    "fields": {
+      "homeCourse": [
+        "TDT4287"
+      ],
+      "abroadCourse": [
+        "CSE 280A",
+        "Algorithms in Computational Biology",
+        "University of California, San Diego"
+      ],
+      "approved": true,
+      "approval_date": "2016-03-30",
+      "comment": "Neshat Naderi"
+    }
+  },
+  {
+    "model": "utsida.coursematch",
+    "fields": {
+      "homeCourse": [
+        "TDT4287"
+      ],
+      "abroadCourse": [
+        "CSE 282",
+        "Bioinformatic algorithms",
+        "University of California, San Diego"
+      ],
+      "approved": true,
+      "approval_date": "2015-08-27",
+      "comment": "33% Project"
+    }
+  },
+  {
+    "model": "utsida.coursematch",
+    "fields": {
+      "homeCourse": [
+        "TDT4210"
+      ],
+      "abroadCourse": [
+        "CSE 291",
+        "Human-Computer Interaction for Health",
+        "University of California, San Diego"
+      ],
+      "approved": true,
+      "approval_date": "2015-01-20",
+      "comment": "EiT multidisiplin"
+    }
+  },
+  {
+    "model": "utsida.coursematch",
+    "fields": {
+      "homeCourse": [
+        "TDT4290"
+      ],
+      "abroadCourse": [
+        "CSE 293",
+        "Special Project in CSE",
+        "University of California, San Diego"
+      ],
+      "approved": true,
+      "approval_date": "2016-02-29",
+      "comment": "Gruppearbeid!"
+    }
+  },
+  {
+    "model": "utsida.coursematch",
+    "fields": {
+      "homeCourse": [
+        "IT3010"
+      ],
+      "abroadCourse": [
+        "CSE 294",
+        "Research Meetings",
+        "University of California, San Diego"
+      ],
+      "approved": true,
+      "approval_date": "2015-09-15",
+      "comment": " "
+    }
+  },
+  {
+    "model": "utsida.coursematch",
+    "fields": {
+      "homeCourse": [
+        "TDT4102"
+      ],
+      "abroadCourse": [
+        "CSE 40475",
+        "Programming I",
+        "University of California, San Diego"
+      ],
+      "approved": true,
+      "approval_date": "2016-03-30",
+      "comment": "UNNTAK for 2016"
+    }
+  },
+  {
+    "model": "utsida.coursematch",
+    "fields": {
+      "homeCourse": [
+        "TDT4300"
+      ],
+      "abroadCourse": [
+        "CSE 40768",
+        "DM1",
+        "University of California, San Diego"
+      ],
+      "approved": true,
+      "approval_date": "2014-11-01",
+      "comment": "UNNTAK for 2014"
+    }
+  },
+  {
+    "model": "utsida.coursematch",
+    "fields": {
+      "homeCourse": [
+        "TDT4300"
+      ],
+      "abroadCourse": [
+        "CSE 40769",
+        "DM2",
+        "University of California, San Diego"
+      ],
+      "approved": true,
+      "approval_date": "2015-01-20",
+      "comment": "UNNTAK for 2015"
+    }
+  },
+  {
+    "model": "utsida.coursematch",
+    "fields": {
+      "homeCourse": [
+        "TDT4300"
+      ],
+      "abroadCourse": [
+        "CSE 40770",
+        "Data Mining for Scientific Applications",
+        "University of California, San Diego"
+      ],
+      "approved": true,
+      "approval_date": "2016-09-18",
+      "comment": "UNNTAK for 2016"
+    }
+  },
+  {
+    "model": "utsida.coursematch",
+    "fields": {
+      "homeCourse": [
+        "TDT4290"
+      ],
+      "abroadCourse": [
+        "CSE 41109",
+        "Introduction to iOS 9 and Objective-C",
+        "University of California, San Diego"
+      ],
+      "approved": true,
+      "approval_date": "2015-10-08",
+      "comment": "UNNTAK for 2015"
+    }
+  },
+  {
+    "model": "utsida.coursematch",
+    "fields": {
+      "homeCourse": [
+        "TDT4290"
+      ],
+      "abroadCourse": [
+        "CSE 41148",
+        "iOS 9 Programming II",
+        "University of California, San Diego"
+      ],
+      "approved": true,
+      "approval_date": "2015-10-08",
+      "comment": " "
+    }
+  },
+  {
+    "model": "utsida.coursematch",
+    "fields": {
+      "homeCourse": [
+        "TDT4290"
+      ],
+      "abroadCourse": [
+        "CSE 41147",
+        "iOS 9 Programming I",
+        "University of California, San Diego"
+      ],
+      "approved": true,
+      "approval_date": "2015-10-08",
+      "comment": " "
+    }
+  },
+  {
+    "model": "utsida.coursematch",
+    "fields": {
+      "homeCourse": [
+        "TDT4290"
+      ],
+      "abroadCourse": [
+        "CSE 41149",
+        "Mobile Device Programming Concepts",
+        "University of California, San Diego"
+      ],
+      "approved": true,
+      "approval_date": "2016-01-22",
+      "comment": "UNNTAK for 2015"
+    }
+  },
+  {
+    "model": "utsida.coursematch",
+    "fields": {
+      "homeCourse": [
+        "TDT4290"
+      ],
+      "abroadCourse": [
+        "CSE 41109",
+        "Introduction to iOS 9 and Objective-C",
+        "University of California, San Diego"
+      ],
+      "approved": true,
+      "approval_date": "2016-01-22",
+      "comment": " "
+    }
+  },
+  {
+    "model": "utsida.coursematch",
+    "fields": {
+      "homeCourse": [
+        "TDT4290"
+      ],
+      "abroadCourse": [
+        "CSE 41147",
+        "iOS 9 Programming I",
+        "University of California, San Diego"
+      ],
+      "approved": true,
+      "approval_date": "2016-01-22",
+      "comment": " "
+    }
+  },
+  {
+    "model": "utsida.coursematch",
+    "fields": {
+      "homeCourse": [
+        "TDT4290"
+      ],
+      "abroadCourse": [
+        "CSE 41148",
+        "iOS 9 Programming II",
+        "University of California, San Diego"
+      ],
+      "approved": true,
+      "approval_date": "2016-01-22",
+      "comment": " "
+    }
+  },
+  {
+    "model": "utsida.coursematch",
+    "fields": {
+      "homeCourse": [
+        "TDT4300"
+      ],
+      "abroadCourse": [
+        "CSE 41258",
+        "Fundamentals of Data Mining",
+        "University of California, San Diego"
+      ],
+      "approved": true,
+      "approval_date": "2017-01-17",
+      "comment": "2017, with CSE 41261 Data Prep for Analytics"
+    }
+  },
+  {
+    "model": "utsida.coursematch",
+    "fields": {
+      "homeCourse": [
+        "KPro"
+      ],
+      "abroadCourse": [
+        "CSE 412.25",
+        "Python for Informatics",
+        "University of California, San Diego"
+      ],
+      "approved": true,
+      "approval_date": "2016-08-30",
+      "comment": "UNNTAK for 2016"
+    }
+  },
+  {
+    "model": "utsida.coursematch",
+    "fields": {
+      "homeCourse": [
+        "KPro"
+      ],
+      "abroadCourse": [
+        "CSE 412.07",
+        "HTML5 and CSS",
+        "University of California, San Diego"
+      ],
+      "approved": true,
+      "approval_date": "2016-08-30",
+      "comment": "UNNTAK for 2016"
+    }
+  },
+  {
+    "model": "utsida.coursematch",
+    "fields": {
+      "homeCourse": [
+        "TDT4171"
+      ],
+      "abroadCourse": [
+        "ECE 175A",
+        "Elements of MachInt: Pattern Rec and ML",
+        "University of California, San Diego"
+      ],
+      "approved": true,
+      "approval_date": "2016-08-30",
+      "comment": "Prereq: ECE 109 and ECE 174."
+    }
+  },
+  {
+    "model": "utsida.coursematch",
+    "fields": {
+      "homeCourse": [
+        "TIØ4146"
+      ],
+      "abroadCourse": [
+        "ECON 100A",
+        "Micro-economy",
+        "University of California, San Diego"
+      ],
+      "approved": true,
+      "approval_date": "2015-09-01",
+      "comment": "K-emne (evt. EIT). Nødløsning"
+    }
+  },
+  {
+    "model": "utsida.coursematch",
+    "fields": {
+      "homeCourse": [
+        "TDT4280"
+      ],
+      "abroadCourse": [
+        "ECON 109",
+        "Game Theory",
+        "University of California, San Diego"
+      ],
+      "approved": true,
+      "approval_date": "2015-01-20",
+      "comment": "TIØ4120 - OperResearch, Intro (K-Emne)"
+    }
+  },
+  {
+    "model": "utsida.coursematch",
+    "fields": {
+      "homeCourse": [
+        "TIØ4146"
+      ],
+      "abroadCourse": [
+        "ECON 110B",
+        "Macro-economy",
+        "University of California, San Diego"
+      ],
+      "approved": true,
+      "approval_date": "2015-09-01",
+      "comment": "K-emne (evt. EIT)"
+    }
+  },
+  {
+    "model": "utsida.coursematch",
+    "fields": {
+      "homeCourse": [
+        "TIØ4120"
+      ],
+      "abroadCourse": [
+        "ECON 172A",
+        "Introduction to Operations Research",
+        "University of California, San Diego"
+      ],
+      "approved": true,
+      "approval_date": "2015-01-20",
+      "comment": " "
+    }
+  },
+  {
+    "model": "utsida.coursematch",
+    "fields": {
+      "homeCourse": [
+        "TTM4115"
+      ],
+      "abroadCourse": [
+        "ENG 210",
+        "System Engineering",
+        "University of California, San Diego"
+      ],
+      "approved": true,
+      "approval_date": "2015-08-27",
+      "comment": "IaS"
+    }
+  },
+  {
+    "model": "utsida.coursematch",
+    "fields": {
+      "homeCourse": [
+        "TTM4165"
+      ],
+      "abroadCourse": [
+        "HISC 102",
+        "Technology in World History",
+        "University of California, San Diego"
+      ],
+      "approved": true,
+      "approval_date": "2015-01-20",
+      "comment": " "
+    }
+  },
+  {
+    "model": "utsida.coursematch",
+    "fields": {
+      "homeCourse": [
+        "TTM4165"
+      ],
+      "abroadCourse": [
+        "IRGN 419",
+        "Risk Management",
+        "University of California, San Diego"
+      ],
+      "approved": true,
+      "approval_date": "2016-11-29",
+      "comment": "Trenger emnebeskrivelse!"
+    }
+  },
+  {
+    "model": "utsida.coursematch",
+    "fields": {
+      "homeCourse": [
+        "TIØ4146"
+      ],
+      "abroadCourse": [
+        "IRGN 419",
+        "Risk Management",
+        "University of California, San Diego"
+      ],
+      "approved": true,
+      "approval_date": "2015-08-20",
+      "comment": " "
+    }
+  },
+  {
+    "model": "utsida.coursematch",
+    "fields": {
+      "homeCourse": [
+        "TIØ4146"
+      ],
+      "abroadCourse": [
+        "IRGN 422",
+        "Investments",
+        "University of California, San Diego"
+      ],
+      "approved": true,
+      "approval_date": "2015-08-18",
+      "comment": "K-emner-2015-16, evt IAS"
+    }
+  },
+  {
+    "model": "utsida.coursematch",
+    "fields": {
+      "homeCourse": [
+        "IT3010"
+      ],
+      "abroadCourse": [
+        "IRGN 452",
+        "Big Data Analytics",
+        "University of California, San Diego"
+      ],
+      "approved": true,
+      "approval_date": "2017-01-17",
+      "comment": " "
+    }
+  },
+  {
+    "model": "utsida.coursematch",
+    "fields": {
+      "homeCourse": [
+        "EiT"
+      ],
+      "abroadCourse": [
+        "IRGN 490E",
+        "Market Microstructure",
+        "University of California, San Diego"
+      ],
+      "approved": true,
+      "approval_date": "2015-07-26",
+      "comment": " "
+    }
+  },
+  {
+    "model": "utsida.coursematch",
+    "fields": {
+      "homeCourse": [
+        "EiT"
+      ],
+      "abroadCourse": [
+        "IRGN 490F",
+        "Comparative Market Institutions SPTOP",
+        "University of California, San Diego"
+      ],
+      "approved": true,
+      "approval_date": "2016-08-30",
+      "comment": " "
+    }
+  },
+  {
+    "model": "utsida.coursematch",
+    "fields": {
+      "homeCourse": [
+        "TDT4280"
+      ],
+      "abroadCourse": [
+        "IRGN 490I",
+        "Game Theory & Strategy",
+        "University of California, San Diego"
+      ],
+      "approved": true,
+      "approval_date": "2015-08-25",
+      "comment": "TIØ4120 - Operations Research, Introduction (K)"
+    }
+  },
+  {
+    "model": "utsida.coursematch",
+    "fields": {
+      "homeCourse": [
+        "K-emne"
+      ],
+      "abroadCourse": [
+        "LIGM1a",
+        "German Conversation",
+        "University of California, San Diego"
+      ],
+      "approved": true,
+      "approval_date": "2016-02-29",
+      "comment": " "
+    }
+  },
+  {
+    "model": "utsida.coursematch",
+    "fields": {
+      "homeCourse": [
+        "IT3010"
+      ],
+      "abroadCourse": [
+        "LING 40059",
+        "Grammar Workshop 1 for EFL",
+        "University of California, San Diego"
+      ],
+      "approved": true,
+      "approval_date": "2015-08-27",
+      "comment": " "
+    }
+  },
+  {
+    "model": "utsida.coursematch",
+    "fields": {
+      "homeCourse": [
+        "IT3010"
+      ],
+      "abroadCourse": [
+        "LING 40101",
+        "Grammar and Editing 2",
+        "University of California, San Diego"
+      ],
+      "approved": true,
+      "approval_date": "2015-08-27",
+      "comment": " "
+    }
+  },
+  {
+    "model": "utsida.coursematch",
+    "fields": {
+      "homeCourse": [
+        "IT3010"
+      ],
+      "abroadCourse": [
+        "LING 40115",
+        "Topics in Advanced English Structure",
+        "University of California, San Diego"
+      ],
+      "approved": true,
+      "approval_date": "2015-08-27",
+      "comment": " "
+    }
+  },
+  {
+    "model": "utsida.coursematch",
+    "fields": {
+      "homeCourse": [
+        "TIØ5200"
+      ],
+      "abroadCourse": [
+        "MGT164",
+        "Organizational Leadership",
+        "University of California, San Diego"
+      ],
+      "approved": true,
+      "approval_date": "2015-08-27",
+      "comment": "K-Emne"
+    }
+  },
+  {
+    "model": "utsida.coursematch",
+    "fields": {
+      "homeCourse": [
+        "TIØ4258"
+      ],
+      "abroadCourse": [
+        "MGT 172",
+        "Business Project Management",
+        "University of California, San Diego"
+      ],
+      "approved": true,
+      "approval_date": "2015-03-09",
+      "comment": "MGT-172 is weak on accounting"
+    }
+  }
+]

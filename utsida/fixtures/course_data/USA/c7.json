@@ -1,0 +1,1328 @@
+[
+  {
+    "model": "utsida.abroadcourse",
+    "fields": {
+      "code": "BUSA 40714",
+      "name": "Project Management Bootcamp",
+      "university": [
+        "University of California, San Diego"
+      ],
+      "description_url": "http://extension.ucsd.edu/studyarea/index.cfm?vAction=singleCourse&amp;vCourse=BUSA-40714",
+      "study_points": 5,
+      "pre_requisites": []
+    }
+  },
+  {
+    "model": "utsida.abroadcourse",
+    "fields": {
+      "code": "COGS 109",
+      "name": "Modeling and Data Analysis",
+      "university": [
+        "University of California, San Diego"
+      ],
+      "description_url": "http://www.ucsd.edu/catalog/courses/COGS.html#cogs109",
+      "study_points": 5.3,
+      "pre_requisites": []
+    }
+  },
+  {
+    "model": "utsida.abroadcourse",
+    "fields": {
+      "code": "COGS 118A",
+      "name": "Natural Computation I",
+      "university": [
+        "University of California, San Diego"
+      ],
+      "description_url": "http://www.ucsd.edu/catalog/courses/COGS.html#cogs118a",
+      "study_points": 5.3,
+      "pre_requisites": []
+    }
+  },
+  {
+    "model": "utsida.abroadcourse",
+    "fields": {
+      "code": "COGS 118B",
+      "name": "Natural Computation II",
+      "university": [
+        "University of California, San Diego"
+      ],
+      "description_url": "http://www.ucsd.edu/catalog/courses/COGS.html#cogs118b",
+      "study_points": 5.3,
+      "pre_requisites": []
+    }
+  },
+  {
+    "model": "utsida.abroadcourse",
+    "fields": {
+      "code": "COGS 119",
+      "name": "Programming for Experimental Research",
+      "university": [
+        "University of California, San Diego"
+      ],
+      "description_url": "http://www.ucsd.edu/catalog/courses/COGS.html#cogs119",
+      "study_points": 5.3,
+      "pre_requisites": []
+    }
+  },
+  {
+    "model": "utsida.abroadcourse",
+    "fields": {
+      "code": "COGS 121",
+      "name": "HCI Programming Studio",
+      "university": [
+        "University of California, San Diego"
+      ],
+      "description_url": "https://thiscourse.com/ucsd/cogs121/sp15/",
+      "study_points": 5.3,
+      "pre_requisites": []
+    }
+  },
+  {
+    "model": "utsida.abroadcourse",
+    "fields": {
+      "code": "COGS 185",
+      "name": "Advanced Machine Learning Methods",
+      "university": [
+        "University of California, San Diego"
+      ],
+      "description_url": "http://www.ucsd.edu/catalog/courses/COGS.html#cogs185",
+      "study_points": 5.3,
+      "pre_requisites": []
+    }
+  },
+  {
+    "model": "utsida.abroadcourse",
+    "fields": {
+      "code": "COGS 189",
+      "name": "Brain Computer Interfaces",
+      "university": [
+        "University of California, San Diego"
+      ],
+      "description_url": "http://thiscourse.com/ucsd/cogs160bci/wi16/",
+      "study_points": 5.3,
+      "pre_requisites": []
+    }
+  },
+  {
+    "model": "utsida.abroadcourse",
+    "fields": {
+      "code": "COGS 202",
+      "name": "Foundation - Comp. Model of Cogn",
+      "university": [
+        "University of California, San Diego"
+      ],
+      "description_url": "http://thiscourse.com/ucsd/cogs202",
+      "study_points": 6.6,
+      "pre_requisites": []
+    }
+  },
+  {
+    "model": "utsida.abroadcourse",
+    "fields": {
+      "code": "COGS 203",
+      "name": "Thinking and doing",
+      "university": [
+        "University of California, San Diego"
+      ],
+      "description_url": "http://thiscourse.com/ucsd/cogs203/fa14",
+      "study_points": 6.6,
+      "pre_requisites": []
+    }
+  },
+  {
+    "model": "utsida.abroadcourse",
+    "fields": {
+      "code": "COGS 219",
+      "name": "Programming for Experimental Research",
+      "university": [
+        "University of California, San Diego"
+      ],
+      "description_url": "http://matlabfun.ucsd.edu/",
+      "study_points": 6.6,
+      "pre_requisites": []
+    }
+  },
+  {
+    "model": "utsida.abroadcourse",
+    "fields": {
+      "code": "COGS 220",
+      "name": "Information Visualization",
+      "university": [
+        "University of California, San Diego"
+      ],
+      "description_url": "https://www.ucsd.edu/catalog/courses/COGS.html#cogs220",
+      "study_points": 6.6,
+      "pre_requisites": []
+    }
+  },
+  {
+    "model": "utsida.abroadcourse",
+    "fields": {
+      "code": "COGS 229",
+      "name": "Design at Large",
+      "university": [
+        "University of California, San Diego"
+      ],
+      "description_url": "http://cse.ucsd.edu/graduate/courses/course-listing/course-descriptions#cse219",
+      "study_points": 1.6,
+      "pre_requisites": []
+    }
+  },
+  {
+    "model": "utsida.abroadcourse",
+    "fields": {
+      "code": "COGS 230",
+      "name": "Research Topics in Human-Computer Interaction",
+      "university": [
+        "University of California, San Diego"
+      ],
+      "description_url": "http://cse.ucsd.edu/node/2535",
+      "study_points": 6.6,
+      "pre_requisites": []
+    }
+  },
+  {
+    "model": "utsida.abroadcourse",
+    "fields": {
+      "code": "CSE 30",
+      "name": "Computer Organization and Systems Programming",
+      "university": [
+        "University of California, San Diego"
+      ],
+      "description_url": "http://cse.ucsd.edu/undergraduate/courses/course-descriptions/cse-30-computer-organization-and-systems-programming",
+      "study_points": 5.3,
+      "pre_requisites": []
+    }
+  },
+  {
+    "model": "utsida.abroadcourse",
+    "fields": {
+      "code": "CSE 101",
+      "name": "Algorithms",
+      "university": [
+        "University of California, San Diego"
+      ],
+      "description_url": "http://cse.ucsd.edu/cse101",
+      "study_points": 5.3,
+      "pre_requisites": []
+    }
+  },
+  {
+    "model": "utsida.abroadcourse",
+    "fields": {
+      "code": "CSE 107",
+      "name": "Introduction to Modern Cryptography",
+      "university": [
+        "University of California, San Diego"
+      ],
+      "description_url": "http://www.ucsd.edu/catalog/courses/CSE.html#cse107",
+      "study_points": 5.3,
+      "pre_requisites": []
+    }
+  },
+  {
+    "model": "utsida.abroadcourse",
+    "fields": {
+      "code": "CSE 110",
+      "name": "Software Engineering",
+      "university": [
+        "University of California, San Diego"
+      ],
+      "description_url": "http://www.ucsd.edu/catalog/courses/CSE.html#cse110",
+      "study_points": 5.3,
+      "pre_requisites": []
+    }
+  },
+  {
+    "model": "utsida.abroadcourse",
+    "fields": {
+      "code": "CSE 111",
+      "name": "Object Oriented Software Design",
+      "university": [
+        "University of California, San Diego"
+      ],
+      "description_url": "",
+      "study_points": 5.3,
+      "pre_requisites": []
+    }
+  },
+  {
+    "model": "utsida.abroadcourse",
+    "fields": {
+      "code": "CSE 112",
+      "name": "Advanced Software Engineering",
+      "university": [
+        "University of California, San Diego"
+      ],
+      "description_url": "http://www.ucsd.edu/catalog/courses/CSE.html#cse112",
+      "study_points": 5.3,
+      "pre_requisites": []
+    }
+  },
+  {
+    "model": "utsida.abroadcourse",
+    "fields": {
+      "code": "CSE 120",
+      "name": "Principles of Computer Operating Systems",
+      "university": [
+        "University of California, San Diego"
+      ],
+      "description_url": "http://www.ucsd.edu/catalog/courses/CSE.html#cse120",
+      "study_points": 5.3,
+      "pre_requisites": []
+    }
+  },
+  {
+    "model": "utsida.abroadcourse",
+    "fields": {
+      "code": "CSE 123",
+      "name": "Computer Networks",
+      "university": [
+        "University of California, San Diego"
+      ],
+      "description_url": "http://www.ucsd.edu/catalog/courses/CSE.html#cse123",
+      "study_points": 5.3,
+      "pre_requisites": []
+    }
+  },
+  {
+    "model": "utsida.abroadcourse",
+    "fields": {
+      "code": "CSE 125",
+      "name": "Software System Design & Implementation",
+      "university": [
+        "University of California, San Diego"
+      ],
+      "description_url": "http://cse.ucsd.edu/undergraduate/courses/course-descriptions/cse-125-software-system-design-implementation-aka-video",
+      "study_points": 5.3,
+      "pre_requisites": []
+    }
+  },
+  {
+    "model": "utsida.abroadcourse",
+    "fields": {
+      "code": "CSE 127",
+      "name": "Introduction to Computer Security",
+      "university": [
+        "University of California, San Diego"
+      ],
+      "description_url": "http://cse.ucsd.edu/undergraduate/courses/course-descriptions/cse-127-introduction-computer-security",
+      "study_points": 5.3,
+      "pre_requisites": []
+    }
+  },
+  {
+    "model": "utsida.abroadcourse",
+    "fields": {
+      "code": "CSE 130",
+      "name": "Programming Languages: Principles and Paradigms",
+      "university": [
+        "University of California, San Diego"
+      ],
+      "description_url": "http://www.ucsd.edu/catalog/courses/CSE.html#cse130",
+      "study_points": 5.3,
+      "pre_requisites": []
+    }
+  },
+  {
+    "model": "utsida.abroadcourse",
+    "fields": {
+      "code": "CSE 131",
+      "name": "Compiler Construction",
+      "university": [
+        "University of California, San Diego"
+      ],
+      "description_url": "http://www.ucsd.edu/catalog/courses/CSE.html#cse131",
+      "study_points": 5.3,
+      "pre_requisites": []
+    }
+  },
+  {
+    "model": "utsida.abroadcourse",
+    "fields": {
+      "code": "CSE 132A",
+      "name": "Database System Principles",
+      "university": [
+        "University of California, San Diego"
+      ],
+      "description_url": "http://www.ucsd.edu/catalog/courses/CSE.html#cse132a",
+      "study_points": 5.3,
+      "pre_requisites": []
+    }
+  },
+  {
+    "model": "utsida.abroadcourse",
+    "fields": {
+      "code": "CSE 132B",
+      "name": "Database Systems Applications",
+      "university": [
+        "University of California, San Diego"
+      ],
+      "description_url": "http://www.ucsd.edu/catalog/courses/CSE.html#cse132b",
+      "study_points": 5.3,
+      "pre_requisites": []
+    }
+  },
+  {
+    "model": "utsida.abroadcourse",
+    "fields": {
+      "code": "CSE 134B",
+      "name": "Web Client Languages",
+      "university": [
+        "University of California, San Diego"
+      ],
+      "description_url": "http://cse.ucsd.edu/cse134B",
+      "study_points": 5.3,
+      "pre_requisites": []
+    }
+  },
+  {
+    "model": "utsida.abroadcourse",
+    "fields": {
+      "code": "CSE 135",
+      "name": "Online Database Analytics Applications",
+      "university": [
+        "University of California, San Diego"
+      ],
+      "description_url": "http://cse.ucsd.edu/undergraduate/courses/course-descriptions/cse-135-online-database-analytics-applications",
+      "study_points": 5.3,
+      "pre_requisites": []
+    }
+  },
+  {
+    "model": "utsida.abroadcourse",
+    "fields": {
+      "code": "CSE 150",
+      "name": "Introduction to Artificial Intelligence: Search and Reasoning",
+      "university": [
+        "University of California, San Diego"
+      ],
+      "description_url": "http://www.ucsd.edu/catalog/courses/CSE.html#cse150",
+      "study_points": 5.3,
+      "pre_requisites": []
+    }
+  },
+  {
+    "model": "utsida.abroadcourse",
+    "fields": {
+      "code": "CSE 151",
+      "name": "Introduction to Artificial Intelligence: Statistical Approaches",
+      "university": [
+        "University of California, San Diego"
+      ],
+      "description_url": "http://www.ucsd.edu/catalog/courses/CSE.html#cse151",
+      "study_points": 5.3,
+      "pre_requisites": []
+    }
+  },
+  {
+    "model": "utsida.abroadcourse",
+    "fields": {
+      "code": "CSE 160",
+      "name": "Introduction to Parallel Computing",
+      "university": [
+        "University of California, San Diego"
+      ],
+      "description_url": "http://cse.ucsd.edu/undergraduate/courses/course-descriptions/cse-160-introduction-parallel-computing",
+      "study_points": 5.3,
+      "pre_requisites": []
+    }
+  },
+  {
+    "model": "utsida.abroadcourse",
+    "fields": {
+      "code": "CSE 168",
+      "name": "Computer Graphics II: Rendering",
+      "university": [
+        "University of California, San Diego"
+      ],
+      "description_url": "http://www.ucsd.edu/catalog/courses/CSE.html#cse168",
+      "study_points": 5.3,
+      "pre_requisites": []
+    }
+  },
+  {
+    "model": "utsida.abroadcourse",
+    "fields": {
+      "code": "CSE 190A",
+      "name": "Neural Networks",
+      "university": [
+        "University of California, San Diego"
+      ],
+      "description_url": "http://cseweb.ucsd.edu/~gary/course-description-cse-190-winter-2015.html",
+      "study_points": 5.3,
+      "pre_requisites": []
+    }
+  },
+  {
+    "model": "utsida.abroadcourse",
+    "fields": {
+      "code": "CSE 190",
+      "name": "HCI for Health",
+      "university": [
+        "University of California, San Diego"
+      ],
+      "description_url": "http://cs.ucsd.edu/cse190",
+      "study_points": 5.3,
+      "pre_requisites": []
+    }
+  },
+  {
+    "model": "utsida.abroadcourse",
+    "fields": {
+      "code": "CSE 190C",
+      "name": "Entrepreneur Robotics? Embedded Systems?",
+      "university": [
+        "University of California, San Diego"
+      ],
+      "description_url": "http://cseweb.ucsd.edu/classes/sp14/cse190-c/",
+      "study_points": 5.3,
+      "pre_requisites": []
+    }
+  },
+  {
+    "model": "utsida.abroadcourse",
+    "fields": {
+      "code": "CSE 190D",
+      "name": "Successful Entrepreneurship",
+      "university": [
+        "University of California, San Diego"
+      ],
+      "description_url": "http://cseweb.ucsd.edu/classes/fa14/cse190-d/",
+      "study_points": 5.3,
+      "pre_requisites": []
+    }
+  },
+  {
+    "model": "utsida.abroadcourse",
+    "fields": {
+      "code": "CSE 190E00",
+      "name": "Mobile Programming",
+      "university": [
+        "University of California, San Diego"
+      ],
+      "description_url": "http://cse.ucsd.edu/cse190",
+      "study_points": 5.3,
+      "pre_requisites": []
+    }
+  },
+  {
+    "model": "utsida.abroadcourse",
+    "fields": {
+      "code": "CSE 190F00",
+      "name": "Mobile Development/Entrepreneurship",
+      "university": [
+        "University of California, San Diego"
+      ],
+      "description_url": "http://cse.ucsd.edu/cse190",
+      "study_points": 5.3,
+      "pre_requisites": []
+    }
+  },
+  {
+    "model": "utsida.abroadcourse",
+    "fields": {
+      "code": "CSE 202",
+      "name": "Algorithm Design and Analysis",
+      "university": [
+        "University of California, San Diego"
+      ],
+      "description_url": "http://cse.ucsd.edu/cse202",
+      "study_points": 6.6,
+      "pre_requisites": []
+    }
+  },
+  {
+    "model": "utsida.abroadcourse",
+    "fields": {
+      "code": "CSE 207",
+      "name": "Modern Cryptography",
+      "university": [
+        "University of California, San Diego"
+      ],
+      "description_url": "http://cse.ucsd.edu/cse207",
+      "study_points": 6.6,
+      "pre_requisites": []
+    }
+  },
+  {
+    "model": "utsida.abroadcourse",
+    "fields": {
+      "code": "CSE 210",
+      "name": "Principles of Software Engineering",
+      "university": [
+        "University of California, San Diego"
+      ],
+      "description_url": "http://cse.ucsd.edu/cse210",
+      "study_points": 6.6,
+      "pre_requisites": []
+    }
+  },
+  {
+    "model": "utsida.abroadcourse",
+    "fields": {
+      "code": "CSE 211",
+      "name": "Software Construction",
+      "university": [
+        "University of California, San Diego"
+      ],
+      "description_url": "http://cse.ucsd.edu/cse211",
+      "study_points": 6.6,
+      "pre_requisites": []
+    }
+  },
+  {
+    "model": "utsida.abroadcourse",
+    "fields": {
+      "code": "CSE 216",
+      "name": "Research Topics in Human-Computer Interaction",
+      "university": [
+        "University of California, San Diego"
+      ],
+      "description_url": "http://cse.ucsd.edu/node/2535",
+      "study_points": 6.6,
+      "pre_requisites": []
+    }
+  },
+  {
+    "model": "utsida.abroadcourse",
+    "fields": {
+      "code": "CSE 218",
+      "name": "Advanced Topics in Software Engineering",
+      "university": [
+        "University of California, San Diego"
+      ],
+      "description_url": "http://cse.ucsd.edu/cse218",
+      "study_points": 6.6,
+      "pre_requisites": []
+    }
+  },
+  {
+    "model": "utsida.abroadcourse",
+    "fields": {
+      "code": "CSE 219",
+      "name": "Design at Large",
+      "university": [
+        "University of California, San Diego"
+      ],
+      "description_url": "http://cse.ucsd.edu/graduate/courses/course-listing/course-descriptions#cse219",
+      "study_points": 1.6,
+      "pre_requisites": []
+    }
+  },
+  {
+    "model": "utsida.abroadcourse",
+    "fields": {
+      "code": "CSE 223A",
+      "name": "Principles of Distributed Computing",
+      "university": [
+        "University of California, San Diego"
+      ],
+      "description_url": "http://cse.ucsd.edu/cse223a",
+      "study_points": 6.6,
+      "pre_requisites": []
+    }
+  },
+  {
+    "model": "utsida.abroadcourse",
+    "fields": {
+      "code": "CSE 223B",
+      "name": "Distributed Computing and Systems",
+      "university": [
+        "University of California, San Diego"
+      ],
+      "description_url": "http://cse.ucsd.edu/cse223b",
+      "study_points": 6.6,
+      "pre_requisites": []
+    }
+  },
+  {
+    "model": "utsida.abroadcourse",
+    "fields": {
+      "code": "CSE 227",
+      "name": "Computer Security",
+      "university": [
+        "University of California, San Diego"
+      ],
+      "description_url": "http://cse.ucsd.edu/cse227",
+      "study_points": 6.6,
+      "pre_requisites": []
+    }
+  },
+  {
+    "model": "utsida.abroadcourse",
+    "fields": {
+      "code": "CSE 232",
+      "name": "Principles of Database Systems",
+      "university": [
+        "University of California, San Diego"
+      ],
+      "description_url": "http://www.ucsd.edu/catalog/courses/CSE.html#cse232",
+      "study_points": 6.6,
+      "pre_requisites": []
+    }
+  },
+  {
+    "model": "utsida.abroadcourse",
+    "fields": {
+      "code": "CSE 232B",
+      "name": "Database Implementation",
+      "university": [
+        "University of California, San Diego"
+      ],
+      "description_url": "http://cse.ucsd.edu/cse232b",
+      "study_points": 6.6,
+      "pre_requisites": []
+    }
+  },
+  {
+    "model": "utsida.abroadcourse",
+    "fields": {
+      "code": "CSE 240A",
+      "name": "Principles of Computer Architecture",
+      "university": [
+        "University of California, San Diego"
+      ],
+      "description_url": "http://www.ucsd.edu/catalog/courses/CSE.html#cse240a",
+      "study_points": 6.6,
+      "pre_requisites": []
+    }
+  },
+  {
+    "model": "utsida.abroadcourse",
+    "fields": {
+      "code": "CSE 243A",
+      "name": "Intro Synthesis Methodologies in VLSI CAD",
+      "university": [
+        "University of California, San Diego"
+      ],
+      "description_url": "http://www.ucsd.edu/catalog/courses/CSE.html#cse243a",
+      "study_points": 6.6,
+      "pre_requisites": []
+    }
+  },
+  {
+    "model": "utsida.abroadcourse",
+    "fields": {
+      "code": "CSE 250A",
+      "name": "Principles of Artificial Intelligence",
+      "university": [
+        "University of California, San Diego"
+      ],
+      "description_url": "http://www.ucsd.edu/catalog/courses/CSE.html#cse250A",
+      "study_points": 6.6,
+      "pre_requisites": []
+    }
+  },
+  {
+    "model": "utsida.abroadcourse",
+    "fields": {
+      "code": "CSE 250B",
+      "name": "Principles of Artificial Intelligence",
+      "university": [
+        "University of California, San Diego"
+      ],
+      "description_url": "http://www.ucsd.edu/catalog/courses/CSE.html#cse250B",
+      "study_points": 6.6,
+      "pre_requisites": []
+    }
+  },
+  {
+    "model": "utsida.abroadcourse",
+    "fields": {
+      "code": "CSE 250C",
+      "name": "Machine Learning Theory",
+      "university": [
+        "University of California, San Diego"
+      ],
+      "description_url": "http://www.ucsd.edu/catalog/courses/CSE.html#cse250c",
+      "study_points": 6.6,
+      "pre_requisites": []
+    }
+  },
+  {
+    "model": "utsida.abroadcourse",
+    "fields": {
+      "code": "CSE 252A",
+      "name": "Computer Vision I",
+      "university": [
+        "University of California, San Diego"
+      ],
+      "description_url": "http://www.ucsd.edu/catalog/courses/CSE.html#cse252a",
+      "study_points": 6.6,
+      "pre_requisites": []
+    }
+  },
+  {
+    "model": "utsida.abroadcourse",
+    "fields": {
+      "code": "CSE 252B",
+      "name": "Computer Vision II",
+      "university": [
+        "University of California, San Diego"
+      ],
+      "description_url": "http://cse.ucsd.edu/cse252B",
+      "study_points": 6.6,
+      "pre_requisites": []
+    }
+  },
+  {
+    "model": "utsida.abroadcourse",
+    "fields": {
+      "code": "CSE 253",
+      "name": "Neural Net / Pattern Rec",
+      "university": [
+        "University of California, San Diego"
+      ],
+      "description_url": "http://cse.ucsd.edu/cse253",
+      "study_points": 6.6,
+      "pre_requisites": []
+    }
+  },
+  {
+    "model": "utsida.abroadcourse",
+    "fields": {
+      "code": "CSE 255",
+      "name": "Data Mining & Analytics",
+      "university": [
+        "University of California, San Diego"
+      ],
+      "description_url": "http://www.ucsd.edu/catalog/courses/CSE.html#cse255",
+      "study_points": 6.6,
+      "pre_requisites": []
+    }
+  },
+  {
+    "model": "utsida.abroadcourse",
+    "fields": {
+      "code": "CSE 258",
+      "name": "Cognitive Modelling",
+      "university": [
+        "University of California, San Diego"
+      ],
+      "description_url": "http://www.ucsd.edu/catalog/courses/CSE.html#cse255",
+      "study_points": 6.6,
+      "pre_requisites": []
+    }
+  },
+  {
+    "model": "utsida.abroadcourse",
+    "fields": {
+      "code": "CSE 259",
+      "name": "Seminar in AI",
+      "university": [
+        "University of California, San Diego"
+      ],
+      "description_url": "http://www.ucsd.edu/catalog/courses/CSE.html#cse259",
+      "study_points": 1.6,
+      "pre_requisites": []
+    }
+  },
+  {
+    "model": "utsida.abroadcourse",
+    "fields": {
+      "code": "CSE 262",
+      "name": "SysSupport for Applications of Parallel Computation",
+      "university": [
+        "University of California, San Diego"
+      ],
+      "description_url": "http://www.ucsd.edu/catalog/courses/CSE.html#cse262",
+      "study_points": 6.6,
+      "pre_requisites": []
+    }
+  },
+  {
+    "model": "utsida.abroadcourse",
+    "fields": {
+      "code": "CSE 274",
+      "name": "Selected Topics in Graphics",
+      "university": [
+        "University of California, San Diego"
+      ],
+      "description_url": "http://www.ucsd.edu/catalog/courses/CSE.html#cse274",
+      "study_points": 6.6,
+      "pre_requisites": []
+    }
+  },
+  {
+    "model": "utsida.abroadcourse",
+    "fields": {
+      "code": "CSE 280A",
+      "name": "Algorithms in Computational Biology",
+      "university": [
+        "University of California, San Diego"
+      ],
+      "description_url": "http://cse.ucsd.edu/cse280A",
+      "study_points": 6.6,
+      "pre_requisites": []
+    }
+  },
+  {
+    "model": "utsida.abroadcourse",
+    "fields": {
+      "code": "CSE 282",
+      "name": "Bioinformatic algorithms",
+      "university": [
+        "University of California, San Diego"
+      ],
+      "description_url": "https://sites.google.com/site/ucsdcse282/website-builder/lectures",
+      "study_points": 6.6,
+      "pre_requisites": []
+    }
+  },
+  {
+    "model": "utsida.abroadcourse",
+    "fields": {
+      "code": "CSE 291",
+      "name": "Human-Computer Interaction for Health",
+      "university": [
+        "University of California, San Diego"
+      ],
+      "description_url": "http://thiscourse.com/ucsd/hci4h/wi15/",
+      "study_points": 6.6,
+      "pre_requisites": []
+    }
+  },
+  {
+    "model": "utsida.abroadcourse",
+    "fields": {
+      "code": "CSE 293",
+      "name": "Special Project in CSE",
+      "university": [
+        "University of California, San Diego"
+      ],
+      "description_url": "http://www.ucsd.edu/catalog/courses/CSE.html#cse293",
+      "study_points": 3.3,
+      "pre_requisites": []
+    }
+  },
+  {
+    "model": "utsida.abroadcourse",
+    "fields": {
+      "code": "CSE 294",
+      "name": "Research Meetings",
+      "university": [
+        "University of California, San Diego"
+      ],
+      "description_url": "http://www.ucsd.edu/catalog/courses/CSE.html#cse294",
+      "study_points": 3.3,
+      "pre_requisites": []
+    }
+  },
+  {
+    "model": "utsida.abroadcourse",
+    "fields": {
+      "code": "CSE 40475",
+      "name": "Programming I",
+      "university": [
+        "University of California, San Diego"
+      ],
+      "description_url": "http://extension.ucsd.edu/studyarea/index.cfm?vAction=singleCourse&amp;vCourse=CSE-40475&amp;vsacategoryid=375&amp;vStudyAreaID=116",
+      "study_points": 4,
+      "pre_requisites": []
+    }
+  },
+  {
+    "model": "utsida.abroadcourse",
+    "fields": {
+      "code": "CSE 40768",
+      "name": "DM1",
+      "university": [
+        "University of California, San Diego"
+      ],
+      "description_url": "http://extension.ucsd.edu/studyarea/index.cfm?vAction=singleCourse&amp;vCourse=CSE-40768&amp;vsacategoryid=76&amp;vStudyAreaID=14",
+      "study_points": 3.3,
+      "pre_requisites": []
+    }
+  },
+  {
+    "model": "utsida.abroadcourse",
+    "fields": {
+      "code": "CSE 40769",
+      "name": "DM2",
+      "university": [
+        "University of California, San Diego"
+      ],
+      "description_url": "http://extension.ucsd.edu/studyarea/index.cfm?vAction=singleCourse&amp;vCourse=CSE-40769&amp;vsacategoryid=76&amp;vStudyAreaID=14",
+      "study_points": 4,
+      "pre_requisites": []
+    }
+  },
+  {
+    "model": "utsida.abroadcourse",
+    "fields": {
+      "code": "CSE 40770",
+      "name": "Data Mining for Scientific Applications",
+      "university": [
+        "University of California, San Diego"
+      ],
+      "description_url": "https://www.google.com/url?q=http://extension.ucsd.edu/studyarea/index.cfm%3FvAction%3DsingleCourse%26vCourse%3DCSE-40770%26vStudyAreaID%3D116&amp;sa=U&amp;ved=0ahUKEwiW95ef1ZjPAhUH_iwKHV3UDyAQFggEMAA&amp;client=internal-uds-cse&amp;usg=AFQjCNGZmn3GFMUE2dsD18U37DN0Jo3-7A",
+      "study_points": 4,
+      "pre_requisites": []
+    }
+  },
+  {
+    "model": "utsida.abroadcourse",
+    "fields": {
+      "code": "CSE 41109",
+      "name": "Introduction to iOS 9 and Objective-C",
+      "university": [
+        "University of California, San Diego"
+      ],
+      "description_url": "http://extension.ucsd.edu/studyarea/index.cfm?vAction=singleCourse&amp;vCourse=CSE-41109&amp;vStudyAreaID=14",
+      "study_points": 4,
+      "pre_requisites": []
+    }
+  },
+  {
+    "model": "utsida.abroadcourse",
+    "fields": {
+      "code": "CSE 41148",
+      "name": "iOS 9 Programming II",
+      "university": [
+        "University of California, San Diego"
+      ],
+      "description_url": "http://extension.ucsd.edu/studyarea/index.cfm?vAction=singleCourse&amp;vCourse=CSE-41148&amp;vStudyAreaID=14",
+      "study_points": 4,
+      "pre_requisites": []
+    }
+  },
+  {
+    "model": "utsida.abroadcourse",
+    "fields": {
+      "code": "CSE 41147",
+      "name": "iOS 9 Programming I",
+      "university": [
+        "University of California, San Diego"
+      ],
+      "description_url": "http://extension.ucsd.edu/studyarea/index.cfm?vAction=singleCourse&amp;vCourse=CSE-41147&amp;vStudyAreaID=14",
+      "study_points": 4,
+      "pre_requisites": []
+    }
+  },
+  {
+    "model": "utsida.abroadcourse",
+    "fields": {
+      "code": "CSE 41149",
+      "name": "Mobile Device Programming Concepts",
+      "university": [
+        "University of California, San Diego"
+      ],
+      "description_url": "http://extension.ucsd.edu/studyarea/index.cfm?vAction=singleCourse&amp;vCourse=CSE-41149",
+      "study_points": 4,
+      "pre_requisites": []
+    }
+  },
+  {
+    "model": "utsida.abroadcourse",
+    "fields": {
+      "code": "CSE 41258",
+      "name": "Fundamentals of Data Mining",
+      "university": [
+        "University of California, San Diego"
+      ],
+      "description_url": "http://extension.ucsd.edu/studyarea/index.cfm?vAction=singleCourse&amp;vCourse=CSE-41258&amp;vsacategoryid=285&amp;vStudyAreaID=103",
+      "study_points": 4,
+      "pre_requisites": []
+    }
+  },
+  {
+    "model": "utsida.abroadcourse",
+    "fields": {
+      "code": "CSE 412.25",
+      "name": "Python for Informatics",
+      "university": [
+        "University of California, San Diego"
+      ],
+      "description_url": "http://extension.ucsd.edu/studyarea/index.cfm?vAction=singleCourse&amp;vCourse=CSE-41225",
+      "study_points": 4,
+      "pre_requisites": []
+    }
+  },
+  {
+    "model": "utsida.abroadcourse",
+    "fields": {
+      "code": "CSE 412.07",
+      "name": "HTML5 and CSS",
+      "university": [
+        "University of California, San Diego"
+      ],
+      "description_url": "http://extension.ucsd.edu/studyarea/index.cfm?vAction=singleCourse&amp;vCourse=CSE-41207&amp;vStudyAreaID=116",
+      "study_points": 4,
+      "pre_requisites": []
+    }
+  },
+  {
+    "model": "utsida.abroadcourse",
+    "fields": {
+      "code": "CSEX 410.97",
+      "name": "Programming in R",
+      "university": [
+        "University of California, San Diego"
+      ],
+      "description_url": "http://extension.ucsd.edu/studyarea/index.cfm?vAction=singleCourse&amp;vCourse=CSE-41207&amp;vStudyAreaID=116",
+      "study_points": 4,
+      "pre_requisites": []
+    }
+  },
+  {
+    "model": "utsida.abroadcourse",
+    "fields": {
+      "code": "ECE 175A",
+      "name": "Elements of MachInt: Pattern Rec and ML",
+      "university": [
+        "University of California, San Diego"
+      ],
+      "description_url": "http://www.ucsd.edu/catalog/courses/ECE.html",
+      "study_points": 5.3,
+      "pre_requisites": []
+    }
+  },
+  {
+    "model": "utsida.abroadcourse",
+    "fields": {
+      "code": "ECE 175B",
+      "name": "Prob Reasoning & Graph Model",
+      "university": [
+        "University of California, San Diego"
+      ],
+      "description_url": "http://dsp.ucsd.edu/~kreutz/Classes.htm",
+      "study_points": 5.3,
+      "pre_requisites": []
+    }
+  },
+  {
+    "model": "utsida.abroadcourse",
+    "fields": {
+      "code": "ECON 100A",
+      "name": "Micro-economy",
+      "university": [
+        "University of California, San Diego"
+      ],
+      "description_url": "http://www.ucsd.edu/catalog/courses/ECON.html#econ100a",
+      "study_points": 5.3,
+      "pre_requisites": []
+    }
+  },
+  {
+    "model": "utsida.abroadcourse",
+    "fields": {
+      "code": "ECON 109",
+      "name": "Game Theory",
+      "university": [
+        "University of California, San Diego"
+      ],
+      "description_url": "http://www.ucsd.edu/catalog/courses/ECON.html#econ109",
+      "study_points": 5.3,
+      "pre_requisites": []
+    }
+  },
+  {
+    "model": "utsida.abroadcourse",
+    "fields": {
+      "code": "ECON 110B",
+      "name": "Macro-economy",
+      "university": [
+        "University of California, San Diego"
+      ],
+      "description_url": "http://www.ucsd.edu/catalog/courses/ECON.html#econ110b",
+      "study_points": 5.3,
+      "pre_requisites": []
+    }
+  },
+  {
+    "model": "utsida.abroadcourse",
+    "fields": {
+      "code": "ECON 172A",
+      "name": "Introduction to Operations Research",
+      "university": [
+        "University of California, San Diego"
+      ],
+      "description_url": "http://courses.ucsd.edu/syllabi/FA14/814192.pdf",
+      "study_points": 5.3,
+      "pre_requisites": []
+    }
+  },
+  {
+    "model": "utsida.abroadcourse",
+    "fields": {
+      "code": "ENG 210",
+      "name": "System Engineering",
+      "university": [
+        "University of California, San Diego"
+      ],
+      "description_url": "http://www.ucsd.edu/catalog/courses/",
+      "study_points": 6.6,
+      "pre_requisites": []
+    }
+  },
+  {
+    "model": "utsida.abroadcourse",
+    "fields": {
+      "code": "HISC 102",
+      "name": "Technology in World History",
+      "university": [
+        "University of California, San Diego"
+      ],
+      "description_url": "http://www.ucsd.edu/catalog/courses/HIST.html",
+      "study_points": 5.3,
+      "pre_requisites": []
+    }
+  },
+  {
+    "model": "utsida.abroadcourse",
+    "fields": {
+      "code": "IRGN 419",
+      "name": "Risk Management",
+      "university": [
+        "University of California, San Diego"
+      ],
+      "description_url": "http://ucsd.edu/catalog/courses/GPS.html",
+      "study_points": 6.6,
+      "pre_requisites": []
+    }
+  },
+  {
+    "model": "utsida.abroadcourse",
+    "fields": {
+      "code": "IRGN 422",
+      "name": "Investments",
+      "university": [
+        "University of California, San Diego"
+      ],
+      "description_url": "http://ucsd.edu/catalog/courses/IRPS.html",
+      "study_points": 6.6,
+      "pre_requisites": []
+    }
+  },
+  {
+    "model": "utsida.abroadcourse",
+    "fields": {
+      "code": "IRGN 452",
+      "name": "Big Data Analytics",
+      "university": [
+        "University of California, San Diego"
+      ],
+      "description_url": "https://irgn452.wordpress.com/syllabus/",
+      "study_points": 5.3,
+      "pre_requisites": []
+    }
+  },
+  {
+    "model": "utsida.abroadcourse",
+    "fields": {
+      "code": "IRGN 490E",
+      "name": "Market Microstructure",
+      "university": [
+        "University of California, San Diego"
+      ],
+      "description_url": "https://dl.dropboxusercontent.com/u/48674602/IRGN490E-beskrivelse.pdf",
+      "study_points": 6.6,
+      "pre_requisites": []
+    }
+  },
+  {
+    "model": "utsida.abroadcourse",
+    "fields": {
+      "code": "IRGN 490F",
+      "name": "Comparative Market Institutions SPTOP",
+      "university": [
+        "University of California, San Diego"
+      ],
+      "description_url": "",
+      "study_points": 6.6,
+      "pre_requisites": []
+    }
+  },
+  {
+    "model": "utsida.abroadcourse",
+    "fields": {
+      "code": "IRGN 490I",
+      "name": "Game Theory & Strategy",
+      "university": [
+        "University of California, San Diego"
+      ],
+      "description_url": "",
+      "study_points": 6.6,
+      "pre_requisites": []
+    }
+  },
+  {
+    "model": "utsida.abroadcourse",
+    "fields": {
+      "code": "LIGM1a",
+      "name": "German Conversation",
+      "university": [
+        "University of California, San Diego"
+      ],
+      "description_url": "",
+      "study_points": 3.3,
+      "pre_requisites": []
+    }
+  },
+  {
+    "model": "utsida.abroadcourse",
+    "fields": {
+      "code": "LING 40059",
+      "name": "Grammar Workshop 1 for EFL",
+      "university": [
+        "University of California, San Diego"
+      ],
+      "description_url": "http://extension.ucsd.edu/studyarea/index.cfm?vAction=singleCourse&amp;vCourse=LING-40059",
+      "study_points": 1.6,
+      "pre_requisites": []
+    }
+  },
+  {
+    "model": "utsida.abroadcourse",
+    "fields": {
+      "code": "LING 40101",
+      "name": "Grammar and Editing 2",
+      "university": [
+        "University of California, San Diego"
+      ],
+      "description_url": "http://extension.ucsd.edu/studyarea/index.cfm?vAction=singleCourse&amp;vCourse=LING-40101",
+      "study_points": 5,
+      "pre_requisites": []
+    }
+  },
+  {
+    "model": "utsida.abroadcourse",
+    "fields": {
+      "code": "LING 40115",
+      "name": "Topics in Advanced English Structure",
+      "university": [
+        "University of California, San Diego"
+      ],
+      "description_url": "http://extension.ucsd.edu/studyarea/index.cfm?vAction=singleCourse&amp;vCourse=LING-40115",
+      "study_points": 1.6,
+      "pre_requisites": []
+    }
+  },
+  {
+    "model": "utsida.abroadcourse",
+    "fields": {
+      "code": "MGT164",
+      "name": "Organizational Leadership",
+      "university": [
+        "University of California, San Diego"
+      ],
+      "description_url": "http://ucsd.edu/catalog/courses/RSM.html",
+      "study_points": 5.3,
+      "pre_requisites": []
+    }
+  },
+  {
+    "model": "utsida.abroadcourse",
+    "fields": {
+      "code": "MGT 172",
+      "name": "Business Project Management",
+      "university": [
+        "University of California, San Diego"
+      ],
+      "description_url": "http://www.ucsd.edu/catalog/courses/RSM.html#mgt172",
+      "study_points": 5.3,
+      "pre_requisites": []
+    }
+  }
+]

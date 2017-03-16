@@ -104,5 +104,53 @@
       "acronym": "UBA",
       "country": "Argentina"
     }
+  },
+  {
+    "model": "utsida.university",
+    "fields": {
+      "name": "Harvard University",
+      "acronym": "HU",
+      "country": "USA"
+    }
+  },
+  {
+    "model": "utsida.university",
+    "fields": {
+      "name": "Hawaii Pacific University",
+      "acronym": "HPU",
+      "country": "USA"
+    }
+  },
+  {
+    "model": "utsida.university",
+    "fields": {
+      "name": "Massachusetts Institute of Technology",
+      "acronym": "MIT",
+      "country": "USA"
+    }
+  },
+  {
+    "model": "utsida.university",
+    "fields": {
+      "name": "California State University, Monterey Bay",
+      "acronym": "CSUMB",
+      "country": "USA"
+    }
+  },
+  {
+    "model": "utsida.university",
+    "fields": {
+      "name": "San Diego State University",
+      "acronym": "SDSU",
+      "country": "USA"
+    }
+  },
+  {
+    "model": "utsida.university",
+    "fields": {
+      "name": "Texas Tech University",
+      "acronym": "TTU",
+      "country": "USA"
+    }
   }
 ]
