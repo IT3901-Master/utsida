@@ -335,8 +335,11 @@ def save_course_match_id(request):
         id = request.POST["id"]
         stored_course_match = get_object_or_404(CourseMatch, id=id)
         hasMatch = user.profile.saved_course_matches.all().filter(id=id)
-        same_university_as_stored = user.profile.saved_course_matches.all()[
-                                        0].abroadCourse.university.name == stored_course_match.abroadCourse.university.name
+        usersCourseMatches = user.profile.saved_course_matches.all()
+        if (usersCourseMatches):
+            same_university_as_stored = usersCourseMatches[0].abroadCourse.university.name == stored_course_match.abroadCourse.university.name
+        else:
+            same_university_as_stored = True
         if (hasMatch):
             return HttpResponse(status=409)
         elif (not same_university_as_stored):
@@ -402,6 +405,7 @@ def edit_status_application(request):
                 cm = CourseMatch.objects.get(id=course_match.pk)
                 cm.approved = True
                 cm.approval_date = datetime.date.today()
+                cm.reviewer = User.objects.get(username=request.user)
                 cm.save()
         elif (change_status_to == "disapprove"):
             application = Application.objects.get(id=application_id)
@@ -410,6 +414,7 @@ def edit_status_application(request):
             for course_match in application.course_matches.all():
                 cm = CourseMatch.objects.get(id=course_match.pk)
                 cm.approved = False
+                cm.reviewer = User.objects.get(username=request.user)
                 cm.approval_date = None
                 cm.save()
         else:

@@ -120,7 +120,8 @@ class CourseMatch(models.Model):
     abroadCourse = models.ForeignKey(AbroadCourse)
     approved = models.BooleanField(default=False)
     approval_date = models.DateField(blank=True,null=True)
-    comment = models.CharField(max_length=200,blank=True,default="")
+    comment = models.CharField(max_length=200,blank=True)
+    reviewer = models.ForeignKey(User,blank=True, null=True)
     objects = CourseMatchManager()
 
     def __str__(self):
@@ -170,7 +171,7 @@ class Case(models.Model):
     socialQualityRating = models.IntegerField(choices=CHOICES)
     residentialQualityRating = models.IntegerField(choices=CHOICES)
     receptionQualityRating = models.IntegerField(choices=CHOICES)
-    documentLink = models.CharField(max_length=50)
+    documentLink = models.CharField(max_length=50,blank=True,default="")
     subjects = models.ManyToManyField(AbroadCourse)
 
     def __str__(self):

@@ -24,6 +24,7 @@
             <th>Comment</th>
             <th></th>
             <th>ID</th>
+            <th>Reviewer</th>
         </tr>
         </thead>
         <tbody>
@@ -67,6 +68,11 @@
                         {% endif %}
                     </td>
                     <td> {{ course_match.id }}</td>
+                    {% if course_match.reviewer %}
+                        <td>{{ course_match.reviewer.first_name }} {{ course_match.reviewer.last_name }}</td>
+                    {% else %}
+                        <td>Ukjent</td>
+                    {% endif %}
                 </tr>
             {% endif %}
         {% endfor %}
@@ -132,7 +138,7 @@
     </div>
 
 
-        <!-- Modal -->
+    <!-- Modal -->
     <div class="modal fade" id="addAbroadModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel"
          aria-hidden="true">
         <div class="modal-dialog" role="document">
@@ -188,7 +194,7 @@
     </div>
 
     <script>
-        var alertLink = function(url) {
+        var alertLink = function (url) {
             return confirm("You are about to open the following URL: " + '\n\n' + url.href)
         }
     </script>
