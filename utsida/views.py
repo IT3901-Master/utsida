@@ -13,7 +13,11 @@ from django.core.validators import *
 def index(request):
     if not request.user.is_authenticated():
         return redirect("login")
-    return render(request, "utsida/index.html")
+    user = User.objects.get(username=request.user)
+    if (user.groups.filter(name='Advisors').exists()):
+        return advisors(request)
+    else:
+        return render(request, "utsida/index.html")
 
 
 def information(request):
