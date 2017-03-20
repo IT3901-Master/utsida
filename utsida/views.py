@@ -194,9 +194,13 @@ def add_course_match(request):
         approved = False
         if (request.POST['approved'] == "on"):
             approved = True
+        if approved:
+            approver = User.objects.get(username=request.user)
+        else:
+            approver = None
         approval_date = request.POST['approval_date']
         course_match = CourseMatch(homeCourse=home_course, abroadCourse=abroad_course, approved=approved,
-                                   approval_date=approval_date)
+                                   approval_date=approval_date,reviewer=approver)
         course_match.save()
         university = abroad_course.university
         add_form = CourseMatchForm()
