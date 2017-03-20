@@ -1,0 +1,146 @@
+[
+  {
+    "model": "utsida.coursematch",
+    "fields": {
+      "homeCourse": [
+        "TDT4260"
+      ],
+      "abroadCourse": [
+        "CSCI 5204",
+        "Advanced Computer Architecture",
+        "University of Minnesota"
+      ],
+      "approved": true,
+      "approval_date": "2015-08-25",
+      "comment": " "
+    }
+  },
+  {
+    "model": "utsida.coursematch",
+    "fields": {
+      "homeCourse": [
+        "TTM4135"
+      ],
+      "abroadCourse": [
+        "CSCI 5271",
+        "Introduction to Computer Security",
+        "University of Minnesota"
+      ],
+      "approved": true,
+      "approval_date": "2015-08-25",
+      "comment": "IaS"
+    }
+  },
+  {
+    "model": "utsida.coursematch",
+    "fields": {
+      "homeCourse": [
+        "TDT4287"
+      ],
+      "abroadCourse": [
+        "CSCI 5461",
+        "Functional Genomics, Systems Biology and Bioinformatics",
+        "University of Minnesota"
+      ],
+      "approved": true,
+      "approval_date": "2015-08-25",
+      "comment": " "
+    }
+  },
+  {
+    "model": "utsida.coursematch",
+    "fields": {
+      "homeCourse": [
+        "TDT4200"
+      ],
+      "abroadCourse": [
+        "CSCI 5451",
+        "Introduction to Parallel Computing",
+        "University of Minnesota"
+      ],
+      "approved": true,
+      "approval_date": "2015-08-25",
+      "comment": "valg"
+    }
+  },
+  {
+    "model": "utsida.coursematch",
+    "fields": {
+      "homeCourse": [
+        "TDT4171"
+      ],
+      "abroadCourse": [
+        "CSCI 5512",
+        "Artificial Intelligence II",
+        "University of Minnesota"
+      ],
+      "approved": true,
+      "approval_date": "2015-08-25",
+      "comment": " "
+    }
+  },
+  {
+    "model": "utsida.coursematch",
+    "fields": {
+      "homeCourse": [
+        "TDT4265"
+      ],
+      "abroadCourse": [
+        "CSCI 5551",
+        "Introduction to Intelligent Robotic Systems",
+        "University of Minnesota"
+      ],
+      "approved": true,
+      "approval_date": "2015-08-25",
+      "comment": " "
+    }
+  },
+  {
+    "model": "utsida.coursematch",
+    "fields": {
+      "homeCourse": [
+        "TPK4170"
+      ],
+      "abroadCourse": [
+        "CSCI 5551",
+        "Introduction to Intelligent Robotic Systems",
+        "University of Minnesota"
+      ],
+      "approved": true,
+      "approval_date": "2015-08-25",
+      "comment": " "
+    }
+  },
+  {
+    "model": "utsida.coursematch",
+    "fields": {
+      "homeCourse": [
+        "TBA4240"
+      ],
+      "abroadCourse": [
+        "GEOG 5651",
+        "Introduction to Geographical Information Systems",
+        "University of Minnesota"
+      ],
+      "approved": true,
+      "approval_date": "2015-08-25",
+      "comment": "EiT"
+    }
+  },
+  {
+    "model": "utsida.coursematch",
+    "fields": {
+      "homeCourse": [
+        "TPK4120"
+      ],
+      "abroadCourse": [
+        "IE 5513",
+        "Engineering Safety",
+        "University of Minnesota"
+      ],
+      "approved": true,
+      "approval_date": "2015-08-25",
+      "comment": "K-emne"
+    }
+  }
+]

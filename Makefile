@@ -45,6 +45,7 @@ loadcourse:
 	python3 manage.py loaddata course_data/USA/c5.json
 	python3 manage.py loaddata course_data/USA/c6.json
 	python3 manage.py loaddata course_data/USA/c7.json
+	python3 manage.py loaddata course_data/USA/c8.json
 	python3 manage.py loaddata course_data/USA/cm0.json
 	python3 manage.py loaddata course_data/USA/cm1.json
 	python3 manage.py loaddata course_data/USA/cm2.json
@@ -53,6 +54,7 @@ loadcourse:
 	python3 manage.py loaddata course_data/USA/cm5.json
 	python3 manage.py loaddata course_data/USA/cm6.json
 	python3 manage.py loaddata course_data/USA/cm7.json
+	python3 manage.py loaddata course_data/USA/cm8.json
 
 
 

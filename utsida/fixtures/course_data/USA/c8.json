@@ -1,0 +1,106 @@
+[
+  {
+    "model": "utsida.abroadcourse",
+    "fields": {
+      "code": "CSCI 5204",
+      "name": "Advanced Computer Architecture",
+      "university": [
+        "University of Minnesota"
+      ],
+      "description_url": "http://altai.ece.umn.edu/Courses_files/syllabus_fall12.pdf",
+      "study_points": 7.5,
+      "pre_requisites": []
+    }
+  },
+  {
+    "model": "utsida.abroadcourse",
+    "fields": {
+      "code": "CSCI 5271",
+      "name": "Introduction to Computer Security",
+      "university": [
+        "University of Minnesota"
+      ],
+      "description_url": "http://www-users.cselabs.umn.edu/classes/Fall-2014/csci5271/index.php?page=syllabus",
+      "study_points": 7.5,
+      "pre_requisites": []
+    }
+  },
+  {
+    "model": "utsida.abroadcourse",
+    "fields": {
+      "code": "CSCI 5461",
+      "name": "Functional Genomics, Systems Biology and Bioinformatics",
+      "university": [
+        "University of Minnesota"
+      ],
+      "description_url": "http://www-users.cs.umn.edu/~kuang/syllabus-5461.pdf",
+      "study_points": 7.5,
+      "pre_requisites": []
+    }
+  },
+  {
+    "model": "utsida.abroadcourse",
+    "fields": {
+      "code": "CSCI 5451",
+      "name": "Introduction to Parallel Computing",
+      "university": [
+        "University of Minnesota"
+      ],
+      "description_url": "https://onestop2.umn.edu/pcas/viewCatalogCourse.do?courseId=002147",
+      "study_points": 7.5,
+      "pre_requisites": []
+    }
+  },
+  {
+    "model": "utsida.abroadcourse",
+    "fields": {
+      "code": "CSCI 5512",
+      "name": "Artificial Intelligence II",
+      "university": [
+        "University of Minnesota"
+      ],
+      "description_url": "http://gandalf.psych.umn.edu/users/schrater/schrater_lab/courses/AI2/",
+      "study_points": 7.5,
+      "pre_requisites": []
+    }
+  },
+  {
+    "model": "utsida.abroadcourse",
+    "fields": {
+      "code": "CSCI 5551",
+      "name": "Introduction to Intelligent Robotic Systems",
+      "university": [
+        "University of Minnesota"
+      ],
+      "description_url": "http://mars.cs.umn.edu/classes/csci5551/syllabus.pdf",
+      "study_points": 7.5,
+      "pre_requisites": []
+    }
+  },
+  {
+    "model": "utsida.abroadcourse",
+    "fields": {
+      "code": "GEOG 5651",
+      "name": "Introduction to Geographical Information Systems",
+      "university": [
+        "University of Minnesota"
+      ],
+      "description_url": "/wiki/download/attachments/85657084/GEOG5561.pdf?version=1&amp;modificationDate=1440495468000&amp;api=v2",
+      "study_points": 10,
+      "pre_requisites": []
+    }
+  },
+  {
+    "model": "utsida.abroadcourse",
+    "fields": {
+      "code": "IE 5513",
+      "name": "Engineering Safety",
+      "university": [
+        "University of Minnesota"
+      ],
+      "description_url": "https://onestop2.umn.edu/pcas/viewCatalogCourse.do?courseId=005268",
+      "study_points": 10,
+      "pre_requisites": []
+    }
+  }
+]

@@ -152,5 +152,21 @@
       "acronym": "TTU",
       "country": "USA"
     }
+  },
+  {
+    "model": "utsida.university",
+    "fields": {
+      "name": "University of Minnesota",
+      "acronym": "UMN",
+      "country": "USA"
+    }
+  },
+  {
+    "model": "utsida.university",
+    "fields": {
+      "name": "University of Washington",
+      "acronym": "UW",
+      "country": "USA"
+    }
   }
 ]
