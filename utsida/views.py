@@ -24,6 +24,7 @@ def information(request):
     return render(request, 'utsida/information.html')
 
 
+@login_required
 def advisors(request):
     application_data = {
         'count': Application.objects.all().count(),
@@ -45,7 +46,7 @@ def advisors(request):
         }
     )
 
-
+@login_required
 def process(request):
     if not request.user.is_authenticated():
         return redirect("login")
@@ -53,6 +54,7 @@ def process(request):
     return render(request, "utsida/process.html", {"form": form})
 
 
+@login_required
 def result(request, university=None):
     if not request.user.is_authenticated():
         return redirect("login")
@@ -174,13 +176,13 @@ def update_course_match(request, id):
             add_form = CourseMatchForm()
             add_form.fields["abroadCourse"].queryset = AbroadCourse.objects.filter(university__name=university)
             course_matches = CourseMatch.objects.all().filter(abroadCourse__university__name=university)
-            context = {"course_match_list": course_matches, "university_name": university, "add_form": add_form}
+            abroad_course_form = abroadCourseForm()
+            context = {"course_match_list": course_matches, "university_name": university, "add_form": add_form,"add_abroad_form": abroad_course_form}
             messages.success(request, "Fag kobling ble endret")
             return render(request, "utsida/courseMatch.html", context)
         else:
             return HttpResponse({'code': 500, 'message': 'skjema var ikke gyldig'})
     else:
-        # form = CourseMatchForm(initial={"abroadCourse": instance.abroadCourse})
         form = CourseMatchForm(instance=instance)
         return render(request, "utsida/update_course_match.html", {"form": form, "id": id})
 
@@ -194,7 +196,6 @@ def add_course_match(request):
         approved = False
         if (request.POST['approved'] == "on"):
             approved = True
-        if approved:
             approver = User.objects.get(username=request.user)
         else:
             approver = None
@@ -206,7 +207,8 @@ def add_course_match(request):
         add_form = CourseMatchForm()
         add_form.fields["abroadCourse"].queryset = AbroadCourse.objects.filter(university__name=university)
         course_matches = CourseMatch.objects.all().filter(abroadCourse__university__name=university)
-        context = {"course_match_list": course_matches, "university_name": university, "add_form": add_form}
+        abroad_course_form = abroadCourseForm()
+        context = {"course_match_list": course_matches, "university_name": university, "university": university, "add_form": add_form,"add_abroad_form": abroad_course_form}
         messages.success(request, "Ny fag-kobling ble lagt til")
         return render(request, "utsida/courseMatch.html", context)
     else:
@@ -214,32 +216,6 @@ def add_course_match(request):
         return HttpResponse({'code': 500, 'message': 'Du må fylle inn alle feltene'})
 
 
-# @login_required
-# def add_abroad_course(request):
-#     if request.method == 'POST':
-#         user = User.objects.get(username=request.user)
-#         university = get_object_or_404(University, name=request.POST.get('university'))
-#
-#         course = AbroadCourse.objects.filter(code=request.POST.get('code'),university=university)
-#         if (course):
-#             return HttpResponse(status=409)
-#         else:
-#             course = AbroadCourse(code=request.POST.get('code'), name=request.POST.get('name'),
-#                               study_points=request.POST.get('study_points'), university=university,
-#                               description_url=request.POST.get('url'))
-#
-#         response_data = {
-#             "code": request.POST.get('code'),
-#             "name": request.POST.get('name'),
-#             "id": course.pk,
-#             "university": course.university.name,
-#             "country": course.university.country.name
-#         }
-#
-#         return HttpResponse(
-#             json.dumps(response_data),
-#             content_type="application/json"
-#         )
 
 @login_required
 def add_abroad_course(request):

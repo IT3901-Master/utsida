@@ -2,7 +2,7 @@
  Module which handles the logic for creating course matches in /profile/courses.
  */
 
-(function(){
+(function () {
 
     var s;
 
@@ -94,14 +94,18 @@
 
                         content.appendChild(abroadCourseTD);
                         content.appendChild(homeCourseTD);
+                        var content2 = content.cloneNode(true);
+                        content2.setAttribute("data-id", response.course_match_id);
                         content.appendChild(deleteTD);
 
-                        var content2 = content.cloneNode(true);
                         document.getElementById("courseMatchList").appendChild(content);
                         document.getElementById("courseMatchListModal").appendChild(content2);
 
-                        refreshConfirmation();
+                        $(document).ajaxStop(function () {
+                            $(document).find('[data-toggle=confirmation]').confirmation(confirmationSettings);
+                        });
 
+                        Messager.init();
                         Messager.sendMessage("Fagene ble koblet", "success");
                     },
                     error: function (error) {
@@ -152,7 +156,7 @@
             }
         },
 
-        toggleAddHomeCourse: function() {
+        toggleAddHomeCourse: function () {
             var form = document.getElementById("addHomeCourseBlock");
             var toggleBtn = document.getElementById("toggleAddHomeCourseBtn");
             form.style.display = form.style.display === 'block' ? 'none' : 'block';

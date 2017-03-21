@@ -2,6 +2,7 @@
 
 {% block content %}
     {% load widget_tweaks %}
+    {% load result_extras %}
 
     {% for message in messages %}
         {% if 'success' in message.tags %}
@@ -79,13 +80,13 @@
         </tbody>
     </table>
 
-    {% if perms.can_add_course_match %}
+    {% if user|has_group:"Advisors" %}
         <button type="button" class="btn btn-primary btn-lg vertical-space-top-big" data-toggle="modal"
                 data-target="#addMatchModal">
             Legg til fagkobling
         </button>
     {% endif %}
-    {% if perms.can_add_abroad_course %}
+    {% if user|has_group:"Advisors" %}
         <button type="button" class="btn btn-primary btn-lg vertical-space-top-big" data-toggle="modal"
                 data-target="#addAbroadModal">
             Legg til fag

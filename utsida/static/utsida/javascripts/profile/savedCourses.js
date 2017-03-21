@@ -32,7 +32,6 @@ var confirmationSettings = {
             $(this).closest('.blockElement').fadeOut("slow", function (here) {
                 block.parentNode.removeChild(block)
             });
-            console.log($('#courseList').children().length);
             if ($('#courseList').children().length == 1) {
                 $('#courseList').remove();
                 $('#universityHeader').innerHTML = "Du har ikke lagret noen fag";
@@ -40,6 +39,7 @@ var confirmationSettings = {
         }
         else if (type == "course_match") {
             $.post("/profile/remove_course_match/", {'id': id});
+            $('#courseMatchListModal').find("[data-id='" + id + "']").remove();
             $(this).closest('tr').fadeOut("slow", function (here) {
                 $(this).closest("tr").remove()
             });
