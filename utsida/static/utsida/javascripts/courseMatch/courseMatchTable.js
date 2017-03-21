@@ -7,6 +7,10 @@ function format(d) {
         '<td>' + d[4] + '</td>' +
         '</tr>' +
         '<tr>' +
+        '<td class="bold">Godkjent av:  </td>' +
+        '<td>' + d[9] + '</td>' +
+        '</tr>' +
+        '<tr>' +
         '<td class="bold">Universitet: </td>' +
         '<td>' + d[5] + '</td>' +
         '</tr>' +
@@ -19,7 +23,7 @@ function format(d) {
         '<td>' + d[3] + '</td>' +
         '</tr>' +
         '</table>' +
-        '<button class="btn btn-primary" onclick="addCourseMatch('+d[8]+')" style="margin-top: 5px;">' + 'Legg til i dine fag'+  '</button>';
+        '<button class="btn btn-primary" onclick="addCourseMatch(' + d[8] + ')" style="margin-top: 5px;">' + 'Legg til i dine fag' + '</button>';
 }
 
 
@@ -58,6 +62,10 @@ $(document).ready(function () {
             },
             {
                 "targets": [8],
+                "visible": false
+            },
+            {
+                "targets": [9],
                 "visible": false
             }
         ]

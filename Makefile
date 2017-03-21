@@ -13,6 +13,7 @@ loadstart:
 	python3 manage.py loaddata start_data/homeCourses.json
 	python3 manage.py loaddata start_data/languages.json
 	python3 manage.py loaddata start_data/universities.json
+	python3 manage.py loaddata start_data/groups.json
 
 loadcourse:
 	python3 manage.py loaddata course_data/oceania/c0.json
