@@ -88,7 +88,7 @@ def result(request, university=None):
                 "Country": form.data["country"],
                 "University": form.data["university"],
                 "Language": form.data["language"],
-                "StudyPeriod": datetime.date.today().year,
+                "StudyPeriod": int(datetime.date.today().year),
                 "AcademicQuality": form.data["academicQualityRating"],
                 "SocialQuality": form.data["socialQualityRating"],
                 "ResidentialQuality": form.data["residentialQualityRating"],
@@ -98,6 +98,7 @@ def result(request, university=None):
                 'content-type': 'application/json'
             }
 
+            print(datetime.date.today())
             r = requests.post("http://localhost:8080/retrieval?casebase=main_case_base&concept%20name=Trip",
                               data=payload,
                               headers=headers
@@ -125,7 +126,7 @@ def result(request, university=None):
 
             unique_unis = []
             for case in sorted_similar_cases[:9]:
-                if not case['content']['University'] in unique_unis:
+                if 'University' in case['content'] and not case['content']['University'] in unique_unis:
                     unique_unis.append(case['content']['University'])
 
             request.session['unique_universities'] = unique_unis
