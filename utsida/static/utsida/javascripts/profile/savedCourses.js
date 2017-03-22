@@ -194,4 +194,15 @@ $('#add-course-form').on('submit', function (event) {
 
 });
 
+function checkValidApplication() {
+    if ($("#courseMatchList").children().size() == 0) {
+        console.log("Empty course match list, not valid application");
+        Messager.init();
+        Messager.sendMessage("Du må ha fag i faglisten for å sende søknad","danger")
+    }
+    else {
+        $("#myModal").modal('show');
+    }
+}
+
 
