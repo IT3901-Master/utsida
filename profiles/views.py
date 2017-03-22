@@ -449,7 +449,7 @@ def save_home_course(request):
         response_data = {}
         home_course = get_object_or_404(HomeCourse, name=request.POST.get('name'), code=request.POST.get('code'))
         if (user.profile.coursesToTake.filter(code=request.POST.get('code'))):
-            response_data["error"] = "Faget finnes allerede i din profil"
+            return HttpResponse(status=409)
         else:
             user.profile.coursesToTake.add(home_course)
             response_data["code"] = request.POST.get('code')

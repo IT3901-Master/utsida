@@ -161,7 +161,6 @@
             var toggleBtn = document.getElementById("toggleAddHomeCourseBtn");
             form.style.display = form.style.display === 'block' ? 'none' : 'block';
             toggleBtn.innerText = toggleBtn.innerText === '-' ? '+' : '-';
-
         }
 
     };

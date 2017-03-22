@@ -1,6 +1,7 @@
 {% extends "utsida/layout.html" %}
 
 {% block content %}
+
     {% load widget_tweaks %}
 
     {% for message in messages %}
@@ -49,8 +50,7 @@
                             </div>
                         </div>
                         <div class="col-md-3">
-                            <button id="addHomeCourse" class="btn btn-primary" type="submit"
-                                    onclick="CourseMatcher.toggleAddHomeCourse()">Legg til
+                            <button id="addHomeCourse" class="btn btn-primary" type="submit">Legg til
                             </button>
                         </div>
                     </div>
@@ -244,13 +244,7 @@
     <script src="{% static 'utsida/javascripts/profile/savedCourses.js' %}"></script>
     <script src="{% static 'utsida/javascripts/profile/courseMatcher.js' %}"></script>
     <script src="{% static 'utsida/javascripts/profile/course_approval_request.js' %}"></script>
-    <script> setTimeout(function () {
-        $('#sucessAlert').fadeOut('slow');
-    }, 5000);
 
-    $('#id_coursesToTake').prop('required', true);
-    $('#id_coursesToTake').attr("placeholder", "Søk etter fag her");
-    </script>
 
 
 {% endblock %}
