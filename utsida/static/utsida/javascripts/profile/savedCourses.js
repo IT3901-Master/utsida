@@ -124,6 +124,7 @@ function create_post() {
             $('#add-abroad-course-form')[0].reset();
 
             refreshConfirmation();
+            CourseMatcher.init();
         },
         error: function (err) {
             $('#addAbroadModal').modal('hide');

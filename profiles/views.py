@@ -292,7 +292,7 @@ def save_course_match(request):
 
         user = User.objects.get(username=request.user)
 
-        hasMatch = user.profile.saved_course_matches.all().filter(abroadCourse__name=abroad_name,
+        hasMatch = user.profile.saved_course_matches.all().filter(abroadCourse__name=abroad_name,abroadCourse__code=abroadCode,
                                                                   homeCourse__code=homeCode)
         usersCourseMatches = user.profile.saved_course_matches.all()
 
