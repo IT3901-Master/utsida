@@ -53,5 +53,10 @@
     "model": "utsida.language",
     "pk": "Indisk",
     "fields": {}
+  },
+  {
+    "model": "utsida.language",
+    "pk": "Spansk!Engelsk",
+    "fields": {}
   }
 ]

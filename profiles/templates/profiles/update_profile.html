@@ -3,7 +3,7 @@
 {% block content %}
     {% load widget_tweaks %}
 
-    <h2 class="text-center">Endre brukerprofil</h2>
+    <h2 class="text-center vertical-space-bottom-big">Endre brukerprofil</h2>
 
     <div class="row">
 
@@ -32,13 +32,15 @@
                     {{ profile_form.institute|add_class:"form-control" }}
                 </div>
 
+                <!--
                 <div class="homeCourse form-group">
                     <label>NTNU-fag du ønsker å ta:</label>
                     {{ profile_form.coursesToTake | add_class:"form-control" }}
                 </div>
+                -->
 
-                <div class="form-group vertical-space-top">
-                    <input type="submit" value="Endre" class="btn btn-primary center-block"
+                <div class="form-group vertical-space-top-big">
+                    <input type="submit" value="Lagre" class="btn btn-primary center-block"
                            style="width:100px; height:50px;">
                 </div>
             </form>
