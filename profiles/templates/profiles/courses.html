@@ -120,12 +120,14 @@
                         <tr>
                             {% if course.abroadCourse.description_url %}
                                 <td>
-                                    <a href="{{ course.abroadCourse.description_url }}">{{ course.abroadCourse.code }} {{ course.abroadCourse.name }}</a>
+                                    <a href="{{ course.abroadCourse.description_url }}" target="_blank"
+                               onclick="return alertLink(this)">{{ course.abroadCourse.code }} {{ course.abroadCourse.name }}</a>
                                 </td>
                             {% else %}
                                 <td> {{ course.abroadCourse.code }} {{ course.abroadCourse.name }}</td>
                             {% endif %}
-                            <td> {{ course.homeCourse.code }} {{ course.homeCourse.name }} </td>
+                            <td> <a href="https://www.ntnu.no/studier/emner/{{ course.homeCourse.code }}" target="_blank"
+                               onclick="return alertLink(this)">{{ course.homeCourse.code }} {{ course.homeCourse.name }} </a> </td>
                             <td>
                                 <span data-toggle="confirmation" data-type="course_match" data-id="{{ course.id }}"
                                       class="glyphicon glyphicon-remove pointer"></span></td>

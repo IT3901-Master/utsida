@@ -33,17 +33,8 @@
             {% if course_match.approved %}
                 <tr class="clickableTableRow noselect">
                     <td id="toggleFormRow" class="glyphicon glyphicon-chevron-down"></td>
-                    {% if course_match.homeCourse.description_url == "" %}
-                        <td>{{ course_match.homeCourse }} </td>
-                    {% else %}
-                        <td>
-                            <a href="{{ course_match.homeCourse.description_url }}"
-                               target="_blank"
-                               onclick="return alertLink(this)">
-                                {{ course_match.homeCourse }}
-                            </a>
-                        </td>
-                    {% endif %}
+                        <td> <a href="https://www.ntnu.no/studier/emner/{{ course_match.homeCourse.code }}" target="_blank"
+                               onclick="return alertLink(this)">{{ course_match.homeCourse }} </a></td>
                     {% if course_match.abroadCourse.description_url == "" %}
                         <td>{{ course_match.abroadCourse }} </td>
                     {% else %}
@@ -193,12 +184,6 @@
             </div>
         </div>
     </div>
-
-    <script>
-        var alertLink = function (url) {
-            return confirm("You are about to open the following URL: " + '\n\n' + url.href)
-        }
-    </script>
 
     {% load staticfiles %}
     <script src="{% static 'utsida/javascripts/courseMatch/courseMatchTable.js' %}"></script>
