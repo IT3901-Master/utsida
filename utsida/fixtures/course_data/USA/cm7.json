@@ -1665,22 +1665,6 @@
     "model": "utsida.coursematch",
     "fields": {
       "homeCourse": [
-        "Fyll"
-      ],
-      "abroadCourse": [
-        "CSEX 410.97",
-        "Programming in R",
-        "University of California, San Diego"
-      ],
-      "approved": true,
-      "approval_date": "2016-08-30",
-      "comment": " "
-    }
-  },
-  {
-    "model": "utsida.coursematch",
-    "fields": {
-      "homeCourse": [
         "TDT4171"
       ],
       "abroadCourse": [
@@ -1691,22 +1675,6 @@
       "approved": true,
       "approval_date": "2016-08-30",
       "comment": "Prereq: ECE 109 and ECE 174."
-    }
-  },
-  {
-    "model": "utsida.coursematch",
-    "fields": {
-      "homeCourse": [
-        "AI Math"
-      ],
-      "abroadCourse": [
-        "ECE 175B",
-        "Prob Reasoning & Graph Model",
-        "University of California, San Diego"
-      ],
-      "approved": true,
-      "approval_date": "2016-09-22",
-      "comment": "NB: Bachelor Level!"
     }
   },
   {
@@ -1921,7 +1889,7 @@
     "model": "utsida.coursematch",
     "fields": {
       "homeCourse": [
-        "Komplem"
+        "K-emne"
       ],
       "abroadCourse": [
         "LIGM1a",
