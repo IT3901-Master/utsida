@@ -45,6 +45,7 @@
                     if (/-/.test(awayCourse)) {
                         code = s.awayCourses[i].children[0].innerText;
                         name = s.awayCourses[i].children[1].innerText;
+                        s.courseMatchList["abroadCourseID"] = $(s.awayCourses[i].children[2]).data("id");
                         s.courseMatchList["abroadCourseCode"] = code;
                         s.courseMatchList["abroadCourseName"] = name;
                     }
@@ -52,10 +53,12 @@
                         code = "";
                         name = s.awayCourses[i].children[0].innerText;
                         s.courseMatchList["abroadCourseName"] = name;
-                        s.courseMatchList["abroadCourseCode"] = code
+                        s.courseMatchList["abroadCourseCode"] = code;
+                        s.courseMatchList["abroadCourseID"] = $(s.awayCourses[i].children[1]).data("id");
                     }
                 }
             }
+            console.log(s.courseMatchList);
 
             for (var j = 0; j < s.homeCourses.length; j++) {
                 if (s.homeCourses[j].style.backgroundColor == "rgb(51, 122, 183)") {
@@ -66,7 +69,6 @@
                     s.courseMatchList["homeCourseName"] = name;
                 }
             }
-
             if (s.courseMatchList["homeCourseName"] && s.courseMatchList["abroadCourseName"]) {
                 $.ajax({
                     data: s.courseMatchList,

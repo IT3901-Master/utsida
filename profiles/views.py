@@ -287,12 +287,13 @@ def save_course_match(request):
     if request.method == "POST":
         homeCode = request.POST["homeCourseCode"]
         abroadCode = request.POST["abroadCourseCode"]
-        abroad_name = request.POST["abroadCourseName"]
-        stored_course_match = CourseMatch.objects.filter(abroadCourse__name=abroad_name, homeCourse__code=homeCode)
+        abroadName = request.POST["abroadCourseName"]
+        abroadId = request.POST["abroadCourseID"]
+        stored_course_match = CourseMatch.objects.filter(abroadCourse__pk=abroadId, homeCourse__code=homeCode)
 
         user = User.objects.get(username=request.user)
 
-        hasMatch = user.profile.saved_course_matches.all().filter(abroadCourse__name=abroad_name,abroadCourse__code=abroadCode,
+        hasMatch = user.profile.saved_course_matches.all().filter(abroadCourse__pk=abroadId,
                                                                   homeCourse__code=homeCode)
         usersCourseMatches = user.profile.saved_course_matches.all()
 
@@ -320,7 +321,7 @@ def save_course_match(request):
             )
 
         elif (not stored_course_match and not hasMatch):
-            abroad_course = AbroadCourse.objects.get(code=abroadCode, name=abroad_name)
+            abroad_course = AbroadCourse.objects.get(pk=abroadId)
             home_course = HomeCourse.objects.get(code=homeCode)
             course_match = CourseMatch(abroadCourse=abroad_course, homeCourse=home_course)
 
