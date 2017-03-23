@@ -110,7 +110,7 @@ def result(request, university=None):
 
             for case in r:
                 if 'Language' in case['content']:
-                    case['content']['Language'] = case['content']['Language'].split('!')
+                    case['content']['Language'] = case['content']['Language'].split(';')
                 case['content']['Subjects'] = case['content']['Subjects'].split('!')
                 case['similarity'] = "%.3f" % case['similarity']
 
