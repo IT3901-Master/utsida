@@ -1,7 +1,6 @@
 from django.contrib.auth.models import User
 from django.core.validators import URLValidator
 from django.db import models
-import datetime
 
 
 class Faculty(models.Model):
@@ -31,7 +30,7 @@ class Continent(models.Model):
         return self.name
 
     class Meta:
-        verbose_name_plural = 'countries'
+        verbose_name_plural = 'continents'
 
 
 class Country(models.Model):
@@ -41,10 +40,12 @@ class Country(models.Model):
     def __str__(self):
         return self.name
 
+    class Meta:
+        verbose_name_plural = 'countries'
+
 
 class UniversityManager(models.Manager):
     def get_by_natural_key(self, name):
-        print(name)
         return self.get(name=name)
 
 

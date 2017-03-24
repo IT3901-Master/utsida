@@ -101,7 +101,7 @@ class CoursesToTakeForm(forms.ModelForm):
 
         fields = ('coursesToTake',)
 
-    coursesToTake = AutoCompleteField('singleHomeCourse', help_text=None, required=False, attrs={"placeholder":"Søk på fagnavn/kode"})
+    coursesToTake = AutoCompleteField('singleHomeCourse', help_text=None, required=True, attrs={"placeholder":"Søk på fagnavn/kode"})
 
 
 class AdminProfileForm(forms.ModelForm):

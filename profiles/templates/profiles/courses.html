@@ -1,6 +1,7 @@
 {% extends "utsida/layout.html" %}
 
 {% block content %}
+
     {% load widget_tweaks %}
 
     {% for message in messages %}
@@ -11,11 +12,11 @@
 
 
     <h2 class="text-center">
-        Dine lagrede fag og fag-koblinger
+        Dine lagrede fag og fagkoblinger
     </h2>
     <h3 class="subTitle text-center">
-        Trykk på et fag i hver colonne for å velge de, og dermed på <span class="italic">Koble fag-</span>knappen for å
-        lage en fag-kobling
+        Trykk på et fag i hver kolonne for å velge de, og dermed på <span class="italic">Koble fag-</span>knappen for å
+        lage en fagkobling
     </h3>
 
     <div class="row vertical-space-top-big">
@@ -49,8 +50,7 @@
                             </div>
                         </div>
                         <div class="col-md-3">
-                            <button id="addHomeCourse" class="btn btn-primary" type="submit"
-                                    onclick="CourseMatcher.toggleAddHomeCourse()">Legg til
+                            <button id="addHomeCourse" class="btn btn-primary" type="submit">Legg til
                             </button>
                         </div>
                     </div>
@@ -65,7 +65,8 @@
 
         <div id="abroadCourseListContainer" class="col-md-6">
             {% if university %}
-                <h4 id="#universityHeader" class="text-center">Lagrede fag ved {{ university }}, {{ university.country }}</h4>
+                <h4 id="#universityHeader" class="text-center">Lagrede fag
+                    ved {{ university }}, {{ university.country }}</h4>
                 <div id="courseList">
                     {% for course in courses %}
                         <div onclick="CourseMatcher.markAwayCourse(this)"
@@ -83,10 +84,11 @@
                 </div>
 
             {% else %}
-                <h4 id="noAbroadCourseHeader" class="text-center">Du har ikke lagret noen fag ved andre universiteter</h4>
+                <h4 id="noAbroadCourseHeader" class="text-center">Du har ikke lagret noen fag ved andre
+                    universiteter</h4>
             {% endif %}
             <div class="plus-btn boxShadow borderBox centerCol vertical-space-top noSelect" data-toggle="modal"
-                    data-target="#addAbroadModal">+
+                 data-target="#addAbroadModal">+
             </div>
         </div>
     </div>
@@ -105,7 +107,11 @@
 
     <div class="row vertical-space-top-big vertical-space-bottom-big">
         <div class="col-md-12 vertical-space-top-big">
-            <h3 class="text-center vertical-space-bottom-big"> Lagrede fag-koblinger </h3>
+            {% if course_matches %}
+                <h3 class="text-center vertical-space-bottom-big"> Lagrede fag-koblinger ved {{ course_matches.0.abroadCourse.university }} </h3>
+            {% else %}
+                <h3 class="text-center vertical-space-bottom-big"> Lagrede fag-koblinger </h3>
+            {% endif %}
             <div>
                 <table class="table table-striped">
                     <thead>
@@ -120,12 +126,15 @@
                         <tr>
                             {% if course.abroadCourse.description_url %}
                                 <td>
-                                    <a href="{{ course.abroadCourse.description_url }}">{{ course.abroadCourse.code }} {{ course.abroadCourse.name }}</a>
+                                    <a href="{{ course.abroadCourse.description_url }}" target="_blank"
+                                       onclick="return alertLink(this)">{{ course.abroadCourse.code }} {{ course.abroadCourse.name }}</a>
                                 </td>
                             {% else %}
                                 <td> {{ course.abroadCourse.code }} {{ course.abroadCourse.name }}</td>
                             {% endif %}
-                            <td> {{ course.homeCourse.code }} {{ course.homeCourse.name }} </td>
+                            <td><a href="https://www.ntnu.no/studier/emner/{{ course.homeCourse.code }}" target="_blank"
+                                   onclick="return alertLink(this)">{{ course.homeCourse.code }} {{ course.homeCourse.name }} </a>
+                            </td>
                             <td>
                                 <span data-toggle="confirmation" data-type="course_match" data-id="{{ course.id }}"
                                       class="glyphicon glyphicon-remove pointer"></span></td>
@@ -134,8 +143,8 @@
                     </tbody>
                 </table>
             </div>
-            <button type="button" class="center-block btn btn-primary btn-lg vertical-space-top-big" data-toggle="modal"
-                    data-target="#myModal">
+            <button onclick="checkValidApplication()" type="button"
+                    class="center-block btn btn-primary btn-lg vertical-space-top-big">
                 Søk om godkjenning
             </button>
         </div>
@@ -162,7 +171,7 @@
                             <table class="table table-striped">
                                 <tbody id="courseMatchListModal">
                                 {% for course in course_matches %}
-                                    <tr>
+                                    <tr data-id={{ course.pk }}>
                                     <td> {{ course.abroadCourse.code }} {{ course.abroadCourse.name }}</td>
                                     <td> {{ course.homeCourse.code }} {{ course.homeCourse.name }} </td>
                                 {% endfor %}
@@ -244,13 +253,7 @@
     <script src="{% static 'utsida/javascripts/profile/savedCourses.js' %}"></script>
     <script src="{% static 'utsida/javascripts/profile/courseMatcher.js' %}"></script>
     <script src="{% static 'utsida/javascripts/profile/course_approval_request.js' %}"></script>
-    <script> setTimeout(function () {
-        $('#sucessAlert').fadeOut('slow');
-    }, 5000);
 
-    $('#id_coursesToTake').prop('required', true);
-    $('#id_coursesToTake').attr("placeholder", "Søk etter fag her");
-    </script>
 
 
 {% endblock %}
