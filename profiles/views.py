@@ -186,16 +186,16 @@ def add_abroad_course_to_profile(request):
         user = User.objects.get(username=request.user)
         university = get_object_or_404(University, name=request.POST.get('university'))
 
-        course = AbroadCourse.objects.get(code=request.POST.get('code'),university=university)
-        if (course):
+        found_course = AbroadCourse.objects.filter(code=request.POST.get('code'),university=university).count()
+        if (found_course):
+            course = AbroadCourse.objects.get(code=request.POST.get('code'), university=university)
             if (course in user.profile.saved_courses.all()):
                 return HttpResponse(status=409)
-            course.full_clean()
-            course.save()
         else:
             course = AbroadCourse(code=request.POST.get('code'), name=request.POST.get('name'),
                               study_points=request.POST.get('study_points'), university=university,
                               description_url=request.POST.get('url'))
+            course.save()
 
         response_data = {
             "code": request.POST.get('code'),
@@ -287,16 +287,27 @@ def save_course_match(request):
     if request.method == "POST":
         homeCode = request.POST["homeCourseCode"]
         abroadCode = request.POST["abroadCourseCode"]
-        abroad_name = request.POST["abroadCourseName"]
-        stored_course_match = CourseMatch.objects.filter(abroadCourse__name=abroad_name, homeCourse__code=homeCode)
+        abroadName = request.POST["abroadCourseName"]
+        abroadId = request.POST["abroadCourseID"]
+        stored_course_match = CourseMatch.objects.filter(abroadCourse__pk=abroadId, homeCourse__code=homeCode)
 
         user = User.objects.get(username=request.user)
 
-        hasMatch = user.profile.saved_course_matches.all().filter(abroadCourse__name=abroad_name,
+        hasMatch = user.profile.saved_course_matches.all().filter(abroadCourse__pk=abroadId,
                                                                   homeCourse__code=homeCode)
+        usersCourseMatches = user.profile.saved_course_matches.all()
+
         if (stored_course_match and hasMatch):
             return HttpResponse(status=409)
         elif (stored_course_match and not hasMatch):
+            if (usersCourseMatches):
+                same_university_as_stored = usersCourseMatches[
+                                                0].abroadCourse.university.name == stored_course_match[0].abroadCourse.university.name
+            else:
+                same_university_as_stored = True
+            if (not same_university_as_stored):
+                return (HttpResponse(status=406))
+
             user.profile.saved_course_matches.add(stored_course_match[0])
 
             response = {
@@ -310,9 +321,17 @@ def save_course_match(request):
             )
 
         elif (not stored_course_match and not hasMatch):
-            abroad_course = AbroadCourse.objects.get(code=abroadCode, name=abroad_name)
+            abroad_course = AbroadCourse.objects.get(pk=abroadId)
             home_course = HomeCourse.objects.get(code=homeCode)
             course_match = CourseMatch(abroadCourse=abroad_course, homeCourse=home_course)
+
+            usersCourseMatches = user.profile.saved_course_matches.all()
+            if (usersCourseMatches):
+                same_university_as_stored = usersCourseMatches[0].abroadCourse.university.name == course_match.abroadCourse.university.name
+            else:
+                same_university_as_stored = True
+            if (not same_university_as_stored):
+                return (HttpResponse(status=406))
             course_match.save()
             user.profile.saved_course_matches.add(course_match)
 
@@ -431,7 +450,7 @@ def save_home_course(request):
         response_data = {}
         home_course = get_object_or_404(HomeCourse, name=request.POST.get('name'), code=request.POST.get('code'))
         if (user.profile.coursesToTake.filter(code=request.POST.get('code'))):
-            response_data["error"] = "Faget finnes allerede i din profil"
+            return HttpResponse(status=409)
         else:
             user.profile.coursesToTake.add(home_course)
             response_data["code"] = request.POST.get('code')

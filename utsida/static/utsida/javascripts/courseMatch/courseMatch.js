@@ -10,7 +10,7 @@ $('[data-toggle=confirmation]').confirmation({
         var block = $(this);
         var id = $(this)[0].dataset["id"];
         var type = $(this)[0].dataset["type"];
-        $.post("/courseMatch/delete/", {'id': id},function () {
+        $.post("/courseMatch/delete/", {'id': id}, function () {
             block.parents('tr').fadeOut("slow", function (block) {
                 $('#example').DataTable().draw();
             });
@@ -28,26 +28,25 @@ $('[data-toggle=confirmation]').confirmation({
 
 
 var addCourseMatch = function (id) {
-    console.log(document.getElementById("messageContainer"));
-            $.ajax({
-            data: {"id":id},
-            type: "POST",
-            url: "/profile/save_course_match_id/",
-            success: function (response) {
+    $.ajax({
+        data: {"id": id},
+        type: "POST",
+        url: "/profile/save_course_match_id/",
+        success: function (response) {
+            Messager.init();
+            Messager.sendMessage("Faget ble lagret", "success");
+        },
+        error: function (error) {
+            if (error.status == 409) {
                 Messager.init();
-                Messager.sendMessage("Faget ble lagret", "success");
-            },
-            error: function (error) {
-                if (error.status == 409) {
-                    Messager.init();
-                    Messager.sendMessage("Koblingen er allerede i din profil!", "danger");
-                }
-                else if (error.status == 406) {
-                    Messager.init();
-                    Messager.sendMessage("Det finnes fag fra et annet universitet i din profil", "danger");
-                }
+                Messager.sendMessage("Koblingen er allerede i din profil!", "danger");
             }
-        });
+            else if (error.status == 406) {
+                Messager.init();
+                Messager.sendMessage("Det finnes fag fra et annet universitet i din profil", "danger");
+            }
+        }
+    });
 };
 
 

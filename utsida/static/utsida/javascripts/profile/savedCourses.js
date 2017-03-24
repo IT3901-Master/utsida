@@ -32,7 +32,6 @@ var confirmationSettings = {
             $(this).closest('.blockElement').fadeOut("slow", function (here) {
                 block.parentNode.removeChild(block)
             });
-            console.log($('#courseList').children().length);
             if ($('#courseList').children().length == 1) {
                 $('#courseList').remove();
                 $('#universityHeader').innerHTML = "Du har ikke lagret noen fag";
@@ -40,6 +39,7 @@ var confirmationSettings = {
         }
         else if (type == "course_match") {
             $.post("/profile/remove_course_match/", {'id': id});
+            $('#courseMatchListModal').find("[data-id='" + id + "']").remove();
             $(this).closest('tr').fadeOut("slow", function (here) {
                 $(this).closest("tr").remove()
             });
@@ -124,6 +124,7 @@ function create_post() {
             $('#add-abroad-course-form')[0].reset();
 
             refreshConfirmation();
+            CourseMatcher.init();
         },
         error: function (err) {
             $('#addAbroadModal').modal('hide');
@@ -146,8 +147,14 @@ $('#add-abroad-course-form').on('submit', function (event) {
 $('#add-course-form').on('submit', function (event) {
     event.preventDefault();
     var course = $('#id_coursesToTake').val();
-    var code = course.split(/-(.+)/)[0].replace(" ", "");
-    var name = course.split(/-(.+)/)[1].replace(" ", "");
+    if (course.length < 6 || course.indexOf('-') == -1) {
+        Messager.init();
+        Messager.sendMessage('Velg et fag fra listen, feil input', "danger");
+        return false;
+    }
+    var code = course.split(/-(.+)/)[0].trim();
+    var name = course.split(/-(.+)/)[1].trim();
+
     $.ajax({
         url: "/profile/save_home_course/",
         type: "POST",
@@ -156,34 +163,47 @@ $('#add-course-form').on('submit', function (event) {
             name: name
         },
         success: function (json) {
-
             Messager.init();
-            if (json.error) {
-                Messager.sendMessage(json.error, "danger");
-            }
-            else {
-                Messager.sendMessage("Faget ble lagt til", "success");
-                mainDiv = document.createElement('div');
-                mainDiv.setAttribute('onclick', "CourseMatcher.markHomeCourse(this)");
-                mainDiv.className = "centerCol courseBlock boxShadow pointer noSelect blockElement";
-                mainDiv.innerHTML = "<span id='code'>" + json.code + "</span>" + ' - ' + "<span id='name'>" + json.name + "</span>";
-                span2 = document.createElement('span');
-                span2.setAttribute("data-toggle", "confirmation");
-                span2.setAttribute("data-type", "home_course");
-                span2.setAttribute("data-id", json.id);
-                span2.className = "glyphicon glyphicon-remove pull-right pointer";
-                mainDiv.append(span2);
-                $('#homeCourseList').append(mainDiv);
-                $('#id_coursesToTake').val('');
-                refreshConfirmation();
-                CourseMatcher.init();
-            }
+            CourseMatcher.toggleAddHomeCourse();
+            Messager.sendMessage("Faget ble lagt til", "success");
+            mainDiv = document.createElement('div');
+            mainDiv.setAttribute('onclick', "CourseMatcher.markHomeCourse(this)");
+            mainDiv.className = "centerCol courseBlock boxShadow pointer noSelect blockElement";
+            mainDiv.innerHTML = "<span id='code'>" + json.code + "</span>" + ' - ' + "<span id='name'>" + json.name + "</span>";
+            span2 = document.createElement('span');
+            span2.setAttribute("data-toggle", "confirmation");
+            span2.setAttribute("data-type", "home_course");
+            span2.setAttribute("data-id", json.id);
+            span2.className = "glyphicon glyphicon-remove pull-right pointer";
+            mainDiv.append(span2);
+            $('#homeCourseList').append(mainDiv);
+            $('#id_coursesToTake').val('');
+            refreshConfirmation();
+            CourseMatcher.init();
         },
-        error: function (xhr, errmsg, err) {
-
+        error: function (err) {
+            if (err.status == 409) {
+                Messager.init();
+                Messager.sendMessage("faget er allerede lagret!", "danger");
+            }
+            else if (err.status == 404) {
+                Messager.init();
+                Messager.sendMessage("Ugyldig fag, søk og velg fra listen!", "danger");
+            }
         }
     })
 
 });
+
+function checkValidApplication() {
+    if ($("#courseMatchList").children().size() == 0) {
+        console.log("Empty course match list, not valid application");
+        Messager.init();
+        Messager.sendMessage("Du må ha fag i faglisten for å sende søknad","danger")
+    }
+    else {
+        $("#myModal").modal('show');
+    }
+}
 
 

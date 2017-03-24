@@ -18,6 +18,7 @@ Can be used anywhere by calling Messager.init() followed by Messager.sendMessage
         },
 
         sendMessage: function(message, type) {
+            m.container = document.getElementById("messageContainer");
             m.container.className = "alert alert-" + type;
             if (m.container.firstChild)
                 m.container.removeChild(m.container.firstChild);
@@ -26,6 +27,7 @@ Can be used anywhere by calling Messager.init() followed by Messager.sendMessage
                 e.preventDefault();
                 m.container.className = "hiddenDiv";
             });
+            $("#messageContainer").show();
             location.href = "#messageContainer";
             this.fadeMessage();
         },
