@@ -66,7 +66,7 @@
         <div id="abroadCourseListContainer" class="col-md-6">
             {% if university %}
                 <h4 id="#universityHeader" class="text-center">Lagrede fag
-                    ved {{ university }}, {{ university.country }}</h4>
+                    ved <select class="form-control inline-select"><option>{{ university }}, {{ university.country }}</option></select></h4>
                 <div id="courseList">
                     {% for course in courses %}
                         <div onclick="CourseMatcher.markAwayCourse(this)"
@@ -108,7 +108,10 @@
     <div class="row vertical-space-top-big vertical-space-bottom-big">
         <div class="col-md-12 vertical-space-top-big">
             {% if course_matches %}
-                <h3 class="text-center vertical-space-bottom-big"> Lagrede fag-koblinger ved {{ course_matches.0.abroadCourse.university }} </h3>
+                <h3 class="text-center vertical-space-bottom-big"> Lagrede fag-koblinger ved <select class="form-control inline-select">
+                    <option>University Of New South Wales</option>
+                    <option>University of Queensland</option>
+                </select></h3>
             {% else %}
                 <h3 class="text-center vertical-space-bottom-big"> Lagrede fag-koblinger </h3>
             {% endif %}
