@@ -44,7 +44,11 @@
                     </div>
 
                 </div>
-                <label>Status</label>
+                <div>
+                <label> Universitet: </label>
+                <span>{{ application.course_matches.all.0.abroadCourse.university }}</span>
+                </div>
+                <label>Status: </label>
                 {% if application.status == "A" %}
                     <span>Godkjent</span>
                 {% elif application.status == "P" %}

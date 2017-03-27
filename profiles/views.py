@@ -275,8 +275,9 @@ def university_exists(u):
 def send_applation(request):
     if request.method == "POST":
         user = User.objects.get(username=request.user)
+        university = user.profile.saved_course_matches.all()[0].abroadCourse.university
         comment = request.POST["comment"]
-        course_approval_request = Application(user=user, comment=comment)
+        course_approval_request = Application(user=user, comment=comment,university=university)
         course_approval_request.save()
         course_approval_request.course_matches = user.profile.saved_course_matches.all()
         return HttpResponse({'code': 200, 'message': 'OK'})
