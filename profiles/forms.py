@@ -127,6 +127,6 @@ def make_application_form(user,application):
             fields = {'course_matches','comment'}
 
 
-        course_matches = forms.ModelMultipleChoiceField(queryset=user.profile.saved_course_matches)
-        comment = forms.CharField(initial=application.comment)
+        course_matches = forms.ModelMultipleChoiceField(queryset=user.profile.saved_course_matches, label="Endre med fagkoblinger fra din profil")
+        comment = forms.CharField(initial=application.comment, label="Kommentar")
     return ApplicationForm
