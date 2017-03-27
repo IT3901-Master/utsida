@@ -35,8 +35,8 @@
                         <span>{{ application.id }}</span>
                     </div>
                     <div class="col-md-1" id="editContainer">
-                        <a id="editApplication" class="glyphicon glyphicon-edit pointer"
-                           href="{% url 'edit_application' id=application.id %}"></a>
+                        <span id="editApplication" class="glyphicon glyphicon-edit pointer"
+                           onclick=location.href="{% url 'edit_application' id=application.id %}"></span>
                     </div>
                     <div class="col-md-1" id="removeContainer">
                         <span class="glyphicon glyphicon-trash pointer" data-toggle="confirmation"

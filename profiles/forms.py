@@ -131,14 +131,18 @@ def make_application_form(user, application):
 
         stored_matches = (user.profile.saved_course_matches.values_list('id'))
         application_course_matches_by_id = application.course_matches.values_list('id')
-        print(application_course_matches_by_id)
-        to_show = CourseMatch.objects.filter(id__in=stored_matches,abroadCourse__university__name=application.university.name)
+        matches_with_same_uni = CourseMatch.objects.filter(id__in=stored_matches,
+                                             abroadCourse__university__name=application.university.name)
         in_application = CourseMatch.objects.filter(id__in=application_course_matches_by_id)
-        to_show2 = to_show | in_application
+        limit_matches = matches_with_same_uni | in_application
+
+        def __init__(self, *args, **kwargs):
+            super(ApplicationForm, self).__init__(*args, **kwargs)
+            self.fields['course_matches'].initial = CourseMatch.objects.filter(id__in=application.course_matches.values_list('id'))
 
         course_matches = forms.ModelMultipleChoiceField(
-            queryset=to_show2,
+            queryset=limit_matches,
             label="Endre med fagkoblinger fra din profil")
-        comment = forms.CharField(initial=application.comment, label="Kommentar")
+        comment = forms.CharField(initial=application.comment, label="Kommentar",widget=forms.Textarea)
 
     return ApplicationForm
