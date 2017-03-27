@@ -3,6 +3,17 @@
 
 {% block content %}
     {% load widget_tweaks %}
+
+    {% if messages %}
+        {% for message in messages %}
+            {% if message.tags == 'success' %}
+                <div class="alert alert-success" role="alert">{{ message|escape|safe }}</div>
+            {% elif message.tags == 'error' %}
+                <div class="alert alert-danger" role="alert">{{ message|escape|safe }}</div>
+            {% endif %}
+        {% endfor %}
+    {% endif %}
+
     <div class="row">
         <div class="col-md-8 col-md-offset-2">
 
@@ -19,13 +30,19 @@
                         <div class="courseBlock boxShadow" style="background-color: #f2dede">
                     {% endif %}
                 <div class="row">
-                    <div class="col-md-11">
+                    <div class="col-md-10">
                         <label>SøknadsID:</label>
                         <span>{{ application.id }}</span>
                     </div>
-                    <div class="col-md-1" id="removeContainer">
-                        <span class="glyphicon glyphicon-trash pointer" data-toggle="confirmation" data-id="{{ application.id }}"></span>
+                    <div class="col-md-1" id="editContainer">
+                        <a id="editApplication" class="glyphicon glyphicon-edit pointer"
+                           href="{% url 'edit_application' id=application.id %}"></a>
                     </div>
+                    <div class="col-md-1" id="removeContainer">
+                        <span class="glyphicon glyphicon-trash pointer" data-toggle="confirmation"
+                              data-id="{{ application.id }}"></span>
+                    </div>
+
                 </div>
                 <label>Status</label>
                 {% if application.status == "A" %}
@@ -38,23 +55,24 @@
                 <div class="bold h5">Fag-koblinger</div>
                 {% if application.course_matches %}
                     <table class="table table-hover">
-                    <thead>
-                    <th>Bortefag</th>
-                    <th>Hjemmefag</th>
-                    </thead>
+                        <thead>
+                        <th>Bortefag</th>
+                        <th>Hjemmefag</th>
+                        </thead>
                         <tbody id="courseMatchList">
                         {% for course in application.course_matches.all %}
                             <tr>
                             {% if course.abroadCourse.description_url %}
                                 <td>
                                     <a href="{{ course.abroadCourse.description_url }}" target="_blank"
-                               onclick="return alertLink(this)">{{ course.abroadCourse.code }} {{ course.abroadCourse.name }}</a>
+                                       onclick="return alertLink(this)">{{ course.abroadCourse.code }} {{ course.abroadCourse.name }}</a>
                                 </td>
                             {% else %}
                                 <td> {{ course.abroadCourse.code }} {{ course.abroadCourse.name }}</td>
                             {% endif %}
-                            <td> <a href="https://www.ntnu.no/studier/emner/{{ course.homeCourse.code }}" target="_blank"
-                               onclick="return alertLink(this)"> {{ course.homeCourse.code }} {{ course.homeCourse.name }} </a></td>
+                            <td><a href="https://www.ntnu.no/studier/emner/{{ course.homeCourse.code }}" target="_blank"
+                                   onclick="return alertLink(this)"> {{ course.homeCourse.code }} {{ course.homeCourse.name }} </a>
+                            </td>
                         {% endfor %}
                         </tbody>
                     </table>
@@ -77,7 +95,7 @@
             </div>
             </div>
 
-        {% load staticfiles %}
-        <script src="{% static 'utsida/javascripts/profile/applicationHandler.js' %}"></script>
+            {% load staticfiles %}
+            <script src="{% static 'utsida/javascripts/profile/applicationHandler.js' %}"></script>
 
 {% endblock %}

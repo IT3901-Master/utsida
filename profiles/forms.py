@@ -4,7 +4,7 @@ from django import forms
 from django.contrib.auth.forms import UserCreationForm, PasswordChangeForm, AuthenticationForm
 from django.contrib.auth.models import User
 from django.forms import CharField, PasswordInput
-from profiles.models import Profile
+from profiles.models import Profile, Application
 
 
 class UserForm(UserCreationForm):
@@ -112,3 +112,21 @@ class AdminProfileForm(forms.ModelForm):
 
     coursesToTake = make_ajax_field(Profile, 'coursesToTake', 'homeCourse', help_text="Please enter your course taken",
                                     required=False)
+
+
+class ApplicationForm(forms.ModelForm):
+    class Meta:
+        model = Application
+        fields = {'course_matches', 'comment'}
+
+
+def make_application_form(user,application):
+    class ApplicationForm(forms.ModelForm):
+        class Meta:
+            model = Application
+            fields = {'course_matches','comment'}
+
+
+        course_matches = forms.ModelMultipleChoiceField(queryset=user.profile.saved_course_matches)
+        comment = forms.CharField(initial=application.comment)
+    return ApplicationForm
