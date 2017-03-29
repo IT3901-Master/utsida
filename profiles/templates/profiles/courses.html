@@ -64,13 +64,17 @@
         </div>
 
         <div id="abroadCourseListContainer" class="col-md-6">
-            {% if university %}
+            {% if universities %}
                 <h4 id="#universityHeader" class="text-center">Lagrede fag
-                    ved <select class="form-control inline-select"><option>{{ university }}, {{ university.country }}</option></select></h4>
+                    ved <select id="abroad_university_select">
+                        {% for university in universities %}
+                        <option>{{ university }}</option>
+                    {% endfor %}
+                    </select></h4>
                 <div id="courseList">
                     {% for course in courses %}
-                        <div onclick="CourseMatcher.markAwayCourse(this)"
-                             class="centerCol courseBlock boxShadow pointer noSelect blockElement">
+                        <div onclick="CourseMatcher.markAwayCourse(this)" data-university="{{ course.university }}"
+                             class="centerCol courseBlock boxShadow pointer noSelect blockElement" style="display: none;">
                             {% if course.code == "" %}
                                 <span id="name">{{ course.name }}</span>
                             {% else %}
@@ -108,9 +112,10 @@
     <div class="row vertical-space-top-big vertical-space-bottom-big">
         <div class="col-md-12 vertical-space-top-big">
             {% if course_matches %}
-                <h3 class="text-center vertical-space-bottom-big"> Lagrede fag-koblinger ved <select class="form-control inline-select">
-                    <option>University Of New South Wales</option>
-                    <option>University of Queensland</option>
+                <h3 class="text-center vertical-space-bottom-big"> Lagrede fag-koblinger ved <select class="">
+                    {% for university in universities %}
+                        <option>{{ university }}</option>
+                    {% endfor %}
                 </select></h3>
             {% else %}
                 <h3 class="text-center vertical-space-bottom-big"> Lagrede fag-koblinger </h3>
@@ -213,7 +218,7 @@
                     {% endif %}
                 </div>
                 <div class="modal-body">
-                    <form id="add-abroad-course-form" action="/profile/abroadCourse/add/" method="post">
+                    <form id="add-abroad-course-form" method="post">
                         {% csrf_token %}
                         <div class="modal-body">
                             <div class="form-group">
@@ -232,15 +237,10 @@
                                 <label> Studiepoeng </label>
                                 {{ add_abroad_form.study_points | add_class:"form-control" }}
                             </div>
-                            {% if university %}
-                                <input type="hidden" id="add-form-university" name="university"
-                                       value="{{ university }}"/>
-                            {% else %}
-                                <div class="form-group">
-                                    <label>Universitet</label>
-                                    {{ add_abroad_form.university | add_class:"form-control" }}
-                                </div>
-                            {% endif %}
+                            <div class="form-group">
+                                <label>Universitet</label>
+                                {{ add_abroad_form.university | add_class:"form-control" }}
+                            </div>
                         </div>
                         <div class="modal-footer">
                             <button type="button" class="btn btn-secondary" data-dismiss="modal">Lukk</button>
@@ -253,8 +253,8 @@
     </div>
 
     {% load staticfiles %}
-    <script src="{% static 'utsida/javascripts/profile/savedCourses.js' %}"></script>
     <script src="{% static 'utsida/javascripts/profile/courseMatcher.js' %}"></script>
+    <script src="{% static 'utsida/javascripts/profile/savedCourses.js' %}"></script>
     <script src="{% static 'utsida/javascripts/profile/course_approval_request.js' %}"></script>
 
 

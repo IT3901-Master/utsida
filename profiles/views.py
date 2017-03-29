@@ -100,9 +100,10 @@ def saved_courses(request):
     courses = profile.saved_courses.all()
 
     if (courses):
-        university = courses[0].university
+        universities = University.objects.filter(id__in=courses.values("university"))
+        print(universities)
     else:
-        university = ""
+        universities = []
 
     home_courses = profile.coursesToTake.all()
     course_matches = profile.saved_course_matches.all()
@@ -110,7 +111,7 @@ def saved_courses(request):
     courses_to_take_form = CoursesToTakeForm()
 
     return render(request, 'profiles/courses.html',
-                  {'courses': courses, 'university': university, 'home_courses': home_courses,
+                  {'courses': courses, "universities":universities, 'home_courses': home_courses,
                    'course_matches': course_matches, 'add_abroad_form': abroad_course_form,
                    'courses_to_take_form': courses_to_take_form})
 
@@ -184,7 +185,7 @@ def save_courses(request):
 def add_abroad_course_to_profile(request):
     if request.method == 'POST':
         user = User.objects.get(username=request.user)
-        university = get_object_or_404(University, name=request.POST.get('university'))
+        university = get_object_or_404(University, id=request.POST.get('university'))
 
         found_course = AbroadCourse.objects.filter(code=request.POST.get('code'),university=university).count()
         if (found_course):

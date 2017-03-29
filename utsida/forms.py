@@ -87,5 +87,8 @@ class abroadCourseForm(forms.ModelForm):
             ),
             'study_points': forms.NumberInput(
                 attrs={'id': 'add-form-study-points', 'required': False, 'placeholder': 'Legg til antall studiepoeng'}
-            )
+            ),
+            'university': forms.Select(attrs={'id': 'add-form-university', 'required': True,
+                                                        'placeholder': 'Legg til antall studiepoeng'}
+                                                 ),
         }

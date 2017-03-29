@@ -68,12 +68,6 @@ function refreshConfirmation() {
 $('[data-toggle=confirmation]').confirmation(confirmationSettings);
 
 function create_post() {
-    if ($('#id_university').length > 0) {
-        var university = $('#id_university').find(":selected").text();
-    }
-    else {
-        var university = $('#add-form-university').val();
-    }
     $.ajax({
         url: "/profile/abroadCourse/add/",
         type: "POST",
@@ -81,7 +75,7 @@ function create_post() {
             code: $('#add-form-code').val(),
             name: $('#add-form-name').val(),
             url: $('#add-form-url').val(),
-            university: university,
+            university: $('#add-form-university').val(),
             study_points: $('#add-form-study-points').val()
         },
         success: function (json) {
@@ -89,6 +83,7 @@ function create_post() {
             Messager.init();
             Messager.sendMessage("Faget ble lagt til", "success");
             var mainDiv = document.createElement('div');
+            mainDiv.setAttribute('data-university', json.university);
             mainDiv.setAttribute('onclick', "CourseMatcher.markAwayCourse(this)");
             mainDiv.className = "centerCol courseBlock boxShadow pointer noSelect blockElement";
             mainDiv.innerHTML = "<span id='code'>" + json.code + "</span>" + ' - ' + "<span id='name'>" + json.name + "</span>";
@@ -105,20 +100,22 @@ function create_post() {
                 var courseList = document.createElement('div');
                 courseList.setAttribute("id", "courseList");
                 $('#abroadCourseListContainer').prepend(courseList);
+
+                var abroadUniversitySelect = document.createElement('select');
+                abroadUniversitySelect.setAttribute("id","abroad_university_select");
+                abroadUniversitySelect.append($("<option></option>")
+                    .attr("value", json.university)
+                    .text(json.university));
+
                 var universityHeader = document.createElement('h4');
-                universityHeader.innerText = "Lagrede fag ved " + json.university + ', ' + json.country;
+                universityHeader.innerHTML = "Lagrede fag ved " + abroadUniversitySelect;
                 universityHeader.setAttribute("id", "universityHeader");
                 $('#abroadCourseListContainer').prepend(universityHeader);
 
-                //Delete university selection from form and add hidden input
-                $('#id_university').parent().remove();
 
-                var hiddenUniversityInput = document.createElement('input');
-                hiddenUniversityInput.setAttribute("type", "hidden");
-                hiddenUniversityInput.setAttribute("id", "add-form-university");
-                hiddenUniversityInput.setAttribute("name", "university");
-                hiddenUniversityInput.setAttribute("value", json.university);
-                $('#add-abroad-course-form .modal-body')[0].append(hiddenUniversityInput);
+                $('#abroad_university_select').val(json.university);
+
+
             }
             $('#courseList').append(mainDiv);
             $('#add-abroad-course-form')[0].reset();
@@ -143,6 +140,27 @@ $('#add-abroad-course-form').on('submit', function (event) {
     event.preventDefault();
     create_post();
 });
+
+
+function abroadCourseFilter() {
+    var selected_uni = $('#abroad_university_select').val();
+    var abroad_courses = $('#courseList').children();
+    abroad_courses.filter(function () {
+        return $(this).data("university") == selected_uni;
+    }).show();
+    abroad_courses.filter(function () {
+        return $(this).data("university") != selected_uni;
+    }).hide();
+    CourseMatcher.clearAwayCourseSelection();
+    $("#add-form-university option").filter(function () {
+        return this.text == selected_uni;
+    }).prop('selected', true);
+}
+
+$("#abroad_university_select").on('change', function () {
+    abroadCourseFilter();
+});
+
 
 $('#add-course-form').on('submit', function (event) {
     event.preventDefault();
@@ -199,11 +217,14 @@ function checkValidApplication() {
     if ($("#courseMatchList").children().size() == 0) {
         console.log("Empty course match list, not valid application");
         Messager.init();
-        Messager.sendMessage("Du må ha fag i faglisten for å sende søknad","danger")
+        Messager.sendMessage("Du må ha fag i faglisten for å sende søknad", "danger")
     }
     else {
         $("#myModal").modal('show');
     }
-}
+};
+
+abroadCourseFilter();
+
 
 
