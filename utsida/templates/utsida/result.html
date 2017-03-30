@@ -47,14 +47,14 @@
 
         <h2 class="text-center">Her er universitetene som matcher best</h2>
         <h3 class="subTitle text-center vertical-space-bottom">
-            Trykk på et universitet for å vise turer derifra
+            Trykk på et universitet for å vise individuelle erfaringer
         </h3>
 
         {% else %}
 
-        <h2 class="text-center">Her er turene som likner mest på ditt søk</h2>
+        <h2 class="text-center" id="result-title"></h2>
         <h3 class="subTitle text-center vertical-space-bottom">
-            Trykk på fag andre
+            Se på andre studenter sine erfaringer, og let etter fag som passer deg
         </h3>
 
         {% endif %}
@@ -70,7 +70,6 @@
                 {% if forloop.counter|divisibleby:2 %}<div class="row">{% endif %}
 
                     <div class="col-md-6">
-
                         <div class="panel panel-primary square-corners boxShadow">
 
                             <div class="panel-heading square-corners pointer" onclick="UniversityFilter.filter(this)">
@@ -88,7 +87,7 @@
                                         data-content="Vurdering av akademisk kvalitet">
 
                                         <img class="result-icon" src="{% static 'utsida/icons/books.svg' %}">
-                                        <span class="result-rating">{{ case.content.AcademicQuality }}/10</span>
+                                        <span class="result-rating">{{ case.university_ratings.academic_quality }}/10</span>
                                     </div>
                                     <div class="rating-box"
                                         data-container="body"
@@ -98,7 +97,7 @@
                                         data-content="Vurdering av sosial kvalitet">
 
                                         <img class="result-icon" src="{% static 'utsida/icons/users.svg' %}">
-                                        <span class="result-rating">{{ case.content.SocialQuality }}/10</span>
+                                        <span class="result-rating">{{ case.university_ratings.social_quality }}/10</span>
                                     </div>
                                     <div class="rating-box"
                                         data-container="body"
@@ -108,7 +107,7 @@
                                         data-content="Vurdering boligstandard og tilgjengelighet">
 
                                         <img class="result-icon" src="{% static 'utsida/icons/home2.svg' %}">
-                                        <span class="result-rating">{{ case.content.ResidentialQuality }}/10</span>
+                                        <span class="result-rating">{{ case.university_ratings.residential_quality }}/10</span>
                                     </div>
                                     <div class="rating-box"
                                         data-container="body"
@@ -118,14 +117,17 @@
                                         data-content="Vurdering av administrativ støtte og hjelp">
 
                                         <img class="result-icon" src="{% static 'utsida/icons/info.svg' %}">
-                                        <span class="result-rating">{{ case.content.ReceptionQuality }}/10</span>
+                                        <span class="result-rating">{{ case.university_ratings.reception_quality }}/10</span>
+                                    </div>
+
+                                    <div class="university-select-arrow" onclick="UniversityFilter.filter(this.parentNode.parentNode.previousSibling.previousSibling)">
+                                        <span class="glyphicon glyphicon-chevron-right university-select-arrow-icon"></span>
                                     </div>
                                 </div>
 
                             </div>
 
                         </div>
-
                     </div>
 
                 {% if forloop.counter|divisibleby:2 %}</div>{% endif %}
@@ -258,6 +260,16 @@
         {% endif %}
 
     </div>
+
+    {% if filter %}
+    <script>
+        window.addEventListener('load', function(e) {
+            var url = window.location.href;
+            var university = decodeURI(url.split('/')[url.split('/').length - 2]);
+            document.getElementById("result-title").innerHTML = "Her er dine beste matcher ved" + '<br>' +  university;
+        });
+    </script>
+    {% endif %}
 
     <script src="{% static 'utsida/javascripts/result/showHiddenContent.js' %}"></script>
     <script src="{% static 'utsida/javascripts/result/courseSelector.js' %}"></script>

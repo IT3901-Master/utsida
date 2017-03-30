@@ -150,34 +150,46 @@ def result(request, university=None):
             for case in sorted_similar_cases[:9]:
                 if 'University' in case['content'] and not case['content']['University'] in unique_unis:
                     unique_sorted_similar_cases.append(case)
-
-
+                    unique_unis.append(case['content']['University'])
 
             request.session['unique_universities'] = unique_unis
             request.session['result'] = sorted_similar_cases
             request.session['matches'] = course_wanted_to_be_taken_matches
 
-
-            rating_list = []
+            rating_list = {}
 
             for case in sorted_similar_cases:
-                if not case['content']['University'] in rating_list:
-                    rating_list.append({case['content']['University']: {'social_quality': case['content']['SocialQuality'], 'count': 1}})
+                uni = case['content']['University']
+                if uni not in rating_list:
+                    rating_list[uni] = {
+                        'social_quality': int(case['content']['SocialQuality']),
+                        'academic_quality': int(case['content']['AcademicQuality']),
+                        'residential_quality': int(case['content']['ResidentialQuality']),
+                        'reception_quality': int(case['content']['ReceptionQuality']),
+                        'count': 1
+                    }
+
                 elif case['content']['University'] in rating_list:
-                    rating_list[case['content']['University']]['social_quality'] = rating_list[case['content']['University']]['social_quality'] + case['content']['SocialQuality']
-                    rating_list[case['content']['University']]['count'] =  int(rating_list[case['content']['University']]['count']) + 1
+                    rating_list[uni]['social_quality'] += int(case['content']['SocialQuality'])
+                    rating_list[uni]['academic_quality'] += int(case['content']['AcademicQuality'])
+                    rating_list[uni]['residential_quality'] += int(case['content']['ResidentialQuality'])
+                    rating_list[uni]['reception_quality'] += int(case['content']['ReceptionQuality'])
+                    rating_list[uni]['count'] += 1
 
-            for uni in rating_list:
-                for name, values in uni.items():
-                    values['social_quality'] = int(values['social_quality']) / int(values['count'])
+            for uni, values in rating_list.items():
+                values['social_quality'] = round(int(values['social_quality']) / int(values['count']))
+                values['academic_quality'] = round(int(values['academic_quality']) / int(values['count']))
+                values['residential_quality'] = round(int(values['residential_quality']) / int(values['count']))
+                values['reception_quality'] = round(int(values['reception_quality']) / int(values['count']))
 
-
-
-
+            for case in unique_sorted_similar_cases[:6]:
+                for rating in rating_list:
+                    if rating == case['content']['University']:
+                        case['university_ratings'] = rating_list[rating]
 
             return render(request, 'utsida/result.html',
                           {'form': form, 'similar_cases': unique_sorted_similar_cases[:6], 'courses_taken': courses_taken,
-                           'matches': course_wanted_to_be_taken_matches, 'universities': unique_unis, 'filter': False})
+                           'matches': course_wanted_to_be_taken_matches, 'universities': unique_unis, 'rating_list': rating_list,'filter': False})
 
     else:
         form = QueryCaseBaseForm()

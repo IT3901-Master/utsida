@@ -4,7 +4,7 @@ from django import forms
 from django.contrib.auth.forms import UserCreationForm, PasswordChangeForm, AuthenticationForm
 from django.contrib.auth.models import User
 from django.forms import CharField, PasswordInput
-from profiles.models import Profile, Application, CourseMatch
+from profiles.models import Profile, Application, CourseMatch, Institute
 from django.db.models import Q
 
 
@@ -85,6 +85,9 @@ class ProfileRegisterForm(forms.ModelForm):
     class Meta:
         model = Profile
         fields = ('institute',)
+
+    institute = forms.ModelChoiceField(label="Institutt", queryset=Institute.objects.all())
+
 
 
 class ProfileForm(forms.ModelForm):

@@ -13,9 +13,8 @@
         },
 
         filter: function(box) {
-            s.selected_university = box.children[0].innerHTML.split(' ').slice(0, -1).join(' ');
+            s.selected_university = box.children[0].innerHTML.replace(/ *\([^)]*\) */g, "");
             window.location = "/process/result/" + s.selected_university + '/';
-
         }
 
     };
@@ -23,3 +22,4 @@
     UniversityFilter.init();
 
 })();
+
