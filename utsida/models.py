@@ -126,7 +126,7 @@ class CourseMatch(models.Model):
     objects = CourseMatchManager()
 
     def __str__(self):
-        return self.homeCourse.code + ' - ' + self.abroadCourse.code
+        return self.homeCourse.code + ': ' + self.homeCourse.name + ' - ' + self.abroadCourse.code + ': ' + self.abroadCourse.name
 
     class Meta:
         verbose_name_plural = 'course matches'
@@ -155,6 +155,7 @@ class Application(models.Model):
     user = models.ForeignKey(User)
     course_matches = models.ManyToManyField(CourseMatch)
     comment = models.CharField(max_length=400,blank=True)
+    university = models.ForeignKey(University)
     status = models.CharField(max_length=2, choices=STATUS, default="P")
 
 

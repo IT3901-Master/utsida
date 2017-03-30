@@ -1,3 +1,4 @@
+import datetime
 from ajax_select.fields import AutoCompleteField, autoselect_fields_check_can_add
 from django.contrib import messages
 from django.contrib.auth.decorators import login_required, user_passes_test
@@ -14,7 +15,7 @@ from django.utils.decorators import method_decorator
 from django.views.generic import ListView
 
 from profiles.forms import UserForm, ProfileForm, UpdateUserForm, CoursesToTakeForm, ProfileRegisterForm, \
-    PasswordChangeCustomForm
+    PasswordChangeCustomForm, make_application_form, ApplicationForm
 from utsida.forms import abroadCourseForm
 from .models import *
 
@@ -455,3 +456,17 @@ def save_home_course(request):
         )
     else:
         return HttpResponse({'code': 500, 'message': 'request is not a post request'})
+
+
+
+def edit_application(request,id):
+    instance = get_object_or_404(Application, id=id)
+    if request.method == 'POST':
+        form = ApplicationForm(request.POST,instance=instance)
+        if form.is_valid():
+            form.save()
+        messages.success(request,"Søknaden ble endret")
+        return HttpResponseRedirect('/profile/soknader/')
+    else:
+        form = make_application_form(request.user,instance)
+        return render(request,"application/edit_application.html",{'form':form})
