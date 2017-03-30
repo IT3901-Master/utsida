@@ -280,10 +280,11 @@ def university_exists(u):
 def send_applation(request):
     if request.method == "POST":
         user = User.objects.get(username=request.user)
+        university = get_object_or_404(University,name=request.POST["university"])
         comment = request.POST["comment"]
-        course_approval_request = Application(user=user, comment=comment)
+        course_approval_request = Application(user=user, comment=comment,university=university)
         course_approval_request.save()
-        course_approval_request.course_matches = user.profile.saved_course_matches.all()
+        course_approval_request.course_matches = user.profile.saved_course_matches.filter(abroadCourse__university__name=university.name)
         return HttpResponse({'code': 200, 'message': 'OK'})
 
 

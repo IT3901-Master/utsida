@@ -208,12 +208,22 @@ function abroadCourseFilter() {
 function courseMatchFilter() {
     var selected_uni = $('#course_match_university_select').val();
     var course_matches = $('#courseMatchList').children();
+    var course_matches_modal = $('#courseMatchListModal').children();
+
     course_matches.filter(function () {
         return $(this).data("university") == selected_uni;
     }).show();
     course_matches.filter(function () {
         return $(this).data("university") != selected_uni;
     }).hide();
+
+    course_matches_modal.filter(function () {
+        return $(this).data("university") == selected_uni;
+    }).show();
+    course_matches_modal.filter(function () {
+        return $(this).data("university") != selected_uni;
+    }).hide();
+
 }
 
 $("#course_match_university_select").on('change', function () {

@@ -184,7 +184,7 @@
                             <table class="table table-striped">
                                 <tbody id="courseMatchListModal">
                                 {% for course in course_matches %}
-                                    <tr data-id={{ course.pk }}>
+                                    <tr data-university="{{ course.abroadCourse.university.name }}" data-id={{ course.pk }}>
                                     <td> {{ course.abroadCourse.code }} {{ course.abroadCourse.name }}</td>
                                     <td> {{ course.homeCourse.code }} {{ course.homeCourse.name }} </td>
                                 {% endfor %}

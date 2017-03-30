@@ -104,7 +104,7 @@
                         document.getElementById("courseMatchList").appendChild(content);
                         document.getElementById("courseMatchListModal").appendChild(content2);
 
-                        if ($("#course_match_university_select").find('option:contains(' + json.university + ')').length == 0) {
+                        if ($("#course_match_university_select").find('option:contains(' + response.university + ')').length == 0) {
                             var option = document.createElement("option");
                             option.innerText = response.university;
                             $("#course_match_university_select").append(option);
