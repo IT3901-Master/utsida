@@ -28,8 +28,6 @@ def register_user(request):
     if request.method == 'POST':
         user_form = UserForm(request.POST)
         profile_form = ProfileRegisterForm(request.POST)
-        print(user_form.is_valid())
-        print(profile_form.is_valid())
         if user_form.is_valid() and profile_form.is_valid():
             user = user_form.save()
             user.refresh_from_db()  # This will load the Profile created by the Signal
@@ -98,22 +96,28 @@ def saved_courses(request):
     profile = Profile.objects.get(user=request.user)
 
     courses = profile.saved_courses.all()
-
+    course_matches = profile.saved_course_matches.all()
     if (courses):
         universities = University.objects.filter(id__in=courses.values("university"))
-        print(universities)
     else:
         universities = []
 
+    course_match_universities = []
+    for course in course_matches:
+        if (course.abroadCourse.university.name not in course_match_universities):
+            course_match_universities.append(course.abroadCourse.university.name)
+
+
+    print(course_match_universities)
+
     home_courses = profile.coursesToTake.all()
-    course_matches = profile.saved_course_matches.all()
     abroad_course_form = abroadCourseForm()
     courses_to_take_form = CoursesToTakeForm()
 
     return render(request, 'profiles/courses.html',
                   {'courses': courses, "universities":universities, 'home_courses': home_courses,
                    'course_matches': course_matches, 'add_abroad_form': abroad_course_form,
-                   'courses_to_take_form': courses_to_take_form})
+                   'courses_to_take_form': courses_to_take_form, 'course_match_universities': course_match_universities})
 
 
 @login_required
@@ -287,8 +291,6 @@ def send_applation(request):
 def save_course_match(request):
     if request.method == "POST":
         homeCode = request.POST["homeCourseCode"]
-        abroadCode = request.POST["abroadCourseCode"]
-        abroadName = request.POST["abroadCourseName"]
         abroadId = request.POST["abroadCourseID"]
         stored_course_match = CourseMatch.objects.filter(abroadCourse__pk=abroadId, homeCourse__code=homeCode)
 
@@ -301,20 +303,14 @@ def save_course_match(request):
         if (stored_course_match and hasMatch):
             return HttpResponse(status=409)
         elif (stored_course_match and not hasMatch):
-            if (usersCourseMatches):
-                same_university_as_stored = usersCourseMatches[
-                                                0].abroadCourse.university.name == stored_course_match[0].abroadCourse.university.name
-            else:
-                same_university_as_stored = True
-            if (not same_university_as_stored):
-                return (HttpResponse(status=406))
 
             user.profile.saved_course_matches.add(stored_course_match[0])
 
             response = {
                 'code': 200,
                 'message': 'Match lagret i profil',
-                'course_match_id': stored_course_match[0].pk
+                'course_match_id': stored_course_match[0].pk,
+                'university': stored_course_match[0].abroadCourse.university.name
             }
             return HttpResponse(
                 json.dumps(response),
@@ -326,20 +322,14 @@ def save_course_match(request):
             home_course = HomeCourse.objects.get(code=homeCode)
             course_match = CourseMatch(abroadCourse=abroad_course, homeCourse=home_course)
 
-            usersCourseMatches = user.profile.saved_course_matches.all()
-            if (usersCourseMatches):
-                same_university_as_stored = usersCourseMatches[0].abroadCourse.university.name == course_match.abroadCourse.university.name
-            else:
-                same_university_as_stored = True
-            if (not same_university_as_stored):
-                return (HttpResponse(status=406))
             course_match.save()
             user.profile.saved_course_matches.add(course_match)
 
             response = {
                 'code': 200,
                 'message': 'Match lagret i profil og database',
-                'course_match_id': course_match.pk
+                'course_match_id': course_match.pk,
+                'university': course_match.abroadCourse.university.name
             }
 
             return HttpResponse(

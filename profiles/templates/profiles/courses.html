@@ -22,7 +22,10 @@
     <div class="row vertical-space-top-big">
         <div class="col-md-6">
             {% if home_courses %}
-                <h4 class="text-center">Dine nødvendige NTNU fag</h4>
+                <h4 class="text-center"
+                    style="margin-top: 15px;
+                       margin-bottom: 15px;"
+                >Dine nødvendige NTNU fag</h4>
                 <div id="homeCourseList">
 
                     {% for course in home_courses %}
@@ -65,16 +68,17 @@
 
         <div id="abroadCourseListContainer" class="col-md-6">
             {% if universities %}
-                <h4 id="#universityHeader" class="text-center">Lagrede fag
+                <h4 id="universityHeader" class="text-center">Lagrede fag
                     ved <select id="abroad_university_select">
                         {% for university in universities %}
-                        <option>{{ university }}</option>
-                    {% endfor %}
+                            <option>{{ university }}</option>
+                        {% endfor %}
                     </select></h4>
                 <div id="courseList">
                     {% for course in courses %}
                         <div onclick="CourseMatcher.markAwayCourse(this)" data-university="{{ course.university }}"
-                             class="centerCol courseBlock boxShadow pointer noSelect blockElement" style="display: none;">
+                             class="centerCol courseBlock boxShadow pointer noSelect blockElement"
+                             style="display: none;">
                             {% if course.code == "" %}
                                 <span id="name">{{ course.name }}</span>
                             {% else %}
@@ -112,8 +116,9 @@
     <div class="row vertical-space-top-big vertical-space-bottom-big">
         <div class="col-md-12 vertical-space-top-big">
             {% if course_matches %}
-                <h3 class="text-center vertical-space-bottom-big"> Lagrede fag-koblinger ved <select class="">
-                    {% for university in universities %}
+                <h3 class="text-center vertical-space-bottom-big"> Lagrede fag-koblinger ved <select
+                        id="course_match_university_select" class="">
+                    {% for university in course_match_universities %}
                         <option>{{ university }}</option>
                     {% endfor %}
                 </select></h3>
@@ -131,7 +136,7 @@
                     </thead>
                     <tbody id="courseMatchList">
                     {% for course in course_matches %}
-                        <tr>
+                        <tr data-university="{{ course.abroadCourse.university.name }}">
                             {% if course.abroadCourse.description_url %}
                                 <td>
                                     <a href="{{ course.abroadCourse.description_url }}" target="_blank"
