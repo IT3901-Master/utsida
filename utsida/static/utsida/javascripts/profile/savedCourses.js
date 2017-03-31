@@ -64,7 +64,6 @@ var confirmationSettings = {
 
 
             $(this).closest('tr').fadeOut("slow", function (here) {
-                $(this).closest("tr").remove();
 
                 var data_list = [];
                 $("tr:data(university)").each(function () {
@@ -72,6 +71,7 @@ var confirmationSettings = {
                         data_list.push(this)
                     }
                 });
+
                 if (data_list.length == 1) {
                     $('#course_match_university_select').find('option').each(function () {
                         if ($(this).val() == university) {
@@ -79,6 +79,7 @@ var confirmationSettings = {
                         }
                     });
                 }
+                $(this).closest("tr").remove();
 
                 if ($('#courseMatchList').children().length == 0) {
                     $('#course_match_list_header').remove();
