@@ -58,7 +58,6 @@
                     }
                 }
             }
-            console.log(s.courseMatchList);
 
             for (var j = 0; j < s.homeCourses.length; j++) {
                 if (s.homeCourses[j].style.backgroundColor == "rgb(51, 122, 183)") {
@@ -75,8 +74,8 @@
                     type: "POST",
                     url: "/profile/save_course_match/",
                     success: function (response) {
-                        var content = document.createElement("tr");
-                        content.setAttribute("data-university",response.university);
+                        var course_match_row = document.createElement("tr");
+                        course_match_row.setAttribute("data-university", response.university);
                         var abroadCourseTD = document.createElement("td");
 
                         if (s.courseMatchList["abroadCourseCode"] == "")
@@ -95,16 +94,31 @@
                         deleteBtn.setAttribute("data-id", response.course_match_id);
                         deleteTD.appendChild(deleteBtn);
 
-                        content.appendChild(abroadCourseTD);
-                        content.appendChild(homeCourseTD);
-                        var content2 = content.cloneNode(true);
+                        course_match_row.appendChild(abroadCourseTD);
+                        course_match_row.appendChild(homeCourseTD);
+                        var content2 = course_match_row.cloneNode(true);
                         content2.setAttribute("data-id", response.course_match_id);
-                        content.appendChild(deleteTD);
+                        course_match_row.appendChild(deleteTD);
 
-                        document.getElementById("courseMatchList").appendChild(content);
-                        document.getElementById("courseMatchListModal").appendChild(content2);
+                        if ($("#courseMatchList").children().length == 0) {
+                            $("#course_match_list_header").remove();
+                            var header = document.createElement("h3");
+                            header.setAttribute("class", "text-center");
+                            header.setAttribute("id", "course_match_list_header");
+                            header.innerText = "Fagkoblinger ved";
+                            var select = document.createElement("select");
+                            select.setAttribute("id", "course_match_university_select");
+                            var option = document.createElement("option");
+                            option.innerText = response.university;
+                            select.append(option);
+                            header.append(select);
+                            $('#course_match_list_container').prepend(header);
+                            $("#course_match_university_select").on('change', function () {
+                                courseMatchFilter();
+                            });
 
-                        if ($("#course_match_university_select").find('option:contains(' + response.university + ')').length == 0) {
+                        }
+                        else if ($("#course_match_university_select").find('option:contains(' + response.university + ')').length == 0) {
                             var option = document.createElement("option");
                             option.innerText = response.university;
                             $("#course_match_university_select").append(option);
@@ -114,13 +128,15 @@
                             $("#course_match_university_select").val(response.university);
                         }
 
-                        courseMatchFilter();
+                        $("#courseMatchList").append(course_match_row);
+                        document.getElementById("courseMatchListModal").appendChild(content2);
                         $(document).ajaxStop(function () {
                             $(document).find('[data-toggle=confirmation]').confirmation(confirmationSettings);
                         });
 
                         Messager.init();
                         Messager.sendMessage("Fagene ble koblet", "success");
+                        courseMatchFilter();
                     },
                     error: function (error) {
                         if (error.status == 409) {

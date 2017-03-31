@@ -62,24 +62,35 @@ var confirmationSettings = {
             var university = $(this).closest('tr').data("university");
             $('#courseMatchListModal').find("[data-id='" + id + "']").remove();
 
-            var data_list = [];
-            $("tr:data(university)").each(function () {
-                if ($(this).data("university") == university) {
-                    data_list.push(this)
-                }
-            });
-            if (data_list.length == 1) {
-                $('#course_match_university_select').find('option').each(function () {
-                    if ($(this).val() == university) {
-                        $(this).remove();
-                    }
-                });
-            }
-
 
             $(this).closest('tr').fadeOut("slow", function (here) {
                 $(this).closest("tr").remove();
-                courseMatchFilter();
+
+                var data_list = [];
+                $("tr:data(university)").each(function () {
+                    if ($(this).data("university") == university) {
+                        data_list.push(this)
+                    }
+                });
+                if (data_list.length == 1) {
+                    $('#course_match_university_select').find('option').each(function () {
+                        if ($(this).val() == university) {
+                            $(this).remove();
+                        }
+                    });
+                }
+
+                if ($('#courseMatchList').children().length == 0) {
+                    $('#course_match_list_header').remove();
+                    var header = document.createElement("h3");
+                    header.setAttribute("class", "text-center vertical-space-bottom-big");
+                    header.setAttribute("id", "course_match_list_header");
+                    header.innerText = "Dine fagkoblinger (Du har ingen lagret)";
+                    $("#course_match_list_container").prepend(header);
+                }
+                else {
+                    courseMatchFilter();
+                }
             });
         }
         else if (type == "home_course") {
@@ -105,7 +116,7 @@ function refreshConfirmation() {
 //documentation: http://bootstrap-confirmation.js.org/
 $('[data-toggle=confirmation]').confirmation(confirmationSettings);
 
-function create_post() {
+function add_abroad_course() {
     $.ajax({
         url: "/profile/abroadCourse/add/",
         type: "POST",
@@ -186,7 +197,7 @@ function create_post() {
 }
 $('#add-abroad-course-form').on('submit', function (event) {
     event.preventDefault();
-    create_post();
+    add_abroad_course();
 });
 
 

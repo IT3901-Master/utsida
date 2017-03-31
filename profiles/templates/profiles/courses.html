@@ -114,16 +114,16 @@
 
 
     <div class="row vertical-space-top-big vertical-space-bottom-big">
-        <div class="col-md-12 vertical-space-top-big">
+        <div id="course_match_list_container" class="col-md-12 vertical-space-top-big">
             {% if course_matches %}
-                <h3 class="text-center vertical-space-bottom-big"> Lagrede fag-koblinger ved <select
+                <h3 class="text-center vertical-space-bottom-big" id="course_match_list_header"> Fagkoblinger ved <select
                         id="course_match_university_select" class="">
                     {% for university in course_match_universities %}
                         <option>{{ university }}</option>
                     {% endfor %}
                 </select></h3>
             {% else %}
-                <h3 class="text-center vertical-space-bottom-big"> Lagrede fag-koblinger </h3>
+                <h3 id="course_match_list_header" class="text-center vertical-space-bottom-big"> Dine fagkoblinger (Du har ingen lagret) </h3>
             {% endif %}
             <div>
                 <table class="table table-striped">
