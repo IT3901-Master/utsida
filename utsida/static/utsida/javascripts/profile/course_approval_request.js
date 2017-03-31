@@ -1,13 +1,8 @@
-/**
- * Created by trulsmp on 30/11/2016.
- */
-
-
 
 
 function sendApproval() {
     $.ajax({
-        data: {"comment": $("#comment").val()},
+        data: {"comment": $("#comment").val(),"university": $('#course_match_university_select').val()},
         type: "POST",
         url: "/profile/send_approval/",
         success: function (response) {

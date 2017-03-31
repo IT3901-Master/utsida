@@ -22,7 +22,10 @@
     <div class="row vertical-space-top-big">
         <div class="col-md-6">
             {% if home_courses %}
-                <h4 class="text-center">Dine nødvendige NTNU fag</h4>
+                <h4 class="text-center"
+                    style="margin-top: 15px;
+                       margin-bottom: 15px;"
+                >Dine nødvendige NTNU fag</h4>
                 <div id="homeCourseList">
 
                     {% for course in home_courses %}
@@ -64,13 +67,18 @@
         </div>
 
         <div id="abroadCourseListContainer" class="col-md-6">
-            {% if university %}
-                <h4 id="#universityHeader" class="text-center">Lagrede fag
-                    ved {{ university }}, {{ university.country }}</h4>
+            {% if universities %}
+                <h4 id="universityHeader" class="text-center">Lagrede fag
+                    ved <select id="abroad_university_select">
+                        {% for university in universities %}
+                            <option>{{ university }}</option>
+                        {% endfor %}
+                    </select></h4>
                 <div id="courseList">
                     {% for course in courses %}
-                        <div onclick="CourseMatcher.markAwayCourse(this)"
-                             class="centerCol courseBlock boxShadow pointer noSelect blockElement">
+                        <div onclick="CourseMatcher.markAwayCourse(this)" data-university="{{ course.university }}"
+                             class="centerCol courseBlock boxShadow pointer noSelect blockElement"
+                             style="display: none;">
                             {% if course.code == "" %}
                                 <span id="name">{{ course.name }}</span>
                             {% else %}
@@ -108,7 +116,12 @@
     <div class="row vertical-space-top-big vertical-space-bottom-big">
         <div class="col-md-12 vertical-space-top-big">
             {% if course_matches %}
-                <h3 class="text-center vertical-space-bottom-big"> Lagrede fag-koblinger ved {{ course_matches.0.abroadCourse.university }} </h3>
+                <h3 class="text-center vertical-space-bottom-big"> Lagrede fag-koblinger ved <select
+                        id="course_match_university_select" class="">
+                    {% for university in course_match_universities %}
+                        <option>{{ university }}</option>
+                    {% endfor %}
+                </select></h3>
             {% else %}
                 <h3 class="text-center vertical-space-bottom-big"> Lagrede fag-koblinger </h3>
             {% endif %}
@@ -123,7 +136,7 @@
                     </thead>
                     <tbody id="courseMatchList">
                     {% for course in course_matches %}
-                        <tr>
+                        <tr data-university="{{ course.abroadCourse.university.name }}">
                             {% if course.abroadCourse.description_url %}
                                 <td>
                                     <a href="{{ course.abroadCourse.description_url }}" target="_blank"
@@ -171,7 +184,7 @@
                             <table class="table table-striped">
                                 <tbody id="courseMatchListModal">
                                 {% for course in course_matches %}
-                                    <tr data-id={{ course.pk }}>
+                                    <tr data-university="{{ course.abroadCourse.university.name }}" data-id={{ course.pk }}>
                                     <td> {{ course.abroadCourse.code }} {{ course.abroadCourse.name }}</td>
                                     <td> {{ course.homeCourse.code }} {{ course.homeCourse.name }} </td>
                                 {% endfor %}
@@ -210,7 +223,7 @@
                     {% endif %}
                 </div>
                 <div class="modal-body">
-                    <form id="add-abroad-course-form" action="/profile/abroadCourse/add/" method="post">
+                    <form id="add-abroad-course-form" method="post">
                         {% csrf_token %}
                         <div class="modal-body">
                             <div class="form-group">
@@ -229,15 +242,10 @@
                                 <label> Studiepoeng </label>
                                 {{ add_abroad_form.study_points | add_class:"form-control" }}
                             </div>
-                            {% if university %}
-                                <input type="hidden" id="add-form-university" name="university"
-                                       value="{{ university }}"/>
-                            {% else %}
-                                <div class="form-group">
-                                    <label>Universitet</label>
-                                    {{ add_abroad_form.university | add_class:"form-control" }}
-                                </div>
-                            {% endif %}
+                            <div class="form-group">
+                                <label>Universitet</label>
+                                {{ add_abroad_form.university | add_class:"form-control" }}
+                            </div>
                         </div>
                         <div class="modal-footer">
                             <button type="button" class="btn btn-secondary" data-dismiss="modal">Lukk</button>
@@ -250,8 +258,8 @@
     </div>
 
     {% load staticfiles %}
-    <script src="{% static 'utsida/javascripts/profile/savedCourses.js' %}"></script>
     <script src="{% static 'utsida/javascripts/profile/courseMatcher.js' %}"></script>
+    <script src="{% static 'utsida/javascripts/profile/savedCourses.js' %}"></script>
     <script src="{% static 'utsida/javascripts/profile/course_approval_request.js' %}"></script>
 
 

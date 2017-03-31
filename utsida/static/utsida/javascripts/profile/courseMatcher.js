@@ -76,6 +76,7 @@
                     url: "/profile/save_course_match/",
                     success: function (response) {
                         var content = document.createElement("tr");
+                        content.setAttribute("data-university",response.university);
                         var abroadCourseTD = document.createElement("td");
 
                         if (s.courseMatchList["abroadCourseCode"] == "")
@@ -103,6 +104,17 @@
                         document.getElementById("courseMatchList").appendChild(content);
                         document.getElementById("courseMatchListModal").appendChild(content2);
 
+                        if ($("#course_match_university_select").find('option:contains(' + response.university + ')').length == 0) {
+                            var option = document.createElement("option");
+                            option.innerText = response.university;
+                            $("#course_match_university_select").append(option);
+                            $("#course_match_university_select").val(response.university);
+                        }
+                        else {
+                            $("#course_match_university_select").val(response.university);
+                        }
+
+                        courseMatchFilter();
                         $(document).ajaxStop(function () {
                             $(document).find('[data-toggle=confirmation]').confirmation(confirmationSettings);
                         });
