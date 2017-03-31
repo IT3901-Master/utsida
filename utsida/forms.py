@@ -23,6 +23,7 @@ class QueryCaseBaseForm(forms.ModelForm):
                                                            'oninput': 'residentialOutput.value=this.value'}),
             'receptionQualityRating': NumberInput(attrs={'type': 'range', 'step': '1', 'max': '10', 'min': '1',
                                                          'value': '5', 'oninput': 'receptionOutput.value=this.value'}),
+            'university': forms.TextInput(attrs={'placeholder': "-Valgfritt-"}),
         }
 
     def __init__(self, *args, **kwargs):

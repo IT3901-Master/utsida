@@ -28,9 +28,7 @@ All cusotm overrides done to bootstrap.css
     -moz-border-radius: 0;
     border-radius: 0;
 }
-.panel, .panel-body {
-    border: 0;
-}
+
 .dropdown-menu {
     z-index: 1100;
 }

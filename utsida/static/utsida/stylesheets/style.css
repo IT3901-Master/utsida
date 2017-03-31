@@ -10,7 +10,6 @@
 * 7.0 - Result
 ***************************/
 
-
 /* 1.0 - General */
 
 .square-corners {
@@ -20,12 +19,13 @@
 .bold {
     font-weight: bold;
 }
+
 .italic {
     font-style: italic;
 }
 
 .boxShadow {
-    box-shadow: 0 2px 2px 0 rgba(0,0,0,.14),0 3px 1px -2px rgba(0,0,0,.2),0 1px 5px 0 rgba(0,0,0,.12);
+    box-shadow: 0 2px 2px 0 rgba(0, 0, 0, .14), 0 3px 1px -2px rgba(0, 0, 0, .2), 0 1px 5px 0 rgba(0, 0, 0, .12);
 }
 
 .hiddenDiv {
@@ -41,8 +41,6 @@ ul.ui-autocomplete {
     z-index: 1100;
 }
 
-
-
 /* 2.0 - nav */
 
 .pointer {
@@ -50,11 +48,11 @@ ul.ui-autocomplete {
 }
 
 .noSelect {
-  -webkit-touch-callout: none; /* iOS Safari */
-  -webkit-user-select: none;   /* Chrome/Safari/Opera */
-  -moz-user-select: none;      /* Firefox */
-  -ms-user-select: none;       /* Internet Explorer/Edge */
-  user-select: none;           /* Non-prefixed version, currently not supported by any browser */
+    -webkit-touch-callout: none; /* iOS Safari */
+    -webkit-user-select: none; /* Chrome/Safari/Opera */
+    -moz-user-select: none; /* Firefox */
+    -ms-user-select: none; /* Internet Explorer/Edge */
+    user-select: none; /* Non-prefixed version, currently not supported by any browser */
 }
 
 .centerCol {
@@ -62,31 +60,35 @@ ul.ui-autocomplete {
     float: none;
 }
 
-
 /* 1.1 - Spacing */
 
 .vertical-space-top {
     margin-top: 20px;
 }
+
 .vertical-space-top-big {
     margin-top: 50px;
 }
+
 .vertical-space-top-huge {
     margin-top: 150px;
 }
+
 .vertical-space-bottom-small {
     margin-bottom: 5px;
 }
+
 .vertical-space-bottom {
     margin-bottom: 20px;
 }
+
 .vertical-space-bottom-big {
     margin-bottom: 50px;
 }
+
 .vertical-space-bottom-huge {
     margin-bottom: 150px;
 }
-
 
 /* 2.0 Base */
 
@@ -111,12 +113,15 @@ html, body {
 .menu-button {
     background-color: #737373 !important;
 }
+
 .menu-button:hover {
     background-color: #8c8c8c;
 }
+
 .menu-button:active {
     background-color: #737373;
 }
+
 .menu-icon {
     width: 30px;
     text-align: center;
@@ -125,11 +130,11 @@ html, body {
 .user-name {
     color: white;
 }
+
 .user-name:hover {
     opacity: 1.0 !important;
     color: white !important;
 }
-
 
 /* 4.0 Footer */
 
@@ -142,14 +147,15 @@ html, body {
     color: white;
     text-align: center;
 }
+
 .footer-wrapper {
-    padding-top:120px;
+    padding-top: 120px;
 }
+
 .author-text {
     font-size: 16px;
     line-height: 50px;
 }
-
 
 /* 5.0 - Index */
 
@@ -165,10 +171,10 @@ html, body {
 .gradient-bar {
     height: 25px;
     background: red; /* For browsers that do not support gradients */
-    background: -webkit-linear-gradient(left, #cceeff , #0077b3); /* For Safari 5.1 to 6.0 */
+    background: -webkit-linear-gradient(left, #cceeff, #0077b3); /* For Safari 5.1 to 6.0 */
     background: -o-linear-gradient(right, #cceeff, #0077b3); /* For Opera 11.1 to 12.0 */
     background: -moz-linear-gradient(right, #cceeff, #0077b3); /* For Firefox 3.6 to 15 */
-    background: linear-gradient(to right, #cceeff , #0077b3); /* Standard syntax (must be last) */
+    background: linear-gradient(to right, #cceeff, #0077b3); /* Standard syntax (must be last) */
 }
 
 .number-circle {
@@ -182,6 +188,7 @@ html, body {
     text-align: center;
     cursor: default;
 }
+
 .number-circle:hover {
     background-color: #d9d9d9;
 }
@@ -193,7 +200,6 @@ html, body {
 .col-padding {
     padding: 20px;
 }
-
 
 /* 6.0 Process */
 
@@ -214,9 +220,10 @@ html, body {
     top: 10%;
     padding: 20px;
 }
+
 .fadeScreen {
     background-color: black;
-    background-color: rgba(0,0,0,.6);
+    background-color: rgba(0, 0, 0, .6);
     width: 100%;
     height: 100%;
     position: absolute;
@@ -226,12 +233,13 @@ html, body {
     right: 0;
     z-index: 999;
 }
+
 #loader {
     display: block;
     margin: auto;
 }
 
-input[type=range]{
+input[type=range] {
     -webkit-appearance: none;
 }
 
@@ -265,20 +273,21 @@ input[type=range]:focus::-webkit-slider-runnable-track {
     background-color: #337ab7;
 }
 
-
-
 /* 7.0 Result */
 
 .hiddenInformation {
     height: 0;
 }
+
 .hiddenInformation div {
     display: none;
 }
+
 .hiddenInformation.show {
     height: auto;
 }
-.hiddenInformation.show div{
+
+.hiddenInformation.show div {
     display: block;
 }
 
@@ -307,9 +316,10 @@ input[type=range]:focus::-webkit-slider-runnable-track {
     font-weight: bold;
     text-align: left;
     white-space: nowrap;
-    overflow:hidden !important;
+    overflow: hidden !important;
     text-overflow: ellipsis;
 }
+
 .courseBtn:hover {
     width: 100%;
 }
@@ -337,6 +347,7 @@ input[type=range]:focus::-webkit-slider-runnable-track {
     z-index: 2;
     width: 13%;
 }
+
 #savedCoursesContainerBody {
     display: none;
 }
@@ -353,6 +364,7 @@ input[type=range]:focus::-webkit-slider-runnable-track {
     height: 40px;
     opacity: 0.7;
 }
+
 .result-rating {
 
     font-size: 20px;
@@ -364,6 +376,7 @@ input[type=range]:focus::-webkit-slider-runnable-track {
     cursor: default;
     padding: 10px;
 }
+
 .rating-box:hover {
     background-color: #d9d9d9;
 }
@@ -375,9 +388,11 @@ input[type=range]:focus::-webkit-slider-runnable-track {
     margin-right: -35px;
     cursor: pointer;
 }
+
 .university-select-arrow:hover {
     background-color: #d9d9d9;
 }
+
 .university-select-arrow-icon {
     font-size: 50px;
     opacity: 0.7;
@@ -385,7 +400,6 @@ input[type=range]:focus::-webkit-slider-runnable-track {
     margin-left: 20px;
     display: block;
 }
-
 
 /* 8 - Saved Courses */
 .courseBlock {
@@ -405,6 +419,7 @@ input[type=range]:focus::-webkit-slider-runnable-track {
     font-size: 20px;
     cursor: pointer;
 }
+
 .plus-btn:hover {
     border: solid #337ab7 1px;
 }
@@ -418,6 +433,7 @@ input[type=range]:focus::-webkit-slider-runnable-track {
     text-decoration: none;
     color: inherit;
 }
+
 #toggleFormRow {
     top: auto;
     left: auto;
@@ -426,7 +442,7 @@ input[type=range]:focus::-webkit-slider-runnable-track {
     margin-left: -1px;
 }
 
-.course-match-details td{
+.course-match-details td {
     padding-right: 5px;
 }
 
@@ -445,7 +461,6 @@ input[type=range]:focus::-webkit-slider-runnable-track {
     transition: all 1s ease 0s;
 }
 
-
 /* 10 - Courses */
 .divider-line {
     position: absolute;
@@ -454,6 +469,7 @@ input[type=range]:focus::-webkit-slider-runnable-track {
     opacity: 0.3;
     width: 100%;
 }
+
 .divider-line-small {
     border-bottom: 1px solid black;
     opacity: 0.3;
@@ -461,15 +477,21 @@ input[type=range]:focus::-webkit-slider-runnable-track {
 }
 
 .inline-select {
-    width:auto; !important;
-    display:inline-block; !important;
+    width: auto;
+!important;
+    display: inline-block;
+!important;
 }
-
 
 #world-map {
     border: 5px solid white;
 }
 
+/* 11 - Application */
+
+.large-glyph {
+    font-size: large;
+}
 
 
 
