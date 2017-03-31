@@ -4,6 +4,8 @@
     {% load result_extras %}
     {% load staticfiles %}
 
+    {% if filter %}
+
     <div id="savedCoursesContainer" class="panel panel-primary square-corners boxShadow savedCoursesContainer">
         <div class="panel-heading pointer noSelect square-corners" onclick="toggleSavedCoursesContainer()">
             Dine NTNU fag
@@ -37,68 +39,45 @@
         </div>
     </div>
 
+    {% endif %}
+
     <div id="filters" class="row vertical-space-bottom-big">
-        <h2 class="text-center">Her er turene som likner mest på ditt søk</h2>
+
+        {% if not filter %}
+
+        <h2 class="text-center">Her er universitetene som matcher best</h2>
         <h3 class="subTitle text-center vertical-space-bottom">
-            Trykk på fagene andre studenter har hatt for å velge de.
+            Trykk på et universitet for å vise individuelle erfaringer
         </h3>
 
-        <div class="col-md-6 col-md-offset-3 vertical-space-top">
-            <select class="form-control" onchange="UniversityFilter.filter()" id="universitySelector">
-                <option value="all">Alle</option>
-                {% for university in universities %}
-                    <option value="{{ university }}">{{ university }}</option>
-                {% endfor %}
-            </select>
-        </div>
+        {% else %}
 
-        <!-- Uncomment to switch to label filtering
-        <div class="col-md-8 col-md-offset-2 vertical-space-top">
-            <a href="/process/result/all"><button class="btn btn-default vertical-space-bottom-small">All</button></a>
-            {% for university in universities %}
-                <a href="/process/result/{{ university }}"><button class="btn btn-default vertical-space-bottom-small">{{ university }}</button></a>
-            {% endfor %}
-        </div>
-        -->
+        <h2 class="text-center" id="result-title"></h2>
+        <h3 class="subTitle text-center vertical-space-bottom">
+            Se på andre studenter sine erfaringer, og let etter fag som passer deg
+        </h3>
 
+        {% endif %}
 
     </div>
 
     <div id="results" class="row vertical-space-top-big">
 
-        {% for case in similar_cases %}
-            {% if forloop.counter|divisibleby:3 %}<div class="row">{% endif %}
-            <div class="col-md-4">
-                <div class="panel panel-primary square-corners boxShadow">
-                    <div class="panel-heading square-corners">
-                        <span class="resultPanelUniversity">{{ case.content.University }} ({{ case.content.Country }})</span> <span class="pull-right badge similarityBadge">{{ case.similarity|parse_similarity:100}}</span>
-                    </div>
-                    <div class="panel-body">
-                        <div class="subjectsContainer">
-                            {% for subject in case.content.Subjects %}
-                                {% if subject in matches.keys %}
-                                    <div onclick="courseSelector.addCourse(this)"
-                                         class="btn btn-success courseBtn"
-                                         data-container="body"
-                                         data-toggle="popover"
-                                         data-placement="top"
-                                         data-content="Dette faget er en godkjent erstatning for ditt følgende valgt fag på NTNU: {{ matches | get:subject }}"
-                                         data-trigger="hover">
-                                    {{ subject }}
-                                    </div>
-                                {% else %}
-                                    <div onclick="courseSelector.addCourse(this)" class="btn btn-warning courseBtn">{{ subject }}</div>
-                                {% endif %}
-                            {% endfor %}
-                        </div>
+        {% if not filter %}
 
-                        <hr>
+             {% for case in similar_cases %}
 
+                {% if forloop.counter|divisibleby:2 %}<div class="row">{% endif %}
 
+                    <div class="col-md-6">
+                        <div class="panel panel-primary square-corners boxShadow">
 
+                            <div class="panel-heading square-corners pointer" onclick="UniversityFilter.filter(this)">
+                                <span class="resultPanelUniversity">{{ case.content.University }} ({{ case.content.Country }})</span><span class="pull-right badge similarityBadge">{{ case.similarity|parse_similarity:100}}</span>
+                            </div>
 
-                        <div class="hiddenInformation">
-                            <div>
+                            <div class="panel-body">
+
                                 <div class="flexbox">
                                     <div class="rating-box"
                                         data-container="body"
@@ -108,7 +87,7 @@
                                         data-content="Vurdering av akademisk kvalitet">
 
                                         <img class="result-icon" src="{% static 'utsida/icons/books.svg' %}">
-                                        <span class="result-rating">{{ case.content.AcademicQuality }}/10</span>
+                                        <span class="result-rating">{{ case.university_ratings.academic_quality }}/10</span>
                                     </div>
                                     <div class="rating-box"
                                         data-container="body"
@@ -118,7 +97,7 @@
                                         data-content="Vurdering av sosial kvalitet">
 
                                         <img class="result-icon" src="{% static 'utsida/icons/users.svg' %}">
-                                        <span class="result-rating">{{ case.content.SocialQuality }}/10</span>
+                                        <span class="result-rating">{{ case.university_ratings.social_quality }}/10</span>
                                     </div>
                                     <div class="rating-box"
                                         data-container="body"
@@ -128,7 +107,7 @@
                                         data-content="Vurdering boligstandard og tilgjengelighet">
 
                                         <img class="result-icon" src="{% static 'utsida/icons/home2.svg' %}">
-                                        <span class="result-rating">{{ case.content.ResidentialQuality }}/10</span>
+                                        <span class="result-rating">{{ case.university_ratings.residential_quality }}/10</span>
                                     </div>
                                     <div class="rating-box"
                                         data-container="body"
@@ -138,50 +117,162 @@
                                         data-content="Vurdering av administrativ støtte og hjelp">
 
                                         <img class="result-icon" src="{% static 'utsida/icons/info.svg' %}">
-                                        <span class="result-rating">{{ case.content.ReceptionQuality }}/10</span>
+                                        <span class="result-rating">{{ case.university_ratings.reception_quality }}/10</span>
+                                    </div>
+
+                                    <div class="university-select-arrow" onclick="UniversityFilter.filter(this.parentNode.parentNode.previousSibling.previousSibling)">
+                                        <span class="glyphicon glyphicon-chevron-right university-select-arrow-icon"></span>
                                     </div>
                                 </div>
 
-                                <div class="text-center vertical-space-top">
-                                    <span class="bold">Institutt</span><br>
-                                    {{ case.content.Institute }}
-                                </div>
-                                <div class="col-md-6 text-center vertical-space-top">
-                                    <span class="bold">Studiespråk</span><br>
-                                    {% for language in case.content.Language %}
-                                        {{ language }}
-                                    {% endfor %}
-                                </div>
-                                <div class="col-md-6 text-center vertical-space-top vertical-space-bottom">
-                                    <span class="bold">År</span><br>
-                                    {{ case.content.StudyPeriod }}
-                                </div>
-
-                                <p class="text-center"><a href="{{ case.content.Link}}" target="_blank">Se hele rapporten</a></p>
                             </div>
-                        </div>
-                        <div class="text-center">
-                            <span id="expandTripChevron" style="color: #337ab7; cursor: pointer;" class="accordion glyphicon glyphicon-chevron-down"></span>
+
                         </div>
                     </div>
-                </div>
+
+                {% if forloop.counter|divisibleby:2 %}</div>{% endif %}
+
+            {% endfor %}
+
+        {% elif filter %}
+
+            <div class="col-md-12 text-center vertical-space-bottom-big">
+                <a class="btn btn-default" href="/process/result/all/"><span class="glyphicon glyphicon-chevron-left"></span>Tilbake til beste universiteter</a>
             </div>
-            {% if forloop.counter|divisibleby:3 %}</div>{% endif %}
-        {% endfor %}
+
+            {% for case in similar_cases %}
+
+                {% if forloop.counter|divisibleby:3 %}<div class="row">{% endif %}
+
+                    <div class="col-md-4">
+
+                        <div class="panel panel-primary square-corners boxShadow">
+
+                            <div class="panel-heading square-corners">
+                                <span class="resultPanelUniversity">{{ case.content.University }} ({{ case.content.Country }})</span> <span class="pull-right badge similarityBadge">{{ case.similarity|parse_similarity:100}}</span>
+                            </div>
+
+                            <div class="panel-body">
+                                <div class="subjectsContainer">
+                                    {% for subject in case.content.Subjects %}
+                                        {% if subject in matches.keys %}
+                                            <div onclick="courseSelector.addCourse(this)"
+                                                 class="btn btn-success courseBtn"
+                                                 data-container="body"
+                                                 data-toggle="popover"
+                                                 data-placement="top"
+                                                 data-content="Dette faget er en godkjent erstatning for ditt følgende valgt fag på NTNU: {{ matches | get:subject }}"
+                                                 data-trigger="hover">
+                                            {{ subject }}
+                                            </div>
+                                        {% else %}
+                                            <div onclick="courseSelector.addCourse(this)" class="btn btn-warning courseBtn">{{ subject }}</div>
+                                        {% endif %}
+                                    {% endfor %}
+                                </div>
+
+                                <hr>
+
+                                <div class="hiddenInformation">
+                                    <div>
+                                        <div class="flexbox">
+                                            <div class="rating-box"
+                                                data-container="body"
+                                                data-toggle="popover"
+                                                data-placement="top"
+                                                data-trigger="hover"
+                                                data-content="Vurdering av akademisk kvalitet">
+
+                                                <img class="result-icon" src="{% static 'utsida/icons/books.svg' %}">
+                                                <span class="result-rating">{{ case.content.AcademicQuality }}/10</span>
+                                            </div>
+                                            <div class="rating-box"
+                                                data-container="body"
+                                                data-toggle="popover"
+                                                data-placement="top"
+                                                data-trigger="hover"
+                                                data-content="Vurdering av sosial kvalitet">
+
+                                                <img class="result-icon" src="{% static 'utsida/icons/users.svg' %}">
+                                                <span class="result-rating">{{ case.content.SocialQuality }}/10</span>
+                                            </div>
+                                            <div class="rating-box"
+                                                data-container="body"
+                                                data-toggle="popover"
+                                                data-placement="top"
+                                                data-trigger="hover"
+                                                data-content="Vurdering boligstandard og tilgjengelighet">
+
+                                                <img class="result-icon" src="{% static 'utsida/icons/home2.svg' %}">
+                                                <span class="result-rating">{{ case.content.ResidentialQuality }}/10</span>
+                                            </div>
+                                            <div class="rating-box"
+                                                data-container="body"
+                                                data-toggle="popover"
+                                                data-placement="top"
+                                                data-trigger="hover"
+                                                data-content="Vurdering av administrativ støtte og hjelp">
+
+                                                <img class="result-icon" src="{% static 'utsida/icons/info.svg' %}">
+                                                <span class="result-rating">{{ case.content.ReceptionQuality }}/10</span>
+                                            </div>
+                                        </div>
+
+                                        <div class="text-center vertical-space-top">
+                                            <span class="bold">Institutt</span><br>
+                                            {{ case.content.Institute }}
+                                        </div>
+                                        <div class="col-md-6 text-center vertical-space-top">
+                                            <span class="bold">Studiespråk</span><br>
+                                            {% for language in case.content.Language %}
+                                                {{ language }}
+                                            {% endfor %}
+                                        </div>
+                                        <div class="col-md-6 text-center vertical-space-top vertical-space-bottom">
+                                            <span class="bold">År</span><br>
+                                            {{ case.content.StudyPeriod }}
+                                        </div>
+
+                                        <p class="text-center"><a href="{{ case.content.Link}}" target="_blank">Se hele rapporten</a></p>
+                                    </div>
+                                </div>
+
+                                <div class="text-center">
+                                    <span id="expandTripChevron" style="color: #337ab7; cursor: pointer;" class="accordion glyphicon glyphicon-chevron-down"></span>
+                                </div>
+
+                            </div>
+
+                        </div>
+
+                    </div>
+
+                {% if forloop.counter|divisibleby:3 %}</div>{% endif %}
+
+            {% endfor %}
+
+        {% endif %}
+
+        {% if filter %}
 
         <button class="btn btn-success boxShadow square-corners checkoutBtn" onclick="courseSelector.checkout()">Gå til lagrede fag <span class="glyphicon glyphicon-chevron-right"></span></button>
+
+        {% endif %}
+
     </div>
+
+    {% if filter %}
     <script>
-
+        window.addEventListener('load', function(e) {
+            var url = window.location.href;
+            var university = decodeURI(url.split('/')[url.split('/').length - 2]);
+            document.getElementById("result-title").innerHTML = "Her er dine beste matcher ved" + '<br>' +  university;
+        });
     </script>
-
-
+    {% endif %}
 
     <script src="{% static 'utsida/javascripts/result/showHiddenContent.js' %}"></script>
     <script src="{% static 'utsida/javascripts/result/courseSelector.js' %}"></script>
     <script src="{% static 'utsida/javascripts/result/universityFilter.js' %}"></script>
-
-
-
 
 {% endblock %}

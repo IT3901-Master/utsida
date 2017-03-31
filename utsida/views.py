@@ -54,7 +54,6 @@ def process(request):
     form = QueryCaseBaseForm()
     return render(request, "utsida/process.html", {"form": form})
 
-
 @login_required
 def result(request, university=None):
     if not request.user.is_authenticated():
@@ -63,18 +62,34 @@ def result(request, university=None):
     # If the request has a university parameter, return a every case with that university
     if university:
         filtered_cases = []
+        filter = True
 
         if university == "all":
             filtered_cases = request.session['result'][:9]
+            new_filtered_cases = []
+            unis = []
+
+            for case in filtered_cases:
+                university = case['content']['University']
+
+                if university not in unis:
+                    new_filtered_cases.append(case)
+                    unis.append(university)
+
+            filter = False
+
+            return render(request, 'utsida/result.html',
+                          {'similar_cases': new_filtered_cases[:6], 'universities': request.session['unique_universities'],
+                           'matches': request.session['matches'], 'filter': filter})
 
         else:
             for case in request.session['result']:
                 if 'University' in case['content'] and case['content']['University'] == university:
                     filtered_cases.append(case)
 
-        return render(request, 'utsida/result.html',
-                      {'similar_cases': filtered_cases[:9], 'universities': request.session['unique_universities'],
-                       'matches': request.session['matches']})
+            return render(request, 'utsida/result.html',
+                          {'similar_cases': filtered_cases[:9], 'universities': request.session['unique_universities'],
+                           'matches': request.session['matches'], 'filter': filter})
 
     # Else the request is a normal query
     if request.method == 'POST':
@@ -105,7 +120,6 @@ def result(request, university=None):
                 'content-type': 'application/json'
             }
 
-            print(datetime.date.today())
             r = requests.post("http://localhost:8080/retrieval?casebase=main_case_base&concept%20name=Trip",
                               data=payload,
                               headers=headers
@@ -132,17 +146,50 @@ def result(request, university=None):
                         course_wanted_to_be_taken_matches[str(result.abroadCourse)] = course.code + ' ' + course.name
 
             unique_unis = []
+            unique_sorted_similar_cases = []
             for case in sorted_similar_cases[:9]:
                 if 'University' in case['content'] and not case['content']['University'] in unique_unis:
+                    unique_sorted_similar_cases.append(case)
                     unique_unis.append(case['content']['University'])
 
             request.session['unique_universities'] = unique_unis
             request.session['result'] = sorted_similar_cases
             request.session['matches'] = course_wanted_to_be_taken_matches
 
+            rating_list = {}
+
+            for case in sorted_similar_cases:
+                uni = case['content']['University']
+                if uni not in rating_list:
+                    rating_list[uni] = {
+                        'social_quality': int(case['content']['SocialQuality']),
+                        'academic_quality': int(case['content']['AcademicQuality']),
+                        'residential_quality': int(case['content']['ResidentialQuality']),
+                        'reception_quality': int(case['content']['ReceptionQuality']),
+                        'count': 1
+                    }
+
+                elif case['content']['University'] in rating_list:
+                    rating_list[uni]['social_quality'] += int(case['content']['SocialQuality'])
+                    rating_list[uni]['academic_quality'] += int(case['content']['AcademicQuality'])
+                    rating_list[uni]['residential_quality'] += int(case['content']['ResidentialQuality'])
+                    rating_list[uni]['reception_quality'] += int(case['content']['ReceptionQuality'])
+                    rating_list[uni]['count'] += 1
+
+            for uni, values in rating_list.items():
+                values['social_quality'] = round(int(values['social_quality']) / int(values['count']))
+                values['academic_quality'] = round(int(values['academic_quality']) / int(values['count']))
+                values['residential_quality'] = round(int(values['residential_quality']) / int(values['count']))
+                values['reception_quality'] = round(int(values['reception_quality']) / int(values['count']))
+
+            for case in unique_sorted_similar_cases[:6]:
+                for rating in rating_list:
+                    if rating == case['content']['University']:
+                        case['university_ratings'] = rating_list[rating]
+
             return render(request, 'utsida/result.html',
-                          {'form': form, 'similar_cases': sorted_similar_cases[:9], 'courses_taken': courses_taken,
-                           'matches': course_wanted_to_be_taken_matches, 'universities': unique_unis})
+                          {'form': form, 'similar_cases': unique_sorted_similar_cases[:6], 'courses_taken': courses_taken,
+                           'matches': course_wanted_to_be_taken_matches, 'universities': unique_unis, 'rating_list': rating_list,'filter': False})
 
     else:
         form = QueryCaseBaseForm()
