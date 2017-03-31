@@ -139,13 +139,6 @@ def save_courses(request):
                     'message': 'Ett eller fler av fagene du prøvde å legge til er allerede lagret.'
                 }))
 
-            if not profile.saved_courses.all().filter(
-                    university=University.objects.all().filter(name=course_uni)) and profile.saved_courses.all():
-                return HttpResponse(json.dumps({
-                    'error': 'illegal university',
-                    'message': 'Nye valgte fag må være fra samme universitet som dine tidligere lagrede fag.'
-                }))
-
             if AbroadCourse.objects.all().filter(name=course_name, code=course_code,
                                                  university=University.objects.all().filter(name=course_uni)):
                 new_course = AbroadCourse.objects.get(name=course_name, code=course_code,
@@ -347,15 +340,8 @@ def save_course_match_id(request):
         id = request.POST["id"]
         stored_course_match = get_object_or_404(CourseMatch, id=id)
         hasMatch = user.profile.saved_course_matches.all().filter(id=id)
-        usersCourseMatches = user.profile.saved_course_matches.all()
-        if (usersCourseMatches):
-            same_university_as_stored = usersCourseMatches[0].abroadCourse.university.name == stored_course_match.abroadCourse.university.name
-        else:
-            same_university_as_stored = True
         if (hasMatch):
             return HttpResponse(status=409)
-        elif (not same_university_as_stored):
-            return HttpResponse(status=406)
         else:
             user.profile.saved_course_matches.add(stored_course_match)
             return HttpResponse({'code': 200, 'message': 'Match lagret i profil'})

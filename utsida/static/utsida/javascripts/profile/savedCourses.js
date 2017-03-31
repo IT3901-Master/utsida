@@ -43,13 +43,15 @@ var confirmationSettings = {
             $(this).closest('.blockElement').fadeOut("slow", function (here) {
                 block.parentNode.removeChild(block);
                 if ($('#courseList').children().length == 0) {
-                    $('#universityHeader').remove();
+
+                    //HERE
+
                     $('#courseList').remove();
-                    var header = document.createElement("h4");
-                    header.setAttribute("id", "noAbroadCourseHeader");
-                    header.setAttribute("class", "text-center");
-                    header.innerText = "Du har ikke lagret noen fag ved andre universiteter";
-                    $('#abroadCourseListContainer').prepend(header);
+                    $("#universityHeader").text("Universitet i utlandet");
+                    $("#noAbroadCourseHeader").css('display', 'block');
+                    $("#abroad_university_select").css('display', 'none');
+
+
                 }
                 else {
                     abroadCourseFilter();
@@ -62,24 +64,40 @@ var confirmationSettings = {
             var university = $(this).closest('tr').data("university");
             $('#courseMatchListModal').find("[data-id='" + id + "']").remove();
 
-            var data_list = [];
-            $("tr:data(university)").each(function () {
-                if ($(this).data("university") == university) {
-                    data_list.push(this)
-                }
-            });
-            if (data_list.length == 1) {
-                $('#course_match_university_select').find('option').each(function () {
-                    if ($(this).val() == university) {
-                        $(this).remove();
-                    }
-                });
-            }
-
 
             $(this).closest('tr').fadeOut("slow", function (here) {
+
+                var data_list = [];
+                $("tr:data(university)").each(function () {
+                    if ($(this).data("university") == university) {
+                        data_list.push(this)
+                    }
+                });
+
+                if (data_list.length == 1) {
+                    $('#course_match_university_select').find('option').each(function () {
+                        if ($(this).val() == university) {
+                            $(this).remove();
+                        }
+                    });
+                }
                 $(this).closest("tr").remove();
-                courseMatchFilter();
+
+                if ($('#courseMatchList').children().length == 0) {
+
+                    //HERE
+
+
+                    $('#course_match_list_header').remove();
+                    var header = document.createElement("h3");
+                    header.setAttribute("class", "text-center vertical-space-bottom-big");
+                    header.setAttribute("id", "course_match_list_header");
+                    header.innerText = "Dine fagkoblinger (Du har ingen lagret)";
+                    $("#course_match_list_container").prepend(header);
+                }
+                else {
+                    courseMatchFilter();
+                }
             });
         }
         else if (type == "home_course") {
@@ -87,6 +105,8 @@ var confirmationSettings = {
             $(this).closest('.blockElement').fadeOut("slow", function (here) {
                 block.parentNode.removeChild(block)
             });
+            $("#emptyHomeCourseInfo").css('display', 'block');
+
         }
     },
     title: "Er du sikker på at du vil slette?",
@@ -105,7 +125,7 @@ function refreshConfirmation() {
 //documentation: http://bootstrap-confirmation.js.org/
 $('[data-toggle=confirmation]').confirmation(confirmationSettings);
 
-function create_post() {
+function add_abroad_course() {
     $.ajax({
         url: "/profile/abroadCourse/add/",
         type: "POST",
@@ -135,28 +155,21 @@ function create_post() {
 
             //Check if no courses had been added before
             if ($('#courseList').length == 0) {
-                $('#noAbroadCourseHeader').remove();
-                var courseList = document.createElement('div');
-                courseList.setAttribute("id", "courseList");
-                $('#abroadCourseListContainer').prepend(courseList);
-
-                var abroadUniversitySelect = document.createElement('select');
-                abroadUniversitySelect.setAttribute("id", "abroad_university_select");
+                $("#abroad_university_select").css('display', 'block');
                 var option = document.createElement("option");
                 option.innerText = json.university;
-                abroadUniversitySelect.append(option);
-
-                var universityHeader = document.createElement('h4');
-                universityHeader.innerHTML = "Lagrede fag ved ";
-                universityHeader.append(abroadUniversitySelect);
-                universityHeader.setAttribute("id", "universityHeader");
-                universityHeader.className = "text-center";
-                $('#abroadCourseListContainer').prepend(universityHeader);
-
+                $("#abroad_university_select").prepend(option);
                 $('#abroad_university_select').val(json.university);
                 $("#abroad_university_select").on('change', function () {
                     abroadCourseFilter();
                 });
+                $("#noAbroadCourseHeader").css('display', 'none');
+                $("#universityHeader").text($("#abroad_university_select").find(':selected').text())
+
+
+                var courseList = document.createElement('div');
+                courseList.setAttribute("id", "courseList");
+                $('#abroadCourseListContainer').prepend(courseList);
 
             }
             else if ($("#abroad_university_select").find('option:contains(' + json.university + ')').length == 0) {
@@ -170,6 +183,8 @@ function create_post() {
             abroadCourseFilter();
             refreshConfirmation();
             CourseMatcher.init();
+
+
         },
         error: function (err) {
             $('#addAbroadModal').modal('hide');
@@ -186,7 +201,7 @@ function create_post() {
 }
 $('#add-abroad-course-form').on('submit', function (event) {
     event.preventDefault();
-    create_post();
+    add_abroad_course();
 });
 
 
@@ -203,7 +218,9 @@ function abroadCourseFilter() {
     $("#add-form-university option").filter(function () {
         return this.text == selected_uni;
     }).prop('selected', true);
-    $("#universityHeader").text($("#abroad_university_select").find(':selected').text())
+    if ($("#abroad_university_select").find(':selected').text() != "") {
+        $("#universityHeader").text($("#abroad_university_select").find(':selected').text())
+    }
 }
 
 function courseMatchFilter() {
@@ -275,6 +292,7 @@ $('#add-course-form').on('submit', function (event) {
             $('#id_coursesToTake').val('');
             refreshConfirmation();
             CourseMatcher.init();
+            $("#emptyHomeCourseInfo").css('display', 'none');
         },
         error: function (err) {
             if (err.status == 409) {

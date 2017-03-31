@@ -14,29 +14,21 @@
     <h2 class="text-center vertical-space-bottom">
         Mine fag
     </h2>
-    <select class="form-control" style="width: 50%; margin: 0 auto" id="abroad_university_select">
-                        {% for university in universities %}
-                            <option>{{ university }}</option>
-                        {% endfor %}
-                    </select>
 
+    <select class="form-control" style="width: 50%; margin: 0 auto; display: none" id="abroad_university_select">
+        {% for university in universities %}
+            <option>{{ university }}</option>
+        {% endfor %}
+    </select>
 
-    <!--
-    <h3 class="subTitle text-center">
-        Trykk på et fag i hver kolonne for å velge de, og dermed på <span class="italic">Koble fag-</span>knappen for å
-        lage en fagkobling
-    </h3>
-    -->
 
     <div class="row vertical-space-top-big">
         <div class="col-md-6">
+        <h3 class="text-center" style="margin-top: 15px; margin-bottom: 15px;">NTNU</h3>
             {% if home_courses %}
-                <h3 class="text-center"
-                    style="margin-top: 15px;
-                       margin-bottom: 15px;"
-                >NTNU</h3>
-                <div id="homeCourseList">
+                <p class="text-center" style="display: none" id="emptyHomeCourseInfo">Trykk på knappen under for å legge til fag.</p>
 
+                <div id="homeCourseList">
                     {% for course in home_courses %}
                         <div onclick="CourseMatcher.markHomeCourse(this)"
                              class="centerCol courseBlock boxShadow pointer noSelect blockElement">
@@ -49,8 +41,8 @@
                 </div>
 
             {% else %}
-                <h4 class="text-center">Trykk på knappen under for å legge til NTNU fag.</h4>
-                <div id="homeCourseList"></div>
+                    <p class="text-center" id="emptyHomeCourseInfo">Trykk på knappen under for å legge til fag.</p>
+                    <div id="homeCourseList"></div>
             {% endif %}
 
             <div class="centerCol courseBlock boxShadow pointer noSelect blockElement" id="addHomeCourseBlock">
@@ -75,9 +67,13 @@
 
         </div>
 
-        <div id="abroadCourseListContainer" class="col-md-6">
+        <div class="col-md-6">
+            <h3 id="universityHeader" class="text-center">Universitet i utlandet</h3>
+            <div id="abroadCourseListContainer">
             {% if universities %}
-                <h3 id="universityHeader" class="text-center">Borte</h3>
+                <p id="noAbroadCourseHeader" style="display: none" class="text-center">Trykk på knappen under for å legge til fag, eller finne fag med Utsidas anbefalingssystem</p>
+
+
                 <div id="courseList">
                     {% for course in courses %}
                         <div onclick="CourseMatcher.markAwayCourse(this)" data-university="{{ course.university }}"
@@ -96,11 +92,11 @@
                 </div>
 
             {% else %}
-                <h4 id="noAbroadCourseHeader" class="text-center">Du har ikke lagret noen fag ved andre
-                    universiteter</h4>
+                    <p id="noAbroadCourseHeader" class="text-center">Trykk på knappen under for å legge til fag, eller finne fag med Utsidas anbefalingssystem</p>
             {% endif %}
             <div class="plus-btn boxShadow borderBox centerCol vertical-space-top noSelect" data-toggle="modal"
                  data-target="#addAbroadModal">+
+            </div>
             </div>
         </div>
     </div>
@@ -118,18 +114,15 @@
 
 
     <div class="row vertical-space-top-big vertical-space-bottom-big">
-        <div class="col-md-12 vertical-space-top-big">
-            {% if course_matches %}
-                <h2 class="text-center vertical-space-bottom"> Mine fagkoblinger</h2>
-                <select id="course_match_university_select" class="form-control" style="width: 50%; margin: 0 auto">
+        <div id="course_match_list_container" class="col-md-12 vertical-space-top-big">
+            <h2 class="text-center vertical-space-bottom"> Mine fagkoblinger</h2>
+            <select id="course_match_university_select" class="form-control" style="display: none" style="width: 50%; margin: 0 auto">
                     {% for university in course_match_universities %}
                         <option>{{ university }}</option>
                     {% endfor %}
-                </select>
-            {% else %}
-                <h3 class="text-center vertical-space-bottom-big"> Lagrede fag-koblinger </h3>
-            {% endif %}
-            <div>
+            </select>
+            {% if course_matches %}
+                <div>
                 <table class="table table-striped vertical-space-top-big">
                     <thead>
                     <tr>
@@ -161,10 +154,17 @@
                     </tbody>
                 </table>
             </div>
+
             <button onclick="checkValidApplication()" type="button"
                     class="center-block btn btn-primary btn-lg vertical-space-top-big">
                 Søk om godkjenning
             </button>
+
+            {% else %}
+                <h3 id="course_match_list_header" class="text-center vertical-space-bottom-big">(Du har ingen lagret)</h3>
+            {% endif %}
+
+
         </div>
     </div>
 
