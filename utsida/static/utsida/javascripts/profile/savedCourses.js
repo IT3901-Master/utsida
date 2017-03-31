@@ -203,6 +203,7 @@ function abroadCourseFilter() {
     $("#add-form-university option").filter(function () {
         return this.text == selected_uni;
     }).prop('selected', true);
+    $("#universityHeader").text($("#abroad_university_select").find(':selected').text())
 }
 
 function courseMatchFilter() {
@@ -223,6 +224,9 @@ function courseMatchFilter() {
     course_matches_modal.filter(function () {
         return $(this).data("university") != selected_uni;
     }).hide();
+
+    $("#courseMatchAwayTitle").text($("#course_match_university_select").find(':selected').text());
+
 
 }
 

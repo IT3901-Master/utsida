@@ -30,8 +30,7 @@
             s.courseMatchesContainer = document.getElementById("courseMatches");
             s.wrapper = document.getElementById("courseMatchesWrapper");
             s.courseMatchList = {};
-        }
-        ,
+        },
 
         matchSelectedCourses: function () {
             var awayCourse = "";
