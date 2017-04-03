@@ -28,8 +28,8 @@
                         <select id="country_select" class="form-control" name="university">
                             <option value="" selected="True" disabled="True">-Velg land-</option>
                             {% for country in country_list %}
-                                <option>
-                                    {{ country }}
+                                <option data-continent="{{ country.continent.name }}">
+                                    {{ country.name }}
                                 </option>
                             {% endfor %}
                         </select>
@@ -40,7 +40,7 @@
                         <select id="university_select" class="form-control" name="university">
                             <option value="" selected="True" disabled="True">-Velg universitet-</option>
                             {% for university in university_list %}
-                                <option>
+                                <option data-country="{{ university.country.name }}" data-continent="{{ university.country.continent.name }}">
                                     {{ university.name }} ({{ university.count }})
                                 </option>
                             {% endfor %}

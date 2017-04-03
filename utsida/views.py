@@ -289,28 +289,6 @@ def add_abroad_course(request):
         messages.success(request, "Nytt fag ble lagt til")
         return render(request, "utsida/courseMatch.html", context)
 
-
-@login_required
-def course_match_select_university(request):
-    country = request.POST.get("country")
-    university_list = University.objects.all().filter(country__name=country)
-
-    for university in university_list:
-        university.count = len(
-            CourseMatch.objects.all().filter(abroadCourse__university__name=university.name, approved=True))
-
-    response_data = []
-
-    for university in university_list:
-        data = {"name": university.name, "count": university.count}
-        response_data.append(data)
-
-    return HttpResponse(
-        json.dumps(response_data),
-        content_type="application/json"
-    )
-
-
 @login_required
 def course_match_select_continent(request):
     unique_continents = []
@@ -318,8 +296,8 @@ def course_match_select_continent(request):
 
     country_list = []
     for university in university_list:
-        if not university.country.name in country_list:
-            country_list.append(university.country.name)
+        if not university.country in country_list:
+            country_list.append(university.country)
 
     for university in university_list:
         if not university.country.continent in unique_continents:
@@ -332,37 +310,6 @@ def course_match_select_continent(request):
 
     context = {"continent_list": unique_continents, "university_list": university_list, "country_list": country_list}
     return render(request, "utsida/course_match_continent_select.html", context)
-
-
-@login_required
-def course_match_select_country(request):
-    country_list = []
-    continent = request.POST.get("continent")
-    universities = University.objects.all()
-    university_list = []
-    for university in universities:
-        if university.country.continent.name == continent:
-            if not university.name in university_list:
-                university_list.append(university)
-            if not university.country.name in country_list:
-                country_list.append(university.country.name)
-
-
-    for university in university_list:
-        university.count = len(
-            CourseMatch.objects.all().filter(abroadCourse__university__name=university.name, approved=True))
-
-    university_data = []
-
-    for university in university_list:
-        data = {"name": university.name, "count": university.count}
-        university_data.append(data)
-
-
-    return HttpResponse(
-        json.dumps({"country_list":country_list,"university_list":university_data}),
-        content_type="application/json"
-    )
 
 
 @permission_required('utsida.can_delete_course_match')
