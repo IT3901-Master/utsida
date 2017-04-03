@@ -36,6 +36,10 @@
             }
             if ($("#courseMatchList").children().length > 0) {
                 $("#course_match_university_select").css('display', 'block');
+                $('#create_application_btn').css('display', 'block')
+            }
+            else {
+                $('#course_match_list_header').css('display', 'block')
             }
         },
 
@@ -107,24 +111,19 @@
                         course_match_row.appendChild(deleteTD);
 
                         if ($("#courseMatchList").children().length == 0) {
+                            var university_select = $("#course_match_university_select");
 
-                            $("#course_match_university_select").css('display', 'block');
+                            $("#course_match_list_header").css('display', 'none');
+                            university_select.css('display', 'block');
+                            university_select.attr('id', 'course_match_university_select');
 
-                            $("#course_match_list_header").remove();
-                            var header = document.createElement("h3");
-                            header.setAttribute("class", "text-center");
-                            header.setAttribute("id", "course_match_list_header");
-                            header.innerText = "Fagkoblinger ved";
-                            var select = document.createElement("select");
-                            select.setAttribute("id", "course_match_university_select");
-                            var option = document.createElement("option");
-                            option.innerText = response.university;
-                            select.append(option);
-                            header.append(select);
-                            $('#course_match_list_container').prepend(header);
-                            $("#course_match_university_select").on('change', function () {
-                                courseMatchFilter();
-                            });
+                            var university_option = document.createElement("option");
+                            university_option.innerText = response.university;
+                            university_select.append(university_option);
+                            university_select.change(courseMatchFilter());
+
+                            $('#create_application_btn').css('display', 'block');
+
 
                         }
                         else if ($("#course_match_university_select").find('option:contains(' + response.university + ')').length == 0) {
@@ -145,6 +144,7 @@
 
                         Messager.init();
                         Messager.sendMessage("Fagene ble koblet", "success");
+
                         courseMatchFilter();
                     },
                     error: function (error) {

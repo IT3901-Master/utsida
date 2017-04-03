@@ -85,15 +85,9 @@ var confirmationSettings = {
 
                 if ($('#courseMatchList').children().length == 0) {
 
-                    //HERE
-
-
-                    $('#course_match_list_header').remove();
-                    var header = document.createElement("h3");
-                    header.setAttribute("class", "text-center vertical-space-bottom-big");
-                    header.setAttribute("id", "course_match_list_header");
-                    header.innerText = "Dine fagkoblinger (Du har ingen lagret)";
-                    $("#course_match_list_container").prepend(header);
+                    $('#course_match_university_select').css('display', 'none');
+                    $('#course_match_list_header').css('display', 'block');
+                    $('#create_application_btn').css('display', 'none');
                 }
                 else {
                     courseMatchFilter();

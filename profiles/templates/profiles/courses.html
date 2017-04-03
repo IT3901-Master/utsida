@@ -116,13 +116,13 @@
     <div class="row vertical-space-top-big vertical-space-bottom-big">
         <div id="course_match_list_container" class="col-md-12 vertical-space-top-big">
             <h2 class="text-center vertical-space-bottom"> Mine fagkoblinger</h2>
-            <select id="course_match_university_select" class="form-control" style="display: none" style="width: 50%; margin: 0 auto">
+            <h3 id="course_match_list_header" class="text-center vertical-space-bottom-big" style="display: none">(Du har ingen lagret)</h3>
+            <select id="course_match_university_select" class="form-control" style="display: none; width: 50%; margin: 0 auto">
                     {% for university in course_match_universities %}
                         <option>{{ university }}</option>
                     {% endfor %}
             </select>
-            {% if course_matches %}
-                <div>
+                <div id="course_match_table">
                 <table class="table table-striped vertical-space-top-big">
                     <thead>
                     <tr>
@@ -155,14 +155,10 @@
                 </table>
             </div>
 
-            <button onclick="checkValidApplication()" type="button"
+            <button id="create_application_btn" onclick="checkValidApplication()" type="button" style="display: none"
                     class="center-block btn btn-primary btn-lg vertical-space-top-big">
                 Søk om godkjenning
             </button>
-
-            {% else %}
-                <h3 id="course_match_list_header" class="text-center vertical-space-bottom-big">(Du har ingen lagret)</h3>
-            {% endif %}
 
 
         </div>
