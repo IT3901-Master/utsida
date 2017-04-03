@@ -26,6 +26,7 @@ $("#continent_select").on('change', function () {
 
 
 $('#university_select_country').on('change', 'select', function () {
+    $("#university_select")[0].selectedIndex = 0;
     var country = $(this).val();
         $("#university_select").find("option").each(function () {
         if ($(this).data("country") != undefined) {
