@@ -12,6 +12,12 @@ All cusotm overrides done to bootstrap.css
     color: #fff;
     opacity: 0.7;
 }
+
+.navbar-default .navbar-nav>li>a.nohover:hover {
+    color: #fff;
+    opacity: 1;
+}
+
 .navbar-default .navbar-nav>li>a:visited {
     color: #fff;
 }
@@ -20,7 +26,7 @@ All cusotm overrides done to bootstrap.css
     opacity: 0.7;
 }
 .navbar-default .navbar-nav>.open>a, .navbar-default .navbar-nav>.open>a:focus, .navbar-default .navbar-nav>.open>a:hover {
-    background-color: #333;
+    background-color: #565555;
     color: #fff;
 }
 .form-control, .well, .btn {
@@ -28,9 +34,7 @@ All cusotm overrides done to bootstrap.css
     -moz-border-radius: 0;
     border-radius: 0;
 }
-.panel, .panel-body {
-    border: 0;
-}
+
 .dropdown-menu {
     z-index: 1100;
 }

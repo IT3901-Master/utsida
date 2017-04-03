@@ -47,12 +47,14 @@ def advisors(request):
         }
     )
 
+
 @login_required
 def process(request):
     if not request.user.is_authenticated():
         return redirect("login")
     form = QueryCaseBaseForm()
     return render(request, "utsida/process.html", {"form": form})
+
 
 @login_required
 def result(request, university=None):
@@ -79,7 +81,8 @@ def result(request, university=None):
             filter = False
 
             return render(request, 'utsida/result.html',
-                          {'similar_cases': new_filtered_cases[:6], 'universities': request.session['unique_universities'],
+                          {'similar_cases': new_filtered_cases[:6],
+                           'universities': request.session['unique_universities'],
                            'matches': request.session['matches'], 'filter': filter})
 
         else:
@@ -130,7 +133,6 @@ def result(request, university=None):
                     case['content']['Language'] = case['content']['Language'].split(';')
                 case['content']['Subjects'] = case['content']['Subjects'].split('!')
                 case['similarity'] = "%.3f" % case['similarity']
-
 
             # Sorting the case list based on similarity
             sorted_similar_cases = sorted(r, key=lambda k: k['similarity'], reverse=True)
@@ -188,8 +190,10 @@ def result(request, university=None):
                         case['university_ratings'] = rating_list[rating]
 
             return render(request, 'utsida/result.html',
-                          {'form': form, 'similar_cases': unique_sorted_similar_cases[:6], 'courses_taken': courses_taken,
-                           'matches': course_wanted_to_be_taken_matches, 'universities': unique_unis, 'rating_list': rating_list,'filter': False})
+                          {'form': form, 'similar_cases': unique_sorted_similar_cases[:6],
+                           'courses_taken': courses_taken,
+                           'matches': course_wanted_to_be_taken_matches, 'universities': unique_unis,
+                           'rating_list': rating_list, 'filter': False})
 
     else:
         form = QueryCaseBaseForm()
@@ -226,7 +230,8 @@ def update_course_match(request, id):
             add_form.fields["abroadCourse"].queryset = AbroadCourse.objects.filter(university__name=university)
             course_matches = CourseMatch.objects.all().filter(abroadCourse__university__name=university)
             abroad_course_form = abroadCourseForm()
-            context = {"course_match_list": course_matches, "university_name": university, "add_form": add_form,"add_abroad_form": abroad_course_form}
+            context = {"course_match_list": course_matches, "university_name": university, "add_form": add_form,
+                       "add_abroad_form": abroad_course_form}
             messages.success(request, "Fag kobling ble endret")
             return render(request, "utsida/courseMatch.html", context)
         else:
@@ -250,20 +255,20 @@ def add_course_match(request):
             approver = None
         approval_date = request.POST['approval_date']
         course_match = CourseMatch(homeCourse=home_course, abroadCourse=abroad_course, approved=approved,
-                                   approval_date=approval_date,reviewer=approver)
+                                   approval_date=approval_date, reviewer=approver)
         course_match.save()
         university = abroad_course.university
         add_form = CourseMatchForm()
         add_form.fields["abroadCourse"].queryset = AbroadCourse.objects.filter(university__name=university)
         course_matches = CourseMatch.objects.all().filter(abroadCourse__university__name=university)
         abroad_course_form = abroadCourseForm()
-        context = {"course_match_list": course_matches, "university_name": university, "university": university, "add_form": add_form,"add_abroad_form": abroad_course_form}
+        context = {"course_match_list": course_matches, "university_name": university, "university": university,
+                   "add_form": add_form, "add_abroad_form": abroad_course_form}
         messages.success(request, "Ny fag-kobling ble lagt til")
         return render(request, "utsida/courseMatch.html", context)
     else:
         messages.error(request, "Endre feilene under")
         return HttpResponse({'code': 500, 'message': 'Du må fylle inn alle feltene'})
-
 
 
 @login_required
@@ -284,53 +289,27 @@ def add_abroad_course(request):
         messages.success(request, "Nytt fag ble lagt til")
         return render(request, "utsida/courseMatch.html", context)
 
-
 @login_required
-def course_match_select_university(request):
-    country = request.POST.get("country")
-    university_list = University.objects.all().filter(country__name=country)
+def course_match_select_continent(request):
+    unique_continents = []
+    university_list = University.objects.all()
+
+    country_list = []
+    for university in university_list:
+        if not university.country in country_list:
+            country_list.append(university.country)
+
+    for university in university_list:
+        if not university.country.continent in unique_continents:
+            unique_continents.append(university.country.continent)
 
     for university in university_list:
         university.count = len(
             CourseMatch.objects.all().filter(abroadCourse__university__name=university.name, approved=True))
 
-    response_data = []
 
-    for university in university_list:
-        data = {"name": university.name, "count": university.count}
-        response_data.append(data)
-
-    return HttpResponse(
-        json.dumps(response_data),
-        content_type="application/json"
-    )
-
-
-@login_required
-def course_match_select_continent(request):
-    unique_continents = []
-    university_list = University.objects.all()
-    for university in university_list:
-        if not university.country.continent in unique_continents:
-            unique_continents.append(university.country.continent)
-
-    context = {"continent_list": unique_continents}
+    context = {"continent_list": unique_continents, "university_list": university_list, "country_list": country_list}
     return render(request, "utsida/course_match_continent_select.html", context)
-
-
-@login_required
-def course_match_select_country(request):
-    country_list = []
-    continent = request.POST.get("continent")
-    universities = University.objects.all()
-    for university in universities:
-        if university.country.continent.name == continent:
-            if not university.country.name in country_list:
-                country_list.append(university.country.name)
-    return HttpResponse(
-        json.dumps(country_list),
-        content_type="application/json"
-    )
 
 
 @permission_required('utsida.can_delete_course_match')
