@@ -11,23 +11,24 @@
     {% endfor %}
 
 
-    <h2 class="text-center">
-        Dine lagrede fag og fagkoblinger
+    <h2 class="text-center vertical-space-bottom">
+        Mine fag
     </h2>
-    <h3 class="subTitle text-center">
-        Trykk på et fag i hver kolonne for å velge de, og dermed på <span class="italic">Koble fag-</span>knappen for å
-        lage en fagkobling
-    </h3>
+
+    <select class="form-control" style="width: 50%; margin: 0 auto; display: none" id="abroad_university_select">
+        {% for university in universities %}
+            <option>{{ university }}</option>
+        {% endfor %}
+    </select>
+
 
     <div class="row vertical-space-top-big">
         <div class="col-md-6">
+        <h3 class="text-center" style="margin-top: 15px; margin-bottom: 15px;">NTNU</h3>
             {% if home_courses %}
-                <h4 class="text-center"
-                    style="margin-top: 15px;
-                       margin-bottom: 15px;"
-                >Dine nødvendige NTNU fag</h4>
-                <div id="homeCourseList">
+                <p class="text-center" style="display: none" id="emptyHomeCourseInfo">Trykk på knappen under for å legge til fag.</p>
 
+                <div id="homeCourseList">
                     {% for course in home_courses %}
                         <div onclick="CourseMatcher.markHomeCourse(this)"
                              class="centerCol courseBlock boxShadow pointer noSelect blockElement">
@@ -40,8 +41,8 @@
                 </div>
 
             {% else %}
-                <h4 class="text-center">Trykk på knappen under for å legge til NTNU fag.</h4>
-                <div id="homeCourseList"></div>
+                    <p class="text-center" id="emptyHomeCourseInfo">Trykk på knappen under for å legge til fag.</p>
+                    <div id="homeCourseList"></div>
             {% endif %}
 
             <div class="centerCol courseBlock boxShadow pointer noSelect blockElement" id="addHomeCourseBlock">
@@ -66,14 +67,13 @@
 
         </div>
 
-        <div id="abroadCourseListContainer" class="col-md-6">
+        <div class="col-md-6">
+            <h3 id="universityHeader" class="text-center">Universitet i utlandet</h3>
+            <div id="abroadCourseListContainer">
             {% if universities %}
-                <h4 id="universityHeader" class="text-center">Lagrede fag
-                    ved <select id="abroad_university_select">
-                        {% for university in universities %}
-                            <option>{{ university }}</option>
-                        {% endfor %}
-                    </select></h4>
+                <p id="noAbroadCourseHeader" style="display: none" class="text-center">Trykk på knappen under for å legge til fag, eller finne fag med Utsidas anbefalingssystem</p>
+
+
                 <div id="courseList">
                     {% for course in courses %}
                         <div onclick="CourseMatcher.markAwayCourse(this)" data-university="{{ course.university }}"
@@ -92,11 +92,11 @@
                 </div>
 
             {% else %}
-                <h4 id="noAbroadCourseHeader" class="text-center">Du har ikke lagret noen fag ved andre
-                    universiteter</h4>
+                    <p id="noAbroadCourseHeader" class="text-center">Trykk på knappen under for å legge til fag, eller finne fag med Utsidas anbefalingssystem</p>
             {% endif %}
             <div class="plus-btn boxShadow borderBox centerCol vertical-space-top noSelect" data-toggle="modal"
                  data-target="#addAbroadModal">+
+            </div>
             </div>
         </div>
     </div>
@@ -115,28 +115,28 @@
 
     <div class="row vertical-space-top-big vertical-space-bottom-big">
         <div id="course_match_list_container" class="col-md-12 vertical-space-top-big">
-            {% if course_matches %}
-                <h3 class="text-center vertical-space-bottom-big" id="course_match_list_header"> Fagkoblinger ved <select
-                        id="course_match_university_select" class="">
+            <h2 class="text-center vertical-space-bottom"> Mine fagkoblinger</h2>
+            <h3 id="course_match_list_header" class="text-center vertical-space-bottom-big" style="display: none">(Du har ingen lagret)</h3>
+            <select id="course_match_university_select" class="form-control" style="display: none; width: 50%; margin: 0 auto">
                     {% for university in course_match_universities %}
                         <option>{{ university }}</option>
                     {% endfor %}
-                </select></h3>
-            {% else %}
-                <h3 id="course_match_list_header" class="text-center vertical-space-bottom-big"> Dine fagkoblinger (Du har ingen lagret) </h3>
-            {% endif %}
-            <div>
-                <table class="table table-striped">
+            </select>
+                <div id="course_match_table">
+                <table class="table table-striped vertical-space-top-big">
                     <thead>
                     <tr>
-                        <th>Fag ute</th>
-                        <th>Fag hjemme</th>
+                        <th>NTNU</th>
+                        <th id="courseMatchAwayTitle">Fag borte</th>
                         <th></th>
                     </tr>
                     </thead>
                     <tbody id="courseMatchList">
                     {% for course in course_matches %}
                         <tr data-university="{{ course.abroadCourse.university.name }}">
+                            <td><a href="https://www.ntnu.no/studier/emner/{{ course.homeCourse.code }}" target="_blank"
+                                   onclick="return alertLink(this)">{{ course.homeCourse.code }} {{ course.homeCourse.name }} </a>
+                            </td>
                             {% if course.abroadCourse.description_url %}
                                 <td>
                                     <a href="{{ course.abroadCourse.description_url }}" target="_blank"
@@ -145,9 +145,7 @@
                             {% else %}
                                 <td> {{ course.abroadCourse.code }} {{ course.abroadCourse.name }}</td>
                             {% endif %}
-                            <td><a href="https://www.ntnu.no/studier/emner/{{ course.homeCourse.code }}" target="_blank"
-                                   onclick="return alertLink(this)">{{ course.homeCourse.code }} {{ course.homeCourse.name }} </a>
-                            </td>
+
                             <td>
                                 <span data-toggle="confirmation" data-type="course_match" data-id="{{ course.id }}"
                                       class="glyphicon glyphicon-remove pointer"></span></td>
@@ -156,10 +154,13 @@
                     </tbody>
                 </table>
             </div>
-            <button onclick="checkValidApplication()" type="button"
+
+            <button id="create_application_btn" onclick="checkValidApplication()" type="button" style="display: none"
                     class="center-block btn btn-primary btn-lg vertical-space-top-big">
                 Søk om godkjenning
             </button>
+
+
         </div>
     </div>
 
