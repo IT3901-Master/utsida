@@ -401,6 +401,10 @@ input[type=range]:focus::-webkit-slider-runnable-track {
     display: block;
 }
 
+.no-border {
+    border: 0 !important;
+}
+
 /* 8 - Saved Courses */
 .courseBlock {
     background-color: white;

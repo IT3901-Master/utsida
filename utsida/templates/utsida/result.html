@@ -70,7 +70,7 @@
                 {% if forloop.counter|divisibleby:2 %}<div class="row">{% endif %}
 
                     <div class="col-md-6">
-                        <div class="panel panel-primary square-corners boxShadow">
+                        <div class="panel panel-primary square-corners boxShadow no-border">
 
                             <div class="panel-heading square-corners pointer" onclick="UniversityFilter.filter(this)">
                                 <span class="resultPanelUniversity">{{ case.content.University }} ({{ case.content.Country }})</span><span class="pull-right badge similarityBadge">{{ case.similarity|parse_similarity:100}}</span>
@@ -146,7 +146,7 @@
 
                     <div class="col-md-4">
 
-                        <div class="panel panel-primary square-corners boxShadow">
+                        <div class="panel panel-primary square-corners boxShadow no-border">
 
                             <div class="panel-heading square-corners">
                                 <span class="resultPanelUniversity">{{ case.content.University }} ({{ case.content.Country }})</span> <span class="pull-right badge similarityBadge">{{ case.similarity|parse_similarity:100}}</span>
