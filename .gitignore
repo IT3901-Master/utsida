@@ -72,3 +72,6 @@ config/settings/secrets.py
 
 # Scripts
 scripts/retrieved_html_files/*
+
+#Production static files
+/static/
