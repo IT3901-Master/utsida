@@ -13,7 +13,7 @@
     <div class="row">
         <div class="col-md-6 col-md-offset-3">
             <form action="/courseMatch/university/" method="post">
-            {% csrf_token %}
+                {% csrf_token %}
                 <div class="form-group">
                     <select id="continent_select" class="form-control" name="university">
                         <option value="" disabled selected>-Velg kontinent-</option>
@@ -22,8 +22,31 @@
                         {% endfor %}
                     </select>
                 </div>
-                <div id="university_select_country"></div>
-                <div id="university_select_university"></div>
+
+                <div id="university_select_country">
+                    <div class="form-group">
+                        <select id="country_select" class="form-control" name="university">
+                            <option value="" selected="True" disabled="True">-Velg land-</option>
+                            {% for country in country_list %}
+                                <option>
+                                    {{ country }}
+                                </option>
+                            {% endfor %}
+                        </select>
+                    </div>
+                </div>
+                <div id="university_select_university">
+                    <div class="form-group">
+                        <select id="university_select" class="form-control" name="university">
+                            <option value="" selected="True" disabled="True">-Velg universitet-</option>
+                            {% for university in university_list %}
+                                <option>
+                                    {{ university.name }} ({{ university.count }})
+                                </option>
+                            {% endfor %}
+                        </select>
+                    </div>
+                </div>
                 <div class="form-group vertical-space-top-big">
                     <button id="selectUniversityButton" type="submit" disabled
                             class="btn btn-primary square-corners center-block searchBtn disabled">Velg
