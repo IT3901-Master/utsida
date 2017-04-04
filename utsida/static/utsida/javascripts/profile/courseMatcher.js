@@ -104,8 +104,9 @@
                         deleteBtn.setAttribute("data-id", response.course_match_id);
                         deleteTD.appendChild(deleteBtn);
 
-                        course_match_row.appendChild(abroadCourseTD);
                         course_match_row.appendChild(homeCourseTD);
+                        course_match_row.appendChild(abroadCourseTD);
+
                         var content2 = course_match_row.cloneNode(true);
                         content2.setAttribute("data-id", response.course_match_id);
                         course_match_row.appendChild(deleteTD);
