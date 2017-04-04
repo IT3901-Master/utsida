@@ -329,3 +329,8 @@ def get_countries(request):
     response = serializers.serialize("json", countries)
 
     return HttpResponse(response, content_type="application/json")
+
+
+def callback(request):
+    print(request)
+    return None

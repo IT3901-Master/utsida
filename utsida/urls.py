@@ -18,4 +18,5 @@ urlpatterns = [
     url(r'^abroadCourse/add/$', views.add_abroad_course, name='add_abroad_course_to_profile'),
     url(r'^api/countries/$', views.get_countries),
     url(r'advisors/$', views.advisors, name='advisors'),
+    url(r'o/callback/$', views.callback, name="callback"),
 ]
