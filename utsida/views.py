@@ -344,4 +344,7 @@ def callback(request):
     token_json = response.json()
     print(token_json)
 
+    user_info = requests.get("https://auth.dataporten.no/userinfo","Bearer "+ token_json["access_token"],)
+    print(user_info)
+
     return None
