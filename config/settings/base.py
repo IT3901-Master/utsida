@@ -39,7 +39,6 @@ INSTALLED_APPS = [
     'profiles',
     'ajax_select',
     'crispy_forms',
-    'oauth2_provider',
 ]
 
 CRISPY_TEMPLATE_PACK = 'bootstrap3'

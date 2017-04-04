@@ -9,6 +9,7 @@ from .forms import *
 from profiles.models import *
 from django.contrib.auth.decorators import login_required, user_passes_test, permission_required
 from django.core.validators import *
+from requests.auth import HTTPBasicAuth
 
 
 def index(request):
@@ -333,4 +334,19 @@ def get_countries(request):
 
 def callback(request):
     print(request)
+
+    auth = auth=('701a5320-469d-4197-b27d-e90f9e71d2e0','bbd28f0d-8178-450e-ab3c-10359df7f936' )
+
+
+    body = json.dumps({
+        'grant_type':'authorization_code',
+        'code': request
+
+    })
+    #headers = {
+     #   'content-type': 'application/x-www-form-urlencoded',
+      #  'Authorization': auth
+    #}
+    #requests.post('auth.dataporten.no/oauth/token',None, headers)
+
     return None
