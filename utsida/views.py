@@ -333,16 +333,21 @@ def get_countries(request):
 
 
 def callback(request):
-    print(request)
+    print(request.GET['code'])
 
     auth = auth=('701a5320-469d-4197-b27d-e90f9e71d2e0','bbd28f0d-8178-450e-ab3c-10359df7f936' )
 
+    code = request.GET['code']
 
     body = json.dumps({
         'grant_type':'authorization_code',
-        'code': request
+        'code': request.GET['code'],
+	
+    post_data = {"grant_type": "authorization_code", "code": code ,"redirect_uri": "https://utsida.idi.ntnu.no/o/callback"}
+    response = requests.post("https://auth.dataporten.no/oauth/token",auth=auth,data=post_data)
+    token_json = response.json()
 
-    })
+   # })
     #headers = {
      #   'content-type': 'application/x-www-form-urlencoded',
       #  'Authorization': auth
