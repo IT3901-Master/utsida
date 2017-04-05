@@ -6,36 +6,28 @@
     {% load widget_tweaks %}
     {% load crispy_forms_tags %}
 
+    <div class="login-container">
 
-    <h2 class="text-center vertical-space-bottom">Logg inn med NTNU bruker</h2>
+        <h1 class="text-center vertical-space-bottom-big vertical-space-top-huge">Utsida</h1>
+        <form action="/login/{{ backends.backends.0 }}">
+            <input type="submit" value="Logg inn" class="btn btn-primary main-btn square-corners boxShadow centerCol">
+        </form>
 
-    <div class="row">
-
-        <div class="col-md-6 col-md-offset-3">
-
-            {% for backend in backends.backends %}
-                <form action="/login/{{ backend }}">
-                    <input type="submit" value="Logg inn" class="btn btn-primary center-block"
-                           style="width:100px; height:50px;">
-                </form>
-            {% endfor %}
-
+        <div class="row vertical-space-top-small">
+            <div class="col-md-6" style="padding: 0">
+                <img class="login-logo pull-right" src="../../static/utsida/images/ntnu_logo.png" style="border-right: 2px solid #ccc; padding-right: 10px">
+            </div>
+            <div class="col-md-6" style="padding: 0;">
+                <img class="login-logo" src="../../static/utsida/images/facebook_logo.png" style=" padding-left: 10px; padding-bottom: 7px">
+            </div>
         </div>
-
-
     </div>
 
-    <div class="row vertical-space-bottom vertical-space-top-big">
-
-        <div class="col-md-6 col-md-offset-3">
-
-            <button data-toggle="collapse" class="btn btn-primary center-block" data-target="#form_login">Annen
-                login
-            </button>
-
-        </div>
-
+    <div class="strike vertical-space-top-big vertical-space-bottom">
+        <span style="color: #595959">eller</span>
     </div>
+
+    <h2 class="subTitle text-center "><a data-toggle="collapse" data-target="#form_login">Logg inn med Utsida bruker</a></h2>
 
     <div class="row">
 
@@ -51,8 +43,8 @@
                     </div>
                 </form>
 
-                <h2 class="subTitle text-center vertical-space-top-big">Har du ikke bruker? <a href="/profile/register">Registrer
-                    deg her</a></h2>
+                <h2 class="subTitle text-center vertical-space-top-big"><a href="/profile/register">Registrer
+                    ny Utsida bruker</a></h2>
             </div>
         </div>
     </div>
