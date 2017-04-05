@@ -66,6 +66,15 @@ class DataportenCustomOAuth2(BaseOAuth2):
             url,
             headers={'Authorization': 'Bearer ' + access_token},
         )
+
+        url2 = 'groups-api.dataporten.no/groups/me/groups'
+        response2 = self.get_json(
+            url,
+            headers={'Authorization': 'Bearer ' + access_token},
+        )
+
+        print(response2)
+
         self.check_correct_audience(response['audience'])
 
         userdata = response['user']
@@ -79,7 +88,7 @@ class DataportenCustomOAuth2(BaseOAuth2):
 
 class DataportenCustomEmailOAuth2(DataportenCustomOAuth2):
     name = 'dataporten_email'
-    DEFAULT_SCOPE = ['userid', 'profile', 'email','userid-feide']
+    DEFAULT_SCOPE = ['userid', 'profile', 'email','userid-feide','groups']
 
     def get_user_details(self, response):
         """
