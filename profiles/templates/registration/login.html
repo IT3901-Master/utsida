@@ -7,23 +7,53 @@
     {% load crispy_forms_tags %}
 
 
-    <h2 class="text-center">Logg inn</h2>
+    <h2 class="text-center vertical-space-bottom">Logg inn med NTNU bruker</h2>
 
     <div class="row">
 
         <div class="col-md-6 col-md-offset-3">
 
-            <form method="post">
-            {% csrf_token %}
-                {{ form | crispy }}
+            {% for backend in backends.backends %}
+                <form action="/login/{{ backend }}">
+                    <input type="submit" value="Logg inn" class="btn btn-primary center-block"
+                           style="width:100px; height:50px;">
+                </form>
+            {% endfor %}
 
-                <div class="form-group vertical-space-top">
-                    <input type="submit" value="Logg inn" class="btn btn-primary center-block" style="width:100px; height:50px;">
-                </div>
-            </form>
-
-            <h2 class="subTitle text-center vertical-space-top-big">Har du ikke bruker? <a href="/profile/register">Registrer deg her</a></h2>
         </div>
 
+
+    </div>
+
+    <div class="row vertical-space-bottom vertical-space-top-big">
+
+        <div class="col-md-6 col-md-offset-3">
+
+            <button data-toggle="collapse" class="btn btn-primary center-block" data-target="#form_login">Annen
+                login
+            </button>
+
+        </div>
+
+    </div>
+
+    <div class="row">
+
+        <div class="col-md-6 col-md-offset-3">
+            <div id="form_login" class="collapse">
+                <form method="post">
+                    {% csrf_token %}
+                    {{ form | crispy }}
+
+                    <div class="form-group vertical-space-top">
+                        <input type="submit" value="Logg inn" class="btn btn-primary center-block"
+                               style="width:100px; height:50px;">
+                    </div>
+                </form>
+
+                <h2 class="subTitle text-center vertical-space-top-big">Har du ikke bruker? <a href="/profile/register">Registrer
+                    deg her</a></h2>
+            </div>
+        </div>
     </div>
 {% endblock %}

@@ -19,4 +19,5 @@ urlpatterns = [
     url(r'^api/countries/$', views.get_countries),
     url(r'advisors/$', views.advisors, name='advisors'),
     url(r'o/callback/$', views.callback, name="callback"),
+    url('', include('social.apps.django_app.urls', namespace='social')),
 ]
