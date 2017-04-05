@@ -77,6 +77,10 @@ ul.ui-autocomplete {
     margin-top: 150px;
 }
 
+.vertical-space-top-bigger {
+	margin-top: 85px;
+}
+
 .vertical-space-bottom-small {
     margin-bottom: 5px;
 }

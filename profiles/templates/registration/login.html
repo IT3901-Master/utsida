@@ -6,9 +6,10 @@
     {% load widget_tweaks %}
     {% load crispy_forms_tags %}
 
-    <div class="login-container">
+    <div class="login-container vertical-space-bottom">
 
-        <h1 class="text-center vertical-space-bottom-big vertical-space-top-huge">Utsida</h1>
+        <h1 class="text-center vertical-space-top-big">Utsida</h1>
+	<h3 class="subTitle text-center vertical-space-bottom-big">En prototype for enklere utveksling</h3>
         <form action="/login/{{ backends.backends.0 }}">
             <input type="submit" value="Logg inn" class="btn btn-primary main-btn square-corners boxShadow centerCol">
         </form>
@@ -23,7 +24,7 @@
         </div>
     </div>
 
-    <div class="strike vertical-space-top-big vertical-space-bottom">
+    <div class="strike vertical-space-top-bigger vertical-space-bottom">
         <span style="color: #595959">eller</span>
     </div>
 
