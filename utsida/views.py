@@ -15,6 +15,10 @@ from requests.auth import HTTPBasicAuth
 def index(request):
     if not request.user.is_authenticated():
         return redirect("login")
+
+    print(request.user.profile.institute)
+    if not request.user.profile.institute:
+        return redirect("set_institute")
     user = User.objects.get(username=request.user)
     if (user.groups.filter(name='Advisors').exists()):
         return advisors(request)

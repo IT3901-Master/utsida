@@ -34,13 +34,11 @@ class DataportenCustomOAuth2(BaseOAuth2):
         Set fullname and fetch photoprofile url
         """
         user = response
-        print(user)
 
         # Rename to what psa expects
         fullname = user.get('name', None)
         if fullname:
             name_list = fullname.split(' ',1)
-            print(name_list)
             user['first_name'] = name_list[0]
             user['last_name'] = name_list[1]
             user.pop('name')
@@ -67,13 +65,16 @@ class DataportenCustomOAuth2(BaseOAuth2):
             headers={'Authorization': 'Bearer ' + access_token},
         )
 
-        url2 = 'groups-api.dataporten.no/groups/me/groups'
-        response2 = self.get_json(
-            url,
+        groupurl = 'http://groups-api.dataporten.no/groups/me/groups'
+        group_data = self.get_json(
+            groupurl,
             headers={'Authorization': 'Bearer ' + access_token},
         )
 
-        print(response2)
+        for dict in group_data:
+            if dict["type"] == "fc:orgunit":
+                response['user']['institutt'] = dict["displayName"]
+
 
         self.check_correct_audience(response['audience'])
 
@@ -95,6 +96,7 @@ class DataportenCustomEmailOAuth2(DataportenCustomOAuth2):
         Return user details from Dataporten
         Set username to email address
         """
+
         user = super(DataportenCustomEmailOAuth2, self).get_user_details(response)
         sec_userids = user['userid_sec']
         for userid in sec_userids:
@@ -103,23 +105,4 @@ class DataportenCustomEmailOAuth2(DataportenCustomOAuth2):
                 user['username'] = username.split('@')[0]
                 break
 
-        return user
-
-
-class DataportenCustomFeideOAuth2(DataportenCustomOAuth2):
-    name = 'dataporten_feide'
-    DEFAULT_SCOPE = ['userid', 'profile', 'userid-feide']
-
-    def get_user_details(self, response):
-        """
-        Return user details from Dataporten
-        Set username to eduPersonPrincipalName
-        """
-        user = super(DataportenCustomFeideOAuth2, self).get_user_details(response)
-        sec_userids = user['userid_sec']
-        for userid in sec_userids:
-            usertype, username = userid.split(':')
-            if usertype == 'feide':
-                user['username'] = username
-                break
         return user
