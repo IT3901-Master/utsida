@@ -49,7 +49,8 @@
                     </a>
                 </li>
                 <li class="dropdown menu-button pull-right">
-                    <a href="#" class="dropdown-toggle nohover" data-toggle="dropdown" role="button" aria-haspopup="true"
+                    <a href="#" class="dropdown-toggle nohover" data-toggle="dropdown" role="button"
+                       aria-haspopup="true"
                        aria-expanded="false">
                         <span class="glyphicon glyphicon-user menu-icon"></span>
                     </a>
@@ -58,7 +59,9 @@
                             <li><a href="/profile/courses">Mine lagrede fag</a></li>
                             <li><a href="/profile/soknader">Mine søknader</a></li>
                             <li><a href="/profile/update">Min profil</a></li>
-                            <li><a href="{% url 'password_change' %}">Endre passord</a></li>
+                            {% if not backends.associated %}
+                                <li><a href="{% url 'password_change' %}">Endre passord</a></li>
+                            {% endif %}
                             <li role="separator" class="divider"></li>
                             <li><a href="/profile/logout">Logg ut</a></li>
                         {% endif %}
@@ -83,7 +86,7 @@
     <div class="footer-wrapper">
         <footer class="footer">
             <span class="author-text">Utvikles av Lars Liverød Andersen & Truls Mørk Pettersen</span><br>
-            <span style="font-size: 20px"><a style="color: #337ab7"  href="/information/">Om Utsida</a></span>
+            <span style="font-size: 20px"><a style="color: #337ab7" href="/information/">Om Utsida</a></span>
         </footer>
     </div>
 </div>

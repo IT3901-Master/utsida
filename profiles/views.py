@@ -75,6 +75,26 @@ def update_profile(request):
 
 @login_required
 @transaction.atomic
+def set_institute(request):
+    if request.method == 'POST':
+        profile_form = ProfileRegisterForm(request.POST,instance=request.user)
+        if profile_form.is_valid():
+            institute = profile_form.cleaned_data['institute']
+            profile = Profile.objects.get(user=request.user)
+            profile.institute = institute
+            profile.save()
+            messages.success(request, 'Institutt er satt!')
+            return redirect('index')
+        else:
+            messages.error(request, 'Vennligst rett feilen under.')
+    else:
+        profile_form = ProfileForm(instance=request.user.profile)
+    return render(request, 'profiles/set_institute.html', {
+        'profile_form': profile_form
+    })
+
+@login_required
+@transaction.atomic
 def change_password(request):
     if request.method == 'POST':
         form = PasswordChangeCustomForm(request.user, request.POST)

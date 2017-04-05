@@ -21,6 +21,30 @@ STATIC_ROOT = os.path.join(BASE_DIR, 'static')
 
 # Application definition
 
+AUTHENTICATION_BACKENDS = (
+    'config.settings.oAuth2.dataportenOauth.DataportenCustomEmailOAuth2',
+    'django.contrib.auth.backends.ModelBackend',
+)
+
+
+SOCIAL_AUTH_ADMIN_USER_SEARCH_FIELDS = ['username', 'first_name', 'email']
+
+SOCIAL_AUTH_DATAPORTEN_KEY = "701a5320-469d-4197-b27d-e90f9e71d2e0"
+SOCIAL_AUTH_DATAPORTEN_SECRET = "bbd28f0d-8178-450e-ab3c-10359df7f936"
+
+SOCIAL_AUTH_DATAPORTEN_EMAIL_KEY = SOCIAL_AUTH_DATAPORTEN_KEY
+SOCIAL_AUTH_DATAPORTEN_EMAIL_SECRET = SOCIAL_AUTH_DATAPORTEN_SECRET
+
+SOCIAL_AUTH_DATAPORTEN_FEIDE_KEY = SOCIAL_AUTH_DATAPORTEN_KEY
+SOCIAL_AUTH_DATAPORTEN_FEIDE_SECRET = SOCIAL_AUTH_DATAPORTEN_SECRET
+
+SOCIAL_AUTH_LOGIN_REDIRECT_URL = 'index'
+SOCIAL_AUTH_NEW_USER_REDIRECT_URL = 'set_institute'
+
+assert SOCIAL_AUTH_DATAPORTEN_KEY and SOCIAL_AUTH_DATAPORTEN_SECRET, 'Client id/secret not set'
+
+
+
 INSTALLED_APPS = [
     'django.contrib.admin',
     'django.contrib.auth',
@@ -33,6 +57,7 @@ INSTALLED_APPS = [
     'profiles',
     'ajax_select',
     'crispy_forms',
+    'social.apps.django_app.default',
 ]
 
 CRISPY_TEMPLATE_PACK = 'bootstrap3'
@@ -45,6 +70,8 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
+    'oauth2_provider.middleware.OAuth2TokenMiddleware',
+    'social.apps.django_app.middleware.SocialAuthExceptionMiddleware',
 ]
 
 ROOT_URLCONF = 'config.urls'
@@ -60,6 +87,8 @@ TEMPLATES = [
                 'django.template.context_processors.request',
                 'django.contrib.auth.context_processors.auth',
                 'django.contrib.messages.context_processors.messages',
+                'social_django.context_processors.backends',
+                'social_django.context_processors.login_redirect',
             ],
         },
     },
@@ -74,7 +103,6 @@ DATABASES = {
         'NAME': os.path.join(BASE_DIR, 'UtsidaDB'),
     }
 }
-
 
 # Password validation
 # https://docs.djangoproject.com/en/1.10/ref/settings/#auth-password-validators
@@ -94,7 +122,6 @@ AUTH_PASSWORD_VALIDATORS = [
     },
 ]
 
-
 # Internationalization
 # https://docs.djangoproject.com/en/1.10/topics/i18n/
 
@@ -111,7 +138,6 @@ USE_TZ = True
 LOGIN_REDIRECT_URL = 'index'
 
 LOGIN_URL = 'login'
-
 
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/1.10/howto/static-files/
