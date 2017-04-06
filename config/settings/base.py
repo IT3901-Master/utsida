@@ -22,10 +22,9 @@ STATIC_ROOT = os.path.join(BASE_DIR, 'static')
 # Application definition
 
 AUTHENTICATION_BACKENDS = (
-    'config.settings.oAuth2.dataportenOauth.DataportenCustomEmailOAuth2',
     'django.contrib.auth.backends.ModelBackend',
+    'config.settings.oAuth2.dataportenOauth.DataportenCustomEmailOAuth2',
 )
-
 
 SOCIAL_AUTH_ADMIN_USER_SEARCH_FIELDS = ['username', 'first_name', 'email']
 
@@ -43,8 +42,6 @@ SOCIAL_AUTH_NEW_USER_REDIRECT_URL = 'set_institute'
 
 assert SOCIAL_AUTH_DATAPORTEN_KEY and SOCIAL_AUTH_DATAPORTEN_SECRET, 'Client id/secret not set'
 
-
-
 INSTALLED_APPS = [
     'django.contrib.admin',
     'django.contrib.auth',
@@ -57,7 +54,7 @@ INSTALLED_APPS = [
     'profiles',
     'ajax_select',
     'crispy_forms',
-    'social.apps.django_app.default',
+    'social_django',
 ]
 
 CRISPY_TEMPLATE_PACK = 'bootstrap3'
@@ -68,9 +65,9 @@ MIDDLEWARE = [
     'django.middleware.common.CommonMiddleware',
     'django.middleware.csrf.CsrfViewMiddleware',
     'django.contrib.auth.middleware.AuthenticationMiddleware',
+    'django.contrib.auth.middleware.SessionAuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
-    'oauth2_provider.middleware.OAuth2TokenMiddleware',
     'social.apps.django_app.middleware.SocialAuthExceptionMiddleware',
 ]
 
