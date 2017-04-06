@@ -52,20 +52,17 @@
             for (var i = 0; i < s.awayCourses.length; i++) {
                 if (s.awayCourses[i].style.backgroundColor == "rgb(51, 122, 183)") {
                     awayCourse = s.awayCourses[i].innerText;
-                    if (/-/.test(awayCourse)) {
-                        code = s.awayCourses[i].children[0].innerText;
-                        name = s.awayCourses[i].children[1].innerText;
-                        s.courseMatchList["abroadCourseID"] = $(s.awayCourses[i].children[2]).data("id");
-                        s.courseMatchList["abroadCourseCode"] = code;
-                        s.courseMatchList["abroadCourseName"] = name;
-                    }
-                    else {
-                        code = "";
-                        name = s.awayCourses[i].children[0].innerText;
-                        s.courseMatchList["abroadCourseName"] = name;
-                        s.courseMatchList["abroadCourseCode"] = code;
-                        s.courseMatchList["abroadCourseID"] = $(s.awayCourses[i].children[1]).data("id");
-                    }
+
+                    code = $(s.awayCourses[i]).find("#code");
+
+                    if (code)
+                        s.courseMatchList["abroadCourseCode"] = code.text();
+                    else
+                        s.courseMatchList["abroadCourseCode"] = "";
+
+                    s.courseMatchList["abroadCourseName"] = $(s.awayCourses[i]).find("#name").text();
+                    s.courseMatchList["abroadCourseID"] = $(s.awayCourses[i]).find("[data-id]").data("id");
+
                 }
             }
 
@@ -78,6 +75,9 @@
                     s.courseMatchList["homeCourseName"] = name;
                 }
             }
+            console.log("Code: ", s.courseMatchList["abroadCourseCode"]);
+            console.log("Name: ", s.courseMatchList["abroadCourseName"]);
+
             if (s.courseMatchList["homeCourseName"] && s.courseMatchList["abroadCourseName"]) {
                 $.ajax({
                     data: s.courseMatchList,

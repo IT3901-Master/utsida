@@ -49,7 +49,7 @@
                 <form id="add-course-form">
                     <div class="row">
                         <div class="col-md-9">
-                            <div class="vertical-space-bottom-small">
+                            <div>
                                 {{ courses_to_take_form.coursesToTake | add_class:"form-control" }}
                             </div>
                         </div>
@@ -179,7 +179,7 @@
                 <div class="modal-body">
                     <div class="form-group">
                         <label for="user">Bruker:</label>
-                        <div id="user">{{ request.user.first_name }} {{ request.user.last_name }}</div>
+                        <div id="user">{{ request.user.first_name }} {{ request.user.last_name }}</div><br>
                         <label for="courseMatches"> Fag-koblinger</label>
                         <div>
                             <table class="table table-striped">
