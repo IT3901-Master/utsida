@@ -24,7 +24,7 @@ courseSelector = {
     addCourse: function(c) {
         var uni = c.parentNode.parentNode.previousSibling.previousSibling.innerText.split('(').slice()[0].slice(0, -1);
         var country = c.parentNode.parentNode.previousSibling.previousSibling.innerText.split('(').slice()[1].split(')')[0];
-        var course = c.innerHTML;
+        var course = c.innerHTML.trim();
         var code = "";
         var name = "";
 
@@ -35,13 +35,15 @@ courseSelector = {
         if (!hasNumber(course.split(' ').shift())) {
 
             // Edge case for course codes with '-' in them
-            if (/-/.test(course.split(' ').shift())) {
+            if (/-/.test(course.split(' ').shift()) || course.split(' ').shift() == course.split(' ').shift().toUpperCase()) {
                 code = course.split(' ').shift();
                 name = course.split(' ').splice(1, course.split(' ').length).join(' ')
             }
+            else {
+                code = "";
+                name = course;
+            }
 
-            code = "";
-            name = course;
         }
         else {
             var splitCourse = course.split(' ');
@@ -49,6 +51,14 @@ courseSelector = {
             name = splitCourse.join(' ');
         }
 
+
+        name = name.trim();
+        code = code.trim();
+
+        if (name.charAt(0) == "-") {
+            name = name.substr(1).trim();
+        }
+        
         if ((uni == s.university || s.university == null) && !(this.isCourseAlreadyAdded(name))) {
             s.university = uni;
 
@@ -66,6 +76,9 @@ courseSelector = {
             this.updateNumSelectedCourses();
             this.showContainer();
         }
+
+
+
     },
 
     isCourseAlreadyAdded: function(newCourse) {
