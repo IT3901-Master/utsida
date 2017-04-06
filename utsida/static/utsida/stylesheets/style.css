@@ -16,6 +16,10 @@
     border-radius: 0;
 }
 
+.big-label {
+    font-size: large;
+}
+
 .bold {
     font-weight: bold;
 }

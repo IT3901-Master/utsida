@@ -73,6 +73,7 @@ def update_profile(request):
     })
 
 
+
 @login_required
 @transaction.atomic
 def set_institute(request):

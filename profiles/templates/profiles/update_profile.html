@@ -3,40 +3,86 @@
 {% block content %}
     {% load widget_tweaks %}
 
-    <h2 class="text-center vertical-space-bottom-big">Endre brukerprofil</h2>
+    <h2 class="text-center vertical-space-bottom-big">Din brukerprofil</h2>
 
-    <div class="row">
+    {% if not backends.associated %}
+        <div class="row">
 
-        <div class="col-md-6 col-md-offset-3">
+            <div class="col-md-6 col-md-offset-3">
 
-            <form method="post">
-                {% csrf_token %}
-                <div class="form-group">
-                    <label>Brukernavn</label>
-                    {{ user_form.username|add_class:"form-control" }}
-                </div>
-                <div class="form-group">
-                    <label>Epost</label>
-                    {{ user_form.email|add_class:"form-control" }}
-                </div>
-                <div class="form-group">
-                    <label>Fornavn</label>
-                    {{ user_form.first_name|add_class:"form-control" }}
-                </div>
-                <div class="form-group">
-                    <label>Etternavn</label>
-                    {{ user_form.last_name|add_class:"form-control" }}
-                </div>
-                <div class="form-group">
-                    <label>Ditt institutt</label>
-                    {{ profile_form.institute|add_class:"form-control" }}
-                </div>
+                <form method="post">
+                    {% csrf_token %}
+                    <div class="form-group">
+                        <label>Brukernavn</label>
+                        {{ user_form.username|add_class:"form-control" }}
+                    </div>
+                    <div class="form-group">
+                        <label>Epost</label>
+                        {{ user_form.email|add_class:"form-control" }}
+                    </div>
+                    <div class="form-group">
+                        <label>Fornavn</label>
+                        {{ user_form.first_name|add_class:"form-control" }}
+                    </div>
+                    <div class="form-group">
+                        <label>Etternavn</label>
+                        {{ user_form.last_name|add_class:"form-control" }}
+                    </div>
+                    <div class="form-group">
+                        <label>Ditt institutt</label>
+                        {{ profile_form.institute|add_class:"form-control" }}
+                    </div>
 
-                <div class="form-group vertical-space-top-big">
-                    <input type="submit" value="Lagre" class="btn btn-primary center-block"
-                           style="width:100px; height:50px;">
-                </div>
-            </form>
+                    <div class="form-group vertical-space-top-big">
+                        <input type="submit" value="Lagre" class="btn btn-primary center-block"
+                               style="width:100px; height:50px;">
+                    </div>
+                </form>
+            </div>
         </div>
-    </div>
+    {% else %}
+        <div class="row">
+
+            <div class="col-md-6 col-md-offset-3">
+
+                <form method="post" action="{% url 'set_institute' %}">
+                    {% csrf_token %}
+                    <div class="panel panel-default">
+                        <div class="panel-heading bold">Hentet fra sosial innlogging</div>
+                        <div class="panel-body">
+                            <div class="form-group row">
+                                <label class="bold col-md-2">Brukernavn</label>
+                                <span class="col-md-7">{{ user.username }}</span>
+                            </div>
+                            <div class="form-group row">
+                                <label class="bold col-md-2">Epost</label>
+                                <span class="col-md-7">{{ user.email }}</span>
+                            </div>
+                            <div class="form-group row">
+                                <label class="bold col-md-2">Fornavn</label>
+                                <span class="col-md-7">{{ user.first_name }} </span>
+                            </div>
+                            <div class="form-group row" style="margin-bottom: 5px;">
+                                <label class="bold col-md-2">Etternavn</label>
+                                <span class="col-md-7">{{ user.last_name }}</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="">
+                        <div class="form-group row">
+                        <span class="col-md-12">
+                        <label class="vertical-space-bottom-small">Endre ditt institutt</label>
+                        {{ profile_form.institute|add_class:"form-control" }}
+                        </span>
+                        </div>
+                    </div>
+
+                    <div class="form-group vertical-space-top-big">
+                        <input type="submit" value="Lagre" class="btn btn-primary center-block"
+                               style="width:100px; height:50px;">
+                    </div>
+                </form>
+            </div>
+        </div>
+    {% endif %}
 {% endblock %}

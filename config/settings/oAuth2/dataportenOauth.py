@@ -99,10 +99,14 @@ class DataportenCustomEmailOAuth2(DataportenCustomOAuth2):
 
         user = super(DataportenCustomEmailOAuth2, self).get_user_details(response)
         sec_userids = user['userid_sec']
+        username_set = False
         for userid in sec_userids:
             usertype, username = userid.split(':')
             if usertype == 'feide':
                 user['username'] = username.split('@')[0]
+                username_set = True
                 break
+        if not username_set:
+            user['username'] = user['email'].split('@')[0]
 
         return user
