@@ -30,6 +30,6 @@ urlpatterns = [
     url(r'^soknader/all/$', views.ApplicationListAll.as_view(), name='article-list'),
     url(r'^application/editstatus/$', views.edit_status_application, name='remove_application'),
     url(r'^application/edit/(?P<id>\d+)/$', views.edit_application, name='edit_application'),
-    url(r'^abroadCourse^/add/$', views.add_abroad_course_to_profile, name='add_abroad_course_to_profile'),
+    url(r'^abroadCourse/add/$', views.add_abroad_course_to_profile, name='add_abroad_course_to_profile'),
 
 ]

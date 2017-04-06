@@ -7,23 +7,22 @@ import requests
 import json
 from .forms import *
 from profiles.models import *
-from django.contrib.auth.decorators import login_required, user_passes_test, permission_required
+from django.contrib.auth.decorators import login_required, permission_required
 from django.core.validators import *
-from requests.auth import HTTPBasicAuth
 
 
 def index(request):
     if not request.user.is_authenticated():
         return redirect("login")
 
-    print(request.user.profile.institute)
     if not request.user.profile.institute:
         return redirect("set_institute")
+
     user = User.objects.get(username=request.user)
-    if (user.groups.filter(name='Advisors').exists()):
+    if user.groups.filter(name='Advisors').exists():
         return advisors(request)
-    else:
-        return render(request, "utsida/index.html")
+
+    return render(request, "utsida/index.html")
 
 
 def information(request):
@@ -32,6 +31,10 @@ def information(request):
 
 @login_required
 def advisors(request):
+    user = User.objects.get(username=request.user)
+    if not user.groups.filter(name='Advisors').exists():
+        return redirect('index')
+
     application_data = {
         'count': Application.objects.all().count(),
         'num_approved': Application.objects.all().filter(status='A').count(),
@@ -55,16 +58,12 @@ def advisors(request):
 
 @login_required
 def process(request):
-    if not request.user.is_authenticated():
-        return redirect("login")
     form = QueryCaseBaseForm()
     return render(request, "utsida/process.html", {"form": form})
 
 
 @login_required
 def result(request, university=None):
-    if not request.user.is_authenticated():
-        return redirect("login")
 
     # If the request has a university parameter, return a every case with that university
     if university:
@@ -208,15 +207,15 @@ def result(request, university=None):
 
 @login_required
 def courseMatch(request):
-    university = request.POST.get("university")
+    university_name = request.POST.get("university")
     # Remove the paranthesis, example: (103)
-    university = re.sub(r'\([^)]*\)', '', university)[:-1]
-    full_university = get_object_or_404(University, name=university)
+    university_name = re.sub(r'\([^)]*\)', '', university_name)[:-1]
+    university_object = get_object_or_404(University, name=university_name)
     add_form = CourseMatchForm()
-    add_form.fields["abroadCourse"].queryset = AbroadCourse.objects.filter(university__name=university)
-    course_matches = CourseMatch.objects.all().filter(abroadCourse__university__name=university)
+    add_form.fields["abroadCourse"].queryset = AbroadCourse.objects.filter(university__name=university_name)
+    course_matches = CourseMatch.objects.all().filter(abroadCourse__university__name=university_name)
     abroad_course_form = abroadCourseForm()
-    context = {"course_match_list": course_matches, "university_name": university, "university": full_university,
+    context = {"course_match_list": course_matches, "university_name": university_name, "university": university_object,
                "add_form": add_form, "add_abroad_form": abroad_course_form}
     return render(request, "utsida/courseMatch.html", context)
 
@@ -253,7 +252,7 @@ def add_course_match(request):
         abroad_course = get_object_or_404(AbroadCourse, code=request.POST['abroadCourse'].split('-')[0].strip(),
                                           university__name=request.POST['university'])
         approved = False
-        if (request.POST['approved'] == "on"):
+        if request.POST['approved'] == "on":
             approved = True
             approver = User.objects.get(username=request.user)
         else:
@@ -285,6 +284,7 @@ def add_abroad_course(request):
                                      name=request.POST['name'], code=request.POST['code'],
                                      description_url=request.POST['description_url'],
                                      study_points=request.POST['study_points'])
+        print("hEEEY")
         abroad_course.save()
         university = abroad_course.university
         add_form = CourseMatchForm()
@@ -293,6 +293,7 @@ def add_abroad_course(request):
         context = {"course_match_list": course_matches, "university_name": university, "add_form": add_form}
         messages.success(request, "Nytt fag ble lagt til")
         return render(request, "utsida/courseMatch.html", context)
+
 
 @login_required
 def course_match_select_continent(request):
@@ -311,7 +312,6 @@ def course_match_select_continent(request):
     for university in university_list:
         university.count = len(
             CourseMatch.objects.all().filter(abroadCourse__university__name=university.name, approved=True))
-
 
     context = {"continent_list": unique_continents, "university_list": university_list, "country_list": country_list}
     return render(request, "utsida/course_match_continent_select.html", context)
@@ -334,26 +334,3 @@ def get_countries(request):
     response = serializers.serialize("json", countries)
 
     return HttpResponse(response, content_type="application/json")
-
-
-def callback(request):
-    #print(request.GET['code'])
-
-    auth = auth=('701a5320-469d-4197-b27d-e90f9e71d2e0','bbd28f0d-8178-450e-ab3c-10359df7f936' )
-
-    code = request.GET['code']
-
-    post_data = {"grant_type": "authorization_code", "code": code ,"redirect_uri": "https://utsida.idi.ntnu.no/o/callback"}
-    response = requests.post("https://auth.dataporten.no/oauth/token",auth=auth,data=post_data)
-    token_json = response.json()
-    print("TOKEN:")
-    print(token_json["access_token"])
-    bearer = "Bearer " + token_json["access_token"]
-    print("BEARER:")
-    print(bearer)
-    user_info = requests.get("https://auth.dataporten.no/userinfo",headers = {"Authorization":bearer}).json()
-    print(user_info)
-    print("RESPONSE")
-    print(user_info)
-
-    return HttpResponse({'code': 200, 'message': user_info})
