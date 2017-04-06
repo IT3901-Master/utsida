@@ -53,12 +53,12 @@ courseSelector = {
 
 
         name = name.trim();
-        code = code.trim();
+        code = code.trim(); 
 
         if (name.charAt(0) == "-") {
             name = name.substr(1).trim();
         }
-        
+
         if ((uni == s.university || s.university == null) && !(this.isCourseAlreadyAdded(name))) {
             s.university = uni;
 
