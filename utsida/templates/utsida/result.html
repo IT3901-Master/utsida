@@ -6,7 +6,7 @@
 
     {% if filter %}
 
-    <div id="savedCoursesContainer" class="panel panel-primary square-corners boxShadow savedCoursesContainer">
+    <div id="savedCoursesContainer" class="panel panel-primary square-corners boxShadow savedCoursesContainer no-border">
         <div class="panel-heading pointer noSelect square-corners" onclick="toggleSavedCoursesContainer()">
             Dine NTNU fag
             <span class="badge">{{ user.profile.coursesToTake.all.count }}</span>
@@ -21,7 +21,7 @@
         </div>
     </div>
 
-    <div id="selectedCourseContainer" class="panel panel-primary square-corners boxShadow selectedCourseContainer">
+    <div id="selectedCourseContainer" class="panel panel-primary square-corners boxShadow selectedCourseContainer no-border">
         <div id="handle" class="panel-heading square-corners pointer" onclick="courseSelector.toggleSelectedCourses()">
             Dine valgte fag
             <span class="badge" id="numSelectedCoursesBadge"></span>
