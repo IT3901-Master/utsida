@@ -146,10 +146,11 @@ def result(request, university=None):
             course_wanted_to_be_taken_matches = {}
 
             for course in courses:
-                results = CourseMatch.objects.filter(homeCourse=course)
-                if results:
-                    for result in results:
-                        course_wanted_to_be_taken_matches[str(result.abroadCourse)] = course.code + ' ' + course.name
+                course_matches_that_has_home_course = CourseMatch.objects.filter(homeCourse=course)
+                if course_matches_that_has_home_course:
+                    for course_match in course_matches_that_has_home_course:
+                        if course_match.approved:
+                            course_wanted_to_be_taken_matches[str(course_match.abroadCourse)] = course.code + ' ' + course.name
 
             unique_unis = []
             unique_sorted_similar_cases = []
