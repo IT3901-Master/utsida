@@ -33,6 +33,13 @@ courseSelector = {
         }
 
         if (!hasNumber(course.split(' ').shift())) {
+
+            // Edge case for course codes with '-' in them
+            if (/-/.test(course.split(' ').shift())) {
+                code = course.split(' ').shift();
+                name = course.split(' ').splice(1, course.split(' ').length).join(' ')
+            }
+
             code = "";
             name = course;
         }
