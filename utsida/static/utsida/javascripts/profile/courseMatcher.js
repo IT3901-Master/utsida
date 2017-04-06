@@ -78,6 +78,8 @@
                     s.courseMatchList["homeCourseName"] = name;
                 }
             }
+            console.log(s.courseMatchList["abroadCourseCode"])
+            console.log(s.courseMatchList["abroadCourseName"])
             if (s.courseMatchList["homeCourseName"] && s.courseMatchList["abroadCourseName"]) {
                 $.ajax({
                     data: s.courseMatchList,
