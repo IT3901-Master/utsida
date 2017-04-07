@@ -11,7 +11,7 @@
     </div>
 
 
-    <h2 class="text-center">Velg alternativene som stemmer for deg</h2>
+    <h2 class="text-center">Velg alternativene som passer deg</h2>
     <h3 class="subTitle text-center">Du trenger kun å fylle ut det du vet</h3>
 
     <div class="row">
@@ -20,7 +20,7 @@
 
             <form method="post" action="/process/result/">
             {% csrf_token %}
-                <h3 class="vertical-space-bottom vertical-space-top-big">Om studiestedet</h3>
+                <h3 class="vertical-space-bottom vertical-space-top-big">Preferanser om studiested</h3>
                 <div class="form-group">
                     <label>Verdensdel</label>
                     {{ form.continent|add_class:"form-control" }}
