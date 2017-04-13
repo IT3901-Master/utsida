@@ -41,11 +41,11 @@ var confirmationSettings = {
             }
 
             $(this).closest('.blockElement').fadeOut("slow", function (here) {
+                if ($(this).css('background-color') == "rgb(51, 122, 183)") {
+                    CourseMatcher.clearAwayCourseSelection();
+                }
                 block.parentNode.removeChild(block);
                 if ($('#courseList').children().length == 0) {
-
-                    //HERE
-
                     $('#courseList').remove();
                     $("#universityHeader").text("Universitet i utlandet");
                     $("#noAbroadCourseHeader").css('display', 'block');
@@ -97,10 +97,14 @@ var confirmationSettings = {
         else if (type == "home_course") {
             $.post("/profile/remove_home_course/", {'id': id});
             $(this).closest('.blockElement').fadeOut("slow", function (here) {
-                block.parentNode.removeChild(block)
+                block.parentNode.removeChild(block);
+                if ($('#homeCourseList').children().length == 0) {
+                    $("#emptyHomeCourseInfo").css('display', 'block');
+                }
+                if ($(this).css('background-color') == "rgb(51, 122, 183)") {
+                    CourseMatcher.clearHomeCourseSelection();
+                }
             });
-            $("#emptyHomeCourseInfo").css('display', 'block');
-
         }
     },
     title: "Er du sikker på at du vil slette?",
