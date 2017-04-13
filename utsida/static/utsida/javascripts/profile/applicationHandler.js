@@ -7,8 +7,8 @@ $('[data-toggle=confirmation]').confirmation({
         var id = $(this)[0].dataset["id"];
         var type = $(this)[0].dataset["type"];
         $.post("/profile/remove_application/", {'id': id});
-        $(this).closest('.courseBlock').fadeOut("slow", function (here) {
-            block.parentNode.removeChild(block)
+        $(this).closest('.panel').fadeOut("slow", function (here) {
+            $(this).closest('.panel').remove();
         });
 
     },
