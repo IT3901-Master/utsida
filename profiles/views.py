@@ -115,6 +115,8 @@ def change_password(request):
 
 @login_required
 def saved_courses(request):
+    if not request.user.profile.institute:
+        return redirect("set_institute")
     profile = Profile.objects.get(user=request.user)
 
     courses = profile.saved_courses.all()

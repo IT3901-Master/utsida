@@ -31,6 +31,9 @@ def information(request):
 
 @login_required
 def advisors(request):
+    if not request.user.profile.institute:
+        return redirect("set_institute")
+
     user = User.objects.get(username=request.user)
     if not user.groups.filter(name='Advisors').exists():
         return redirect('index')
@@ -58,6 +61,8 @@ def advisors(request):
 
 @login_required
 def process(request):
+    if not request.user.profile.institute:
+        return redirect("set_institute")
     form = QueryCaseBaseForm()
     return render(request, "utsida/process.html", {"form": form})
 
@@ -298,6 +303,9 @@ def add_abroad_course(request):
 
 @login_required
 def course_match_select_continent(request):
+    if not request.user.profile.institute:
+        return redirect("set_institute")
+
     unique_continents = []
     university_list = University.objects.all()
 

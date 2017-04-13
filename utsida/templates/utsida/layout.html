@@ -33,7 +33,7 @@
 
         <div class="collapse navbar-collapse">
             <ul class="nav navbar-nav" style="width: 100%">
-                {% if user.is_authenticated %}
+                {% if user.is_authenticated and user.profile.institute %}
                     <li><a class="navbar-brand" href="/">Utsida</a></li>
                     <li><a href="/process">Få anbefaling</a></li>
                     <li><a href="/courseMatch">Fagkoblinger</a></li>
