@@ -24,9 +24,10 @@
 
     <div class="row vertical-space-top-big">
         <div class="col-md-6">
-        <h3 class="text-center" style="margin-top: 15px; margin-bottom: 15px;">NTNU</h3>
+            <h3 class="text-center" style="margin-top: 15px; margin-bottom: 15px;">NTNU</h3>
             {% if home_courses %}
-                <p class="text-center" style="display: none" id="emptyHomeCourseInfo">Trykk på knappen under for å legge til fag.</p>
+                <p class="text-center" style="display: none" id="emptyHomeCourseInfo">Trykk på knappen under for å legge
+                    til fag.</p>
 
                 <div id="homeCourseList">
                     {% for course in home_courses %}
@@ -41,8 +42,8 @@
                 </div>
 
             {% else %}
-                    <p class="text-center" id="emptyHomeCourseInfo">Trykk på knappen under for å legge til fag</p>
-                    <div id="homeCourseList"></div>
+                <p class="text-center" id="emptyHomeCourseInfo">Trykk på knappen under for å legge til fag</p>
+                <div id="homeCourseList"></div>
             {% endif %}
 
             <div class="centerCol courseBlock boxShadow pointer noSelect blockElement" id="addHomeCourseBlock">
@@ -70,38 +71,51 @@
         <div class="col-md-6">
             <h3 id="universityHeader" class="text-center">Universitet i utlandet</h3>
             <div id="abroadCourseListContainer">
-            {% if universities %}
-                <p id="noAbroadCourseHeader" style="display: none" class="text-center">Trykk på knappen under for å legge til fag. Du kan også finne fag med Utsidas anbefalingssystem</p>
+                {% if universities %}
+                    <p id="noAbroadCourseHeader" style="display: none" class="text-center">Trykk på knappen under for å
+                        legge til fag. Du kan også finne fag med Utsidas anbefalingssystem</p>
 
 
-                <div id="courseList">
-                    {% for course in courses %}
-                        <div onclick="CourseMatcher.markAwayCourse(this)" data-university="{{ course.university }}"
-                             class="centerCol courseBlock boxShadow pointer noSelect blockElement"
-                             style="display: none;">
-                            {% if course.code == "" %}
-                                <span id="name">{{ course.name }}</span>
-                            {% else %}
-                                <span id="code">{{ course.code }}</span> - <span id="name">{{ course.name }}</span>
-                            {% endif %}
-                            <span data-toggle="confirmation" data-type="abroad_course" data-id="{{ course.id }}"
-                                  class="glyphicon glyphicon-remove pull-right pointer">
-                            </span>
-                        </div>
-                    {% endfor %}
+                    <div id="courseList">
+                        {% for course in courses %}
+                            <div onclick="CourseMatcher.markAwayCourse(this)" data-university="{{ course.university }}"
+                                 class="centerCol courseBlock boxShadow pointer noSelect blockElement"
+                                 style="display: none;">
+                                <div class="row">
+                                    {% if course.code == "" %}
+                                        <span class="col-md-10" id="name">{{ course.name }}</span>
+                                    {% else %}
+                                        <div class="col-md-10">
+                                            <span id="code">{{ course.code }}</span> -
+                                            <span id="name">{{ course.name }}</span>
+                                        </div>
+                                    {% endif %}
+                                    <div class="col-md-2">
+                                    <span id="editAbroadCourse" class="glyphicon glyphicon-edit col-md-1 pointer"
+                                          onclick="location.href='{% url 'edit_abroad_course' id=course.id %}'"></span>
+                                        </span>
+                                        <span data-toggle="confirmation" data-type="abroad_course"
+                                              data-id="{{ course.id }}"
+                                              class="glyphicon glyphicon-remove col-md-1 pointer">
+                                    </span>
+                                    </div>
+                                </div>
+                            </div>
+                        {% endfor %}
+                    </div>
+
+                {% else %}
+                    <p id="noAbroadCourseHeader" class="text-center">Trykk på knappen under for å legge til fag. Du kan
+                        også finne fag med Utsidas anbefalingssystem</p>
+                {% endif %}
+                <div class="plus-btn boxShadow borderBox centerCol vertical-space-top noSelect" data-toggle="modal"
+                     data-target="#addAbroadModal">+
                 </div>
-
-            {% else %}
-                    <p id="noAbroadCourseHeader" class="text-center">Trykk på knappen under for å legge til fag. Du kan også finne fag med Utsidas anbefalingssystem</p>
-            {% endif %}
-            <div class="plus-btn boxShadow borderBox centerCol vertical-space-top noSelect" data-toggle="modal"
-                 data-target="#addAbroadModal">+
-            </div>
             </div>
         </div>
     </div>
 
-    <div class="row vertical-space-top-big vertical-space-bottom-big" >
+    <div class="row vertical-space-top-big vertical-space-bottom-big">
         <div id="matchCourseButton" class="col-md-12" style="display: none">
             <button onclick="CourseMatcher.matchSelectedCourses()" class="btn btn-primary btn-lg center-block">
                 <span class="glyphicon glyphicon-link"></span>
@@ -116,13 +130,15 @@
     <div class="row vertical-space-top-big vertical-space-bottom-big">
         <div id="course_match_list_container" class="col-md-12 vertical-space-top-big">
             <h2 class="text-center vertical-space-bottom"> Mine fagkoblinger</h2>
-            <h3 id="course_match_list_header" class="text-center vertical-space-bottom-big" style="display: none">(Du har ingen lagret)</h3>
-            <select id="course_match_university_select" class="form-control" style="display: none; width: 50%; margin: 0 auto">
-                    {% for university in course_match_universities %}
-                        <option>{{ university }}</option>
-                    {% endfor %}
+            <h3 id="course_match_list_header" class="text-center vertical-space-bottom-big" style="display: none">(Du
+                har ingen lagret)</h3>
+            <select id="course_match_university_select" class="form-control"
+                    style="display: none; width: 50%; margin: 0 auto">
+                {% for university in course_match_universities %}
+                    <option>{{ university }}</option>
+                {% endfor %}
             </select>
-                <div id="course_match_table">
+            <div id="course_match_table">
                 <table class="table table-striped vertical-space-top-big">
                     <thead>
                     <tr>
@@ -179,13 +195,15 @@
                 <div class="modal-body">
                     <div class="form-group">
                         <label for="user">Bruker:</label>
-                        <div id="user">{{ request.user.first_name }} {{ request.user.last_name }}</div><br>
+                        <div id="user">{{ request.user.first_name }} {{ request.user.last_name }}</div>
+                        <br>
                         <label for="courseMatches"> Fag-koblinger</label>
                         <div>
                             <table class="table table-striped">
                                 <tbody id="courseMatchListModal">
                                 {% for course in course_matches %}
-                                    <tr data-university="{{ course.abroadCourse.university.name }}" data-id={{ course.pk }}>
+                                    <tr data-university="{{ course.abroadCourse.university.name }}"
+                                        data-id={{ course.pk }}>
                                     <td> {{ course.abroadCourse.code }} {{ course.abroadCourse.name }}</td>
                                     <td> {{ course.homeCourse.code }} {{ course.homeCourse.name }} </td>
                                 {% endfor %}

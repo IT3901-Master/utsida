@@ -2,6 +2,7 @@ import datetime
 from django.core import serializers
 from django.db import transaction
 from django.http import HttpResponse
+from django.http import HttpResponseRedirect
 from django.shortcuts import render, redirect, get_object_or_404
 import requests
 import json
@@ -343,3 +344,16 @@ def get_countries(request):
     response = serializers.serialize("json", countries)
 
     return HttpResponse(response, content_type="application/json")
+
+
+def edit_abroad_course(request,id):
+    instance = get_object_or_404(AbroadCourse, id=id)
+    if request.method == 'POST':
+        form = abroadCourseForm(request.POST,instance=instance)
+        if form.is_valid():
+            form.save()
+        messages.success(request,"Faget ble endret")
+        return HttpResponseRedirect('/profile/courses/')
+    else:
+        form = abroadCourseForm(instance=instance)
+        return render(request,"utsida/edit_abroad_course.html",{'form':form})
