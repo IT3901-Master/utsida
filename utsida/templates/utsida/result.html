@@ -159,11 +159,15 @@
                 <div class="panel panel-primary square-corners boxShadow no-border">
 
                     <div class="panel-heading square-corners">
-                        <span class="resultPanelUniversity">Erfaring {{ forloop.counter }} - {{ case.content.StudyPeriod }} -
-                            {% for language in case.content.Language %}
-                                {{ language }}
-                            {% endfor %}</span>
-                        <span class="pull-right badge similarityBadge">{{ case.similarity|parse_similarity:100 }}</span>
+                        <div class="row resultPanelUniversity">
+                            <span class="col-md-5">Erfaring {{ forloop.counter }}</span>
+                            <div class="col-md-2">
+                                <span class="badge similarityBadge" style="font-size: 14px">{{ case.similarity|parse_similarity:100 }}</span>
+                            </div>
+                            <div class="col-md-5">
+                                <span class="pull-right">{{ case.content.StudyPeriod }}</span>
+                            </div>
+                        </div>
                     </div>
 
                     <div class="panel-body">

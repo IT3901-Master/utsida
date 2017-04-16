@@ -343,8 +343,6 @@ input[type=range]:focus::-webkit-slider-runnable-track {
 }
 
 .resultPanelUniversity {
-    display: inline-block;
-    width: 85%;
     white-space: nowrap;
     overflow: hidden !important;
     text-overflow: ellipsis;
