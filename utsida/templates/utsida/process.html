@@ -42,21 +42,57 @@
 
                 <h3 class="vertical-space-bottom vertical-space-top-big">Hvor viktig er...</h3>
                 <div class="row">
-                    <div class="form-group col-md-12 vertical-space-bottom-big">
+                    <div class="form-group col-md-11 vertical-space-bottom-big">
                         <label>Akademisk kvalitet?</label> <output class="badge pull-right" id="academicOutput">5</output>
                         {{ form.academicQualityRating }}
                     </div>
-                    <div class="form-group col-md-12 vertical-space-bottom-big">
+                    <div class="col-md-1">
+                        <div class="question-circle centerCol boxShadow noSelect"
+                            data-container="body"
+                           data-toggle="popover"
+                           data-placement="top"
+                           data-content="Resultatene blir påvirket av hvor viktig du synes den akademiske kvaliteten på studiestedet er."
+                           data-trigger="hover">?
+                        </div>
+                    </div>
+                    <div class="form-group col-md-11 vertical-space-bottom-big">
                         <label>Sosial kvalitet?</label> <output class="badge pull-right" id="socialOutput">5</output>
                         {{ form.socialQualityRating }}
                     </div>
-                    <div class="form-group col-md-12 vertical-space-bottom-big">
+                    <div class="col-md-1">
+                        <div class="question-circle centerCol boxShadow noSelect"
+                            data-container="body"
+                           data-toggle="popover"
+                           data-placement="top"
+                           data-content="Resultatene blir påvirket av hvor viktig du synes sosiale tilbud, fritidstilbud og integrasjon med andre studenter er."
+                           data-trigger="hover">?
+                        </div>
+                    </div>
+                    <div class="form-group col-md-11 vertical-space-bottom-big">
                         <label>Generell kvalitet på boliger, og hvor lett det er å finne?</label> <output class="badge pull-right" id="residentialOutput">5</output>
                         {{ form.residentialQualityRating }}
                     </div>
-                    <div class="form-group col-md-12 vertical-space-bottom-big">
+                    <div class="col-md-1">
+                        <div class="question-circle centerCol boxShadow noSelect"
+                            data-container="body"
+                           data-toggle="popover"
+                           data-placement="top"
+                           data-content="Resultatene blir påvirket av hvor viktig du synes hybelformidling og hybelstandard er i byen."
+                             data-trigger="hover">?
+                        </div>
+                    </div>
+                    <div class="form-group col-md-11 vertical-space-bottom-big">
                         <label>Generell støtte og mottak på studiestedet?</label> <output class="badge pull-right" id="receptionOutput">5</output>
                         {{ form.receptionQualityRating }}
+                    </div>
+                    <div class="col-md-1">
+                        <div class="question-circle centerCol boxShadow noSelect"
+                            data-container="body"
+                           data-toggle="popover"
+                           data-placement="top"
+                           data-content="Resultatene blir påvirket av hvor viktig du synes det er å med støtte, veiledning og ditt mottak på studiestedet."
+                           data-trigger="hover">?
+                        </div>
                     </div>
                 </div>
 
