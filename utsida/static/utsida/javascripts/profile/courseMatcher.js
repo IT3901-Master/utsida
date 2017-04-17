@@ -200,9 +200,11 @@
         checkIfCanMatch: function () {
             CourseMatcher.setSelected();
             if (s.courseMatchList["homeCourseName"] && s.courseMatchList["abroadCourseName"]) {
+                $('#mark_help_text').hide();
                 $('#matchCourseButton').show();
             }
             else {
+                $('#mark_help_text').show();
                 $('#matchCourseButton').hide();
             }
         },

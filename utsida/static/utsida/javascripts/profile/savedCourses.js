@@ -19,7 +19,7 @@ var confirmationSettings = {
     rootSelector: '[data-toggle=confirmation]',
     onConfirm: function () {
         var here = this;
-        var block = $(this).context.parentNode;
+        var block = $(this).context.parentNode.parentNode;
         var id = $(this)[0].dataset["id"];
         var type = $(this)[0].dataset["type"];
         var university = $(this).closest('div').data("university");
@@ -45,7 +45,9 @@ var confirmationSettings = {
                     CourseMatcher.clearAwayCourseSelection();
                 }
                 block.parentNode.removeChild(block);
-                if ($('#courseList').children().length == 0) {
+                console.log("Removed child:", block);
+                console.log($('#courseList').children().length);
+                if ($('#courseList').children().length == 1) {
                     $('#courseList').remove();
                     $("#universityHeader").text("Universitet i utlandet");
                     $("#noAbroadCourseHeader").css('display', 'block');
@@ -142,13 +144,27 @@ function add_abroad_course() {
             mainDiv.setAttribute('data-university', json.university);
             mainDiv.setAttribute('onclick', "CourseMatcher.markAwayCourse(this)");
             mainDiv.className = "centerCol courseBlock boxShadow pointer noSelect blockElement";
-            mainDiv.innerHTML = "<span id='code'>" + json.code + "</span>" + ' - ' + "<span id='name'>" + json.name + "</span>";
+            var row = document.createElement('div');
+            row.setAttribute("class","row");
+            var col10 = document.createElement('div');
+            col10.setAttribute("class","col-md-10");
+            var col2 = document.createElement('div');
+            col2.setAttribute("class","col-md-2");
+            col10.innerHTML = "<span id='code'>" + json.code + "</span>" + ' - ' + "<span id='name'>" + json.name + "</span>";
+            var editspan = document.createElement('span');
+            editspan.setAttribute('class','glyphicon glyphicon-edit col-md-1 pointer');
+            editspan.setAttribute('id','editAbroadCourse');
+            editspan.setAttribute('onclick','location.href="/abroadCourse/edit/' + json.id + '/"');
             var span2 = document.createElement('span');
             span2.setAttribute("data-toggle", "confirmation");
             span2.setAttribute("data-type", "abroad_course");
             span2.setAttribute("data-id", json.id);
             span2.className = "glyphicon glyphicon-remove pull-right pointer";
-            mainDiv.append(span2);
+            col2.append(span2);
+            col2.append(editspan);
+            row.append(col10);
+            row.append(col2);
+            mainDiv.append(row);
 
 
             //Check if no courses had been added before
