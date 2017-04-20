@@ -199,6 +199,17 @@ html, body {
     text-align: center;
     cursor: default;
 }
+.question-circle {
+    border-radius: 90px;
+    width: 30px;
+    height: 30px;
+    color: black;
+    font-weight: bold;
+    font-size: 16px;
+    line-height: 30px;
+    text-align: center;
+    cursor: default;
+}
 
 .number-circle:hover {
     background-color: #d9d9d9;

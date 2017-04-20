@@ -56,7 +56,122 @@
   },
   {
     "model": "utsida.language",
-    "pk": "Spansk!Engelsk",
+    "pk": "Koreansk",
+    "fields": {}
+  },
+  {
+    "model": "utsida.language",
+    "pk": "Portugisisk",
+    "fields": {}
+  },
+  {
+    "model": "utsida.language",
+    "pk": "Nederlandsk",
+    "fields": {}
+  },
+  {
+    "model": "utsida.language",
+    "pk": "Tsjekkisk",
+    "fields": {}
+  },
+  {
+    "model": "utsida.language",
+    "pk": "Arabisk",
+    "fields": {}
+  },
+  {
+    "model": "utsida.language",
+    "pk": "Chilensk",
+    "fields": {}
+  },
+  {
+    "model": "utsida.language",
+    "pk": "Afrikaans",
+    "fields": {}
+  },
+  {
+    "model": "utsida.language",
+    "pk": "Katalansk",
+    "fields": {}
+  },
+  {
+    "model": "utsida.language",
+    "pk": "Russisk",
+    "fields": {}
+  },
+  {
+    "model": "utsida.language",
+    "pk": "Valensiansk",
+    "fields": {}
+  },
+  {
+    "model": "utsida.language",
+    "pk": "Gresk",
+    "fields": {}
+  },
+  {
+    "model": "utsida.language",
+    "pk": "Islandsk",
+    "fields": {}
+  },
+  {
+    "model": "utsida.language",
+    "pk": "Slovakisk",
+    "fields": {}
+  },
+  {
+    "model": "utsida.language",
+    "pk": "Serbisk",
+    "fields": {}
+  },
+  {
+    "model": "utsida.language",
+    "pk": "Polsk",
+    "fields": {}
+  },
+  {
+    "model": "utsida.language",
+    "pk": "Singalesisk",
+    "fields": {}
+  },
+  {
+    "model": "utsida.language",
+    "pk": "Galisisk",
+    "fields": {}
+  },
+  {
+    "model": "utsida.language",
+    "pk": "Swahili",
+    "fields": {}
+  },
+  {
+    "model": "utsida.language",
+    "pk": "Slovensk",
+    "fields": {}
+  },
+  {
+    "model": "utsida.language",
+    "pk": "Rumensk",
+    "fields": {}
+  },
+  {
+    "model": "utsida.language",
+    "pk": "Zulu",
+    "fields": {}
+  },
+  {
+    "model": "utsida.language",
+    "pk": "Latvisk",
+    "fields": {}
+  },
+  {
+    "model": "utsida.language",
+    "pk": "Mandarin",
+    "fields": {}
+  },
+  {
+    "model": "utsida.language",
+    "pk": "Malayisk",
     "fields": {}
   }
 ]
