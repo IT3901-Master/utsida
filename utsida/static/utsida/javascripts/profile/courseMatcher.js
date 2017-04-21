@@ -198,6 +198,8 @@
         },
 
         checkIfCanMatch: function () {
+            s.courseMatchList["homeCourseName"] = "" ;
+            s.courseMatchList["abroadCourseName"] = "";
             CourseMatcher.setSelected();
             if (s.courseMatchList["homeCourseName"] && s.courseMatchList["abroadCourseName"]) {
                 $('#mark_help_text').hide();

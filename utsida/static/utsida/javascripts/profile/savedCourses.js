@@ -104,7 +104,7 @@ var confirmationSettings = {
                     $("#emptyHomeCourseInfo").css('display', 'block');
                 }
                 if ($(this).css('background-color') == "rgb(51, 122, 183)") {
-                    //CourseMatcher.clearHomeCourseSelection();
+                    CourseMatcher.clearHomeCourseSelection();
                 }
             });
         }
