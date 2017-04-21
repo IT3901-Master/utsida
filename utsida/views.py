@@ -143,6 +143,7 @@ def result(request, university=None):
                     case['content']['Language'] = case['content']['Language'].split(';')
                 case['content']['Subjects'] = case['content']['Subjects'].split('!')
                 case['similarity'] = "%.3f" % case['similarity']
+                case['content']['University'] = str(case['content']['University']).strip()
 
             # Sorting the case list based on similarity
             sorted_similar_cases = sorted(r, key=lambda k: k['similarity'], reverse=True)
