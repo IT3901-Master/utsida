@@ -24,6 +24,7 @@ var confirmationSettings = {
         var type = $(this)[0].dataset["type"];
         var university = $(this).closest('div').data("university");
         if (type == "abroad_course") {
+            block = $(this).context.parentNode.parentNode.parentNode;
             $.post("/profile/remove_course/", {'id': id});
 
             var data_list = [];
@@ -44,10 +45,8 @@ var confirmationSettings = {
                 if ($(this).css('background-color') == "rgb(51, 122, 183)") {
                     CourseMatcher.clearAwayCourseSelection();
                 }
-                block.parentNode.parentNode.removeChild(block);
-                console.log("Removed child:", block);
-                console.log($('#courseList').children().length);
-                if ($('#courseList').children().length == 1) {
+                block.parentNode.removeChild(block);
+                if ($('#courseList').children().length == 0) {
                     $('#courseList').remove();
                     $("#universityHeader").text("Universitet i utlandet");
                     $("#noAbroadCourseHeader").css('display', 'block');
@@ -97,14 +96,15 @@ var confirmationSettings = {
             });
         }
         else if (type == "home_course") {
+            block = $(this).context.parentNode;
             $.post("/profile/remove_home_course/", {'id': id});
             $(this).closest('.blockElement').fadeOut("slow", function (here) {
-                block.parentNode.removeChild(block);
+                block.remove();
                 if ($('#homeCourseList').children().length == 0) {
                     $("#emptyHomeCourseInfo").css('display', 'block');
                 }
                 if ($(this).css('background-color') == "rgb(51, 122, 183)") {
-                    CourseMatcher.clearHomeCourseSelection();
+                    //CourseMatcher.clearHomeCourseSelection();
                 }
             });
         }
