@@ -57,7 +57,7 @@
 
         {% else %}
 
-            <h2 class="text-center" id="result-title"></h2>
+        <h2 class="text-center" id="result-title">Her er dine best matcher ved <br> <span id="uni_name">{{similar_cases.0.content.University}}</span> <span id="uni_country">({{similar_cases.0.content.Country}})</span></h2>
             <h3 class="subTitle text-center vertical-space-bottom">
                 Se på andre studenter sine erfaringer, og let etter fag som passer deg
             </h3>
@@ -282,16 +282,6 @@
         {% endif %}
 
     </div>
-
-    {% if filter %}
-        <script>
-            window.addEventListener('load', function (e) {
-                var url = window.location.href;
-                var university = decodeURI(url.split('/')[url.split('/').length - 2]);
-                document.getElementById("result-title").innerHTML = "Her er dine beste matcher ved" + '<br>' + university;
-            });
-        </script>
-    {% endif %}
 
     <script src="{% static 'utsida/javascripts/result/showHiddenContent.js' %}"></script>
     <script src="{% static 'utsida/javascripts/result/courseSelector.js' %}"></script>

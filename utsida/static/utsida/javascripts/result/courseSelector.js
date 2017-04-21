@@ -15,6 +15,8 @@ courseSelector = {
         selectedCourseFooter: document.getElementById("selectedCourseFooter"),
         selectedCourseList: document.getElementById("selectedCourseList"),
         selectedCourseContainer: document.getElementById("selectedCourseContainer"),
+        selectedUniCountry: document.getElementById("uni_country"),
+        selectedUniversityName: document.getElementById("uni_name")
     },
 
     init: function() {
@@ -22,8 +24,8 @@ courseSelector = {
     },
 
     addCourse: function(c) {
-        var uni = c.parentNode.parentNode.previousSibling.previousSibling.innerText.split('(').slice()[0].slice(0, -1);
-        var country = c.parentNode.parentNode.previousSibling.previousSibling.innerText.split('(').slice()[1].split(')')[0];
+        var uni = s.selectedUniversityName.innerHTML;
+        var country = s.selectedUniCountry.innerHTML.replace('(', '').replace(')', '');
         var course = c.innerHTML.trim();
         var code = "";
         var name = "";
