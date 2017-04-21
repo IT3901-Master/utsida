@@ -44,7 +44,7 @@ var confirmationSettings = {
                 if ($(this).css('background-color') == "rgb(51, 122, 183)") {
                     CourseMatcher.clearAwayCourseSelection();
                 }
-                block.parentNode.removeChild(block);
+                block.parentNode.parentNode.removeChild(block);
                 console.log("Removed child:", block);
                 console.log($('#courseList').children().length);
                 if ($('#courseList').children().length == 1) {
