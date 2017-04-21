@@ -22,7 +22,7 @@ var confirmationSettings = {
         var block = $(this).context.parentNode.parentNode;
         var id = $(this)[0].dataset["id"];
         var type = $(this)[0].dataset["type"];
-        var university = $(this).closest('div').data("university");
+        var university = $(this).closest('[data-university]').data("university");
         if (type == "abroad_course") {
             block = $(this).context.parentNode.parentNode.parentNode;
             $.post("/profile/remove_course/", {'id': id});
@@ -33,6 +33,7 @@ var confirmationSettings = {
                     data_list.push(this)
                 }
             });
+
             if (data_list.length == 1) {
                 $('#abroad_university_select').find('option').each(function () {
                     if ($(this).val() == university) {
