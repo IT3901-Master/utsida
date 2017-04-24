@@ -358,3 +358,202 @@ def edit_abroad_course(request,id):
     else:
         form = abroadCourseForm(instance=instance)
         return render(request,"utsida/edit_abroad_course.html",{'form':form})
+
+
+@login_required
+def result_test_one(request):
+    courses_taken = []
+    courses_taken_object = request.user.profile.coursesToTake.all()
+
+    for course in courses_taken_object:
+        courses_taken.append(str(course))
+
+    payload = json.dumps({
+        "Institute": "IME-IDI - Institutt for datateknikk og informasjonsvitenskap",
+        "Continent": "Europe",
+        "Country": "Frankrike",
+        "University": "",
+        "Language": "Fransk",
+        "StudyPeriod": int(datetime.date.today().year),
+        "AcademicQuality": 8,
+        "SocialQuality": 4,
+        "ResidentialQuality": 6,
+        "ReceptionQuality": 3,
+    })
+    headers = {
+        'content-type': 'application/json'
+    }
+
+    r = requests.post("http://localhost:8080/retrieval?casebase=main_case_base&concept%20name=Trip",
+                      data=payload,
+                      headers=headers
+                      ).json()["similarCases"]
+
+    for case in r:
+        if 'Language' in case['content']:
+            case['content']['Language'] = case['content']['Language'].split(';')
+        case['content']['Subjects'] = case['content']['Subjects'].split('!')
+        case['similarity'] = "%.3f" % case['similarity']
+        case['content']['University'] = str(case['content']['University']).strip()
+
+    # Sorting the case list based on similarity
+    sorted_similar_cases = sorted(r, key=lambda k: k['similarity'], reverse=True)
+
+    courses = request.user.profile.coursesToTake.all()
+
+    course_wanted_to_be_taken_matches = {}
+
+    for course in courses:
+        course_matches_that_has_home_course = CourseMatch.objects.filter(homeCourse=course)
+        if course_matches_that_has_home_course:
+            for course_match in course_matches_that_has_home_course:
+                if course_match.approved:
+                    course_wanted_to_be_taken_matches[str(course_match.abroadCourse)] = course.code + ' ' + course.name
+
+    unique_unis = []
+    unique_sorted_similar_cases = []
+    for case in sorted_similar_cases[:9]:
+        if 'University' in case['content'] and not case['content']['University'] in unique_unis:
+            unique_sorted_similar_cases.append(case)
+            unique_unis.append(case['content']['University'])
+
+    request.session['unique_universities'] = unique_unis
+    request.session['result'] = sorted_similar_cases
+    request.session['matches'] = course_wanted_to_be_taken_matches
+
+    rating_list = {}
+
+    for case in sorted_similar_cases:
+        uni = case['content']['University']
+        if uni not in rating_list:
+            rating_list[uni] = {
+                'social_quality': int(case['content']['SocialQuality']),
+                'academic_quality': int(case['content']['AcademicQuality']),
+                'residential_quality': int(case['content']['ResidentialQuality']),
+                'reception_quality': int(case['content']['ReceptionQuality']),
+                'count': 1
+            }
+
+        elif case['content']['University'] in rating_list:
+            rating_list[uni]['social_quality'] += int(case['content']['SocialQuality'])
+            rating_list[uni]['academic_quality'] += int(case['content']['AcademicQuality'])
+            rating_list[uni]['residential_quality'] += int(case['content']['ResidentialQuality'])
+            rating_list[uni]['reception_quality'] += int(case['content']['ReceptionQuality'])
+            rating_list[uni]['count'] += 1
+
+    for uni, values in rating_list.items():
+        values['social_quality'] = round(int(values['social_quality']) / int(values['count']))
+        values['academic_quality'] = round(int(values['academic_quality']) / int(values['count']))
+        values['residential_quality'] = round(int(values['residential_quality']) / int(values['count']))
+        values['reception_quality'] = round(int(values['reception_quality']) / int(values['count']))
+
+    for case in unique_sorted_similar_cases[:6]:
+        for rating in rating_list:
+            if rating == case['content']['University']:
+                case['university_ratings'] = rating_list[rating]
+
+    return render(request, 'utsida/result.html',
+                  {'similar_cases': unique_sorted_similar_cases[:6],
+                   'courses_taken': courses_taken,
+                   'matches': course_wanted_to_be_taken_matches, 'universities': unique_unis,
+                   'rating_list': rating_list, 'filter': False})
+
+
+@login_required
+def result_test_two(request):
+    courses_taken = []
+    courses_taken_object = request.user.profile.coursesToTake.all()
+
+    for course in courses_taken_object:
+        courses_taken.append(str(course))
+
+    payload = json.dumps({
+        "Institute": "IME-IDI - Institutt for datateknikk og informasjonsvitenskap",
+        "Continent": "South America",
+        "Country": "",
+        "University": "",
+        "Language": "Spansk",
+        "StudyPeriod": int(datetime.date.today().year),
+        "AcademicQuality": 5,
+        "SocialQuality": 8,
+        "ResidentialQuality": 4,
+        "ReceptionQuality": 6,
+    })
+    headers = {
+        'content-type': 'application/json'
+    }
+
+    r = requests.post("http://localhost:8080/retrieval?casebase=main_case_base&concept%20name=Trip",
+                      data=payload,
+                      headers=headers
+                      ).json()["similarCases"]
+
+    for case in r:
+        if 'Language' in case['content']:
+            case['content']['Language'] = case['content']['Language'].split(';')
+        case['content']['Subjects'] = case['content']['Subjects'].split('!')
+        case['similarity'] = "%.3f" % case['similarity']
+        case['content']['University'] = str(case['content']['University']).strip()
+
+    # Sorting the case list based on similarity
+    sorted_similar_cases = sorted(r, key=lambda k: k['similarity'], reverse=True)
+
+    courses = request.user.profile.coursesToTake.all()
+
+    course_wanted_to_be_taken_matches = {}
+
+    for course in courses:
+        course_matches_that_has_home_course = CourseMatch.objects.filter(homeCourse=course)
+        if course_matches_that_has_home_course:
+            for course_match in course_matches_that_has_home_course:
+                if course_match.approved:
+                    course_wanted_to_be_taken_matches[str(course_match.abroadCourse)] = course.code + ' ' + course.name
+
+    unique_unis = []
+    unique_sorted_similar_cases = []
+    for case in sorted_similar_cases[:9]:
+        if 'University' in case['content'] and not case['content']['University'] in unique_unis:
+            unique_sorted_similar_cases.append(case)
+            unique_unis.append(case['content']['University'])
+
+    request.session['unique_universities'] = unique_unis
+    request.session['result'] = sorted_similar_cases
+    request.session['matches'] = course_wanted_to_be_taken_matches
+
+    rating_list = {}
+
+    for case in sorted_similar_cases:
+        uni = case['content']['University']
+        if uni not in rating_list:
+            rating_list[uni] = {
+                'social_quality': int(case['content']['SocialQuality']),
+                'academic_quality': int(case['content']['AcademicQuality']),
+                'residential_quality': int(case['content']['ResidentialQuality']),
+                'reception_quality': int(case['content']['ReceptionQuality']),
+                'count': 1
+            }
+
+        elif case['content']['University'] in rating_list:
+            rating_list[uni]['social_quality'] += int(case['content']['SocialQuality'])
+            rating_list[uni]['academic_quality'] += int(case['content']['AcademicQuality'])
+            rating_list[uni]['residential_quality'] += int(case['content']['ResidentialQuality'])
+            rating_list[uni]['reception_quality'] += int(case['content']['ReceptionQuality'])
+            rating_list[uni]['count'] += 1
+
+    for uni, values in rating_list.items():
+        values['social_quality'] = round(int(values['social_quality']) / int(values['count']))
+        values['academic_quality'] = round(int(values['academic_quality']) / int(values['count']))
+        values['residential_quality'] = round(int(values['residential_quality']) / int(values['count']))
+        values['reception_quality'] = round(int(values['reception_quality']) / int(values['count']))
+
+    for case in unique_sorted_similar_cases[:6]:
+        for rating in rating_list:
+            if rating == case['content']['University']:
+                case['university_ratings'] = rating_list[rating]
+
+    return render(request, 'utsida/result.html',
+                  {'similar_cases': unique_sorted_similar_cases[:6],
+                   'courses_taken': courses_taken,
+                   'matches': course_wanted_to_be_taken_matches, 'universities': unique_unis,
+                   'rating_list': rating_list, 'filter': False})
+
