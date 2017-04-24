@@ -468,16 +468,16 @@ def result_test_two(request):
         courses_taken.append(str(course))
 
     payload = json.dumps({
-        "Institute": "IME-IDI - Institutt for datateknikk og informasjonsvitenskap",
-        "Continent": "South America",
-        "Country": "",
+        "Institute": "IME-ELKRAFT - Institutt for elkraftteknikk",
+        "Continent": "North America",
+        "Country": "USA",
         "University": "",
-        "Language": "Spansk",
+        "Language": "Engelsk",
         "StudyPeriod": int(datetime.date.today().year),
-        "AcademicQuality": 5,
-        "SocialQuality": 8,
-        "ResidentialQuality": 4,
-        "ReceptionQuality": 6,
+        "AcademicQuality": 6,
+        "SocialQuality": 9,
+        "ResidentialQuality": 7,
+        "ReceptionQuality": 3,
     })
     headers = {
         'content-type': 'application/json'
