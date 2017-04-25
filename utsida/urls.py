@@ -9,7 +9,9 @@ urlpatterns = [
     url(r'^courseMatch/$', views.course_match_select_continent, name='course_match_select_continent'),
     url(r'^information/$', views.information, name='information'),
     url(r'^process/result/$', views.result, name='result'),
-    url(r'^process/result/(?P<university>[_(-,\w ]+)/$', views.result, name='filtered_result'),
+    url(r'^process/result/(?P<university>[_(\-,\w\d ]+)/$', views.result, name='filtered_result'),
+    url(r'^test1/$', views.result_test_one, name='test1'),
+    url(r'^test2/$', views.result_test_two, name='test2'),
     url(r'^courseMatch/(?P<university>\d+)/$', views.courseMatch, name='courseMatch'),
     url(r'^courseMatch/university/$', views.courseMatch, name='courseMatch'),
     url(r'^courseMatch/add/$', views.add_course_match, name='add_course_match'),
@@ -21,3 +23,7 @@ urlpatterns = [
     url(r'advisors/$', views.advisors, name='advisors'),
     url('', include('social.apps.django_app.urls', namespace='social')),
 ]
+
+
+
+

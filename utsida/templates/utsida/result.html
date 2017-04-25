@@ -55,6 +55,13 @@
                 Trykk på et universitet for å vise individuelle erfaringer
             </h3>
 
+            <div class="col-md-12 text-center vertical-space-top">
+                <a class="btn btn-default" href="/process/">
+                    <span class="glyphicon glyphicon-chevron-left"></span>
+                    Få ny anbefaling
+                </a>
+            </div>
+
         {% else %}
 
         <h2 class="text-center" id="result-title">Her er dine best matcher ved <br> <span id="uni_name">{{similar_cases.0.content.University}}</span> <span id="uni_country">({{similar_cases.0.content.Country}})</span></h2>
