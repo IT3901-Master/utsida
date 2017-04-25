@@ -312,19 +312,23 @@ def course_match_select_continent(request):
     university_list = University.objects.all()
 
     country_list = []
-    for university in university_list:
-        if not university.country in country_list:
-            country_list.append(university.country)
-
-    for university in university_list:
-        if not university.country.continent in unique_continents:
-            unique_continents.append(university.country.continent)
+    university_list_final = []
 
     for university in university_list:
         university.count = len(
             CourseMatch.objects.all().filter(abroadCourse__university__name=university.name, approved=True))
+        if university.count > 0:
+            university_list_final.append(university)
 
-    context = {"continent_list": unique_continents, "university_list": university_list, "country_list": country_list}
+    for university in university_list_final:
+        if not university.country in country_list:
+            country_list.append(university.country)
+
+    for university in university_list_final:
+        if not university.country.continent in unique_continents:
+            unique_continents.append(university.country.continent)
+
+    context = {"continent_list": unique_continents, "university_list": university_list_final, "country_list": country_list}
     return render(request, "utsida/course_match_continent_select.html", context)
 
 
