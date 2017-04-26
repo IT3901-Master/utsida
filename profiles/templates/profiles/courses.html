@@ -72,8 +72,8 @@
             <h3 id="universityHeader" class="text-center">Universitet i utlandet</h3>
             <div id="abroadCourseListContainer">
                 {% if universities %}
-                    <p id="noAbroadCourseHeader" style="display: none" class="text-center">Trykk på knappen under for å
-                        legge til fag. Du kan også finne fag med Utsidas anbefalingssystem</p>
+                    <p id="noAbroadCourseHeader" style="display: none" class="text-center">Finn og legg til fag med <a href="/process/">Få anbefaling</a>, eller trykk på knappen under for å
+                        legge til fag du vet om.</p>
 
 
                     <div id="courseList">
@@ -105,8 +105,8 @@
                     </div>
 
                 {% else %}
-                    <p id="noAbroadCourseHeader" class="text-center">Trykk på knappen under for å legge til fag. Du kan
-                        også finne fag med Utsidas anbefalingssystem</p>
+                    <p id="noAbroadCourseHeader" class="text-center">Finn og legg til fag med <a href="/process/">Få anbefaling</a>, eller trykk på knappen under for å
+                        legge til fag du vet om.</p>
                 {% endif %}
                 <div class="plus-btn boxShadow borderBox centerCol vertical-space-top noSelect" data-toggle="modal"
                      data-target="#addAbroadModal">+
@@ -135,8 +135,7 @@
     <div class="row vertical-space-top-big vertical-space-bottom-big">
         <div id="course_match_list_container" class="col-md-12 vertical-space-top-big">
             <h2 class="text-center vertical-space-bottom"> Mine fagkoblinger</h2>
-            <h3 id="course_match_list_header" class="text-center vertical-space-bottom-big" style="display: none">(Du
-                har ingen lagret)</h3>
+            <h3 id="course_match_list_header" class="text-center vertical-space-bottom-big" style="display: none; font-size: 16px">Lag nye fagkoblinger ved å koble fag over, eller finn fagkoblinger som allerede er godkjent i <a href="/courseMatch/">Godkjente fag</a></h3>
             <select id="course_match_university_select" class="form-control"
                     style="display: none; width: 50%; margin: 0 auto">
                 {% for university in course_match_universities %}
