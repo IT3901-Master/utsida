@@ -73,6 +73,8 @@ MIDDLEWARE = [
 
 ROOT_URLCONF = 'config.urls'
 
+ADMINS = [('Truls Pettersen', 'truls.petters1@gmail.com'), ('Lars Liverod', 'lars.la92@gmail.com')]
+
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
