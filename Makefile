@@ -75,3 +75,8 @@ prun:
 
 super:
 	python3 manage.py createsuperuser
+
+initiate:
+	make load
+	make makemigrations
+	make migrate
