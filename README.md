@@ -21,13 +21,13 @@ sudo apt-get install python3-pip
 sudo apt-get install git                                          
 
 
-**Download both required Git repositories**
+### Download both required Git repositories
 
 git clone https://github.com/IT3901-Master/utsida.git              
 git clone https://github.com/IT3901-Master/mycbr-deployment.git    
 
 
-**Setup and run**
+### Setup and run
 
 sudo pip3 install -r requirements.txt
 make initiate
