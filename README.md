@@ -26,8 +26,11 @@ sudo apt-get install git
 + git clone https://github.com/IT3901-Master/mycbr-deployment.git    
 
 
-### Setup and run
+### Setup and run (In utsida project directory)
 + sudo pip3 install -r requirements.txt
 + make initiate
 + make lrun
+
+### Setup and run (In mycbr-deployment directory)
++ make run
 
